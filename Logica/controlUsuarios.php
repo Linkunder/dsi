@@ -29,6 +29,10 @@ class controlUsuarios{
 		return $vectorData;
 	}
 
+	public function actualizarUsuario($usuario){
+		$this->persistenciaUsuario->actualizarUsuario($usuario);
+	}
+
 }
 
 

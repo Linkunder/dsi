@@ -58,9 +58,17 @@ class DAOUsuario{
 	public function actualizarusuario($usuario){
 		$link = $this->conexionBD->obtenerConexion();
 		$query = "UPDATE usuario SET 
-		idusuario = '".$usuario->getIdusuario()."',
+		idUsuario = '".$usuario->getIdUsuario()."',
+		nickname = '".$usuario->getNickname()."',
 		nombre = '".$usuario->getNombre()."',
-		descripcion='".$usuario->getDescripcion()."'
+		apellido = '".$usuario->getApellido()."',
+		email = '".$usuario->getEmail()."',
+		fechaNacimiento = '".$usuario->getFechaNacimiento()."',
+		sexo = '".$usuario->getSexo()."',
+		rutaFotografia = '".$usuario->getRutaFotografia()."',
+		telefono = '".$usuario->getTelefono()."',
+		estadojugador_idestadojugador = '".$usuario->getIdEstado()."',
+		perfil_idperfil = '".$usuario->getIdPerfil()."'
 		WHERE idusuario = '".$usuario->getIdusuario()."'";
 		mysql_query($query,$link) or die (mysql_error());
 		mysql_close($link);
