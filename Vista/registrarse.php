@@ -1,9 +1,28 @@
+<?php
+include_once('../TO/Usuario.php');
+include_once('../Logica/controlUsuarios.php');
+
+$jefeUsuario = controlUsuarios::obtenerInstancia();
+$id=1;
+$vectorUsuario = $jefeUsuario->leerUsuario($id);
+?>
+
 <html>
 <head>
 	<title>Probando</title>
 </head>
 <body>
+	<h1>Leer jugador que esta en el sistema</h1>
 
+	<?php
+	foreach ($vectorUsuario as $Usuario) {
+		echo $Usuario->getNombre();
+	}
+	?>
+
+	
+
+	<br/>
 	<h1>Ingresar jugador al sistema</h1>
 	<form action="registrarUsuario.php" method="post">
 		<label for="id">ID: </label>

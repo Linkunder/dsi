@@ -23,6 +23,12 @@ class controlUsuarios{
 		$this->persistenciaUsuario->crearUsuario($usuario);
 	}
 
+	public function leerUsuario($idUsuario){
+		$vectorData = $this->persistenciaUsuario->leerUsuario($idUsuario);
+		if (count($vectorData)==0) return null;
+		return $vectorData;
+	}
+
 }
 
 

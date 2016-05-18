@@ -29,14 +29,22 @@ class DAOUsuario{
 
 	public function leerusuario($idusuario){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "SELECT * FROM usuario WHERE idusuario = '$idusuario' ";
+		$query = "SELECT * FROM usuario WHERE idUsuario = '$idusuario' ";
 		$result = mysql_query($query,$link) or die (mysql_error());
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
 			$usuario = new usuario();
-			$usuario->setIdusuario($row['idusuario']);
+			$usuario->setIdusuario($row['idUsuario']);
+			$usuario->setNickname($row['nickname']);
 			$usuario->setNombre($row['nombre']);
-			$usuario->setDescripcion($row['descripcion']);
+			$usuario->setApellido($row['apellido']);
+			$usuario->setEmail($row['email']);
+			$usuario->setFechaNacimiento($row['fechaNacimiento']);
+			$usuario->setSexo($row['sexo']);
+			$usuario->setRutaFotografia($row['rutaFotografia']);
+			$usuario->setTelefono($row['telefono']);
+			$usuario->setIdEstado($row['estadojugador_idestadojugador']);
+			$usuario->setIdPerfil($row['perfil_idperfil']);
 			$vectorData[$i]= $usuario;
 			$i++;
 		}
