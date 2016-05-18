@@ -12,6 +12,8 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 	<title>Probando</title>
 </head>
 <body>
+
+
 	<h1>Leer jugador que esta en el sistema</h1>
 
 	<?php
@@ -20,8 +22,6 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 		echo "Mail: ".$Usuario->getEmail();
 	}
 	?>
-
-	
 
 	<br/>
 	<h1>Ingresar jugador al sistema</h1>
@@ -54,6 +54,12 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 	<br/>
 
 	<h1>Modificar un jugador</h1>
+
+	<?php 
+	$jefeUsuario2 = controlUsuarios::obtenerInstancia();
+	$id=1;
+	$vectorUsuario = $jefeUsuario2->buscarUsuario($id);
+	?>
 
 		<form action="actualizarUsuario.php" method="post">
 		<label for="id">ID: </label>

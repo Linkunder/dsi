@@ -33,6 +33,12 @@ class controlUsuarios{
 		$this->persistenciaUsuario->actualizarUsuario($usuario);
 	}
 
+	public function buscarUsuario($idUsuario){
+		$vectorData = $this->persistenciaUsuario->buscarUsuario($idUsuario);
+		if (count($vectorData)==0) return null;
+		return $vectorData;
+	}
+
 }
 
 
