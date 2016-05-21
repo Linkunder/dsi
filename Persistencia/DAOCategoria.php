@@ -12,7 +12,9 @@ class DAOCategoria{
 	public function crearCategoria($categoria){
 		$link = $this->conexionBD->obtenerConexion();
 		$query = "INSERT INTO categoria (idCategoria,nombre,descripcion) 
-		VALUES ('".$categoria->obtenerId()."','".$categoria->getNombre()."','".$categoria->getDescripcion()."')";
+		VALUES ('".$categoria->getIdCategoria()."',
+			'".$categoria->getNombre()."',
+			'".$categoria->getDescripcion()."')";
 		mysql_query($query,$link) or die(mysql_error());
 		mysql_close($link);
 	}

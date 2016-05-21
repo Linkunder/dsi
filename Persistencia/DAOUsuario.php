@@ -27,14 +27,14 @@ class DAOUsuario{
 		mysql_close($link);
 	}
 
-	public function leerusuario($idusuario){
+	public function leerUsuario($idUsuario){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "SELECT * FROM usuario WHERE idUsuario = '$idusuario' ";
+		$query = "SELECT * FROM usuario WHERE idUsuario = '$idUsuario' ";
 		$result = mysql_query($query,$link) or die (mysql_error());
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
-			$usuario = new usuario();
-			$usuario->setIdusuario($row['idUsuario']);
+			$usuario = new Usuario();
+			$usuario->setIdUsuario($row['idUsuario']);
 			$usuario->setNickname($row['nickname']);
 			$usuario->setNombre($row['nombre']);
 			$usuario->setApellido($row['apellido']);
@@ -57,7 +57,7 @@ class DAOUsuario{
 
 	public function actualizarusuario($usuario){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "UPDATE usuario SET 
+		$query = "UPDATE Usuario SET 
 		idUsuario = '".$usuario->getIdUsuario()."',
 		nickname = '".$usuario->getNickname()."',
 		nombre = '".$usuario->getNombre()."',
@@ -69,14 +69,14 @@ class DAOUsuario{
 		telefono = '".$usuario->getTelefono()."',
 		estadojugador_idestadojugador = '".$usuario->getIdEstado()."',
 		perfil_idperfil = '".$usuario->getIdPerfil()."'
-		WHERE idusuario = '".$usuario->getIdusuario()."'";
+		WHERE idUsuario = '".$usuario->getIdUsuario()."'";
 		mysql_query($query,$link) or die (mysql_error());
 		mysql_close($link);
 	}
 
-	public function eliminarusuario($idusuario){
+	public function eliminarusuario($idUsuario){
 		$link=$this->conexionBD->obtenerConexion();
-		$query="DELETE FROM usuario WHERE idusuario = '$idusuario'";
+		$query="DELETE FROM Usuario WHERE idUsuario = '$idUsuario'";
 		mysql_query($query,$link) or die (mysql_error());
 		mysql_close($link);
 

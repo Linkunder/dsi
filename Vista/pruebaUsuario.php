@@ -1,4 +1,4 @@
-<?php
+	<?php
 include_once('../TO/Usuario.php');
 include_once('../Logica/controlUsuarios.php');
 
