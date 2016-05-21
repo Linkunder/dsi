@@ -1,9 +1,0 @@
-en cuanto a usuarios se puede:
-	- Crear usuario
-	- Leer un usuario 
-	- Leer todos los usuarios
-	- Actualizar un usuario
-
-La idea seria poder hacer con todas las entidades importantes lo mismo
-
-Aguante carlos
