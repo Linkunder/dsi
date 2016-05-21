@@ -11,7 +11,7 @@ class DAOComentario{
 
 	public function crearComentario($comentario){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO comentario (idComentario, Recinto_idRecinto,Usuario_idUsuario, asunto, contenido, fecha, hora)
+		$query = "INSERT INTO comentario (idComentario, idRecinto,idUsuario, asunto, contenido, fecha, hora)
 		VALUES(
 			'".$comentario->getIdComentario()."',
 			'".$comentario->getIdRecinto()."',

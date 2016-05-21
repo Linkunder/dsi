@@ -11,7 +11,7 @@ class DAOPartido{
 
 	public function crearPartido($partido){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO partido (idPartido, fecha, hora, cuota, EstadoPartido_idEstado, Recinto_idRecinto, TercerTiempo_idTercerTiempo)
+		$query = "INSERT INTO partido (idPartido, fecha, hora, cuota, idEstado, idRecinto, idTercerTiempo)
 		VALUES ('".$partido->getIdPartido()."',
 			'".$partido->getFecha()."',
 			'".$partido->getHora()."',
@@ -34,9 +34,9 @@ class DAOPartido{
 			$partido->setFecha($row['fecha']);
 			$partido->setHora($row['hora']);
 			$partido->setCuota($row['cuota']);
-			$partido->setIdEstado($row['EstadoPartido_idEstado']);
-			$partido->setIdRecinto($row['Recinto_idRecinto']);
-			$partido->setIdTercerTiempo($row['TercerTiempo_idTercerTiempo']);
+			$partido->setIdEstado($row['idEstado']);
+			$partido->setIdRecinto($row['idRecinto']);
+			$partido->setIdTercerTiempo($row['idTercerTiempo']);
 			$vectorData[$i]= $partido;
 			$i++;
 		}
@@ -55,9 +55,9 @@ class DAOPartido{
 		fecha = '".$partido->getFecha()."',
 		hora='".$partido->getHora()."'
 		cuota='".$partido->getCuota()."'
-		EstadoPartido_idEstado='".$partido->getIdEstado()."'
-		Recinto_idRecinto='".$partido->getIdRecinto()."'
-		TercerTiempo_idTercerTiempo='".$partido->getIdTercerTiempo()."'
+		idEstado='".$partido->getIdEstado()."'
+		idRecinto='".$partido->getIdRecinto()."'
+		idTercerTiempo='".$partido->getIdTercerTiempo()."'
 		WHERE idpartido = '".$partido->getidpartido()."'";
 		mysql_query($query,$link) or die (mysql_error());
 		mysql_close($link);

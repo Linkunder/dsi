@@ -1,4 +1,4 @@
-	<?php
+<?php
 include_once('../TO/Usuario.php');
 include_once('../Logica/controlUsuarios.php');
 
@@ -86,6 +86,41 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 		<input type="text" name="perfil" id="perfil"/><br/>
 		<input type="submit" value="Aceptar">
 	</form>
+
+	<h1>Listar todos los usuarios</h1>
+
+	<?php 
+	$jefeUsuario3 = controlUsuarios::obtenerInstancia();
+	$vectorUsuario = $jefeUsuario3->leerUsuarios();
+	?>
+	<table>
+		<tr>
+		<th>ID</th>
+		<th>NICKNAME</th>
+		<th>NOMBRE</th>
+		<th>APELLIDO</th>
+		<th>MAIL</th>
+		<th>FECHA NACIMIENTO</th>
+		</tr>
+		<?php
+		foreach ($vectorUsuario as $Usuario) {
+			?>
+			<tr>
+			<th><?php echo $Usuario->getIdUsuario()?></th>
+			<th><?php echo $Usuario->getNickname()?></th>
+			<th><?php echo $Usuario->getNombre()?></th>
+			<th><?php echo $Usuario->getApellido()?></th>
+			<th><?php echo $Usuario->getEmail()?></th>
+			<th><?php echo $Usuario->getFechaNacimiento()?></th>
+		</tr>
+			<?php
+	}
+	?>
+	</table>
+
+
+
+
 
 
 </body>

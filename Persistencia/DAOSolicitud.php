@@ -9,43 +9,39 @@ class DAOSolicitud{
 		$this->conexionBD = new Conexion();
 	}
 
-	public function crearSolicitud($recinto){
+	public function crearSolicitud($solicitud){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO recinto (idRecinto, nombre, precio, direecion, horario, rotaFotografia, linkMapa, cantidadCanchas, puntuacion, telefono, EstadoRecinto_idEstadoRecinto) 
-		VALUES ('".$recinto->getIdRecinto()."',
-			'".$recinto->getNombre()."',
-			'".$recinto->getPrecio()."',
-			'".$recinto->getDireccion()."',
-			'".$recinto->getHorario()."',
-			'".$recinto->getRutaFotografia()."',
-			'".$recinto->getLinkMapa()."',
-			'".$recinto->getCantidadCanchas()."',
-			'".$recinto->getPuntuacion()."',
-			'".$recinto->getTelefono()."',
-			'".$recinto->getIdEstado()."')";
+		$query = "INSERT INTO solicitud (idSolicitud, nombre, precio, direccion, horario, rutaFotografia, cantidadCanchas, telefono, idUsuario) 
+		VALUES ('".$solicitud->getIdSolicitud()."',
+			'".$solicitud->getNombre()."',
+			'".$solicitud->getPrecio()."',
+			'".$solicitud->getDireccion()."',
+			'".$solicitud->getHorario()."',
+			'".$solicitud->getRutaFotografia()."',
+			'".$solicitud->getCantidadCanchas()."',
+			'".$solicitud->getTelefono()."',
+			'".$solicitud->getIdUsuario()."')";
 		mysql_query($query,$link) or die(mysql_error());
 		mysql_close($link);
 	}
 
-	public function leerSolicitud($idRecinto){
+	public function leerSolicitud($idSolicitud){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "SELECT * FROM recinto WHERE idRecinto = '$idRecinto' ";
+		$query = "SELECT * FROM solicitud WHERE idSolicitud = '$idSolicitud' ";
 		$result = mysql_query($query,$link) or die (mysql_error());
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
-			$recinto = new Recinto();
-			$recinto->setIdRecinto($row['idRecinto']);
-			$recinto->setNombre($row['nombre']);
-			$recinto->setPrecio($row['precio']);
-			$recinto->setDireccion($row['direccion']);
-			$recinto->setHorario($row['horario']);
-			$recinto->setRutaFotografia($row['rutaFotografia']);
-			$recinto->setLinkMapa($row['linkMapa']);
-			$recinto->setCantidadCanchas($row['cantidadCanchas']);
-			$recinto->setPuntuacion($row['puntuacion']);
-			$recinto->setTelefono($row['telefono']);
-			$recinto->setIdEstado($row['EstadoRecinto_idEstadoRecinto']);
-			$vectorData[$i]= $recinto;
+			$solicitud = new Solicitud();
+			$solicitud->setIdSolicitud($row['idSolicitud']);
+			$solicitud->setNombre($row['nombre']);
+			$solicitud->setPrecio($row['precio']);
+			$solicitud->setDireccion($row['direccion']);
+			$solicitud->setHorario($row['horario']);
+			$solicitud->setRutaFotografia($row['rutaFotografia']);
+			$solicitud->setCantidadCanchas($row['cantidadCanchas']);
+			$solicitud->setTelefono($row['telefono']);
+			$solicitud->setIdUsuario($row['idUsuario']);
+			$vectorData[$i]= $solicitud;
 			$i++;
 		}
 		mysql_close($link);
@@ -55,52 +51,49 @@ class DAOSolicitud{
 		return $vectorData;	
 	}
 
-	public function actualizarSolicitud($usuario){
+	public function actualizarSolicitud($solicitud){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "UPDATE usuario SET 
-		idUsuario = '".$usuario->getIdUsuario()."',
-		nickname = '".$usuario->getNickname()."',
-		nombre = '".$usuario->getNombre()."',
-		apellido = '".$usuario->getApellido()."',
-		email = '".$usuario->getEmail()."',
-		fechaNacimiento = '".$usuario->getFechaNacimiento()."',
-		sexo = '".$usuario->getSexo()."',
-		rutaFotografia = '".$usuario->getRutaFotografia()."',
-		telefono = '".$usuario->getTelefono()."',
-		estadojugador_idestadojugador = '".$usuario->getIdEstado()."',
-		perfil_idperfil = '".$usuario->getIdPerfil()."'
-		WHERE idusuario = '".$usuario->getIdusuario()."'";
+		$query = "UPDATE idSolicitud SET 
+		idSolicitud = '".$solicitud->getIdsolicitud()."',
+		nombre = '".$solicitud->getNombre()."',
+		precio = '".$solicitud->getPrecio()."',
+		direccion = '".$solicitud->getDireccion()."',
+		horario = '".$solicitud->getHorario()."',
+		rutaFotografia = '".$solicitud->getRutaFotografia()."',
+		cantidadCanchas = '".$solicitud->getCantidadCanchas()."',
+		telefono = '".$solicitud->getTelefono()."',
+		idUsuario = '".$solicitud->getIdUsuario()."'
+		WHERE idSolicitud = '".$solicitud->getIdSolicitud()."'";
 		mysql_query($query,$link) or die (mysql_error());
 		mysql_close($link);
 	}
 
-	public function eliminarRecinto($idRecinto){
+
+	public function eliminarSolicitud($idSolicitud){
 		$link=$this->conexionBD->obtenerConexion();
-		$query="DELETE FROM recinto WHERE idRecinto = '$idRecinto'";
+		$query="DELETE FROM solicitud WHERE idSolicitud = '$idSolicitud'";
 		mysql_query($query,$link) or die (mysql_error());
 		mysql_close($link);
 
 	}
 
-	public function buscarRecinto($idRecinto){
+	public function buscarSolicitud($idSolicitud){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "SELECT * FROM recinto WHERE idRecinto = '$idRecinto'";
+		$query = "SELECT * FROM solicitud WHERE idSolicitud = '$idSolicitud'";
 		$result = mysql_query($query,$link) or die (mysql_error());
 		$i= 0;
 		while ($row = mysql_fetch_array($result)){
-			$recinto = new Recinto();
-			$recinto->setIdRecinto($row['idRecinto']);
-			$recinto->setNombre($row['nombre']);
-			$recinto->setPrecio($row['precio']);
-			$recinto->setDireccion($row['direccion']);
-			$recinto->setHorario($row['horario']);
-			$recinto->setRutaFotografia($row['rutaFotografia']);
-			$recinto->setLinkMapa($row['linkMapa']);
-			$recinto->setCantidadCanchas($row['cantidadCanchas']);
-			$recinto->setPuntuacion($row['puntuacion']);
-			$recinto->setTelefono($row['telefono']);
-			$recinto->setIdEstado($row['EstadoRecinto_idEstadoRecinto']);
-			$vectorData[$i]= $recinto;
+			$solicitud = new Solicitud();
+			$solicitud->setIdSolicitud($row['idSolicitud']);
+			$solicitud->setNombre($row['nombre']);
+			$solicitud->setPrecio($row['precio']);
+			$solicitud->setDireccion($row['direccion']);
+			$solicitud->setHorario($row['horario']);
+			$solicitud->setRutaFotografia($row['rutaFotografia']);
+			$solicitud->setCantidadCanchas($row['cantidadCanchas']);
+			$solicitud->setTelefono($row['telefono']);
+			$solicitud->setIdUsuario($row['idUsuario']);
+			$vectorData[$i]= $solicitud;
 			$i++;
 		}
 		mysql_close($link);

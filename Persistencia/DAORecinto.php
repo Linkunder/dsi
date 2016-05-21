@@ -11,14 +11,13 @@ class DAORecinto{
 
 	public function crearRecinto($recinto){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO recinto (idRecinto, nombre, precio, direecion, horario, rotaFotografia, linkMapa, cantidadCanchas, puntuacion, telefono, EstadoRecinto_idEstadoRecinto) 
+		$query = "INSERT INTO recinto (idRecinto, nombre, precio, direccion, horario, rutaFotografia, cantidadCanchas, puntuacion, telefono, idEstadoRecinto) 
 		VALUES ('".$recinto->getIdRecinto()."',
 			'".$recinto->getNombre()."',
 			'".$recinto->getPrecio()."',
 			'".$recinto->getDireccion()."',
 			'".$recinto->getHorario()."',
 			'".$recinto->getRutaFotografia()."',
-			'".$recinto->getLinkMapa()."',
 			'".$recinto->getCantidadCanchas()."',
 			'".$recinto->getPuntuacion()."',
 			'".$recinto->getTelefono()."',
@@ -40,11 +39,10 @@ class DAORecinto{
 			$recinto->setDireccion($row['direccion']);
 			$recinto->setHorario($row['horario']);
 			$recinto->setRutaFotografia($row['rutaFotografia']);
-			$recinto->setLinkMapa($row['linkMapa']);
 			$recinto->setCantidadCanchas($row['cantidadCanchas']);
 			$recinto->setPuntuacion($row['puntuacion']);
 			$recinto->setTelefono($row['telefono']);
-			$recinto->setIdEstado($row['EstadoRecinto_idEstadoRecinto']);
+			$recinto->setIdEstado($row['idEstadoRecinto']);
 			$vectorData[$i]= $recinto;
 			$i++;
 		}
@@ -57,19 +55,18 @@ class DAORecinto{
 
 	public function actualizarRecinto($recinto){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "UPDATE usuario SET 
-		idRecinto = '".$usuario->getIdUsuario()."',
-		nombre = '".$usuario->getNickname()."',
-		precio = '".$usuario->getNombre()."',
-		direccion = '".$usuario->getApellido()."',
-		horario = '".$usuario->getEmail()."',
-		rutaFotografia = '".$usuario->getRutaFotografia()."',
-		linkMapa = '".$usuario->getFechaNacimiento()."',
-		cantidadCanchas = '".$usuario->getSexo()."',
-		puntuacion = '".$usuario->getIdEstado()."',
-		telefono = '".$usuario->getTelefono()."',
-		EstadoRecinto_idEstadoRecinto = '".$usuario->getIdPerfil()."'
-		WHERE idRecinto = '".$usuario->getIdusuario()."'";
+		$query = "UPDATE idRecinto SET 
+		idRecinto = '".$recinto->getIdRecinto()."',
+		nombre = '".$recinto->getNombre()."',
+		precio = '".$recinto->getPrecio()."',
+		direccion = '".$recinto->getDireccion()."',
+		horario = '".$recinto->getHorario()."',
+		rutaFotografia = '".$recinto->getRutaFotografia()."',
+		cantidadCanchas = '".$recinto->getCantidadCanchas()."',
+		puntuacion = '".$recinto->getPuntuacion()."',
+		telefono = '".$recinto->getTelefono()."',
+		idEstadoRecinto = '".$recinto->getIdEstado()."'
+		WHERE idRecinto = '".$recinto->getIdrecinto()."'";
 		mysql_query($query,$link) or die (mysql_error());
 		mysql_close($link);
 	}
@@ -95,11 +92,10 @@ class DAORecinto{
 			$recinto->setDireccion($row['direccion']);
 			$recinto->setHorario($row['horario']);
 			$recinto->setRutaFotografia($row['rutaFotografia']);
-			$recinto->setLinkMapa($row['linkMapa']);
 			$recinto->setCantidadCanchas($row['cantidadCanchas']);
 			$recinto->setPuntuacion($row['puntuacion']);
 			$recinto->setTelefono($row['telefono']);
-			$recinto->setIdEstado($row['EstadoRecinto_idEstadoRecinto']);
+			$recinto->setIdEstado($row['idEstadoRecinto']);
 			$vectorData[$i]= $recinto;
 			$i++;
 		}
