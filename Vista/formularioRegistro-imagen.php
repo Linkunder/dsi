@@ -76,68 +76,32 @@
     <div id="contact-us" class="parallax">
       <div class="container">
         <div class="row">
-          <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+          <div class="heading text-center">
             <h2>Únete a MatchDay</h2>
             <p>En MatchDay, podrás agendar tus partidos, comentar tus canchas favoritas y agendar un tercer tiempo con tus amigos.</p>
-            <h4>Paso 1: Completa el siguiente formulario</h4>
+            <h4>Paso 2: Completa tu perfil con una imagen</h4>
           </div>
         </div>
-        <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
           <div class="row">
             <div class="col-sm-12">
-              <form id="main-contact-form" name="contact-form" method="post" action="formularioRegistro-paso2.php">
+              <form  method="post" action="nuevoJugador.php">
 
-                <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                  <div class="col-sm-2">
+            
+                <div class="fileUpload btn btn-primary">
+    <span>Upload</span>
+    <input type="file" class="upload" />
+</div>
+
+                <div class="row">
+                  <div class="col-sm-6">   
                     <div class="form-group">
-                      <input type="text" name="nombre" class="form-control" placeholder="Nombre" required="required">
-                    </div>
+                      <button type="submit" class="btn-submit">Siguiente</button>
+                   </div>
                   </div>
-
-                  <div class="col-sm-2">
-                    <div class="form-group">
-                      <input type="email" name="apellido" class="form-control" placeholder="Apellido" required="required">
-                    </div>
-                  </div>
-
-                </div>
-                <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                  <div class="col-sm-4">
-                    <div class="form-group">
-                      <input type="text" name="nickname" class="form-control" placeholder="Nickname" required="required">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                  <div class="col-sm-4">
-                    <div class="form-group">
-                      <input type="date" name="fecha" class="form-control" placeholder="Fecha de nacimiento" required="required">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                  <div class="col-sm-4">
-                    <div class="form-group">
-                      <input type="text" name="mail" class="form-control" placeholder="Email" required="required">
-                    </div>
-                  </div>
-
-                </div>
-
-               
-
-                <div class="col-sm-4">   
-                <div class="form-group">
-
-                  <button type="submit" class="btn-submit">Siguiente</button>
-                </div>
-                </div>
+              </div>
               </form>   
             </div>
           </div>
-        </div>
       </div>
     </div>   
 
