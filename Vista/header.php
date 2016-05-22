@@ -14,6 +14,9 @@
   <link id="css-preset" href="css/presets/preset1.css" rel="stylesheet">
   <link href="css/responsive.css" rel="stylesheet">
 
+    <!--Para subir la imagen-->
+
+  <link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
   <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
