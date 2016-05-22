@@ -51,8 +51,8 @@ h3 {
 .parallax input[type="password"]:hover,
 .parallax textarea,
 .parallax textarea:hover {
-  font-weight: 300;
-  color: #fff;
+  font-weight: bold;
+  color: #FFFFFF;
 }
 
 .btn {
@@ -117,6 +117,24 @@ section {
   display: inline-block;
 }
 
+
+/*************************
+********Extras**********
+**************************/
+
+.design-label{
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  text-align: center;
+}
+
+.design-button{
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+}
 
 /*************************
 ********Home CSS**********
@@ -852,7 +870,7 @@ section {
 }
 
 #contact-us {
-  background-image:url(../images/contact-bg.jpg);
+  background-image:url(../images/balon1.png);
   padding-bottom: 90px; 
 }
 
@@ -861,16 +879,19 @@ section {
 }
 
 .form-control {
+  display: inline-block;
   background-color: transparent;
-  border-color: rgba(255,255,255,.1);
   height: 50px;
-  border-radius: 0;
+  border-radius: 20;
   box-shadow: none;
+  color: #FFFFFF;
+  font-weight: bold;
 }
 
 textarea.form-control {
   min-height: 180px;
   resize:none;
+  color: #FFFFFF;
 }
 
 .form-group {
