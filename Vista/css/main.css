@@ -118,23 +118,7 @@ section {
 }
 
 
-/*************************
-********Extras**********
-**************************/
 
-.design-label{
-  font-family: 'Open Sans', sans-serif;
-  color: #fff;
-  text-align: center;
-}
-
-.design-button{
-  text-align: center;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  padding-left: 2em;
-  padding-right: 2em;
-}
 
 /*************************
 ********Home CSS**********
@@ -870,7 +854,7 @@ section {
 }
 
 #contact-us {
-  background-image:url(../images/balon1.png);
+  background-image:url(../images/balon3.png);
   padding-bottom: 90px; 
 }
 
@@ -990,6 +974,28 @@ ul.address {
   background-color: #ff6b00;
 }
 
-/*Presets*/
+/*************************
+********Extras**********
+**************************/
+
+.design-label{
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  text-align: center;
+}
+
+.design-button{
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+
+.design-form{
+  margin: 20px;
+  
+}
 
 

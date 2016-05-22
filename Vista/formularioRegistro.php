@@ -14,6 +14,11 @@
   <link id="css-preset" href="css/presets/preset1.css" rel="stylesheet">
   <link href="css/responsive.css" rel="stylesheet">
 
+    <!--Para subir la imagen-->
+
+  <link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+
+
   <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -84,17 +89,17 @@
         </div>
           <div class="row">
             <div class="col-sm-12">
-              <form  method="post" action="formularioRegistro-imagen.php">
+              <form  method="post" action="nuevoUsuario.php" class="design-form" >
 
                 <div class="row">
-                  <div class="col-sm-2">
+                  <div class="col-sm-3">
                     <div class="form-group">
                       <input type="text" name="nombre" class="form-control" placeholder="Nombre" required="required">
                     </div>
                   </div>
                 
 
-                  <div class="col-sm-2">
+                  <div class="col-sm-3">
                     <div class="form-group">
                       <input type="text" name="apellido" class="form-control" placeholder="Apellido" required="required">
                     </div>
@@ -102,55 +107,58 @@
                   </div>
 
                   <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <input type="text" name="nickname" class="form-control" placeholder="Nickname" required="required">
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <input type="date" name="fecha" class="form-control" placeholder="Fecha de nacimiento" required="required">
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <input type="mail" name="mail" class="form-control" placeholder="Email" required="required">
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <div class="form-group">
-                      <input type="text" name="nombre" class="form-control" placeholder="Telefono" >
+                      <input type="number" name="telefono" class="form-control" placeholder="Telefono" >
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <div class="form-group">
-                      <input type="text" name="nombre" class="form-control" placeholder="Sexo" >
+                      <input type="text" name="sexo" class="form-control" placeholder="Sexo" >
                     </div>
                   </div>
                 </div>
-
-
-
-
-
                 <div class="row">
-                <div class="col-sm-4">   
-                <div class="form-group">
+                  <div class="col-sm-6  ">
 
-                  <button type="submit" class="btn-submit">Siguiente</button>
+                    <form enctype="multipart/form-data">
+                      <div class="form-group">
+                          <input name="foto" id="file-1" type="file" class="file" multiple=true data-preview-file-type="any">
+                        <button type="submit" class="btn-submit">Siguiente</button>
+                      </div>
+                    </form>
+
+
+                    </div>
                 </div>
-                </div>
-              </div>
+
+             
               </form>   
+
             </div>
           </div>
       </div>
@@ -202,6 +210,8 @@
   <script type="text/javascript" src="js/jquery.countTo.js"></script>
   <script type="text/javascript" src="js/lightbox.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
+
+  <script src="js/fileinput.min.js" type="text/javascript"></script>
 
 </body>
 </html>
