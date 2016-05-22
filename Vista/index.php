@@ -51,7 +51,7 @@
             <h1 class="animated fadeInLeftBig">Organiza un <span>Tercer Tiempo</span></h1>
             <p class="animated fadeInRightBig">¿Celebrar el triunfo? ¿Olvidar la derrota? 
               <br/>Da igual el motivo! En MatchDay te recomendamos los mejores lugares</p>
-            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Empezar</a>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="quienesSomos.php">Empezar</a>
           </div>
         </div>
       </div>
@@ -86,6 +86,9 @@
       </div>
     </div><!--/#main-nav-->
   </header><!--/#home-->
+
+
+
   <section id="services">
     <div class="container">
       <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
