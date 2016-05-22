@@ -37,13 +37,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="inicio.php">
+          <a class="navbar-brand" href="index.html">
             <h1><img class="img-responsive" src="images/logo.png" alt="logo"></h1>
           </a>                    
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">                 
-            <li class="scroll"><a href="inicio.php">Inicio</a></li>
+            <li class="scroll active"><a href="index.php">Inicio</a></li>
             <li class="scroll"><a href="quienesSomos.php">¿Quienes somos?</a></li> 
             <li class="scroll"><a href="recintos.php">Canchas</a></li>
             <ul class="nav pull-right">
