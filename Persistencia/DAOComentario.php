@@ -62,6 +62,7 @@ class DAOComentario{
 			$comentario->setContenido($row['contenido']);
 			$comentario->setFecha($row['fecha']);
 			$comentario->setHora($row['hora']);
+			$vectorData[$i]= $comentario;
 			$i++;
 		}
 		mysql_close($link);
@@ -85,6 +86,7 @@ class DAOComentario{
 			$comentario->setContenido($row['contenido']);
 			$comentario->setFecha($row['fecha']);
 			$comentario->setHora($row['hora']);
+			$vectorData[$i]= $comentario;
 			$i++;
 		}
 		mysql_close($link);
