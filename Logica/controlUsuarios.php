@@ -29,6 +29,12 @@ class controlUsuarios{
 		return $vectorData;
 	}
 
+		public function leerUsuarios(){
+		$vectorData = $this->persistenciaUsuario->leerUsuarios();
+		if (count($vectorData)==0) return null;
+		return $vectorData;
+	}
+
 	public function actualizarUsuario($usuario){
 		$this->persistenciaUsuario->actualizarUsuario($usuario);
 	}

@@ -11,7 +11,7 @@ class DAOUsuario{
 
 	public function crearUsuario($usuario){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO usuario (idUsuario, nickname, nombre, apellido, email, fechaNacimiento, sexo, rutaFotografia, telefono, estadojugador_idestadojugador, perfil_idperfil) 
+		$query = "INSERT INTO usuario (idUsuario, nombre, apellido, nickname, email, fechaNacimiento, sexo, telefono, rutaFotografia, idEstadoJugador, idPerfil) 
 		VALUES ('".$usuario->getIdUsuario()."',
 			'".$usuario->getNombre()."',
 			'".$usuario->getApellido()."',
@@ -19,22 +19,22 @@ class DAOUsuario{
 			'".$usuario->getEmail()."',
 			'".$usuario->getFechaNacimiento()."',
 			'".$usuario->getSexo()."',
-			'".$usuario->getRutaFotografia()."',
 			'".$usuario->getTelefono()."',
+			'".$usuario->getRutaFotografia()."',
 			'".$usuario->getIdEstado()."',
 			'".$usuario->getIdPerfil()."')";
 		mysql_query($query,$link) or die(mysql_error());
 		mysql_close($link);
 	}
 
-	public function leerusuario($idusuario){
+	public function leerUsuario($idUsuario){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "SELECT * FROM usuario WHERE idUsuario = '$idusuario' ";
+		$query = "SELECT * FROM usuario WHERE idUsuario = '$idUsuario' ";
 		$result = mysql_query($query,$link) or die (mysql_error());
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
-			$usuario = new usuario();
-			$usuario->setIdusuario($row['idUsuario']);
+			$usuario = new Usuario();
+			$usuario->setIdUsuario($row['idUsuario']);
 			$usuario->setNickname($row['nickname']);
 			$usuario->setNombre($row['nombre']);
 			$usuario->setApellido($row['apellido']);
@@ -43,8 +43,36 @@ class DAOUsuario{
 			$usuario->setSexo($row['sexo']);
 			$usuario->setRutaFotografia($row['rutaFotografia']);
 			$usuario->setTelefono($row['telefono']);
-			$usuario->setIdEstado($row['estadojugador_idestadojugador']);
-			$usuario->setIdPerfil($row['perfil_idperfil']);
+			$usuario->setIdEstado($row['idEstadoJugador']);
+			$usuario->setIdPerfil($row['idPerfil']);
+			$vectorData[$i]= $usuario;
+			$i++;
+		}
+		mysql_close($link);
+		if(empty($vectorData)){
+			return null;
+		}
+		return $vectorData;	
+	}
+
+		public function leerUsuarios(){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT * FROM usuario";
+		$result = mysql_query($query,$link) or die (mysql_error());
+		$i = 0;
+		while ($row = mysql_fetch_array($result)) {
+			$usuario = new Usuario();
+			$usuario->setIdUsuario($row['idUsuario']);
+			$usuario->setNickname($row['nickname']);
+			$usuario->setNombre($row['nombre']);
+			$usuario->setApellido($row['apellido']);
+			$usuario->setEmail($row['email']);
+			$usuario->setFechaNacimiento($row['fechaNacimiento']);
+			$usuario->setSexo($row['sexo']);
+			$usuario->setRutaFotografia($row['rutaFotografia']);
+			$usuario->setTelefono($row['telefono']);
+			$usuario->setIdEstado($row['idEstadoJugador']);
+			$usuario->setIdPerfil($row['idPerfil']);
 			$vectorData[$i]= $usuario;
 			$i++;
 		}
@@ -57,7 +85,7 @@ class DAOUsuario{
 
 	public function actualizarusuario($usuario){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "UPDATE usuario SET 
+		$query = "UPDATE Usuario SET 
 		idUsuario = '".$usuario->getIdUsuario()."',
 		nickname = '".$usuario->getNickname()."',
 		nombre = '".$usuario->getNombre()."',
@@ -67,16 +95,16 @@ class DAOUsuario{
 		sexo = '".$usuario->getSexo()."',
 		rutaFotografia = '".$usuario->getRutaFotografia()."',
 		telefono = '".$usuario->getTelefono()."',
-		estadojugador_idestadojugador = '".$usuario->getIdEstado()."',
-		perfil_idperfil = '".$usuario->getIdPerfil()."'
-		WHERE idusuario = '".$usuario->getIdusuario()."'";
+		idEstadoJugador = '".$usuario->getIdEstado()."',
+		idPerfil = '".$usuario->getIdPerfil()."'
+		WHERE idUsuario = '".$usuario->getIdUsuario()."'";
 		mysql_query($query,$link) or die (mysql_error());
 		mysql_close($link);
 	}
 
-	public function eliminarusuario($idusuario){
+	public function eliminarusuario($idUsuario){
 		$link=$this->conexionBD->obtenerConexion();
-		$query="DELETE FROM usuario WHERE idusuario = '$idusuario'";
+		$query="DELETE FROM Usuario WHERE idUsuario = '$idUsuario'";
 		mysql_query($query,$link) or die (mysql_error());
 		mysql_close($link);
 
@@ -98,8 +126,8 @@ class DAOUsuario{
 			$usuario->setSexo($row['sexo']);
 			$usuario->setRutaFotografia($row['rutaFotografia']);
 			$usuario->setTelefono($row['telefono']);
-			$usuario->setIdEstado($row['estadojugador_idestadojugador']);
-			$usuario->setIdPerfil($row['perfil_idperfil']);
+			$usuario->setIdEstado($row['idEstadoJugador']);
+			$usuario->setIdPerfil($row['idPerfil']);
 			$vectorData[$i]= $usuario;
 			$i++;
 		}
