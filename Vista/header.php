@@ -57,12 +57,12 @@
                     <label class="design-label">¿TIENES CUENTA?</label><br>
                     <input name="username" id="username" type="text" placeholder="Nickname o mail"> 
                     <input name="password" id="password" type="password" placeholder="Password"><br>
-                    <button class="boton-login" type="submit" class="design-button">INICIAR SESION</button>
+                    <button class="boton-login" type="submit" class="design-button">Iniciar sesión</button>
                   </form>
                    <form class="form" id="formLogin" action="formularioRegistro.php" method="post">
                     <li role="separator" class="divider"></li>
                     <label class="design-label">¿ERES NUEVO EN MATCH DAY?</label><br>
-                    <button class="boton-login" type="submit" class="design-button">REGISTRATE</button>
+                    <button class="boton-login" type="submit" class="design-button">&nbsp;&nbsp;&nbsp;Regístrate&nbsp;&nbsp;&nbsp;</button>
                   </form>
                 </div>
               </li>

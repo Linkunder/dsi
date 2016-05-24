@@ -1008,6 +1008,8 @@ ul.address {
   margin-bottom: 1em;
   padding-left: 2em;
   padding-right: 2em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
   background-color: #fff;
   color: #262626;
   font-weight: bold;
