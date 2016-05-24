@@ -11,9 +11,8 @@ class DAORecinto{
 
 	public function crearRecinto($recinto){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO recinto (idRecinto, nombre, precio, direccion, horario, rutaFotografia, cantidadCanchas, puntuacion, telefono, idEstadoRecinto) 
-		VALUES ('".$recinto->getIdRecinto()."',
-			'".$recinto->getNombre()."',
+		$query = "INSERT INTO recinto (nombre, precio, direccion, horario, rutaFotografia, cantidadCanchas, puntuacion, telefono, idEstadoRecinto) 
+		VALUES ('".$recinto->getNombre()."',
 			'".$recinto->getPrecio()."',
 			'".$recinto->getDireccion()."',
 			'".$recinto->getHorario()."',
@@ -33,7 +32,6 @@ class DAORecinto{
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
 			$recinto = new Recinto();
-			$recinto->setIdRecinto($row['idRecinto']);
 			$recinto->setNombre($row['nombre']);
 			$recinto->setPrecio($row['precio']);
 			$recinto->setDireccion($row['direccion']);
@@ -56,7 +54,6 @@ class DAORecinto{
 	public function actualizarRecinto($recinto){
 		$link = $this->conexionBD->obtenerConexion();
 		$query = "UPDATE idRecinto SET 
-		idRecinto = '".$recinto->getIdRecinto()."',
 		nombre = '".$recinto->getNombre()."',
 		precio = '".$recinto->getPrecio()."',
 		direccion = '".$recinto->getDireccion()."',
@@ -86,7 +83,6 @@ class DAORecinto{
 		$i= 0;
 		while ($row = mysql_fetch_array($result)){
 			$recinto = new Recinto();
-			$recinto->setIdRecinto($row['idRecinto']);
 			$recinto->setNombre($row['nombre']);
 			$recinto->setPrecio($row['precio']);
 			$recinto->setDireccion($row['direccion']);

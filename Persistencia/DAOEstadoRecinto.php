@@ -11,9 +11,8 @@ class DAOEstadoRecinto{
 
 	public function crearEstadoRecinto($estado){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO estadorecinto (idEstadoRecinto,nombre,descripcion) 
-		VALUES ('".$estado->getIdEstadoRecinto()."',
-			'".$estado->getNombre()."',
+		$query = "INSERT INTO estadorecinto (nombre,descripcion) 
+		VALUES ('".$estado->getNombre()."',
 			'".$estado->getDescripcion()."')";
 		mysql_query($query,$link) or die(mysql_error());
 		mysql_close($link);
@@ -26,7 +25,6 @@ class DAOEstadoRecinto{
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
 			$estadoRecinto = new EstadoRecinto();
-			$estadoRecinto->setIdEstadoRecinto($row['idEstadoRecinto']);
 			$estadoRecinto->setNombre($row['nombre']);
 			$estadoRecinto->setDescripcion($row['descripcion']);
 			$vectorData[$i]= $estadoRecinto;
@@ -46,7 +44,6 @@ class DAOEstadoRecinto{
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
 			$estadoRecinto = new EstadoRecinto();
-			$estadoRecinto->setIdEstadoRecinto($row['idEstadoRecinto']);
 			$estadoRecinto->setNombre($row['nombre']);
 			$estadoRecinto->setDescripcion($row['descripcion']);
 			$vectorData[$i]= $estadoRecinto;
@@ -62,7 +59,6 @@ class DAOEstadoRecinto{
 	public function actualizarEstadoRecinto($estadoRecinto){
 		$link = $this->conexionBD->obtenerConexion();
 		$query = "UPDATE estadorecinto SET 
-		idEstadoRecinto = '".$estadoRecinto->getIdEstadoRecinto()."',
 		nombre = '".$estadoRecinto->getNombre()."',
 		descripcion='".$estadoRecinto->getDescripcion()."'
 		WHERE idEstadoRecinto = '".$estadoRecinto->getIdEstadoRecinto()."'";

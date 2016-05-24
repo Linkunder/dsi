@@ -11,9 +11,8 @@ class DAOPartido{
 
 	public function crearPartido($partido){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO partido (idPartido, fecha, hora, cuota, idEstado, idRecinto, idTercerTiempo)
-		VALUES ('".$partido->getIdPartido()."',
-			'".$partido->getFecha()."',
+		$query = "INSERT INTO partido (fecha, hora, cuota, idEstado, idRecinto, idTercerTiempo)
+		VALUES ('".$partido->getFecha()."',
 			'".$partido->getHora()."',
 			'".$partido->getCuota()."',
 			'".$partido->getIdEstado()."',
@@ -30,7 +29,6 @@ class DAOPartido{
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
 			$partido = new Partido();
-			$partido->setidPartido($row['idPartido']);
 			$partido->setFecha($row['fecha']);
 			$partido->setHora($row['hora']);
 			$partido->setCuota($row['cuota']);
@@ -51,7 +49,6 @@ class DAOPartido{
 	public function actualizarPartido($partido){
 		$link = $this->conexionBD->obtenerConexion();
 		$query = "UPDATE partido SET 
-		idpartido = '".$partido->getidpartido()."',
 		fecha = '".$partido->getFecha()."',
 		hora='".$partido->getHora()."'
 		cuota='".$partido->getCuota()."'

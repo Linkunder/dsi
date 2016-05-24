@@ -11,9 +11,8 @@ class DAOElementoDeportivo{
 
 	public function crearElementoDeportivo($elementoDeportivo){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO elementodeportivo (idElementoDeportivo, nombre, precio) 
-		VALUES ('".$elementodeportivo->getIdElementoDeportivo()."',
-			'".$elementodeportivo->getNombre()."',
+		$query = "INSERT INTO elementodeportivo (nombre, precio) 
+		VALUES ('".$elementodeportivo->getNombre()."',
 			'".$elementodeportivo->getPrecio()."')";
 		mysql_query($query,$link) or die(mysql_error());
 		mysql_close($link);
@@ -26,7 +25,6 @@ class DAOElementoDeportivo{
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
 			$elementodeportivo = new ElementoDeportivo();
-			$elementodeportivo->setIdElementoDeportivo($row['idElementoDeportivo']);
 			$elementodeportivo->setNombre($row['nombre']);
 			$elementodeportivo->setDescripcion($row['precio']);
 			$vectorData[$i]= $elementodeportivo;
@@ -42,7 +40,6 @@ class DAOElementoDeportivo{
 	public function actualizarElementoDeportivo($elementoDeportivo){
 		$link = $this->conexionBD->obtenerConexion();
 		$query = "UPDATE elementodeportivo SET 
-		idElementoDeportivo = '".$elementoDeportivo->getIdElementoDeportivo()."',
 		nombre = '".$elementoDeportivo->getNombre()."',
 		precio='".$elementoDeportivo->getPrecio()."'
 		WHERE idElementoDeportivo = '".$elementoDeportivo->getIdElementoDeportivo()."'";

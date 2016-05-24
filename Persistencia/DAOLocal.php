@@ -28,7 +28,6 @@ class DAOLocal{
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
 			$local = new Categoria();
-			$local->setidLocal($row['idLocal']);
 			$local->setNombre($row['nombre']);
 			$local->setDireccion($row['direccion']);
 			$local->setRutaFoto($row['rutaFotografia']);
@@ -46,7 +45,6 @@ class DAOLocal{
 	public function actualizarLocal($local){
 		$link = $this->conexionBD->obtenerConexion();
 		$query = "UPDATE local SET 
-		idLocal = '".$local->getidLocal()."',
 		nombre = '".$local->getNombre()."',
 		direccion='".$local->getDireccion()."'
 		rutaFotografia='".$local->getRutaFoto()."'
