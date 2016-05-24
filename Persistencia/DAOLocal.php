@@ -11,8 +11,8 @@ class DAOLocal{
 
 	public function crearLocal($local){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO local (idLocal,nombre,direccion, rutaFotografia,linkMapa)
-		VALUES ('".$local->getIdLocal()."',
+		$query = "INSERT INTO local (nombre,direccion, rutaFotografia,linkMapa)
+		VALUES (
 			'".$local->getNombre()."',
 			'".$local->getDireccion()."',
 			'".$local->getRutaFoto()."',

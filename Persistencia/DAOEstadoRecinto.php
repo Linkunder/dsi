@@ -39,6 +39,26 @@ class DAOEstadoRecinto{
 		return $vectorData;	
 	}
 
+	public function listarEstadoRecinto(){
+				$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT * FROM estadorecinto";
+		$result = mysql_query($query,$link) or die (mysql_error());
+		$i = 0;
+		while ($row = mysql_fetch_array($result)) {
+			$estadoRecinto = new EstadoRecinto();
+			$estadoRecinto->setIdEstadoRecinto($row['idEstadoRecinto']);
+			$estadoRecinto->setNombre($row['nombre']);
+			$estadoRecinto->setDescripcion($row['descripcion']);
+			$vectorData[$i]= $estadoRecinto;
+			$i++;
+		}
+		mysql_close($link);
+		if(empty($vectorData)){
+			return null;
+		}
+		return $vectorData;	
+	}
+
 	public function actualizarEstadoRecinto($estadoRecinto){
 		$link = $this->conexionBD->obtenerConexion();
 		$query = "UPDATE estadorecinto SET 

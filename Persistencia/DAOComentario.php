@@ -11,9 +11,8 @@ class DAOComentario{
 
 	public function crearComentario($comentario){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO comentario (idComentario, idRecinto,idUsuario, asunto, contenido, fecha, hora)
+		$query = "INSERT INTO comentario (idRecinto,idUsuario, asunto, contenido, fecha, hora)
 		VALUES(
-			'".$comentario->getIdComentario()."',
 			'".$comentario->getIdRecinto()."',
 			'".$comentario->getIdUsuario()."', 
 			'".$comentario->getAsunto()."', 
@@ -43,7 +42,7 @@ class DAOComentario{
 
 	public function eliminarComentario($idComentario){
 		$link= $this->conexionBD->obtenerConexion();
-		$query="DELETE FROM usuario WHERE idComentario = '$idComentario'";
+		$query="DELETE FROM comentario WHERE idComentario = '$idComentario'";
 		mysql_query($query,$link) or die (mysql_error());
 		mysql_close($link);
 	}
