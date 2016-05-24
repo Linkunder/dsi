@@ -9,8 +9,10 @@
           <h2>Busca tu cancha ideal</h2>
         </div>
       </div>
+
+
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-md-6 col-md-offset-3">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Busca tu recinto deportivo...">
             <span class="input-group-btn">
@@ -19,6 +21,10 @@
           </div><!-- /input-group -->
         </div><!-- /.col-lg-6 -->
       </div>
+      <hr/>
+
+      <br/><br/><br/><br/><br/><br/>
+      
     </div>
   </div>
 </div>
