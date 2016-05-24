@@ -49,24 +49,9 @@
             <li class="scroll active"><a href="inicio.php">Inicio</a></li>
             <li class="scroll"><a href="quienesSomos.php">¿Quienes somos?</a></li> 
             <li class="scroll"><a href="recintos.php">Canchas</a></li>
-            <ul class="nav pull-left">
-              <li class="dropdown" id="menuLogin">
-                <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Ingresar</a>
-                <div class="dropdown-menu" style="padding:2em;">
-                  <form class="form" id="formLogin" action="inicioJugador.php" method="post">
-                    <label class="design-label">¿TIENES CUENTA?</label><br>
-                    <input name="username" id="username" type="text" placeholder="Nickname o mail"> 
-                    <input name="password" id="password" type="password" placeholder="Password"><br>
-                    <button class="boton-login" type="submit" class="design-button">INICIAR SESION</button>
-                  </form>
-                   <form class="form" id="formLogin" action="formularioRegistro.php" method="post">
-                    <li role="separator" class="divider"></li>
-                    <label class="design-label">¿ERES NUEVO EN MATCH DAY?</label><br>
-                    <button class="boton-login" type="submit" class="design-button">REGISTRATE</button>
-                  </form>
-                </div>
-              </li>
-            </ul>
+            <li class="scroll"><a href="jugar.php">Jugar</a></li>
+            <li class="scroll"><a href="comentar.php">Comentar</a></li>
+            <li class="scroll"><a href="perfil.php">Perfil</a></li>
           </ul>
         </div>
       </div>

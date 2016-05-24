@@ -1,8 +1,27 @@
 <?php include('header.php'); ?>
 
 <!-- Aqui empieza la pagina -->
-
-
+<div class="row">
+  <div id="contact-us" class="parallax">
+    <div class="container">
+      <div class="row">
+        <div class="heading-a text-center">
+          <h2>Busca tu cancha ideal</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Busca tu recinto deportivo...">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="button">Buscar!</button>
+            </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div>
+    </div>
+  </div>
+</div>
   
 
   

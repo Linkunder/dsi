@@ -4,7 +4,7 @@
 **************************/
 
 body {
-  font-family:'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   line-height: 24px;
   color: #666;
@@ -92,6 +92,11 @@ section {
 
 .heading {
   padding-bottom:90px;
+}
+
+.heading-a {
+  padding-bottom:40px;
+  padding-top: 40px;
 }
 
 .preloader {
@@ -994,8 +999,19 @@ ul.address {
 
 
 .design-form{
-  margin: 20px;
-  
+  margin: 20px; 
+}
+
+.boton-login{
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+  background-color: #fff;
+  color: #262626;
+  font-weight: bold;
+  border-radius: 1em;
 }
 
 

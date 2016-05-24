@@ -1,10 +1,6 @@
-<?php include('header.php'); ?>
+<?php include('headerJugador.php'); ?>
 
 <!-- Aqui empieza la pagina -->
-
-
-  
-
 
 
 
