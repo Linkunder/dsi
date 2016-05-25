@@ -1,6 +1,6 @@
 <?php
 
-include_once('../Persistencia/DAORecintos.php');
+include_once('../Persistencia/DAORecinto.php');
 
 class controlRecintos{
 
@@ -8,7 +8,7 @@ class controlRecintos{
 	private $persistenciaRecinto;
 
 	private function __construct(){
-		$this->persistenciaRecinto = new DAORecintos();
+		$this->persistenciaRecinto = new DAORecinto();
 	}
 
 	public function obtenerInstancia(){
@@ -36,6 +36,13 @@ class controlRecintos{
 	public function buscaRecinto($idRecinto){
 		$vectorData = $this->persistenciaRecinto->buscarRecinto($idRecinto);
 		if (count($vectorData)==0) return null;
+		return $vectorData;
+	}
+
+	public function obtenerRecintos(){
+		$vectorData=$this->persistenciaRecinto->obtenerRecintos();
+		if (count($vectorData)==0)
+			return null;
 		return $vectorData;
 	}
 
