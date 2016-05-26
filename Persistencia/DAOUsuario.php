@@ -11,7 +11,7 @@ class DAOUsuario{
 
 	public function crearUsuario($usuario){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO usuario (idUsuario, nombre, apellido, nickname, email, fechaNacimiento, sexo, telefono, rutaFotografia, idEstadoJugador, idPerfil) 
+		$query = "INSERT INTO usuario (nombre, apellido, nickname, email, fechaNacimiento, sexo, telefono, rutaFotografia, idEstadoJugador, idPerfil) 
 		VALUES ('".$usuario->getIdUsuario()."',
 			'".$usuario->getNombre()."',
 			'".$usuario->getApellido()."',

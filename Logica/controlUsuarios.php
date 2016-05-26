@@ -29,7 +29,7 @@ class controlUsuarios{
 		return $vectorData;
 	}
 
-		public function leerUsuarios(){
+		public function obtenerUsuarios(){
 		$vectorData = $this->persistenciaUsuario->leerUsuarios();
 		if (count($vectorData)==0) return null;
 		return $vectorData;
