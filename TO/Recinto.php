@@ -3,6 +3,8 @@
 class Recinto{
 	private $idRecinto;
 	private $nombre;
+	private $tipo;
+	private $superficie;
 	private $precio;
 	private $direccion;
 	private $horario;
@@ -21,6 +23,14 @@ class Recinto{
 
 	function getNombre(){
 		return $this->nombre;
+	}
+
+	function getTipo(){
+		return $this->tipo;
+	}
+
+	function getSuperficie(){
+		return $this->superficie;
 	}
 
 	function getPrecio(){
@@ -65,6 +75,14 @@ class Recinto{
 
 	function setNombre($nombre){
 		$this->nombre = $nombre;
+	}
+
+	function setTipo($tipo){
+		$this->tipo = $tipo;
+	}
+
+	function setSuperficie($superficie){
+		$this->superficie = $superficie;
 	}
 
 	function setPrecio($precio){

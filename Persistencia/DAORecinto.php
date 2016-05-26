@@ -11,8 +11,10 @@ class DAORecinto{
 
 	public function crearRecinto($recinto){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO recinto (nombre, precio, direccion, horario, rutaFotografia, cantidadCanchas, puntuacion, telefono, idEstadoRecinto) 
+		$query = "INSERT INTO recinto (nombre, tipo, superficie, precio, direccion, horario, rutaFotografia, cantidadCanchas, puntuacion, telefono, idEstadoRecinto) 
 		VALUES ('".$recinto->getNombre()."',
+			'".$recinto->getTipo()."',
+			'".$recinto->getSuperficie()."',
 			'".$recinto->getPrecio()."',
 			'".$recinto->getDireccion()."',
 			'".$recinto->getHorario()."',
@@ -32,7 +34,10 @@ class DAORecinto{
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
 			$recinto = new Recinto();
+			$recinto->setIdRecinto($row['idRecinto']);
 			$recinto->setNombre($row['nombre']);
+			$recinto->setTipo($row['tipo']);
+			$recinto->setSuperficie($row['superficie']);
 			$recinto->setPrecio($row['precio']);
 			$recinto->setDireccion($row['direccion']);
 			$recinto->setHorario($row['horario']);
@@ -58,7 +63,10 @@ class DAORecinto{
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
 			$recinto = new Recinto();
+			$recinto->setIdRecinto($row['idRecinto']);
 			$recinto->setNombre($row['nombre']);
+			$recinto->setTipo($row['tipo']);
+			$recinto->setSuperficie($row['superficie']);
 			$recinto->setPrecio($row['precio']);
 			$recinto->setDireccion($row['direccion']);
 			$recinto->setHorario($row['horario']);
@@ -81,6 +89,8 @@ class DAORecinto{
 		$link = $this->conexionBD->obtenerConexion();
 		$query = "UPDATE idRecinto SET 
 		nombre = '".$recinto->getNombre()."',
+		tipo = '".$recinto->getTipo()."',
+		superficie ='".$recinto->getSuperficie()."',
 		precio = '".$recinto->getPrecio()."',
 		direccion = '".$recinto->getDireccion()."',
 		horario = '".$recinto->getHorario()."',
@@ -110,6 +120,8 @@ class DAORecinto{
 		while ($row = mysql_fetch_array($result)){
 			$recinto = new Recinto();
 			$recinto->setNombre($row['nombre']);
+			$recinto->setTipo($row['tipo']);
+			$recinto->setSuperficie($row['superficie']);
 			$recinto->setPrecio($row['precio']);
 			$recinto->setDireccion($row['direccion']);
 			$recinto->setHorario($row['horario']);
