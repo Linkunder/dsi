@@ -51,7 +51,21 @@
             <li class="scroll"><a href="recintos.php">Canchas</a></li>
             <li class="scroll"><a href="jugar.php">Jugar</a></li>
             <li class="scroll"><a href="comentar.php">Comentar</a></li>
-            <li class="scroll"><a href="perfil.php">Perfil</a></li>
+            <ul class="nav pull-left">
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Nombre<i class="icon-cog"></i>
+                <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="perfil.php">Mi Perfil</a></li>
+                  <hr></hr>
+                  <li><a href="contactos.php">Contactos</a></li>
+                  <hr></hr>
+                  <li><a href="notificarRecinto.php">Notificar recinto</a></li>
+                  <hr></hr>
+                   <li><a href="../../LOGICA/salirJugador.php">Cerrar Sesion</a></li>
+                   <li></li>
+                </ul>
+              </li>
+            </ul>
           </ul>
         </div>
       </div>

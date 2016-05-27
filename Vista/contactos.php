@@ -3,8 +3,13 @@
 include_once('../TO/Usuario.php');
 include_once('../Logica/controlUsuarios.php');
 
+include_once('../TO/ListaContactos.php');
+include_once('../Logica/controlContactos.php');
+
 $jefeUsuario = controlUsuarios::obtenerInstancia();
 $vectorUsuarios=$jefeUsuario->obtenerUsuarios();
+
+$jefeContacto = controlContactos::obtenerInstancia();
 
 ?>
 
@@ -34,7 +39,7 @@ $vectorUsuarios=$jefeUsuario->obtenerUsuarios();
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <!--div class="input-group"-->
-            <form action="busquedaJugador.php" method="get">
+            <form action="contactos.php" method="get">
               <input type="text" class="form-control" placeholder="Ingresa un nickname..." name="search"/>
               <div class="row">
                  <div class="col-md-6 col-md-offset-4">
@@ -60,19 +65,18 @@ $vectorUsuarios=$jefeUsuario->obtenerUsuarios();
 
           ?>
 
-<h3>Resultados: </h3>
+
 
       
     </div>
     <section id="portfolio" >
-        <div class="container">
-          <div class="row">
-          </div> 
-        </div>
        
         <div class="container-fluid">
 
           <div class="row">
+
+            <div class = "col-sm-6">
+              <h3>Resultados: </h3>
              <?php }
                         foreach ($vectorUsuarios as $key) {
                           $nickname= $key->getNickname();
@@ -81,7 +85,7 @@ $vectorUsuarios=$jefeUsuario->obtenerUsuarios();
                           $apellido = $key->getApellido();
                           $idUsuario = $key->getIdUsuario();
                           if ($pos !== false ){ ?>
-            <div class="col-sm-3">
+            <div class="col-sm-6">
               <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
                 <div class="folio-image">
                   <img class="img-responsive" src="images/usuarios/<?php echo  $key->getRutaFotografia(); ?>" alt="">
@@ -90,17 +94,14 @@ $vectorUsuarios=$jefeUsuario->obtenerUsuarios();
                   <div class="overlay-content">
                     <div class="overlay-text">
                       <div class="folio-info">
-                          <h3><?php echo $nickname?></h3>
+                          <h3>Añadir a <?php echo $nickname?></h3>
                           <p><?php echo $nombre?> <?php echo $apellido?></p>
                       </div>
                       <div class="folio-overview">
-                        <!--
-
-
-                         <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="detalleRecinto.php?id_recinto=<?php echo $idRecinto ?>" ><i class="fa fa-info"></i></a></span>
-                        <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="detalleRecinto.php?id_recinto=<?php echo $idRecinto ?>" ><i class="fa fa-info"></i></a></span>
                      
-                          -->
+
+                         <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="agregarContacto.php?id_contacto=<?php echo $idUsuario ?>" ><i class="fa fa-plus"></i></a></span>
+                       
                       </div>
                     </div>
                   </div>
@@ -112,38 +113,39 @@ $vectorUsuarios=$jefeUsuario->obtenerUsuarios();
                 } 
                }
             ?>
+          </div>
 
-            <!--
-            <div class="col-sm-3">
-              <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="400ms">
-                <div class="folio-image">
-                  <img class="img-responsive" src="images/portfolio/2.jpg" alt="">
-                </div>
-                <div class="overlay">
-                  <div class="overlay-content">
-                    <div class="overlay-text">
-                      <div class="folio-info">
-                        <h3>Time Hours</h3>
-                        <p>Design, Photography</p>
-                      </div>
-                      <div class="folio-overview">
-                        <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
-                        <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-          -->
+
+
+          <div class = "col-sm-6">
+
+
+            <h3>Mis contactos</h3>
+            <hr/>
+            <?php
+            /* Aqui debo capturar el id del jugador*/
+            $id = 82;
+            $vectorContactos = $jefeContacto->leerContactosUsuario($id);
+            foreach ($vectorContactos as $key) {
+              echo $key->getNombre();
+              echo $key->getApellido();
+            ?>
+            <br/>
+            <?php
+            }
+            ?>
+
+
+
+
+          </div>
+
+       
       
-          </div>
+          </div> <!-- / row-->
         </div>
-        <div id="portfolio-single-wrap">
-          <div id="portfolio-single">
-          </div>
-        </div><!-- /#portfolio-single-wrap -->
+      
       </section><!--/#portfolio-->
 
 
