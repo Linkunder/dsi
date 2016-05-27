@@ -49,7 +49,7 @@
             <li class="scroll active"><a href="inicio.php">Inicio</a></li>
             <li class="scroll"><a href="quienesSomos.php">¿Quienes somos?</a></li> 
             <li class="scroll"><a href="recintos.php">Canchas</a></li>
-            <li class="scroll"><a href="jugar.php">Jugar</a></li>
+            <li class="scroll"><a href="#" data-toggle="modal" data-target="#modal-1">Jugar</a></li>
             <li class="scroll"><a href="comentar.php">Comentar</a></li>
             <ul class="nav pull-left">
               <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Nombre<i class="icon-cog"></i>
@@ -71,4 +71,70 @@
       </div>
     </div><!--/#main-nav-->
 
+  <div class="container">
+          <script src="eonasdan.github.io/bootstrap-datetimepicker/js/prettify-1.0.min.js"></script>
+        <script src="eonasdan.github.io/bootstrap-datetimepicker/js/base.js"></script>
+
+    <div class="modal fade" id="modal-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+           <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3 class="modal-title">Empecemos a organizar tu partido</h3>
+            <h4 class="modal-title">Paso 1: Define el lugar, hora, número de jugadores y el recinto deportivo</h4>
+           </div>
+           <div class="modal-body">
+
+            <form  method="post" action="nuevoUsuario.php" class="design-form" >
+
+   
+          
+  <div class="container">  
+  <div class="row">
+        <div class='col-sm-6 center'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+
+        </script>
+    </div>
+    </div>
+
+      
+ 
+              <div class="row">
+                  <div class="col-sm-6  ">
+
+                    <form enctype="multipart/form-data">
+                      <div class="form-group">
+                          <input name="foto" id="file-1" type="file" class="file" multiple=true data-preview-file-type="any">
+                        <button type="submit" class="btn-submit">Siguiente</button>
+                      </div>
+                    </form>
+
+
+                    </div>
+
+              </form>   
+            
+           </div>
+
+           <div class="modal-footer">
+            <a href="" class="btn btn-default" data-dismiss="modal">Close</a>
+            <a href="" class="btn btn-primary">Download</a>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
   </header><!-- /Fin Header -->

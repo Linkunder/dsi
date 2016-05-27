@@ -2,7 +2,58 @@
 
 <!-- Aqui empieza la pagina -->
 
+<!-- Aqui empieza la pagina -->
 
+
+    <div id="contact-us" class="parallax">
+      <div class="container">
+        <div class="row">
+          <div class="heading text-center">
+            <h2>Empecemos a organizar tu partido</h2>
+          
+            <h4>Paso 1: Define el lugar, hora, número de jugadores y el recinto deportivo</h4>
+          </div>
+        </div>
+          <div class="row">
+            <div class="col-md-12 col-md-offset-3 ">
+              <form  method="post" action="nuevoPartido.php" class="design-form" >
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                  <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+
+                          </div>
+                  </div>
+                
+
+
+
+                    </div>
+                </div>
+
+             
+              </form>   
+
+            </div>
+          </div>
+      </div>
+    </div>   
+
+<!-- /Aqui termina la pagina -->
 
 
   
