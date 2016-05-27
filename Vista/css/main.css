@@ -1191,5 +1191,33 @@ ul.address {
     }
 
   
-/***Fin busqueda***/  
+/***Fin busqueda***/ 
+
+.lista-contactos{
+  background-color: #3598E4;
+  opacity: 50%;
+}
+
+.info-table{
+  width: 100%;
+  color: #fff;
+}
+
+.info-table th{
+  text-align: right;
+}
+
+.info-table td{
+  font-size: 12px;
+  text-align: left;
+}
+
+.btn-default {
+    top: 0;
+    right: -30px;
+    border-radius: 1em;
+    background-color: #3598E4;
+    color: #fff;
+    font-weight: bold;
+}
 

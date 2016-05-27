@@ -13,6 +13,14 @@ $sexo= $_POST['sexo'];
 $telefono= $_POST['telefono'];
 $rutaFotografia = $_POST['foto'];
 
+echo $nombre;
+echo $apellido;
+echo $nickname;
+echo $email;
+echo $fechaNacimiento;
+echo $sexo;
+echo $telefono;
+echo $rutaFotografia;
 
 $nuevoUsuario = new Usuario();
 $nuevoUsuario->setNombre($nombre);

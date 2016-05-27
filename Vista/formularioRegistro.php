@@ -64,9 +64,17 @@ include('header.php');
                 </div>
 
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-12">
                     <div class="form-group">
-                      <input type="text" name="sexo" class="form-control" placeholder="Sexo" >
+                      <label>Selecciona género:&nbsp;</label>
+                        <div class="btn-group" data-toggle="buttons">
+                          <label class="btn btn-default">
+                            <input type="radio" name="sexo" value="Masculino" /> Masculino
+                          </label>
+                          <label class="btn btn-default">
+                            <input type="radio" name="sexo" value="Femenino" /> Femenino
+                          </label>
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -75,6 +83,7 @@ include('header.php');
 
                     <form enctype="multipart/form-data">
                       <div class="form-group">
+                          <label>Sube una imagen...</label>
                           <input name="foto" id="file-1" type="file" class="file" multiple=true data-preview-file-type="any">
                         <button type="submit" class="btn-submit">Siguiente</button>
                       </div>

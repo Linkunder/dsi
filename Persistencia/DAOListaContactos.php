@@ -39,7 +39,7 @@ class DAOListaContactos{
 
 	public function leerContactosUsuario($idUsuario){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "SELECT U.nombre, U.apellido FROM usuario U INNER JOIN listacontactos L on
+		$query = "SELECT U.nombre, U.apellido, U.rutaFotografia, U.email, U.telefono FROM usuario U INNER JOIN listacontactos L on
 		U.idUsuario = L.idContacto WHERE L.idUsuario = '$idUsuario' ";
 		$result = mysql_query($query,$link) or die (mysql_error());
 		$i = 0;
@@ -47,6 +47,9 @@ class DAOListaContactos{
 			$usuario = new Usuario();
 			$usuario->setNombre($row['nombre']);
 			$usuario->setApellido($row['apellido']);
+			$usuario->setRutaFotografia($row['rutaFotografia']);
+			$usuario->setEmail($row['email']);
+			$usuario->setTelefono($row['telefono']);
 			$vectorData[$i]= $usuario;
 			$i++;
 		}

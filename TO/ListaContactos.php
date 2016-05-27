@@ -3,6 +3,9 @@
 class ListaContactos{
 	private $idUsuario;
 	private $idContacto;
+	private $rutaFotografia;
+	private $email;
+	private $telefono;
 
 	function __construct(){}
 
@@ -14,6 +17,17 @@ class ListaContactos{
 		return $this->idContacto;
 	}
 
+	function getRutaFotografia(){
+		return $this->rutaFotografia;
+	}
+
+	function getEmail(){
+		return $this->email;
+	}
+
+	function getTelefono(){
+		return $this->telefono;
+	}
 
 	function setIdUsuario($idUsuario){
 		$this->idUsuario = $idUsuario;
@@ -21,6 +35,18 @@ class ListaContactos{
 
 	function setIdContacto($idContacto){
 		$this->idContacto = $idContacto;
+	}
+
+	function setRutaFotografia($rutaFotografia){
+		$this->rutaFotografia = $rutaFotografia;
+	}
+
+	function setEmail($email){
+		$this->email = $email;
+	}
+
+	function setTelefono($telefono){
+		$this->telefono = $telefono;
 	}
 
 }

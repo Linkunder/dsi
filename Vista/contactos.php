@@ -77,6 +77,7 @@ $jefeContacto = controlContactos::obtenerInstancia();
 
             <div class = "col-sm-6">
               <h3>Resultados: </h3>
+              <hr/>
              <?php }
                         foreach ($vectorUsuarios as $key) {
                           $nickname= $key->getNickname();
@@ -120,21 +121,54 @@ $jefeContacto = controlContactos::obtenerInstancia();
 
           <div class = "col-sm-6">
 
+            <?php
+            if (isset($_GET['search'])) {
+              $search = $_GET['search'];
+              }
+               if ($search!=''){ 
+
+            ?>
+
+            
 
             <h3>Mis contactos</h3>
             <hr/>
             <?php
-            /* Aqui debo capturar el id del jugador*/
+            /* Aqui debo capturar el id del jugador que este en la sesion. */
             $id = 82;
             $vectorContactos = $jefeContacto->leerContactosUsuario($id);
             foreach ($vectorContactos as $key) {
-              echo $key->getNombre();
-              echo $key->getApellido();
-            ?>
-            <br/>
+              ?>
+             
+                <div class="col-sm-4">
+                  <div class="team-member wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <div class="member-image">
+                      <img class="img-responsive" src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="">
+                    </div>
+                    <div class="member-info">
+                      <h3><?php echo  $key->getNombre()." ".$key->getApellido();?></h3>
+                      <table class="info-table">
+                        <tr>
+                          <th>Mail:&nbsp;</th>
+                          <td><?php echo  $key->getEmail();?></td>
+                        </tr>
+                        <tr>
+                          <th>Fono:&nbsp;</th>
+                          <td><?php echo  $key->getTelefono();?></td>
+                        </tr>
+                      </table>
+                   </div>
+                </div>
+                </div>
             <?php
             }
+            }
             ?>
+
+
+
+
+
 
 
 
