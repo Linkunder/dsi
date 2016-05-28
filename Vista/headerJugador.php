@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+//Aplicamos session_start() para las variables de sesion
+
+
+/////Usuario de prueba//////
+
+$_SESSION['user']="Carrasco";
+$_SESSION['idUsuario']="1";
+///////////////////////////////
+
+?>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,10 +60,10 @@
             <li class="scroll active"><a href="inicio.php">Inicio</a></li>
             <li class="scroll"><a href="quienesSomos.php">¿Quienes somos?</a></li> 
             <li class="scroll"><a href="recintos.php">Canchas</a></li>
-            <li class="scroll"><a href="#" data-toggle="modal" data-target="#modal-1">Jugar</a></li>
+            <li class="scroll"><a href="recintos.php?jugar=1">Jugar</a></li> <!--Jugar = 1 para entrar a buscar recintos en el mismo reutilizando-->
             <li class="scroll"><a href="comentar.php">Comentar</a></li>
             <ul class="nav pull-left">
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Nombre<i class="icon-cog"></i>
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']?><i class="icon-cog"></i>
                 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="perfil.php">Mi Perfil</a></li>
@@ -71,76 +82,6 @@
       </div>
     </div><!--/#main-nav-->
 
-  <div class="container">
-          <script src="eonasdan.github.io/bootstrap-datetimepicker/js/prettify-1.0.min.js"></script>
-        <script src="eonasdan.github.io/bootstrap-datetimepicker/js/base.js"></script>
 
-    <div class="modal fade" id="modal-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h3 class="modal-title">Empecemos a organizar tu partido</h3>
-            <h4 class="modal-title">Paso 1: Define el lugar, hora, número de jugadores y el recinto deportivo</h4>
-           </div>
-           <div class="modal-body">
-
-            <form  method="post" action="nuevoPartido.php" class="design-form" >
-       
-              <div class="container">  
-        <div class="row">
-        <div class='col-sm-8 center'>
-            <div class="form-group">
-              <label for="fecha">Fecha del partido</label>
-                    <input type="date" name="fecha" placeholder="Fecha del partido" class="form-control partido" required="required">
-
-            </div>
-        </div>
-    </div>
-  
-
-      <div class="row">
-      <div class="col-sm-8">
-
-      <div class="form-group">
-                <label for="hora">Hora</label>
-                    <input type="time" name="hora" placeholder="Hora" class="form-control partido" required="required" min="09:00:00" max="23:00:00">
-      </div>
-
-      </div>
-      </div>
-            <div class="row">
-      <div class="col-sm-8">
-
-      <div class="form-group">
-                <label for="jugadores">Numero de jugadores</label>
-                    <input type="int" name="jugadores"  class="form-control partido" required="required" title="Solo puede ingresar hasta 22 jugadores" pattern="^[0|1]\d{1}$|[0-9]|2+[0|1|2]">
-      </div>
-
-      </div>
-      </div>
-              <div class="row">
-                  <div class="col-sm-8">
-
-          
-                      <div class="form-group">
-  
-                        <button type="submit" class="btn-submit">Siguiente</button>
-                      </div>
-                
-
-
-                    </div>
-
-              </form>   
-              </div>
-           </div>
-
-           <div class="modal-footer">
-       
-           </div>
-        </div>
-      </div>
-    </div>
   </div>
   </header><!-- /Fin Header -->

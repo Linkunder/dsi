@@ -39,12 +39,13 @@ class DAOListaContactos{
 
 	public function leerContactosUsuario($idUsuario){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "SELECT U.nombre, U.apellido, U.rutaFotografia, U.email, U.telefono FROM usuario U INNER JOIN listacontactos L on
+		$query = "SELECT U.idUsuario, U.nombre, U.apellido, U.rutaFotografia, U.email, U.telefono FROM usuario U INNER JOIN listacontactos L on
 		U.idUsuario = L.idContacto WHERE L.idUsuario = '$idUsuario' ";
 		$result = mysql_query($query,$link) or die (mysql_error());
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
 			$usuario = new Usuario();
+			$usuario->setIdUsuario($row['idUsuario']);
 			$usuario->setNombre($row['nombre']);
 			$usuario->setApellido($row['apellido']);
 			$usuario->setRutaFotografia($row['rutaFotografia']);

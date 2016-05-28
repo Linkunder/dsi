@@ -1,4 +1,21 @@
-<?php include('header.php'); 
+<?php 
+session_start();
+//PARA EFECTOS DE PRUEBA
+ //No se ha conectado
+$_SESSION["idRecinto"]=NULL;
+if(isset($_GET["jugar"]) ){
+    $jugar=$_GET["jugar"];
+    }else{
+      $jugar=0;
+    }
+
+//Comprobamos que el usuario registrado siempre vea el header jugador
+    if(isset($_SESSION['user'])){
+        include('headerJugador.php');
+    }else{
+        include('header.php'); 
+    }
+        
 
 include_once('../TO/Recinto.php');
 include_once('../Logica/controlRecintos.php');
@@ -14,7 +31,11 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
     <div class="container">
       <div class="row">
         <div class="heading-a text-center">
+          <?php if($jugar==1){  ?>
+          <h2>Elige la cancha para el partido<h2>
+          <?php    }else {         ?>
           <h2>Busca tu cancha ideal</h2>
+          <?php           }?>
         </div>
       </div>
 
@@ -34,8 +55,12 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <!--div class="input-group"-->
-            <form action="recintos.php" method="get">
+          <form action="recintos.php" method="get">
               <input type="text" class="form-control" placeholder="Busca tu cancha..." name="search"/>
+            <!--Aqui como se "recarga" debemos seguir manteniendo la "seleccion de cancha"-->
+            <?php if($jugar==1){?>
+              <input  name="jugar" class="hide" value="1"/>
+              <?php } ?>
               <div class="row">
                  <div class="col-md-6 col-md-offset-4">
                 <div class="div-btn-a">
@@ -97,6 +122,12 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
                       </div>
                       <div class="folio-overview">
                         <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="detalleRecinto.php?id_recinto=<?php echo $idRecinto ?>" ><i class="fa fa-info"></i></a></span>
+                        <!--Aqui boton que aparecera solo al haber entrado via "jugar"-->
+                        <?php 
+                        $_SESSION["idRecinto"]=$idRecinto;
+                              if($jugar==1){ ?>
+                       <button class="btn-busqueda" href="#" data-toggle="modal" data-target="#modal-1" >Jugar Aqui</button> 
+                        <?php } ?>
                       </div>
                     </div>
                   </div>
@@ -148,10 +179,82 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
     
   </div>
 </div>
+  <div class="container">
+    
+    <div class="modal fade" id="modal-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+           <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3 class="modal-title">Define la hora, fecha y cantidad de jugadores</h3>
+           </div>
+           <div class="modal-body">
+
+            <form  method="post" action="cancha.php" class="design-form" >
+       
+              <div class="container">  
+        <div class="row">
+        <div class='col-sm-8 center'>
+            <div class="form-group">
+              <label for="fecha">Fecha del partido</label>
+                    <input type="date" name="fecha" placeholder="Fecha del partido" class="form-control partido" required="required">
+
+            </div>
+        </div>
+    </div>
+  
+
+      <div class="row">
+      <div class="col-sm-8">
+
+      <div class="form-group">
+                <label for="hora">Hora</label>
+                    <input type="time" name="hora" placeholder="Hora" class="form-control partido" required="required" min="09:00:00" max="23:00:00">
+      </div>
+
+      </div>
+      </div>
+            <div class="row">
+      <div class="col-sm-8">
+
+      <div class="form-group">
+                <label for="jugadores">Numero de jugadores</label>
+                    <input type="int" name="cantidad"  class="form-control partido" required="required" title="Solo puede ingresar hasta 22 jugadores" pattern="^[0|1]\d{1}$|[0-9]|2+[0|1|2]">
+
+                     <input  name="idRecinto" class="hide" value="<?php echo $_SESSION["idRecinto"];?>"/>
+
+      </div>
+
+      </div>
+      </div>
+              <div class="row">
+                  <div class="col-sm-8">
+
+          
+                      <div class="form-group">
+  
+                        <button type="submit" class="btn-submit" >Siguiente</button>
+
+                      </div>
+                
 
 
+                    </div>
+
+              </form>   
+              </div>
+           </div>
+
+           <div class="modal-footer">
+       
+           </div>
+        </div>
+      </div>
+    </div>
+
+</div>
  
-
+</div>
 
   
 <!-- /Aqui termina la pagina -->
@@ -202,6 +305,8 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
   <script type="text/javascript" src="js/main.js"></script>
 
   <script src="js/fileinput.min.js" type="text/javascript"></script>
+
+  
 
 </body>
 </html>
