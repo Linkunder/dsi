@@ -3,13 +3,8 @@
 <!-- Aqui empieza la pagina -->
 
 
-  
 
 
-
-
-
-  
 <!-- /Aqui termina la pagina -->
 
 

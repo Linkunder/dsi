@@ -68,7 +68,7 @@ $_SESSION['idUsuario']="1";
                 <ul class="dropdown-menu">
                   <li><a href="perfil.php">Mi Perfil</a></li>
                   <hr></hr>
-                  <li><a href="contactos.php">Contactos</a></li>
+                  <li><a href="contactos2.php">Contactos</a></li>
                   <hr></hr>
                   <li><a href="notificarRecinto.php">Notificar recinto</a></li>
                   <hr></hr>

@@ -1,18 +1,15 @@
 <?php
 
-
+session_start();
 include_once('../TO/ListaContactos.php');
 include_once('../Logica/controlContactos.php');
+ob_start();
+$idUsuario = $_SESSION['idUsuario'];
 
 $jefeContacto = controlContactos::obtenerInstancia();
 $idContacto = $_GET['idContacto'];
 
 
-ob_start();
-$idUsuario = $_SESSION['idUsuario'];
-
-echo "ID Usuario: $idUsuario <br>";
-echo "ID Contacto: $idContacto <br>";
 
 
 $lista = new ListaContactos();
@@ -22,7 +19,8 @@ $lista->setIdContacto($idContacto);
 $jefeContacto = controlContactos::obtenerInstancia();
 $jefeContacto->crearListaContactos($lista);
 
-echo "<script type='text/javascript'>alert('Jugador agregado!');</script>";
-//header("Location:contactos2.php");
+$message = "Contacto agregado exitosamente.";
+echo "<script type='text/javascript'>alert('$message');</script>";
+header("Location:contactos2.php");
 
 ?>
