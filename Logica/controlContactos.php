@@ -33,6 +33,10 @@ class controlContactos{
 		return $vectorData;	
 	}
 
+	public function crearListaContactos($lista){
+		$this->persistenciaContactos->crearListaContactos($lista);
+	}
+
 
 
 }

@@ -133,12 +133,18 @@ $jefeContacto = controlContactos::obtenerInstancia();
                 $pos = strripos($nickname, $search);
                 $nombre = $key->getNombre();
                 $apellido = $key->getApellido();
-                $idUsuario = $key->getIdUsuario();
+                $idContacto = $key->getIdUsuario();
                 if ($pos !== false ){ ?>
                 <!-- Deben ser imagenes chicas .. al subirlas se podrian redimensionar. -->
 
-
-                <li><a href="#"><img src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /><i class="fa fa-plus-circle" aria-hidden="true"></i></a></li>
+                <li>
+                  <span class="folio-link">
+                  <a class="folio-read-more" href="agregarContacto.php?idContacto=<?php echo $idContacto ?>">
+                    <img src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" />
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                  </a>
+                  </span>
+                </li>
 
 
                 

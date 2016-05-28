@@ -135,7 +135,7 @@ $jefeContacto = controlContactos::obtenerInstancia();
             <hr/>
             <?php
             /* Aqui debo capturar el id del jugador que este en la sesion. */
-            $id = 82;
+            $id = 1;
             $vectorContactos = $jefeContacto->leerContactosUsuario($id);
             foreach ($vectorContactos as $key) {
               ?>

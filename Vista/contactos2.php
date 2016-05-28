@@ -116,7 +116,7 @@ $jefeContacto = controlContactos::obtenerInstancia();
 
   <?php
   /* Aqui debo capturar el id del jugador que este en la sesion. */
-  $id = 82;
+  $id = 1;
   $vectorContactos = $jefeContacto->leerContactosUsuario($id);
  ?>
   <div class="main">
@@ -153,7 +153,7 @@ $jefeContacto = controlContactos::obtenerInstancia();
            <div class="modal-body">
 
 
-            <form action="anadirContacto.php" method="get">
+            <form action="busquedaJugador.php" method="get">
               <input type="text" class="form-control partido" placeholder="Ingresa un nickname..." name="search"/>
               <div class="row">
                  <div class="col-md-6 col-md-offset-4">
