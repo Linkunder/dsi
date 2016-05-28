@@ -72,7 +72,7 @@ include('header.php');
                             <input type="radio" name="sexo" value="Masculino" /> Masculino
                           </label>
                           <label class="btn btn-default">
-                            <input type="radio" name="sexo" value="Femenino" /> Femenino
+                              <input type="radio" name="sexo" value="Femenino" /> Femenino
                           </label>
                         </div>
                     </div>

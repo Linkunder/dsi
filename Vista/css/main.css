@@ -1234,3 +1234,13 @@ ul.address {
   color: #000000;
   font-weight: bold;
 }
+
+.entrada-texto{
+  display: inline-block;
+  background-color: transparent;
+  height: 50px;
+  border-radius: 20;
+  box-shadow: none;
+  color: #000000;
+  font-weight: bold;
+}
