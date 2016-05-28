@@ -882,6 +882,8 @@ section {
   font-weight: bold;
 }
 
+
+
 textarea.form-control {
   min-height: 180px;
   resize:none;
@@ -1221,3 +1223,14 @@ ul.address {
     font-weight: bold;
 }
 
+/** Forma partido**/
+
+.partido {
+  display: inline-block;
+  background-color: transparent;
+  height: 50px;
+  border-radius: 20;
+  box-shadow: none;
+  color: #000000;
+  font-weight: bold;
+}

@@ -85,53 +85,59 @@
            </div>
            <div class="modal-body">
 
-            <form  method="post" action="nuevoUsuario.php" class="design-form" >
-
-   
-          
-  <div class="container">  
-  <div class="row">
-        <div class='col-sm-6 center'>
+            <form  method="post" action="nuevoPartido.php" class="design-form" >
+       
+              <div class="container">  
+        <div class="row">
+        <div class='col-sm-8 center'>
             <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
+              <label for="fecha">Fecha del partido</label>
+                    <input type="date" name="fecha" placeholder="Fecha del partido" class="form-control partido" required="required">
+
             </div>
         </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-
-        </script>
     </div>
-    </div>
+  
 
-      
- 
+      <div class="row">
+      <div class="col-sm-8">
+
+      <div class="form-group">
+                <label for="hora">Hora</label>
+                    <input type="time" name="hora" placeholder="Hora" class="form-control partido" required="required" min="09:00:00" max="23:00:00">
+      </div>
+
+      </div>
+      </div>
+            <div class="row">
+      <div class="col-sm-8">
+
+      <div class="form-group">
+                <label for="jugadores">Numero de jugadores</label>
+                    <input type="int" name="jugadores"  class="form-control partido" required="required" title="Solo puede ingresar hasta 22 jugadores" pattern="^[0|1]\d{1}$|[0-9]|2+[0|1|2]">
+      </div>
+
+      </div>
+      </div>
               <div class="row">
-                  <div class="col-sm-6  ">
+                  <div class="col-sm-8">
 
-                    <form enctype="multipart/form-data">
+          
                       <div class="form-group">
-                          <input name="foto" id="file-1" type="file" class="file" multiple=true data-preview-file-type="any">
+  
                         <button type="submit" class="btn-submit">Siguiente</button>
                       </div>
-                    </form>
+                
 
 
                     </div>
 
               </form>   
-            
+              </div>
            </div>
 
            <div class="modal-footer">
-            <a href="" class="btn btn-default" data-dismiss="modal">Close</a>
-            <a href="" class="btn btn-primary">Download</a>
+       
            </div>
         </div>
       </div>
