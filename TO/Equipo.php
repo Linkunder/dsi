@@ -24,6 +24,18 @@ class Equipo{
 		return $this->idPartido;
 	}
 
+	function getNombre(){
+		return $this->nombre;
+	}
+
+	function getApellido(){
+		return $this->apellido;
+	}
+
+	function getRutaFotografia(){
+		return $this->rutaFotografia;
+	}
+
 	function setIdEquipo($idEquipo){
 		$this->idEquipo= $idEquipo;
 	}
@@ -38,6 +50,18 @@ class Equipo{
 
 	function setIdPartido($idPartido){
 		$this->idPartido = $idPartido;
+	}
+
+	function setNombre($nombre){
+		$this->nombre = $nombre;
+	}
+
+	function setApellido($apellido){
+		$this->apellido = $apellido;
+	}
+
+	function setRutaFotografia($rutaFotografia){
+		$this->rutaFotografia = $rutaFotografia;
 	}
 }
 ?>

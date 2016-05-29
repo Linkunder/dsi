@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start() para las variables de sesion
+session_start();
 
 
 /////Usuario de prueba//////
@@ -25,6 +25,14 @@ $_SESSION['idUsuario']="1";
   <link id="css-preset" href="css/presets/preset1.css" rel="stylesheet">
   <link href="css/responsive.css" rel="stylesheet">
 
+
+  <link rel="stylesheet" type="text/css" href="css/demo.css" />
+  <link rel="stylesheet" type="text/css" href="css/elastislide.css" />
+  <link rel="stylesheet" type="text/css" href="css/custom.css" />
+
+
+
+
     <!--Para subir la imagen-->
 
   <link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
@@ -35,6 +43,9 @@ $_SESSION['idUsuario']="1";
   
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="images/soccer.ico">
+
+
+  <script src="js/modernizr.custom.17475.js"></script>
 </head><!--/head-->
 
 <body>
@@ -96,6 +107,23 @@ $cantidad = $_SESSION['cantidad']; //Cantidad de jugadores seleccionados
 $fecha =    $_SESSION['fecha'];
 $hora =     $_SESSION['hora'];
 
+include_once('../TO/Usuario.php');
+include_once('../Logica/controlUsuarios.php');
+
+include_once('../TO/Equipo.php');
+include_once('../Logica/controlEquipos.php');
+
+include_once('../TO/Recinto.php');
+include_once('../Logica/controlRecintos.php');
+
+$jefeEquipo = controlEquipos::obtenerInstancia();
+$jefeUsuarios = controlUsuarios::obtenerInstancia();
+$jefeRecintos = controlRecintos::obtenerInstancia();
+
+$vectorUsuarios = $jefeUsuarios->leerUsuario($idUsuario);
+$vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
+
+
 ?>
 
 
@@ -111,20 +139,98 @@ $hora =     $_SESSION['hora'];
       <h2>Resumen del partido</h2>
       <div class="col-md-4">
         <h4>Información</h4>
-
+        <table>
+          <tr>
+            <td>Organizador:&nbsp;</td>
+            <?php
+            foreach ($vectorUsuarios as $key ) {
+            ?>
+            <td><?php echo $key->getNombre()." ".$key->getApellido();?></td>
+            <?php
+            }
+            ?>
+          </tr>
+          <tr>
+            <td>Jugadores:&nbsp;</td>
+            <td><?php echo $cantidad;?></td>
+          </tr>
+          <tr>
+            <td>Fecha:&nbsp;</td>
+            <td><?php echo $fecha;?></td>
+          </tr>
+          <tr>
+            <td>Hora:&nbsp;</td>
+            <td><?php echo $hora;?></td>
+          </tr>
+        </table>
       </div>
       <div class="col-md-4">
-        <h4>Cancha: La Jaula</h4>
+        <?php
+            foreach ($vectorRecintos as $key ) {
+            ?>
+            <h4>Cancha: <?php echo $key->getNombre();?></h4>
+            <div class="folio-image">
+                  <img class="img-responsive" src="images/recintos/<?php echo  $key->getRutaFotografia(); ?>" alt="">
+                </div>
+           
       </div>
       <div class="col-md-4">
         <h4>¿Cómo llegar?</h4>
+        <iframe
+          width="100%" height="400px" frameborder="5" style="border:0"  maptype="satellite"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDR2WyVnnd9GsSTKys5OEkowPu41kMpEUs
+          &q=Chile  + Chillan + <?php echo $key->getDireccion();?>" allowfullscreen>
+  </iframe>
+   <?php
+            }
+            ?>
       </div>
      
 
     </div>
+
+
     <div class="row">
+      <div class="container demo-1">
+        <div class="heading-a text-center">
+            <h2>Jugadores</h2>
+          </div>
+
+        <?php
+        /* Aqui debo capturar el id del partido que se jugara */
+        $vectorEquipo = $jefeEquipo->obtenerJugadores($idPartido);
+       ?>
+  <div class="main">
+      <ul id="carousel" class="elastislide-list">
+       <?php
+       foreach ($vectorEquipo as $key) {
+        ?>
+        <!-- Deben ser imagenes chicas .. al subirlas se podrian redimensionar. -->
+        <li>
+            <table>
+              <tr>
+                <td><img src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /></td>
+              </tr>
+              <tr>
+                <td><h4 id="detalle-jugador"><?php echo $key->getNombre()." ".$key->getApellido();?></h4></td>
+              </tr>
+             
+              
+            </table>
+          <!--a href="#"><img src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /></a> -->
+        </li>
+        <?php
+        }
+        ?>
+      </ul> <!-- End Elastislide Carousel -->
+    </div>
+
+    
+    </div>
 
     </div>
+
+
   </div>
 </div> 
 
@@ -132,6 +238,14 @@ $hora =     $_SESSION['hora'];
 
 
 
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquerypp.custom.js"></script>
+    <script type="text/javascript" src="js/jquery.elastislide.js"></script>
+    <script type="text/javascript">
+      
+      $( '#carousel' ).elastislide();
+      
+    </script>
 
 
   
@@ -183,6 +297,7 @@ $hora =     $_SESSION['hora'];
   <script type="text/javascript" src="js/main.js"></script>
 
   <script src="js/fileinput.min.js" type="text/javascript"></script>
-
+<script type="text/javascript" src="js/jquerypp.custom.js"></script>
+    <script type="text/javascript" src="js/jquery.elastislide.js"></script>
 </body>
 </html>

@@ -84,6 +84,24 @@ class DAOEquipo{
 		return $vectorData;
 	}
 
+	public function obtenerJugadores($idPartido){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT U.nombre, U.apellido, U.rutaFotografia FROM usuario U INNER JOIN equipo E on U.idUsuario = E.idUsuario WHERE E.idPartido = '$idPartido'";
+		$result = mysql_query($query, $link) or die (mysql_error());
+		$i=0;
+		while ($row = mysql_fetch_array($result)) {
+			$usuario = new Usuario();
+			$usuario->setNombre($row['nombre']);
+			$usuario->setApellido($row['apellido']);
+			$usuario->setRutaFotografia($row['rutaFotografia']);
+			$vectorData[$i]= $usuario;
+			$i++;
+		}
+		mysql_close($link);
+		if (empty($vectorData)) return null;
+		return $vectorData;
+	}
+
 }
 
 ?>

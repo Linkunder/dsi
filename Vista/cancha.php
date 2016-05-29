@@ -145,10 +145,7 @@ font-size: 15px;
           type:'post',
           cache:false,
           url:"nuevoPartido.php",
-          data:{jObject:jObject},
-          success:function(server){
-            alert(server);
-          }
+          data:{jObject:jObject}
     });
     }
 

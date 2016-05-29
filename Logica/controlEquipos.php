@@ -31,6 +31,12 @@ class controlEquipos{
 	public function actualizarEquipo($equipo){
 		$this->persistenciaEquipo->actualizarEquipo($equipo);
 	}
+
+	public function obtenerJugadores($idPartido){
+		$vectorData = $this->persistenciaEquipo->obtenerJugadores($idPartido);
+		if (count($vectorData)==0) return null;
+		return $vectorData;
+	}
 	
 
 }
