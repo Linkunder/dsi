@@ -137,18 +137,31 @@ $jefeContacto = controlContactos::obtenerInstancia();
                 <!-- Deben ser imagenes chicas .. al subirlas se podrian redimensionar. -->
 
                 <li>
-                  <span class="folio-link">
-                  <a class="folio-read-more" href="agregarContacto.php?idContacto=<?php echo $idContacto ?>">
-                    <img src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" />
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                  <div>
+                    <table>
+                      <tr>
+                        <td><img src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /></td>
+                      </tr>
+                      <tr>
+                        <td><h5 id="detalle-jugador"><?php echo $key->getNombre()." ".$key->getApellido();?></h5></td>
+                      </tr>
+                      <tr>
+                        <td><h6 id="detalle-jugador"><?php echo $key->getNickname();?></h6></td>
+                      </tr>
+                      <tr>
+                        <td>
+                        <span class="folio-link">
+                          <a class="folio-read-more" href="agregarContacto.php?idContacto=<?php echo $idContacto ?>">
+                            <center><i class="fa fa-plus-circle" aria-hidden="true"></i></center>
+                          </a>
+                        </span>
+                      </td>
+                      </tr>
+                    </table>
+                  </div>
+                  </li>
 
-                  </a>
-                  </span>
-                </li>
-
-
-                
-                <?php
+                  <?php
                 $cont++;
               }
             }

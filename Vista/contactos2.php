@@ -125,7 +125,23 @@ $jefeContacto = controlContactos::obtenerInstancia();
        foreach ($vectorContactos as $key) {
         ?>
         <!-- Deben ser imagenes chicas .. al subirlas se podrian redimensionar. -->
-        <li><a href="#"><img src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /></a></li>
+        <li>
+            <table>
+              <tr>
+                <td><img src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /></td>
+              </tr>
+              <tr>
+                <td><h4 id="detalle-jugador"><?php echo $key->getNombre()." ".$key->getApellido();?></h4></td>
+              </tr>
+              <tr>
+                <td><h6 id="detalle-jugador"><?php echo $key->getNickname();?></h6></td>
+              </tr>
+              <tr>
+                <td><h6>Mail:&nbsp;<?php echo $key->getEmail();?></h6></td>
+              </tr>
+            </table>
+          <!--a href="#"><img src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /></a> -->
+        </li>
         <?php
         }
         ?>
