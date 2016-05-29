@@ -123,12 +123,12 @@ font-size: 15px;
    
    <?php 
    foreach ($vectorContactos as $Contacto) { ?>
-    $( "#draggable<?php echo $Contacto->getNombre();?>" ).draggable({ 
+    $( "#draggable<?php echo $Contacto->getIdUsuario();?>" ).draggable({ 
       snap: ".ui-widget-header",
       create: function(event, $Contacto){}
       });
-    $("#draggable<?php echo $Contacto->getNombre();?>").data("jugador",false);
-    $("#draggable<?php echo $Contacto->getNombre();?>").data("id","<?php echo $Contacto->getIdUsuario();?>");
+    $("#draggable<?php echo $Contacto->getIdUsuario();?>").data("jugador",false);
+    $("#draggable<?php echo $Contacto->getIdUsuario();?>").data("id","<?php echo $Contacto->getIdUsuario();?>");
 
       <?php } ?> 
       });
@@ -178,7 +178,7 @@ font-size: 15px;
 foreach ($vectorContactos as $Contacto) {
       #un IF AQUI para ver el ESTADO de los USUARIOS
 ?>
-    <div id="draggable<?php echo $Contacto->getNombre();?>" class="ui-widget-content arreglo draggable">
+    <div id="draggable<?php echo $Contacto->getIdUsuario();?>" class="ui-widget-content arreglo draggable">
     <img  class="img-responsive center" src="images/usuarios/<?php echo $Contacto->getRutaFotografia();?>" width="80"/>
     <p class="stroke" ><strong><?php echo $Contacto->getNombre();?></strong></p> 
     </div>
@@ -292,7 +292,7 @@ foreach ($vectorContactos as $Contacto) {
                       <div class="form-group">
                         <h2 class="center">¿Deseas agendar un tercer tiempo?<h2>
                         <button class="btn-submit">Si</button>
-                        <button class="btn-submit" onClick="setValue()">No</button>
+                        <button class="btn-submit" onClick="setValue()" ><a href='resumenPartido.php'>No</a></button>
                       </div>
                 
 

@@ -870,6 +870,11 @@ section {
   padding-bottom: 90px; 
 }
 
+#contact-nosotros {
+  background-image:url(../images/balon4.png);
+  padding-bottom: 90px; 
+}
+
 #contact-us .heading {
   padding-top: 95px;
 }
@@ -1260,13 +1265,18 @@ ul.address {
   z-index: 1;
 }
 
+
+
+
 #detalle-jugador{
   font-weight: bold;
-  color: #000;
+  color: #fff;
   font: 'Open Sans', sans-serif;
   margin-top: 5px;
   margin-bottom: 3px;
-
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke: 0.5px black;
+  font-size: 20px;
 }
 
 

@@ -81,13 +81,7 @@ $jefeEquipo->crearEquipo($nuevoEquipo);
 
 
 
-
-
-
-											
-
-echo "<script type='text/javascript'>alert('Partido agregado!');</script>";
-
+header("Location:quienesSomos.php");
 
 
 ?>
