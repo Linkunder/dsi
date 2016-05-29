@@ -169,7 +169,7 @@ font-size: 15px;
 		<p>Contactos:</p>
     
 		<!--<img id="draggable1" class="img-responsive center ui-widget-content arreglo draggable" src="images/usuarios/cris.jpg" width="60" alt="hola" > -->
-
+<script src="js/jquery.ui.touch-punch.min.js"></script>
 <?php
 
 foreach ($vectorContactos as $Contacto) {
