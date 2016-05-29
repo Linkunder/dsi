@@ -277,7 +277,7 @@ foreach ($vectorContactos as $Contacto) {
            </div>
            <div class="modal-body">
 
-            <form  method="post" action="" class="design-form" > <!-- Falta definir  la accion -->
+            <form  method="post" action="resumenPartido.php" class="design-form" > <!-- Falta definir  la accion -->
        
               <div class="container">  
   
@@ -288,8 +288,11 @@ foreach ($vectorContactos as $Contacto) {
           
                       <div class="form-group">
                         <h2 class="center">¿Deseas agendar un tercer tiempo?<h2>
-                        <button class="btn-submit">Si</button>
-                        <button class="btn-submit" onClick="setValue()" ><a href='resumenPartido.php'>No</a></button>
+                       
+                        <button class="btn-submit" type="submit" formaction="hola.php">Si</button>
+                       
+                        <button type="submit" class="btn-submit" onClick="setValue()" >No</button>
+                        
                       </div>
                 
 
