@@ -6,11 +6,17 @@
 	width: 500px;
 }
 
+
+
 .no-js .elastislide-list {
 	display: block;
 }
 
 .elastislide-carousel ul li {
+	min-width: 11em; /* minimum width of the image (min width + border) */
+}
+
+.elastislide-carousel-a ul li {
 	min-width: 11em; /* minimum width of the image (min width + border) */
 }
 
@@ -30,8 +36,9 @@
 
 .elastislide-horizontal {
 	padding: 10px 40px;
-	height: 17em;
+	height: 100%;
 }
+
 
 .elastislide-vertical {
 	padding: 40px 10px;
@@ -126,4 +133,36 @@
 	bottom: 10px;
 	top: auto;
 	background-position: -17px -18px;
+}
+
+
+
+
+/* MINI ELASTISLIDE*/
+
+
+
+
+
+
+.elastislide-list-mini {
+	list-style-type: none;
+	display: none;
+	width: 500px;
+}
+
+.elastislide-horizontal-mini {
+	padding: 10px 40px;
+	height: 10em;
+}
+
+.elastislide-wrapper-mini {
+	position: relative;
+	background-color: transparent;
+	margin: 0 auto;
+	min-height: 60px;
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.elastislide-carousel-mini ul li {
+	min-width: 11em; /* minimum width of the image (min width + border) */
 }

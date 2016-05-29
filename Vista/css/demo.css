@@ -63,6 +63,23 @@ a {
 	position: relative;
 }
 
+
+.main-mini{
+	width: 95%;
+	max-width: 960px;
+	padding: 0 10px;
+	margin: 0 auto;
+	position: relative;
+	height: 85%;
+}
+
+.container-mini{
+	width: 100%;
+	position: relative;
+	height: 12.5em;
+}
+
+
 .main > header {
 	padding: 40px 0;
 }

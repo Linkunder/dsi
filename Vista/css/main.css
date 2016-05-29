@@ -1011,6 +1011,19 @@ ul.address {
   text-align: center;
 }
 
+.btn-invitar{
+  background-color: #209CFC;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  border-radius: 0.3em;
+  width: 20em;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
+  height: 5em;
+  margin-top: 1.5em;
+}
+
 .design-label{
   font-family: 'Open Sans', sans-serif;
   color: #fff;

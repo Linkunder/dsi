@@ -116,7 +116,8 @@ $jefeContacto = controlContactos::obtenerInstancia();
 
   <?php
   /* Aqui debo capturar el id del jugador que este en la sesion. */
-  $vectorContactos = $jefeContacto->leerContactosUsuario($_SESION['idUsuario']);
+  $idUsuario = 1;
+  $vectorContactos = $jefeContacto->leerContactosUsuario($idUsuario);
  ?>
   <div class="main">
       <ul id="carousel" class="elastislide-list">

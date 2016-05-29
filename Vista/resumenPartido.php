@@ -138,73 +138,66 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
     <div class="row">
       <h2>Resumen del partido</h2>
       <div class="col-md-4">
-        <h4>Información del partido</h4>
-        <table class="table table-bordered center">
-          <tr>
-            <th>Organizador:&nbsp;</th>
-            <?php
-            foreach ($vectorUsuarios as $key ) {
-            ?>
-            <td><?php echo $key->getNombre()." ".$key->getApellido();?></td>
-            <?php
-            }
-            ?>
-          </tr>
-          <tr>
-            <th>Jugadores:&nbsp;</th>
-            <td><?php echo $cantidad;?></td>
-          </tr>
-          <tr>
-            <th>Fecha:&nbsp;</th>
-            <td><?php echo $fecha;?></td>
-          </tr>
-          <tr>
-            <th>Hora:&nbsp;</h>
-            <td><?php echo $hora;?></td>
-          </tr>
-        </table>
+          <h4>Información del partido</h4>
+          <table class="table table-bordered center">
+            <tr>
+              <th>Organizador:&nbsp;</th>
+              <?php
+              foreach ($vectorUsuarios as $key ) {
+              ?>
+              <td><?php echo $key->getNombre()." ".$key->getApellido();?></td>
+              <?php
+              }
+              ?>
+            </tr>
+            <tr>
+              <th>Jugadores:&nbsp;</th>
+              <td><?php echo $cantidad;?></td>
+            </tr>
+            <tr>
+              <th>Fecha:&nbsp;</th>
+              <td><?php echo $fecha;?></td>
+            </tr>
+            <tr>
+              <th>Hora:&nbsp;</h>
+              <td><?php echo $hora;?></td>
+            </tr>
+          </table>
+          <div class="row">
 
-            <div class="row">
-      <div class="container demo-1">
-            <h4>Jugadores</h4>
 
-        <?php
-        /* Aqui debo capturar el id del partido que se jugara */
-        $vectorEquipo = $jefeEquipo->obtenerJugadores($idPartido);
-       ?>
-  <div class="main">
-      <ul id="carousel" class="elastislide-list">
-       <?php
-       foreach ($vectorEquipo as $key) {
-        ?>
-        <!-- Deben ser imagenes chicas .. al subirlas se podrian redimensionar. -->
-        <li>
-            <table>
-              <tr>
-                <td><img src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /></td>
-              </tr>
-              <tr>
-                <td><h4 id="detalle-jugador"><?php echo $key->getNombre()." ".$key->getApellido();?></h4></td>
-              </tr>
-             
-              
-            </table>
-          <!--a href="#"><img src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /></a> -->
-        </li>
-        <?php
-        }
-        ?>
-      </ul> <!-- End Elastislide Carousel -->
-    </div>
-
-    
-    </div>
-
-    </div>
+            <div class="container-mini demo-1-mini">
+              <h4>Jugadores</h4>
+              <?php
+              /* Aqui debo capturar el id del partido que se jugara */
+              $vectorEquipo = $jefeEquipo->obtenerJugadores($idPartido);
+              ?>
+              <div class="main-mini">
+                <ul id="carousel" class="elastislide-list-mini">
+                  <?php
+                  foreach ($vectorEquipo as $key) {
+                    ?>
+                    <!-- Deben ser imagenes chicas .. al subirlas se podrian redimensionar. -->
+                    <li>
+                      <table>
+                        <tr>
+                          <td><img src="images/usuarios/mini-carousel/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /></td>
+                        </tr>
+                        <tr>
+                          <td><h6><?php echo $key->getNombre()." ".$key->getApellido();?></h6></td>
+                        </tr>
+                      </table>
+                      </li>
+                      <?php
+                    }
+                    ?>
+                  </ul> <!-- End Elastislide Carousel -->
+                </div>
+              </div>
 
 
 
-
+            </div>
       </div>
       <div class="col-md-4">
         <?php
@@ -229,12 +222,12 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
       </div>
      
 
-    </div>
+    </div><!-- /row -->
+
+<center><button class="btn btn-invitar">Enviar invitaciones</button></center>
 
 
-
-
-  </div>
+  </div> 
 </div> 
 
   
