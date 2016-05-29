@@ -138,10 +138,10 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
     <div class="row">
       <h2>Resumen del partido</h2>
       <div class="col-md-4">
-        <h4>Información</h4>
-        <table>
+        <h4>Información del partido</h4>
+        <table class="table table-bordered center">
           <tr>
-            <td>Organizador:&nbsp;</td>
+            <th>Organizador:&nbsp;</th>
             <?php
             foreach ($vectorUsuarios as $key ) {
             ?>
@@ -151,50 +151,22 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
             ?>
           </tr>
           <tr>
-            <td>Jugadores:&nbsp;</td>
+            <th>Jugadores:&nbsp;</th>
             <td><?php echo $cantidad;?></td>
           </tr>
           <tr>
-            <td>Fecha:&nbsp;</td>
+            <th>Fecha:&nbsp;</th>
             <td><?php echo $fecha;?></td>
           </tr>
           <tr>
-            <td>Hora:&nbsp;</td>
+            <th>Hora:&nbsp;</h>
             <td><?php echo $hora;?></td>
           </tr>
         </table>
-      </div>
-      <div class="col-md-4">
-        <?php
-            foreach ($vectorRecintos as $key ) {
-            ?>
-            <h4>Cancha: <?php echo $key->getNombre();?></h4>
-            <div class="folio-image">
-                  <img class="img-responsive" src="images/recintos/<?php echo  $key->getRutaFotografia(); ?>" alt="">
-                </div>
-           
-      </div>
-      <div class="col-md-4">
-        <h4>¿Cómo llegar?</h4>
-        <iframe
-          width="100%" height="400px" frameborder="5" style="border:0"  maptype="satellite"
-          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDR2WyVnnd9GsSTKys5OEkowPu41kMpEUs
-          &q=Chile  + Chillan + <?php echo $key->getDireccion();?>" allowfullscreen>
-  </iframe>
-   <?php
-            }
-            ?>
-      </div>
-     
 
-    </div>
-
-
-    <div class="row">
+            <div class="row">
       <div class="container demo-1">
-        <div class="heading-a text-center">
-            <h2>Jugadores</h2>
-          </div>
+            <h4>Jugadores</h4>
 
         <?php
         /* Aqui debo capturar el id del partido que se jugara */
@@ -229,6 +201,37 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
     </div>
 
     </div>
+
+
+
+
+      </div>
+      <div class="col-md-4">
+        <?php
+            foreach ($vectorRecintos as $key ) {
+            ?>
+            <h4>Cancha: <?php echo $key->getNombre();?></h4>
+            <div class="folio-image">
+                  <img class="img-responsive" src="images/recintos/<?php echo  $key->getRutaFotografia(); ?>" alt="">
+                </div>
+           
+      </div>
+      <div class="col-md-4">
+        <h4>¿Cómo llegar?</h4>
+        <iframe
+          width="100%" height="336px" frameborder="5" style="border:0"  maptype="satellite"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDR2WyVnnd9GsSTKys5OEkowPu41kMpEUs
+          &q=Chile  + Chillan + <?php echo $key->getDireccion();?>" allowfullscreen>
+  </iframe>
+   <?php
+            }
+            ?>
+      </div>
+     
+
+    </div>
+
+
 
 
   </div>
