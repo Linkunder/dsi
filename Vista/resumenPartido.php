@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-//Aplicamos session_start() para las variables de sesion
+session_start() para las variables de sesion
 
 
 /////Usuario de prueba//////
@@ -85,6 +85,23 @@ $_SESSION['idUsuario']="1";
 
   </div>
   </header><!-- /Fin Header -->
+
+<!--Variables -->
+<?php
+
+$idPartido= $_SESSION["idPartido"];
+$idUsuario= $_SESSION['idUsuario'];
+$idRecinto= $_SESSION['idRecinto']; //Recinto seleccionado
+$cantidad = $_SESSION['cantidad']; //Cantidad de jugadores seleccionados
+$fecha =    $_SESSION['fecha'];
+$hora =     $_SESSION['hora'];
+
+?>
+
+
+
+<!---->
+
 
 
 <!-- Aqui empieza la pagina -->

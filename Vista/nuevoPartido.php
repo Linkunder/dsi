@@ -49,7 +49,7 @@ $vectorPartidos=$jefePartido->leerPartidosUsuario($idUsuario);
 $Partido = new Partido();
 $Partido= end($vectorPartidos);
 $idPartido = $Partido->getIdPartido();
-
+$_SESSION["idPartido"]=$idPartido;
 
 
 //Traemos las id de los jugadores elegidos
