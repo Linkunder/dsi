@@ -89,7 +89,7 @@ font-size: 15px;
          arrayJugador[elem.data("numsoltar")-1]=(ui.draggable.data("id"));
 
          //alert(""+ arrayJugador+""); NO BORRAR SIRVE PARA DEBUGGEAR 
-         if(elem.data("numsoltar")==maximo){
+         if(elem.data("numsoltar")==maximo-1){
          
           $("#sig").click();
          }
