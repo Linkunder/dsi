@@ -39,6 +39,12 @@ class controlPartidos{
 		return $vectorData;
 	}
 
+	public function leerPartidosUsuario($idUsuario){
+		$vectorData = $this->persistenciaPartido->leerPartidosUsuario($idUsuario);
+				if (count($vectorData)==0) return null;
+		return $vectorData;
+	}
+
 }
 
 

@@ -8,6 +8,7 @@ class Partido{
 	private $idEstado;
 	private $idRecinto;
 	private $idTercerTiempo;
+	private $idUsuario;
 
 	function __construct(){}
 
@@ -39,9 +40,11 @@ class Partido{
 		return $this->idTercerTiempo;
 	}
 
-	function setIdPartido($idPartido){
-		$this->idPartido = $idPartido;
+	function getIdUsuario(){
+		return $this->idUsuario;
 	}
+
+
 
 	function setFecha($fecha){
 		$this->fecha = $fecha;
@@ -54,6 +57,9 @@ class Partido{
 	function setCuota($cuota){
 		$this->cuota = $cuota;
 	}
+	function setIdPartido($idPartido){
+		$this->idPartido=$idPartido;
+	}
 
 	function setIdEstado($idEstado){
 		$this->idEstado = $idEstado;
@@ -65,6 +71,9 @@ class Partido{
 
 	function setIdTercerTiempo($idTercerTiempo){
 		$this->idTercerTiempo = $idTercerTiempo;
+	}
+	function setIdUsuario($idUsuario){
+		$this->idUsuario = $idUsuario;
 	}
 
 

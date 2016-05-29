@@ -13,7 +13,7 @@ class DAOEquipo{
 		$query = "INSERT INTO equipo(color, idUsuario, idPartido) 
 		VALUES(
 		'".$equipo->getColor()."',
-		'".$equipo->getIdUsuario()."'
+		'".$equipo->getIdUsuario()."',
 		'".$equipo->getIdPartido()."')";
 
 		mysql_query($query,$link) or die (mysql_error());

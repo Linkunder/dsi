@@ -16,15 +16,16 @@ $jefeUsuarios = controlUsuarios::obtenerInstancia();
 $jefeContactos = controlContactos::obtenerInstancia();
 
 $jefeRecintos = controlRecintos::obtenerInstancia();
-$vectorRecintos = $jefeRecintos->leerRecinto($_SESSION["idRecinto"]);
+$vectorRecintos = $jefeRecintos->leerRecinto($_SESSION['idRecinto']);
 //Con este vector tendria los contactos a mostrar en la seleccion de jugadores
 $vectorContactos = $jefeContactos->leerContactosUsuario($_SESSION['idUsuario']);
 
 //Toda la informacion de partida la vamos a manejar via variable de session desde aqui, similiar a lo que hace un "carrito de compras jaja"
+
 $_SESSION['fecha'] = $_POST['fecha'];
 $_SESSION['hora'] = $_POST['hora'];
 $_SESSION['cantidad'] = $_POST['cantidad'];
-
+$_SESSION['color']  = $_POST['color'];
 include('headerJugador.php'); 
 $json = new Services_JSON();
  ?> 
@@ -143,7 +144,7 @@ font-size: 15px;
       $.ajax({
           type:'post',
           cache:false,
-          url:"eleccionJugadores.php",
+          url:"nuevoPartido.php",
           data:{jObject:jObject},
           success:function(server){
             alert(server);
@@ -275,7 +276,7 @@ foreach ($vectorContactos as $Contacto) {
         <div class="modal-content">
            <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h3 class="modal-title">Solo un paso mas!</h3>
+            <h3 class="modal-title">Todo listo, solo un paso mas!</h3>
            </div>
            <div class="modal-body">
 
@@ -291,7 +292,7 @@ foreach ($vectorContactos as $Contacto) {
                       <div class="form-group">
                         <h2 class="center">¿Deseas agendar un tercer tiempo?<h2>
                         <button class="btn-submit">Si</button>
-                        <button class="btn-submit">No</button>
+                        <button class="btn-submit" onClick="setValue()">No</button>
                       </div>
                 
 

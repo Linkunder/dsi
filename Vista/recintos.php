@@ -2,7 +2,7 @@
 session_start();
 //PARA EFECTOS DE PRUEBA
  //No se ha conectado
-$_SESSION["idRecinto"]=NULL;
+$_SESSION['idRecinto']=NULL;
 if(isset($_GET["jugar"]) ){
     $jugar=$_GET["jugar"];
     }else{
@@ -221,8 +221,18 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
                 <label for="jugadores">Numero de jugadores</label>
                     <input type="int" name="cantidad"  class="form-control partido" required="required" title="Solo puede ingresar hasta 22 jugadores" pattern="^[0|1]\d{1}$|[0-9]|2+[0|1|2]">
 
-                     <input  name="idRecinto" class="hide" value="<?php echo $_SESSION["idRecinto"];?>"/>
+                     <input  name="idRecinto" class="hide" value="<?php echo $_SESSION['idRecinto'];?>"/>
 
+      </div>
+
+      </div>
+      </div>
+                 <div class="row">
+      <div class="col-sm-8">
+
+      <div class="form-group">
+                <label for="color">Color</label>
+                    <input type="text" name="color"  class="form-control partido" required="required" ">
       </div>
 
       </div>
