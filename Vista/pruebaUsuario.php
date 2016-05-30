@@ -18,7 +18,9 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 
 	<?php
 	foreach ($vectorUsuario as $Usuario) {
-		echo "Nombre: ".$Usuario->getNombre();	
+		echo "Nombre: ".$Usuario->getNombre();?>
+		<br/>
+		<?php
 		echo "Mail: ".$Usuario->getEmail();
 	}
 	?>
@@ -26,28 +28,52 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 	<br/>
 	<h1>Ingresar jugador al sistema</h1>
 	<form action="registrarUsuario.php" method="post">
-		<label for="id">ID: </label>
-		<input type="text" name="id" id="id"/><br/>
-		<label for="nombre">Nombre: </label>
-		<input type="text" name="nombre" id="nombre"/><br/>
-		<label for="apellido">Apellido: </label>
-		<input type="text" name="apellido" id="apellido"/><br/>
-		<label for="nick">Nickname: </label>
-		<input type="text" name="nick" id="nick"/><br/>
-		<label for="mail">Email: </label>
-		<input type="text" name="mail" id="mail"/><br/>
-		<label for="fecha">Fecha de Nacimiento: </label>
-		<input type="text" name="fecha" id="fecha"/><br/>
-		<label for="sexo">Sexo: </label>
-		<input type="text" name="sexo" id="sexo"/><br/>
-		<label for="ruta">Ruta Fotografia: </label>
-		<input type="text" name="ruta" id="ruta"/><br/>
-		<label for="fono">Telefono: </label>
-		<input type="text" name="fono" id="fono"/><br/>
-		<label for="estado">ID Estado: </label>
-		<input type="text" name="estado" id="estado"/><br/>
-		<label for="perfil">ID Perfil: </label>
-		<input type="text" name="perfil" id="perfil"/><br/>
+		<table>
+			<tr>
+				<th><label for="id">ID: </label></th>
+				<th><input type="text" name="id" id="id"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="nombre">Nombre: </label></th>
+				<th><input type="text" name="nombre" id="nombre"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="apellido">Apellido: </label></th>
+				<th><input type="text" name="apellido" id="apellido"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="nick">Nickname: </label></th>
+				<th><input type="text" name="nick" id="nick"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="mail">Email: </label></th>
+				<th><input type="text" name="mail" id="mail"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="fecha">Fecha de Nacimiento: </label></th>
+				<th><input type="text" name="fecha" id="fecha"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="sexo">Sexo: </label></th>
+				<th><input type="text" name="sexo" id="sexo"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="ruta">Ruta Fotografia: </label></th>
+				<th><input type="text" name="ruta" id="ruta"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="fono">Telefono: </label></th>
+				<th><input type="text" name="fono" id="fono"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="estado">ID Estado: </label></th>
+				<th><input type="text" name="estado" id="estado"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="perfil">ID Perfil: </label></th>
+				<th><input type="text" name="perfil" id="perfil"/><br/></th>
+			</tr>
+		</table>
 		<input type="submit" value="Aceptar">
 	</form>
 
@@ -62,28 +88,52 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 	?>
 
 		<form action="actualizarUsuario.php" method="post">
-		<label for="id">ID: </label>
-		<input type="text" name="id" id="id"/><br/>
-		<label for="nombre">Nombre: </label>
-		<input type="text" name="nombre" id="nombre"/><br/>
-		<label for="apellido">Apellido: </label>
-		<input type="text" name="apellido" id="apellido"/><br/>
-		<label for="nick">Nickname: </label>
-		<input type="text" name="nick" id="nick"/><br/>
-		<label for="mail">Email: </label>
-		<input type="text" name="mail" id="mail"/><br/>
-		<label for="fecha">Fecha de Nacimiento: </label>
-		<input type="text" name="fecha" id="fecha"/><br/>
-		<label for="sexo">Sexo: </label>
-		<input type="text" name="sexo" id="sexo"/><br/>
-		<label for="ruta">Ruta Fotografia: </label>
-		<input type="text" name="ruta" id="ruta"/><br/>
-		<label for="fono">Telefono: </label>
-		<input type="text" name="fono" id="fono"/><br/>
-		<label for="estado">ID Estado: </label>
-		<input type="text" name="estado" id="estado"/><br/>
-		<label for="perfil">ID Perfil: </label>
-		<input type="text" name="perfil" id="perfil"/><br/>
+		<table>
+			<tr>
+				<th><label for="id">ID: </label></th>
+				<th><input type="text" name="id" id="id"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="nombre">Nombre: </label></th>
+				<th><input type="text" name="nombre" id="nombre"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="apellido">Apellido: </label></th>
+				<th><input type="text" name="apellido" id="apellido"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="nick">Nickname: </label></th>
+				<th><input type="text" name="nick" id="nick"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="mail">Email: </label></th>
+				<th><input type="text" name="mail" id="mail"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="fecha">Fecha de Nacimiento: </label></th>
+				<th><input type="text" name="fecha" id="fecha"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="sexo">Sexo: </label></th>
+				<th><input type="text" name="sexo" id="sexo"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="ruta">Ruta Fotografia: </label></th>
+				<th><input type="text" name="ruta" id="ruta"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="fono">Telefono: </label></th>
+				<th><input type="text" name="fono" id="fono"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="estado">ID Estado: </label></th>
+				<th><input type="text" name="estado" id="estado"/><br/></th>
+			</tr>
+			<tr>
+				<th><label for="perfil">ID Perfil: </label></th>
+				<th><input type="text" name="perfil" id="perfil"/><br/></th>
+			</tr>
+		</table>
 		<input type="submit" value="Aceptar">
 	</form>
 
@@ -91,7 +141,7 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 
 	<?php 
 	$jefeUsuario3 = controlUsuarios::obtenerInstancia();
-	$vectorUsuario = $jefeUsuario3->leerUsuarios();
+	$vectorUsuario = $jefeUsuario3->obtenerUsuarios();
 	?>
 	<table>
 		<tr>

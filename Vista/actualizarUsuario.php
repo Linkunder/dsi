@@ -31,4 +31,7 @@ $nuevoUsuario->setIdPerfil($idPerfil);
 $jefeUsuario = controlUsuarios::obtenerInstancia();
 $jefeUsuario->actualizarUsuario($nuevoUsuario);
 
+echo "<script type='text/javascript'>alert('Jugador actualizado!');</script>";
+header("Location:pruebaUsuario.php");
+
 ?>
