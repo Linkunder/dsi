@@ -45,6 +45,13 @@ class controlUsuarios{
 		return $vectorData;
 	}
 
+	public function guardarImagen($idUsuario, $nombreFoto){
+		$vectorData=$this->persistenciaUsuario->guardarImagen($idUsuario, $nombreFoto);
+		if (count($vectorData)==0)
+			return null;
+		return $vectorData;
+	}
+
 }
 
 

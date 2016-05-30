@@ -140,7 +140,7 @@ $jefeContacto = controlContactos::obtenerInstancia();
                   <div>
                     <table>
                       <tr>
-                        <td><img src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /></td>
+                        <td class="resize-image"><img class="resize" src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /></td>
                       </tr>
                       <tr>
                         <td><h5 id="detalle-jugador"><?php echo $key->getNombre()." ".$key->getApellido();?></h5></td>

@@ -181,7 +181,7 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
                     <li>
                       <table>
                         <tr>
-                          <td><img src="images/usuarios/mini-carousel/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /></td>
+                          <td><img class="resize-resumen" src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /></td>
                         </tr>
                         <tr>
                           <td><h6><?php echo $key->getNombre()." ".$key->getApellido();?></h6></td>

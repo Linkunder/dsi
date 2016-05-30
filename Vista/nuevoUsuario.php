@@ -3,6 +3,7 @@
 include_once('../TO/Usuario.php');
 include_once('../Logica/controlUsuarios.php');
 
+session_start();
 
 $nombre = $_POST['nombre'];
 $apellido= $_POST['apellido'];
@@ -11,16 +12,7 @@ $email= $_POST['mail'];
 $fechaNacimiento= $_POST['fecha'];
 $sexo= $_POST['sexo'];
 $telefono= $_POST['telefono'];
-$rutaFotografia = $_POST['foto'];
 
-echo $nombre;
-echo $apellido;
-echo $nickname;
-echo $email;
-echo $fechaNacimiento;
-echo $sexo;
-echo $telefono;
-echo $rutaFotografia;
 
 $nuevoUsuario = new Usuario();
 $nuevoUsuario->setNombre($nombre);
@@ -30,12 +22,10 @@ $nuevoUsuario->setEmail($email);
 $nuevoUsuario->setFechaNacimiento($fechaNacimiento);
 $nuevoUsuario->setSexo($sexo);
 $nuevoUsuario->setTelefono($telefono);
-$nuevoUsuario->setRutaFotografia($rutaFotografia);
 
 $jefeUsuario = controlUsuarios::obtenerInstancia();
 $jefeUsuario->crearUsuario($nuevoUsuario);
 
-echo "<script type='text/javascript'>alert('Jugador agregado!');</script>";
-header("Location:plantilla.html");
+header("Location:subirImagen.php");
 
 ?>
