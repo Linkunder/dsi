@@ -1,19 +1,19 @@
 <?php
 
-include_once('../../TO/Partido.php');
-include_once('../../LOGICA/controlPartidos.php');
-include_once('../../TO/Equipo.php');
-include_once('../../LOGICA/controlEquipos.php');
-include_once('../../TO/Recinto.php');
-include_once('../../LOGICA/controlRecintos.php');
-include_once('../../TO/Equipo.php');
-include_once('../../LOGICA/controlEquipos.php');
-include_once('../../TO/Usuario.php');
-include_once('../../LOGICA/controlUsuarios.php');
-include_once('../../TO/TercerTiempo.php');
-include_once('../../LOGICA/controlTercerTiempo.php');
-include_once('../../TO/Local.php');
-include_once('../../LOGICA/controlLocales.php');
+include_once('../TO/Partido.php');
+include_once('../LOGICA/controlPartidos.php');
+include_once('../TO/Equipo.php');
+include_once('../LOGICA/controlEquipos.php');
+include_once('../TO/Recinto.php');
+include_once('../LOGICA/controlRecintos.php');
+include_once('../TO/Equipo.php');
+include_once('../LOGICA/controlEquipos.php');
+include_once('../TO/Usuario.php');
+include_once('../LOGICA/controlUsuarios.php');
+include_once('../TO/TercerTiempo.php');
+include_once('../LOGICA/controlTercerTiempo.php');
+include_once('../TO/Local.php');
+include_once('../LOGICA/controlLocales.php');
 
 $jefePartido = controlPartido::obtenerInstancia();
 $jefeRecinto = controlRecintos::obtenerInstancia();
