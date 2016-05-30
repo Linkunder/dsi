@@ -48,12 +48,6 @@ foreach ($recinto as $Recinto) {
 	$direccionRecinto = $Recinto->getDireccion();
 }
 
-$idLocal=0;
-$tercerTiempo = $jefeTercer->leerTercerTiempo($idTercer);
-foreach ($tercerTiempo as $TercerTiempo) {
-	$idLocal = $TercerTiempo->getIdLocal();
-}
-
 $existenciaTercerTiempo=0;
 //partido
 $partidoSeleccionado = $jefePartido->leerPartido($idPartido);
@@ -61,13 +55,21 @@ foreach ($partidoSeleccionado as $key) {
 	$existenciaTercerTiempo=$key->getIdTercerTiempo();
 }
 
+$idLocal=0;
+$tercerTiempo = $jefeTercer->leerTercerTiempo($existenciaTercerTiempo);
+foreach ($tercerTiempo as $TercerTiempo) {
+	$idLocal = $TercerTiempo->getIdLocal();
+}
+
+
+
 
 $localTercerTiempo = $jefeLocal->leerLocal($idLocal);
 
 if ($existenciaTercerTiempo != 0) { // Si es 0, no hay tercer tiempo 
 foreach ($localTercerTiempo as $Local) {
 	$nombreLugar = $Local->getNombre();
-	$direcciontercertiempo = $Local -> getDireccion();
+	$direcciontercertiempo = $Local->getDireccion();
 	$imagenLugar = $Local->getRutaFoto();
 }
 }
@@ -122,7 +124,7 @@ $tercertiempo = $nombreLugar;
 //recibir existencia de 3er tiempo
 $direcciontercertiempo = $direcciontercertiempo;
 //direccion tercer tiempo
-echo "$direcciontercertiempo";
+
 
 $message = "<html>";
 $message .= "<head>";
@@ -154,10 +156,11 @@ $message .= "<td>Monto a Pagar por persona:</td>";
 $message .= "<td>".$pagoporpersona."</td>";
 $message .= "</tr>";
 $message .= "</table>";
-if($tercertiempo!=NULL){
-	$message .= "<p>Tambien se te ha invitado a un evento post partido!</p>";
+
+if($existenciaTercerTiempo!=0){
+$message .= "<p>Tambien se te ha invitado a un evento post partido!</p>";
 	$message .= "Este tercer tiempo sera en: " .$tercertiempo. " mapa de referencia:";
-	$message .= '<div style="height:auto; width:auto;"><img src="http://maps.googleapis.com/maps/api/staticmap?center='. $direcciontercertiempo . '&zoom=14&scale=false&size=600x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:%7C'.$direcciontercertiempo.'"" alt="Website Change Request" /></div>';
+$message .= '<div style="height:auto; width:auto;"><img src="http://maps.googleapis.com/maps/api/staticmap?center='. $direcciontercertiempo . ',Chillan&zoom=14&scale=false&size=600x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:%7C'.$direcciontercertiempo.' Chillan, Chile" alt="Website Change Request" /></div>';
 }
 $message .= "<center><b><p>© 2016 DSI., MatchDay.</p></b></center>";
 $message .= "</body>";
