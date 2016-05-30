@@ -16,7 +16,7 @@ include('header.php');
           </div>
         </div>
           <div class="row">
-            <div class="col-md-12 col-md-offset-3 ">
+            <div class="col-sm-12 col-sm-offset-3">
               <form  method="post" action="nuevoUsuario.php" class="design-form" >
 
                 <div class="row">
@@ -32,15 +32,16 @@ include('header.php');
                       <input type="text" name="apellido" class="form-control" placeholder="Apellido" required="required">
                     </div>
                   </div>
-                  </div>
+                </div>
 
-                  <div class="row">
+                <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
                       <input type="text" name="nickname" class="form-control" placeholder="Nickname" required="required">
                     </div>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -48,6 +49,7 @@ include('header.php');
                     </div>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -55,6 +57,7 @@ include('header.php');
                     </div>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -79,24 +82,13 @@ include('header.php');
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-6  ">
-
-                    <form enctype="multipart/form-data">
-                      <div class="form-group">
-                          <label>Sube una imagen...</label>
-                          <input name="foto" id="file-1" type="file" class="file" multiple=true data-preview-file-type="any">
-                        <button type="submit" class="btn-submit">Siguiente</button>
-                      </div>
-                    </form>
-
-
-                    </div>
+                  <div class="col-sm-6">
+                  <button type="submit" class="btn-submit">Siguiente</button>
                 </div>
-
              
+                </div>
               </form>   
-
-            </div>
+              </div>
           </div>
       </div>
     </div>   

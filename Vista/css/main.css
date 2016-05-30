@@ -930,6 +930,8 @@ ul.address {
   margin-top: 40px;
 }
 
+
+
 #footer {
   color:#fff;
 }
@@ -1385,3 +1387,14 @@ ul.address {
   text-transform: uppercase;
 
 }
+
+.resize{
+  height: 150px;
+  width: 160px;
+}
+
+.resize-resumen{
+  height: 90px;
+  width: 100px;
+}
+
