@@ -47,20 +47,22 @@ $_SESSION['idLocal'] = $idLocal;
 
 
 
+
+
 <div class="container">
     <div class="modal fade" id="modal-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h3 class="modal-title">Define la hora del encuentro</h3>
+                    <p class="label-black-tittle">Define la hora del encuentro</p>
                 </div>
                 <div class="modal-body">
                     <form  method="post" action="nuevoTercerTiempo.php" class="design-form" >
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="hora">Hora</label>
+                                    <p class="label-black-p" for="hora">Hora</p>
                                     <input type="time" name="hora" placeholder="Hora" class="form-control partido" required="required" min="09:00:00" max="23:00:00">
                                 </div>
                             </div>
@@ -69,7 +71,7 @@ $_SESSION['idLocal'] = $idLocal;
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="descripcion">Descripción</label>
+                                    <p class="label-black-p" for="descripcion">Descripción</p>
                                     <input type="text" name="descripcion"  class="form-control partido" required="required">
                                 </div>
                             </div>

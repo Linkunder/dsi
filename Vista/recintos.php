@@ -181,8 +181,12 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
     
   </div>
 </div>
+
+
+
+
+
   <div class="container">
-    
     <div class="modal fade" id="modal-1">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">

@@ -42,6 +42,8 @@ h3 {
   color: #fff;
 }
 
+
+
 .parallax input[type="text"],
 .parallax input[type="text"]:hover,
 .parallax input[type="email"],
@@ -998,6 +1000,20 @@ ul.address {
 /*************************
 ********Extras**********
 **************************/
+
+.label-black-tittle{
+  color:#000;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.label-black-p{
+  color:#000;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .div-btn-a{
   padding: 1em;
 }
