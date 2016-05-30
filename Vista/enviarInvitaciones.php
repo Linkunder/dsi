@@ -87,7 +87,7 @@ $vectorPartido = $jefePartido->leerPartido($idPartido);
 
 
 
-echo "$idPartido $idRecinto $idEquipo $idTercer";
+
 $to = "partidomatchday@gmail.com";
 foreach ($vectorEquipo as $Jugador) {
 					$to .= ", " .$Jugador -> getEmail();
@@ -128,7 +128,7 @@ $message .= "<head>";
 $message .= "<title>HTML email</title>";
 $message .= "</head>";
 $message .= "<body>";
-$message .= '<div style="height:auto; width:auto;"><img src="http://i.imgur.com/fuWkXQT.png" alt="Website Change Request" /></div>';
+$message .= '<div style="height:auto; width:auto;"><img src="" alt="Website Change Request" /></div>';
 $message .= '<div style="height:auto; width:auto;"><img src="http://maps.googleapis.com/maps/api/staticmap?center='. $dir . '&zoom=14&scale=false&size=600x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:%7C'.$dir.'" alt="Website Change Request" /></div>';
 $message .= "<p>El jugador " .$nombre.  ", te ha invitado a un partido.</p>";
 $message .= "<table>";
@@ -158,7 +158,7 @@ if($tercertiempo!=NULL){
 	$message .= "Este tercer tiempo sera en: " .$tercertiempo. " mapa de referencia:";
 	$message .= '<div style="height:auto; width:auto;"><img src="http://maps.googleapis.com/maps/api/staticmap?center='. $direcciontercertiempo . '&zoom=14&scale=false&size=600x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:%7C'.$direcciontercertiempo.'"" alt="Website Change Request" /></div>';
 }
-$message .= "<center><b><p>© 2015 Ing.SW., Infosport.</p></b></center>";
+$message .= "<center><b><p>© 2016 DSI., MatchDay.</p></b></center>";
 $message .= "</body>";
 $message .= "</html>";
 
@@ -169,8 +169,8 @@ $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 // More headers
-$headers .= 'From: <partidomatchday@gmail.com>' . "\r\n"; //quien envia, se usa por defecto Infosport2k15@gmail.com
-$headers .= 'Cc: partidomatchday@gmail' . "\r\n"; // se envia con copia a infosport, no es necesario enviarle copia al creador del partido ya que se hace antes.
+$headers .= 'From: <partidomatchday@gmail.com>' . "\r\n"; //
+$headers .= 'Cc: partidomatchday@gmail.com' . "\r\n"; // 
 
 mail($to,$subject,$message,$headers);
  //Email response
