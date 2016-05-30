@@ -29,6 +29,13 @@ class controlLocales{
 		return $vectorData;
 	}
 
+	public function obtenerLocales(){
+		$vectorData=$this->persistenciaLocal->obtenerLocales();
+		if (count($vectorData)==0)
+			return null;
+		return $vectorData;
+	}
+
 	public function actualizarLocal($local){
 		$this->persistenciaLocal->actualizarLocal($local);
 	}

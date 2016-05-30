@@ -232,7 +232,7 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
 
       <div class="form-group">
                 <label for="color">Color</label>
-                    <input type="text" name="color"  class="form-control partido" required="required" ">
+                    <input type="text" name="color"  class="form-control partido" required="required">
       </div>
 
       </div>

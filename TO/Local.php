@@ -37,15 +37,15 @@ class Local{
 		$this->nombre = $nombre;
 	}
 
-	function setDireccion(){
+	function setDireccion($direccion){
 		$this->direccion = $direccion;
 	}
 
-	function setRutaFoto(){
+	function setRutaFoto($rutaFoto){
 		$this->rutaFoto = $rutaFoto;
 	}
 
-	function setLinkMapa(){
+	function setLinkMapa($linkMapa){
 		$this->linkMapa = $linkMapa;
 	}
 

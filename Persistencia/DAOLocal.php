@@ -27,7 +27,30 @@ class DAOLocal{
 		$result = mysql_query($query,$link) or die (mysql_error());
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
-			$local = new Categoria();
+			$local = new Local();
+			$local->setIdLocal($row['idLocal']);
+			$local->setNombre($row['nombre']);
+			$local->setDireccion($row['direccion']);
+			$local->setRutaFoto($row['rutaFotografia']);
+			$local->setLinkMapa($row['linkMapa']);
+			$vectorData[$i]= $local;
+			$i++;
+		}
+		mysql_close($link);
+		if(empty($vectorData)){
+			return null;
+		}
+		return $vectorData;	
+	}
+
+	public function obtenerLocales(){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT * FROM local";
+		$result = mysql_query($query,$link) or die (mysql_error());
+		$i = 0;
+		while ($row = mysql_fetch_array($result)) {
+			$local = new Local();
+			$local->setIdLocal($row['idLocal']);
 			$local->setNombre($row['nombre']);
 			$local->setDireccion($row['direccion']);
 			$local->setRutaFoto($row['rutaFotografia']);
