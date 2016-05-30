@@ -72,7 +72,7 @@ $_SESSION['idLocal'] = $idLocal;
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <p class="label-black-p" for="descripcion">Descripción</p>
-                                    <input type="text" name="descripcion"  class="form-control partido" required="required">
+                                    <input type="textarea" name="descripcion" class="form-control local" required="required">
                                 </div>
                             </div>
                         </div>

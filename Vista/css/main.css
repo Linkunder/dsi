@@ -51,11 +51,16 @@ h3 {
 .parallax input[type="url"],
 .parallax input[type="url"]:hover,
 .parallax input[type="password"],
-.parallax input[type="password"]:hover,
+.parallax input[type="password"]:hover{
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+
 .parallax textarea,
 .parallax textarea:hover {
   font-weight: bold;
-  color: #FFFFFF;
+  color: #000000;
 }
 
 .btn {
@@ -1266,6 +1271,16 @@ ul.address {
 .partido {
   display: inline-block;
   background-color: transparent;
+  height: 50px;
+  border-radius: 20;
+  box-shadow: none;
+  color: #000000;
+  font-weight: bold;
+}
+
+.local {
+  display: inline-block;
+  background-color: #FFFFFF;
   height: 50px;
   border-radius: 20;
   box-shadow: none;

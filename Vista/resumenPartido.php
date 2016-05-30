@@ -393,8 +393,8 @@ foreach ($vectorTercerTiempo as $key ) {
                     ?>
       </div>
     </div>
-
-<center><button class="btn btn-invitar" href='enviarInvitaciones.php'>Enviar invitaciones</button></center>
+<a href="enviarInvitaciones.php">
+<center><button class="btn btn-invitar" Enviar invitaciones</button></center></a>
 
 
 
