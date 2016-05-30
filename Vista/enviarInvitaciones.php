@@ -72,7 +72,7 @@ foreach ($localTercerTiempo as $Local) {
 }
 }
 
-$vectorEquipo = $jefeEquipo->obtenerJugadores($idPartido);
+
 
 $vectorPartido = $jefePartido->leerPartido($idPartido);
 			foreach ($vectorPartido as $Partido) {
@@ -85,13 +85,14 @@ $vectorPartido = $jefePartido->leerPartido($idPartido);
 			}
 
 
-
+$vectorEquipo = $jefeEquipo->obtenerJugadores($idPartido);
 
 
 $to = "partidomatchday@gmail.com";
 foreach ($vectorEquipo as $Jugador) {
-					$to .= ", " .$Jugador -> getEmail();
-					;
+					$aux = $to;
+					$to = $aux.", ".$Jugador->getEmail();
+					
 				}	
 //foreach para rellenar el campo con los correos de los jugadores
 //$query = "SELECT correo FROM jugador WHERE id_jugador IN (SELECT id_jugador FROM equipo where id_partido in (SELECT id_partido FROM partido))";
