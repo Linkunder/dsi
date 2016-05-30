@@ -32,6 +32,6 @@ $jefeUsuario = controlUsuarios::obtenerInstancia();
 $jefeUsuario->crearUsuario($nuevoUsuario);
 
 echo "<script type='text/javascript'>alert('Jugador agregado!');</script>";
-header("Location:pruebaUsuario.php");
+header("Location:pruebas.php");
 
 ?>

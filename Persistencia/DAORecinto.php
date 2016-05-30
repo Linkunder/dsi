@@ -87,7 +87,8 @@ class DAORecinto{
 
 	public function actualizarRecinto($recinto){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "UPDATE idRecinto SET 
+		$query = "UPDATE recinto SET 
+		idRecinto = '".$recinto->getIdRecinto()."',
 		nombre = '".$recinto->getNombre()."',
 		tipo = '".$recinto->getTipo()."',
 		superficie ='".$recinto->getSuperficie()."',
