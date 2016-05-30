@@ -80,6 +80,27 @@ class DAOTercerTiempo{
 		return $vectorData;		
 	}
 
+	public function leerTercerTiempo($idTercerTiempo){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT * FROM tercertiempo WHERE idTercerTiempo = '$idTercerTiempo'";
+		$result = mysql_query($query,$link) or die (mysql_error());
+		$i= 0;
+		while ($row = mysql_fetch_array($result)){
+			$tercerTiempo = new TercerTiempo();
+			$tercerTiempo->setIdTercerTiempo($row['idTercerTiempo']);
+			$tercerTiempo->setDescripcion($row['descripcion']);
+			$tercerTiempo->setHora($row['hora']);
+			$tercerTiempo->setIdLocal($row['idLocal']);
+			$vectorData[$i]= $tercerTiempo;
+			$i++;			
+		}		
+				mysql_close($link);
+		if(empty($vectorData)){
+			return null;
+		}
+		return $vectorData;		
+	}
+
 }
 
 ?>

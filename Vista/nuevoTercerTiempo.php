@@ -27,9 +27,12 @@ $idUltimoTercer = end($vectorTercer)->getIdTercerTiempo();
 
 $idPartido= $_SESSION["idPartido"];
 
+$_SESSION['horaTercer'] = $hora;
+$_SESSION['descripcion'] = $descripcion;
+
 $jefePartido->actualizarInformacion($idPartido, $idUltimoTercer);
 
-header("Location:resumenPartido.php");
+header("Location:resumenPartido.php?tercertiempo=$idUltimoTercer");
 
 
 

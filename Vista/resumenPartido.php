@@ -113,6 +113,7 @@ $idRecinto= $_SESSION['idRecinto']; //Recinto seleccionado
 $cantidad = $_SESSION['cantidad']; //Cantidad de jugadores seleccionados
 $fecha =    $_SESSION['fecha'];
 $hora =     $_SESSION['hora'];
+$local = $_SESSION['idLocal'];
 
 include_once('../TO/Usuario.php');
 include_once('../Logica/controlUsuarios.php');
@@ -126,12 +127,26 @@ include_once('../Logica/controlRecintos.php');
 include_once('../TO/Local.php');
 include_once('../Logica/controlLocales.php');
 
+include_once('../TO/TercerTiempo.php');
+include_once('../Logica/controlTercerTiempo.php');
+
+
 $jefeEquipo = controlEquipos::obtenerInstancia();
 $jefeUsuarios = controlUsuarios::obtenerInstancia();
 $jefeRecintos = controlRecintos::obtenerInstancia();
+$jefeLocales = controlLocales::obtenerInstancia();
+$jefeTercerTiempo = controlTercerTiempo::obtenerInstancia();
 
 $vectorUsuarios = $jefeUsuarios->leerUsuario($idUsuario);
 $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
+$vectorLocales = $jefeLocales->leerLocal($local);
+
+$vectorTercerTiempo = $jefeTercerTiempo->leerTercertiempo($tercertiempo);
+
+foreach ($vectorTercerTiempo as $key ) {
+  $horaTercer = $key->getHora();
+  $descripcion = $key->getDescripcion();
+}
 
 
 ?>
@@ -146,7 +161,7 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
 <div id="contact-nosotros" class="parallax">
   <div class="container">
      <?php
-      if ($tercertiempo==0){
+      if ($tercertiempo==0){ // SI NO HAY TERCER TIEMPO 
         ?>
     <div class="row">
       <h2>Resumen del partido</h2>
@@ -241,9 +256,9 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
 <center><button class="btn btn-invitar" href='enviarInvitaciones.php'>Enviar invitaciones</button></center>
 
     <?php
-      } else {
+      } else {       // SI HAY TERCER TIEMPO
         ?>
-            <div class="row">
+        <div class="row">
       <h2>Resumen del partido</h2>
       <div class="col-md-4">
           <h4>Información del partido</h4>
@@ -270,9 +285,52 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
               <th>Hora:&nbsp;</h>
               <td><?php echo $hora;?></td>
             </tr>
+            <tr>
+              <th>Hora Tercer Tiempo:&nbsp;</h>
+              <td><?php echo $horaTercer;?></td>
+            </tr>
+            <tr>
+              <th>Descripción:&nbsp;</h>
+              <td><?php echo $descripcion;?></td>
+            </tr>
             
           </table>
-          <div class="row">
+          
+      </div>
+
+
+
+      <div class="col-md-4">
+        <?php
+            foreach ($vectorRecintos as $key ) {
+            ?>
+            <h4>Cancha: <?php echo $key->getNombre();?></h4>
+            <div class="folio-image">
+                  <img class="img-responsive" src="images/recintos/<?php echo  $key->getRutaFotografia(); ?>" alt="">
+                </div>
+           
+      </div>
+
+
+      <div class="col-md-4">
+        <h4>¿Cómo llegar?</h4>
+        <iframe
+          width="100%" height="336px" frameborder="5" style="border:0"  maptype="satellite"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDR2WyVnnd9GsSTKys5OEkowPu41kMpEUs
+          &q=Chile  + Chillan + <?php echo $key->getDireccion();?>" allowfullscreen>
+          </iframe>
+           <?php
+                    }
+                    ?>
+      </div>
+     
+
+    </div><!-- /row -->
+
+    <div class="row">
+
+            <div class="col-md-4">
+        <div class="row">
 
 
             <div class="container-mini demo-1-mini">
@@ -307,31 +365,34 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
 
 
             </div>
+           
       </div>
+
+
       <div class="col-md-4">
         <?php
-            foreach ($vectorRecintos as $key ) {
+            foreach ($vectorLocales as $key ) {
             ?>
-            <h4>Cancha: <?php echo $key->getNombre();?></h4>
+            <h4>Local: <?php echo $key->getNombre();?></h4>
             <div class="folio-image">
-                  <img class="img-responsive" src="images/recintos/<?php echo  $key->getRutaFotografia(); ?>" alt="">
+                  <img class="img-responsive" src="images/locales/<?php echo  $key->getRutaFoto(); ?>" alt="">
                 </div>
            
       </div>
+
+      
       <div class="col-md-4">
-        <h4>¿Cómo llegar?</h4>
+        <h4>¿Cómo llegar al tercer tiempo?</h4>
         <iframe
           width="100%" height="336px" frameborder="5" style="border:0"  maptype="satellite"
           src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDR2WyVnnd9GsSTKys5OEkowPu41kMpEUs
           &q=Chile  + Chillan + <?php echo $key->getDireccion();?>" allowfullscreen>
-  </iframe>
-   <?php
-            }
-            ?>
+          </iframe>
+           <?php
+                    }
+                    ?>
       </div>
-     
-
-    </div><!-- /row -->
+    </div>
 
 <center><button class="btn btn-invitar" href='enviarInvitaciones.php'>Enviar invitaciones</button></center>
 
