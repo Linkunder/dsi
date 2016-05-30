@@ -128,10 +128,11 @@ $jefeUsuarios = controlUsuarios::obtenerInstancia();
 $jefeRecintos = controlRecintos::obtenerInstancia();
 $jefeLocales = controlLocales::obtenerInstancia();
 
-$vectorLocales = $jefeLocales->obtenerLocales();
 $vectorUsuarios = $jefeUsuarios->leerUsuario($idUsuario);
 $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
 
+
+$vectorLocales = $jefeLocales->obtenerLocales();
 
 ?>
 

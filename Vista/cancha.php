@@ -289,7 +289,7 @@ foreach ($vectorContactos as $Contacto) {
                       <div class="form-group">
                         <h2 class="center">¿Deseas agendar un tercer tiempo?<h2>
                        
-                        <button class="btn-submit" type="submit" onClick="setValue()" formaction="hola.php">Si</button>
+                        <button class="btn-submit" type="submit" onClick="setValue()" formaction="tercerTiempo.php">Si</button>
                        
                         <button type="submit" class="btn-submit" onClick="setValue()" >No</button>
                         

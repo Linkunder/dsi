@@ -10,6 +10,13 @@ $_SESSION['user']="Carrasco";
 $_SESSION['idUsuario']="1";
 ///////////////////////////////
 
+if(isset($_GET["tercertiempo"]) ){
+  $tercertiempo=$_GET["tercertiempo"];
+}else{
+  $tercertiempo=0;
+}
+
+
 ?>
 <head>
   <meta charset="utf-8">
@@ -116,6 +123,9 @@ include_once('../Logica/controlEquipos.php');
 include_once('../TO/Recinto.php');
 include_once('../Logica/controlRecintos.php');
 
+include_once('../TO/Local.php');
+include_once('../Logica/controlLocales.php');
+
 $jefeEquipo = controlEquipos::obtenerInstancia();
 $jefeUsuarios = controlUsuarios::obtenerInstancia();
 $jefeRecintos = controlRecintos::obtenerInstancia();
@@ -135,6 +145,9 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
 <!-- Aqui empieza la pagina -->
 <div id="contact-nosotros" class="parallax">
   <div class="container">
+     <?php
+      if ($tercertiempo==0){
+        ?>
     <div class="row">
       <h2>Resumen del partido</h2>
       <div class="col-md-4">
@@ -162,6 +175,102 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
               <th>Hora:&nbsp;</h>
               <td><?php echo $hora;?></td>
             </tr>
+
+          </table>
+          <div class="row">
+
+
+            <div class="container-mini demo-1-mini">
+              <h4>Jugadores</h4>
+              <?php
+              /* Aqui debo capturar el id del partido que se jugara */
+              $vectorEquipo = $jefeEquipo->obtenerJugadores($idPartido);
+              ?>
+              <div class="main-mini">
+                <ul id="carousel" class="elastislide-list-mini">
+                  <?php
+                  foreach ($vectorEquipo as $key) {
+                    ?>
+                    <!-- Deben ser imagenes chicas .. al subirlas se podrian redimensionar. -->
+                    <li>
+                      <table>
+                        <tr>
+                          <td><img class="resize-resumen" src="images/usuarios/<?php echo $key->getRutaFotografia(); ?>" alt="image01" /></td>
+                        </tr>
+                        <tr>
+                          <td><h6><?php echo $key->getNombre()." ".$key->getApellido();?></h6></td>
+                        </tr>
+                      </table>
+                      </li>
+                      <?php
+                    }
+                    ?>
+                  </ul> <!-- End Elastislide Carousel -->
+                </div>
+              </div>
+
+
+
+            </div>
+      </div>
+      <div class="col-md-4">
+        <?php
+            foreach ($vectorRecintos as $key ) {
+            ?>
+            <h4>Cancha: <?php echo $key->getNombre();?></h4>
+            <div class="folio-image">
+                  <img class="img-responsive" src="images/recintos/<?php echo  $key->getRutaFotografia(); ?>" alt="">
+                </div>
+           
+      </div>
+      <div class="col-md-4">
+        <h4>¿Cómo llegar?</h4>
+        <iframe
+          width="100%" height="336px" frameborder="5" style="border:0"  maptype="satellite"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDR2WyVnnd9GsSTKys5OEkowPu41kMpEUs
+          &q=Chile  + Chillan + <?php echo $key->getDireccion();?>" allowfullscreen>
+  </iframe>
+   <?php
+            }
+            ?>
+      </div>
+     
+
+    </div><!-- /row -->
+
+<center><button class="btn btn-invitar" href='enviarInvitaciones.php'>Enviar invitaciones</button></center>
+
+    <?php
+      } else {
+        ?>
+            <div class="row">
+      <h2>Resumen del partido</h2>
+      <div class="col-md-4">
+          <h4>Información del partido</h4>
+          <table class="table table-bordered center">
+            <tr>
+              <th>Organizador:&nbsp;</th>
+              <?php
+              foreach ($vectorUsuarios as $key ) {
+              ?>
+              <td><?php echo $key->getNombre()." ".$key->getApellido();?></td>
+              <?php
+              }
+              ?>
+            </tr>
+            <tr>
+              <th>Jugadores:&nbsp;</th>
+              <td><?php echo $cantidad;?></td>
+            </tr>
+            <tr>
+              <th>Fecha:&nbsp;</th>
+              <td><?php echo $fecha;?></td>
+            </tr>
+            <tr>
+              <th>Hora:&nbsp;</h>
+              <td><?php echo $hora;?></td>
+            </tr>
+            
           </table>
           <div class="row">
 
@@ -227,6 +336,12 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
 <center><button class="btn btn-invitar" href='enviarInvitaciones.php'>Enviar invitaciones</button></center>
 
 
+
+
+
+        <?php
+      }
+      ?>
   </div> 
 </div> 
 

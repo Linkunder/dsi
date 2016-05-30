@@ -45,6 +45,10 @@ class controlPartidos{
 		return $vectorData;
 	}
 
+	public function actualizarInformacion($idPartido, $idUltimoTercer){
+		$this->persistenciaPartido->actualizarInformacion($idPartido, $idUltimoTercer);
+	}
+
 }
 
 

@@ -88,6 +88,15 @@ class DAOPartido{
 		mysql_close($link);
 	}
 
+	public function actualizarInformacion($idPartido, $idUltimoTercer){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "UPDATE partido SET 
+		idTercerTiempo='$idUltimoTercer'
+		WHERE idPartido = '$idPartido'";
+		mysql_query($query,$link) or die (mysql_error());
+		mysql_close($link);
+	}
+
 
 
 }

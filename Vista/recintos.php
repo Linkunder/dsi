@@ -3,6 +3,8 @@ session_start();
 //PARA EFECTOS DE PRUEBA
  //No se ha conectado
 $_SESSION['idRecinto']=NULL;
+
+
 if(isset($_GET["jugar"]) ){
     $jugar=$_GET["jugar"];
     }else{

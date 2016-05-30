@@ -1,5 +1,7 @@
 <?php
 
+include_once('Conexion.php');
+
 class DAOTercerTiempo{
 
 	private $conexionBD;

@@ -80,8 +80,4 @@ $nuevoEquipo->setIdPartido($idPartido);
 $jefeEquipo->crearEquipo($nuevoEquipo);
 
 
-
-header("Location:quienesSomos.php");
-
-
 ?>

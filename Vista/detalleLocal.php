@@ -1,11 +1,14 @@
 <?php
 
+session_start();
 include_once('../TO/Local.php');
 include_once('../Logica/controlLocales.php');
 
 $jefeLocales = controlLocales::obtenerInstancia();
-$idLocal = $_GET['id_local'];
 
+// Local seleccionado
+$idLocal = $_GET['id_local'];
+$_SESSION['idLocal'] = $idLocal;
 
 
 ?>
@@ -53,8 +56,7 @@ $idLocal = $_GET['id_local'];
                     <h3 class="modal-title">Define la hora del encuentro</h3>
                 </div>
                 <div class="modal-body">
-                    <form  method="post" action="resumenPartido.php" class="design-form" >
-
+                    <form  method="post" action="nuevoTercerTiempo.php" class="design-form" >
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
@@ -76,7 +78,7 @@ $idLocal = $_GET['id_local'];
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <button type="submit" class="btn-submit">Siguiente</button>
+                                    <button type="submit" class="btn-submit" onClick="enviar()" >Siguiente</button>
                                 </div>
                             </div>
                         </div>
@@ -92,9 +94,18 @@ $idLocal = $_GET['id_local'];
 
 
 
+<script type="text/javascript">
+function enviar(){
+    location.href="resumenPartido.php";
+}
+</script>
+
+
+
 
 <script src="http://maps.googleapis.com/maps/api/js"></script>
 <script>
+
 function initialize() {
   var mapProp = {
     center:new google.maps.LatLng(-36.602459, -72.077014),
