@@ -5,9 +5,9 @@ include_once('../Persistencia/DAOTercerTiempo.php');
 
 		private static $instancia;
 		private $persistenciaTercerTiempo;
-	}
+	
 
-	public function __construct(){
+	private function __construct(){
 		$this->persistenciaTercerTiempo = new DAOTercerTiempo();
 	}
 
