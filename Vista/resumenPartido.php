@@ -224,7 +224,7 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
 
     </div><!-- /row -->
 
-<center><button class="btn btn-invitar">Enviar invitaciones</button></center>
+<center><button class="btn btn-invitar" href='enviarInvitaciones.php'>Enviar invitaciones</button></center>
 
 
   </div> 
