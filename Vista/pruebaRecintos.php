@@ -31,7 +31,7 @@ $vectorRecintos = $jefeRecinto->leerRecinto($id);
 		<table>
 			<tr>
 				<th><label for="id">ID: </label></th>
-				<th><input type="text" name="id" id="id"/><br/></th>
+				<th><input type="number" name="id" id="id"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="nombre">Nombre: </label></th>
@@ -47,7 +47,7 @@ $vectorRecintos = $jefeRecinto->leerRecinto($id);
 			</tr>
 			<tr>
 				<th><label for="precio">Precio: </label></th>
-				<th><input type="text" name="precio" id="precio"/><br/></th>
+				<th><input type="number" name="precio" id="precio"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="direccion">Direccion: </label></th>
@@ -63,19 +63,19 @@ $vectorRecintos = $jefeRecinto->leerRecinto($id);
 			</tr>
 			<tr>
 				<th><label for="canchas">Canchas: </label></th>
-				<th><input type="text" name="canchas" id="canchas"/><br/></th>
+				<th><input type="number" name="canchas" id="canchas"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="puntuacion">Puntuacion: </label></th>
-				<th><input type="text" name="puntuacion" id="puntuacion"/><br/></th>
+				<th><input type="number" name="puntuacion" id="puntuacion"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="fono">Telefono: </label></th>
-				<th><input type="text" name="fono" id="fono"/><br/></th>
+				<th><input type="number" name="fono" id="fono"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="estado">ID Estado: </label></th>
-				<th><input type="text" name="estado" id="estado"/><br/></th>
+				<th><input type="number" name="estado" id="estado"/><br/></th>
 			</tr>
 		</table>
 		<input type="submit" value="Aceptar">
@@ -92,10 +92,10 @@ $vectorRecintos = $jefeRecinto->leerRecinto($id);
 	?>
 
 		<form action="actualizarRecinto.php" method="post">
-		<table>
+				<table>
 			<tr>
 				<th><label for="id">ID: </label></th>
-				<th><input type="text" name="id" id="id"/><br/></th>
+				<th><input type="number" name="id" id="id"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="nombre">Nombre: </label></th>
@@ -111,7 +111,7 @@ $vectorRecintos = $jefeRecinto->leerRecinto($id);
 			</tr>
 			<tr>
 				<th><label for="precio">Precio: </label></th>
-				<th><input type="text" name="precio" id="precio"/><br/></th>
+				<th><input type="number" name="precio" id="precio"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="direccion">Direccion: </label></th>
@@ -127,19 +127,19 @@ $vectorRecintos = $jefeRecinto->leerRecinto($id);
 			</tr>
 			<tr>
 				<th><label for="canchas">Canchas: </label></th>
-				<th><input type="text" name="canchas" id="canchas"/><br/></th>
+				<th><input type="number" name="canchas" id="canchas"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="puntuacion">Puntuacion: </label></th>
-				<th><input type="text" name="puntuacion" id="puntuacion"/><br/></th>
+				<th><input type="number" name="puntuacion" id="puntuacion"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="fono">Telefono: </label></th>
-				<th><input type="text" name="fono" id="fono"/><br/></th>
+				<th><input type="number" name="fono" id="fono"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="estado">ID Estado: </label></th>
-				<th><input type="text" name="estado" id="estado"/><br/></th>
+				<th><input type="number" name="estado" id="estado"/><br/></th>
 			</tr>
 		</table>
 		<input type="submit" value="Aceptar">

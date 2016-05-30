@@ -31,7 +31,7 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 		<table>
 			<tr>
 				<th><label for="id">ID: </label></th>
-				<th><input type="text" name="id" id="id"/><br/></th>
+				<th><input type="number" name="id" id="id"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="nombre">Nombre: </label></th>
@@ -47,11 +47,11 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 			</tr>
 			<tr>
 				<th><label for="mail">Email: </label></th>
-				<th><input type="text" name="mail" id="mail"/><br/></th>
+				<th><input type="mail" name="mail" id="mail"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="fecha">Fecha de Nacimiento: </label></th>
-				<th><input type="text" name="fecha" id="fecha"/><br/></th>
+				<th><input type="date" name="fecha" id="fecha"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="sexo">Sexo: </label></th>
@@ -63,15 +63,15 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 			</tr>
 			<tr>
 				<th><label for="fono">Telefono: </label></th>
-				<th><input type="text" name="fono" id="fono"/><br/></th>
+				<th><input type="number" name="fono" id="fono"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="estado">ID Estado: </label></th>
-				<th><input type="text" name="estado" id="estado"/><br/></th>
+				<th><input type="number" name="estado" id="estado"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="perfil">ID Perfil: </label></th>
-				<th><input type="text" name="perfil" id="perfil"/><br/></th>
+				<th><input type="number" name="perfil" id="perfil"/><br/></th>
 			</tr>
 		</table>
 		<input type="submit" value="Aceptar">
@@ -91,7 +91,7 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 		<table>
 			<tr>
 				<th><label for="id">ID: </label></th>
-				<th><input type="text" name="id" id="id"/><br/></th>
+				<th><input type="number" name="id" id="id"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="nombre">Nombre: </label></th>
@@ -107,11 +107,11 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 			</tr>
 			<tr>
 				<th><label for="mail">Email: </label></th>
-				<th><input type="text" name="mail" id="mail"/><br/></th>
+				<th><input type="mail" name="mail" id="mail"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="fecha">Fecha de Nacimiento: </label></th>
-				<th><input type="text" name="fecha" id="fecha"/><br/></th>
+				<th><input type="date" name="fecha" id="fecha"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="sexo">Sexo: </label></th>
@@ -123,15 +123,15 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 			</tr>
 			<tr>
 				<th><label for="fono">Telefono: </label></th>
-				<th><input type="text" name="fono" id="fono"/><br/></th>
+				<th><input type="number" name="fono" id="fono"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="estado">ID Estado: </label></th>
-				<th><input type="text" name="estado" id="estado"/><br/></th>
+				<th><input type="number" name="estado" id="estado"/><br/></th>
 			</tr>
 			<tr>
 				<th><label for="perfil">ID Perfil: </label></th>
-				<th><input type="text" name="perfil" id="perfil"/><br/></th>
+				<th><input type="number" name="perfil" id="perfil"/><br/></th>
 			</tr>
 		</table>
 		<input type="submit" value="Aceptar">
