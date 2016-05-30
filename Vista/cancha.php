@@ -34,6 +34,7 @@ $json = new Services_JSON();
   .draggable { 
     width: 80px; height: 70px; padding:; float: left; float: ; margin: 0 10px 10px 0; font-size: 0.9em; color: white; text-align: center;
     background-color: transparent;
+    border-radius: 0.3em;
   }
   .ui-widget-header p{color: black; text-align: center; margin-top: 25px; margin-right: 25px;}, .ui-widget-content p { margin-top: 25px; margin-right: 25px; color: white; text-align: center; }
   #snaptarget { height: 520px; width: 400px; float: right; color: black; text-align: center;
@@ -62,6 +63,27 @@ font-size: 15px;
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <script>
+$(function(){
+
+    $('#filter').keyup(function () {  
+       
+        // create a pattern to match against, in this one
+        // we're only matching words which start with the 
+        // value in #filter, case-insensitive
+
+        var pattern = new RegExp('^' + this.value.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1"), 'i');
+        
+        // hide all h4's within div.media, then filter
+        $('div.media1 div.jugador div.draggable ').hide().filter(function() {
+    
+            // only return h4's which match our pattern
+            return !!$(this).text().match(pattern);
+    
+        }).show(); // show h4's which matched the pattern
+
+    });
+});//]]> 
+
   var arrayJugador = new Array();
   var maximo = 2;
   maximo = <?php echo $_SESSION["cantidad"]?>
@@ -165,9 +187,12 @@ font-size: 15px;
         <p>Recinto: <?php echo $key->getNombre()?></p>
         <?php }?>
       </div>
+       
 		<div class="col-md-6"><!-- Jugadores y buscador-->
 		<p>Contactos:</p>
-    
+    <div class="com-md-6">
+    <input type="text" class="form-control" id="filter" name="filter" placeholder="Buscar Jugador...">
+    </div>
 		<!--<img id="draggable1" class="img-responsive center ui-widget-content arreglo draggable" src="images/usuarios/cris.jpg" width="60" alt="hola" > -->
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 <?php
@@ -175,11 +200,14 @@ font-size: 15px;
 foreach ($vectorContactos as $Contacto) {
       #un IF AQUI para ver el ESTADO de los USUARIOS
 ?>
-    <div id="draggable<?php echo $Contacto->getIdUsuario();?>" class="ui-widget-content arreglo draggable">
+<div class="media1">
+<div class="jugador">
+    <div id="draggable<?php echo $Contacto->getIdUsuario();?>" class="ui-widget-content arreglo draggable"><p class="hide"><?php echo $Contacto->getNombre();?></p>
     <img  class="img-responsive center" src="images/usuarios/<?php echo $Contacto->getRutaFotografia();?>" width="80"/>
     <p class="stroke" ><strong><?php echo $Contacto->getNombre();?></strong></p> 
     </div>
-
+    </div>
+    </div>
 <?php
 
 }
