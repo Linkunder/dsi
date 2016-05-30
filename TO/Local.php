@@ -18,7 +18,7 @@ class Local{
 	}
 
 	function getDireccion(){
-		return $this->direccion
+		return $this->direccion;
 	}
 
 	function getRutaFoto(){

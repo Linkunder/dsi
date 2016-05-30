@@ -34,5 +34,5 @@ include_once('../Persistencia/DAOTercerTiempo.php');
 		if (count($vectorData)==0) return null;
 		return $vectorData;
 	}
-
+}
 ?>

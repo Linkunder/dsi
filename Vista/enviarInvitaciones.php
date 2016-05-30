@@ -15,13 +15,13 @@ include_once('../LOGICA/controlTercerTiempo.php');
 include_once('../TO/Local.php');
 include_once('../LOGICA/controlLocales.php');
 
-$jefePartido = controlPartido::obtenerInstancia();
+$jefePartido = controlPartidos::obtenerInstancia();
 $jefeRecinto = controlRecintos::obtenerInstancia();
 $jefeEquipo = controlEquipos::obtenerInstancia();
 $jefeUsuario = controlUsuarios::obtenerInstancia();
 $jefeTercer = controlTercerTiempo::obtenerInstancia();
 $jefeLocal = controlLocales::obtenerInstancia();
-$jefeEquipo = controlEquipo::obtenerInstancia();
+
 
 session_start();
 $idPartido= $_SESSION["idPartido"];
@@ -36,21 +36,21 @@ $jefeUsuario = controlUsuarios::obtenerInstancia();
     $vectorUsuario=$jefeUsuario->leerUsuario($idUsuario);
 
     
-    foreach($vectorJugador as $Jugador){    
+    foreach($vectorUsuario as $Jugador){    
         $nombreJugador= $Jugador->getNombre();
     }
 
 
 $recinto = $jefeRecinto->leerRecinto($idRecinto);
-foreach ($recinto1 as $Recinto) {
+foreach ($recinto as $Recinto) {
 	$imagenRecinto = $Recinto->getRutaFotografia();
 	$nombreRecinto = $Recinto->getNombre();
 	$direccionRecinto = $Recinto->getDireccion();
 }
 
-
-$tercerTiempo1 = $jefeTercer->leerTercerTiempo($idTercer);
-foreach ($tercerTiempo1 as $TercerTiempo) {
+$idLocal=0;
+$tercerTiempo = $jefeTercer->leerTercerTiempo($idTercer);
+foreach ($tercerTiempo as $TercerTiempo) {
 	$idLocal = $TercerTiempo->getIdLocal();
 }
 
@@ -74,14 +74,14 @@ foreach ($localTercerTiempo as $Local) {
 
 $vectorEquipo = $jefeEquipo->obtenerJugadores($idPartido);
 
-$vectorPartido = $jefePartido->obtenerPartido($idPartido);
+$vectorPartido = $jefePartido->leerPartido($idPartido);
 			foreach ($vectorPartido as $Partido) {
 				$dia = $Partido->getFecha();
 				$newFecha = date("d-m-Y", strtotime($dia));
 				$hora = $Partido->getHora();
 				$cuotaTotal = $Partido->getCuota()*$cantidad;
-				$participantes = $Partido->getNroJugadores();
-				$cuotaPersonal = $partido->getCuota();
+				$participantes = $cantidad;
+				$cuotaPersonal = $Partido->getCuota();
 			}
 
 
