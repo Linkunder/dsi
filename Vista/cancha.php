@@ -203,7 +203,7 @@ foreach ($vectorContactos as $Contacto) {
 <div class="media1">
 <div class="jugador">
     <div id="draggable<?php echo $Contacto->getIdUsuario();?>" class="ui-widget-content arreglo draggable"><p class="hide"><?php echo $Contacto->getNombre();?></p>
-    <img  class="img-responsive center" src="images/usuarios/<?php echo $Contacto->getRutaFotografia();?>" width="80"/>
+    <img  class="img-responsive-resize" src="images/usuarios/<?php echo $Contacto->getRutaFotografia();?>" width="80"/>
     <p class="stroke" ><strong><?php echo $Contacto->getNombre();?></strong></p> 
     </div>
     </div>

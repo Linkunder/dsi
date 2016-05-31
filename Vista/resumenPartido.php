@@ -267,7 +267,9 @@ foreach ($vectorTercerTiempo as $key ) {
 
     </div><!-- /row -->
 
-<center><button class="btn btn-invitar" href='enviarInvitaciones.php'>Enviar invitaciones</button></center>
+<a href="enviarInvitaciones.php">
+<center><button class="btn btn-invitar">Enviar invitaciones</button></center></a>
+
 
     <?php
       } else {       // SI HAY TERCER TIEMPO
@@ -408,7 +410,7 @@ foreach ($vectorTercerTiempo as $key ) {
       </div>
     </div>
 <a href="enviarInvitaciones.php">
-<center><button class="btn btn-invitar" Enviar invitaciones</button></center></a>
+<center><button class="btn btn-invitar" >Enviar invitaciones</button></center></a>
 
 
 

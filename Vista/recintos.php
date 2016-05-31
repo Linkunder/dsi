@@ -41,18 +41,6 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
         </div>
       </div>
 
-      <!--
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Busca tu recinto deportivo...">
-            <span class="input-group-btn">
-              <button class="btn btn-primary" type="button">Buscar!</button>
-            </span>
-          </div>
-        </div>
-      </div>
-      <hr/> -->
 
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -120,7 +108,7 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
                     <div class="overlay-text">
                       <div class="folio-info">
                           <h3><?php echo $nombre?></h3>
-                          <p>Cancha de <?php echo $tipo?> ID: <?php echo $idRecinto ?></p>
+                          <p>Cancha de <?php echo $tipo?></p>
                       </div>
                       <div class="folio-overview">
                         <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="detalleRecinto.php?id_recinto=<?php echo $idRecinto ?>" ><i class="fa fa-info"></i></a></span>
@@ -141,31 +129,6 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
                 } 
                }
             ?>
-
-            <!--
-            <div class="col-sm-3">
-              <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="400ms">
-                <div class="folio-image">
-                  <img class="img-responsive" src="images/portfolio/2.jpg" alt="">
-                </div>
-                <div class="overlay">
-                  <div class="overlay-content">
-                    <div class="overlay-text">
-                      <div class="folio-info">
-                        <h3>Time Hours</h3>
-                        <p>Design, Photography</p>
-                      </div>
-                      <div class="folio-overview">
-                        <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
-                        <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          -->
       
           </div>
         </div>
