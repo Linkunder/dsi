@@ -11,9 +11,10 @@ class DAOLocal{
 
 	public function crearLocal($local){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO local (nombre,direccion, rutaFotografia,linkMapa)
+		$query = "INSERT INTO local (nombre, descripcion, direccion, rutaFotografia,linkMapa)
 		VALUES (
 			'".$local->getNombre()."',
+			'".$local->getDescripcion()."',
 			'".$local->getDireccion()."',
 			'".$local->getRutaFoto()."',
 			'".$local->getLinkMapa()."')";
@@ -30,6 +31,7 @@ class DAOLocal{
 			$local = new Local();
 			$local->setIdLocal($row['idLocal']);
 			$local->setNombre($row['nombre']);
+			$local->setDescripcion($row['descripcion']);
 			$local->setDireccion($row['direccion']);
 			$local->setRutaFoto($row['rutaFotografia']);
 			$local->setLinkMapa($row['linkMapa']);
@@ -52,6 +54,7 @@ class DAOLocal{
 			$local = new Local();
 			$local->setIdLocal($row['idLocal']);
 			$local->setNombre($row['nombre']);
+			$local->setDescripcion($row['descripcion']);
 			$local->setDireccion($row['direccion']);
 			$local->setRutaFoto($row['rutaFotografia']);
 			$local->setLinkMapa($row['linkMapa']);
@@ -69,6 +72,7 @@ class DAOLocal{
 		$link = $this->conexionBD->obtenerConexion();
 		$query = "UPDATE local SET 
 		nombre = '".$local->getNombre()."',
+		descripcion = '".$local->getDescripcion()."'.
 		direccion='".$local->getDireccion()."'
 		rutaFotografia='".$local->getRutaFoto()."'
 		linkMapa='".$local->getLinkMapa()."'

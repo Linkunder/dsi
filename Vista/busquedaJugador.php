@@ -146,9 +146,6 @@ $jefeContacto = controlContactos::obtenerInstancia();
                         <td><h5 id="detalle-jugador"><?php echo $key->getNombre()." ".$key->getApellido();?></h5></td>
                       </tr>
                       <tr>
-                        <td><h6 id="detalle-jugador"><?php echo $key->getNickname();?></h6></td>
-                      </tr>
-                      <tr>
                         <td>
                         <span class="folio-link">
                           <a class="folio-read-more" href="agregarContacto.php?idContacto=<?php echo $idContacto ?>">

@@ -116,8 +116,10 @@ $idPartido = end($vectorPartidos)->getIdPartido();
             foreach ($vectorLocales as $key) {
               $nombre = $key->getNombre();
               $pos = strripos($nombre, $search);
+              $descripcion = $key->getDescripcion();
+              $pos2 = strripos($descripcion, $search);
               $idLocal = $key->getIdLocal();
-              if ($pos !== false  )  { 
+              if ($pos !== false  && $pos2 !== false)  { 
                 ?>
               <div class="col-sm-3">
                 <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="100ms">

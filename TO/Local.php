@@ -3,6 +3,7 @@
 class Local{
 	private $idLocal;
 	private $nombre;
+	private $descripcion;
 	private $direccion;
 	private $rutaFoto;
 	private $linkMapa;
@@ -15,6 +16,10 @@ class Local{
 
 	function getNombre(){
 		return $this->nombre;
+	}
+
+	function getDescripcion(){
+		return $this->descripcion;
 	}
 
 	function getDireccion(){
@@ -35,6 +40,10 @@ class Local{
 
 	function setNombre($nombre){
 		$this->nombre = $nombre;
+	}
+
+	function setDescripcion($descripcion){
+		$this->descripcion = $descripcion;
 	}
 
 	function setDireccion($direccion){
