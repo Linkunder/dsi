@@ -47,6 +47,31 @@ class DAOPartido{
 		return $vectorData;	
 	}
 
+		public function obtenerPartidos(){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT * FROM partido ";
+		$result = mysql_query($query,$link) or die (mysql_error());
+		$i = 0;
+		while ($row = mysql_fetch_array($result)) {
+			$partido = new Partido();
+			$partido->setIdPartido($row['idPartido']);
+			$partido->setFecha($row['fecha']);
+			$partido->setHora($row['hora']);
+			$partido->setCuota($row['cuota']);
+			$partido->setIdEstado($row['idEstado']);
+			$partido->setIdRecinto($row['idRecinto']);
+			$partido->setIdTercerTiempo($row['idTercerTiempo']);
+			$partido->setIdUsuario($row['idUsuario']);
+			$vectorData[$i]= $partido;
+			$i++;
+		}
+		mysql_close($link);
+		if(empty($vectorData)){
+			return null;
+		}
+		return $vectorData;	
+	}
+
 		public function leerPartidosUsuario($idUsuario){
 		$link = $this->conexionBD->obtenerConexion();
 		$query = "SELECT * FROM partido WHERE idUsuario = '$idUsuario' ";

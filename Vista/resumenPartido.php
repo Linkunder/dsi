@@ -107,16 +107,19 @@ if(isset($_GET["tercertiempo"]) ){
 <!--Variables -->
 <?php
 
-$idPartido= $_SESSION["idPartido"];
+//$idPartido= $_SESSION["idPartido"];
 $idUsuario= $_SESSION['idUsuario'];
 $idRecinto= $_SESSION['idRecinto']; //Recinto seleccionado
 $cantidad = $_SESSION['cantidad']; //Cantidad de jugadores seleccionados
 $fecha =    $_SESSION['fecha'];
 $hora =     $_SESSION['hora'];
-$local = $_SESSION['idLocal'];
+
 
 include_once('../TO/Usuario.php');
 include_once('../Logica/controlUsuarios.php');
+
+include_once('../TO/Partido.php');
+include_once('../Logica/controlPartidos.php');
 
 include_once('../TO/Equipo.php');
 include_once('../Logica/controlEquipos.php');
@@ -134,20 +137,31 @@ include_once('../Logica/controlTercerTiempo.php');
 $jefeEquipo = controlEquipos::obtenerInstancia();
 $jefeUsuarios = controlUsuarios::obtenerInstancia();
 $jefeRecintos = controlRecintos::obtenerInstancia();
-$jefeLocales = controlLocales::obtenerInstancia();
+
 $jefeTercerTiempo = controlTercerTiempo::obtenerInstancia();
+$jefePartidos = controlPartidos::obtenerInstancia();
 
 $vectorUsuarios = $jefeUsuarios->leerUsuario($idUsuario);
 $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
-$vectorLocales = $jefeLocales->leerLocal($local);
 
+$vectorPartidos = $jefePartidos->obtenerPartidos();
+
+$ultimoPartido = end($vectorPartidos);
+$idPartido = $ultimoPartido->getIdPartido();
+
+
+if ($tercertiempo !== 0){
+  // Variable local
+  $local = $_SESSION['idLocal'];
+  $jefeLocales = controlLocales::obtenerInstancia();
+  $vectorLocales = $jefeLocales->leerLocal($local);
 $vectorTercerTiempo = $jefeTercerTiempo->leerTercertiempo($tercertiempo);
 
 foreach ($vectorTercerTiempo as $key ) {
   $horaTercer = $key->getHora();
   $descripcion = $key->getDescripcion();
 }
-
+} 
 
 ?>
 
@@ -164,7 +178,7 @@ foreach ($vectorTercerTiempo as $key ) {
       if ($tercertiempo==0){ // SI NO HAY TERCER TIEMPO 
         ?>
     <div class="row">
-      <h2>Resumen del partido</h2>
+      <h2>Resumen del partido <?php echo $idPartido;?></h2>
       <div class="col-md-4">
           <h4>Información del partido</h4>
           <table class="table table-bordered center">
@@ -216,7 +230,7 @@ foreach ($vectorTercerTiempo as $key ) {
                           <td><h6><?php echo $key->getNombre()." ".$key->getApellido();?></h6></td>
                         </tr>
                       </table>
-                      </li>
+                     </li>
                       <?php
                     }
                     ?>

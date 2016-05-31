@@ -101,8 +101,7 @@ $_SESSION['idUsuario']="1";
 <?php
 
 
-// Información que viene del partido.
-$idPartido= $_SESSION["idPartido"];
+// Información que viene del partido.;
 $idUsuario= $_SESSION['idUsuario'];
 $idRecinto= $_SESSION['idRecinto']; //Recinto seleccionado
 $cantidad = $_SESSION['cantidad']; //Cantidad de jugadores seleccionados
@@ -123,16 +122,25 @@ include_once('../Logica/controlRecintos.php');
 include_once('../TO/Local.php');
 include_once('../Logica/controlLocales.php');
 
+
+include_once('../TO/Partido.php');
+include_once('../Logica/controlPartidos.php');
+
+
 $jefeEquipo = controlEquipos::obtenerInstancia();
 $jefeUsuarios = controlUsuarios::obtenerInstancia();
 $jefeRecintos = controlRecintos::obtenerInstancia();
 $jefeLocales = controlLocales::obtenerInstancia();
+
+$jefePartidos = controlPartidos::obtenerInstancia();  
 
 $vectorUsuarios = $jefeUsuarios->leerUsuario($idUsuario);
 $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
 
 
 $vectorLocales = $jefeLocales->obtenerLocales();
+$vectorPartidos = $jefePartidos->obtenerPartidos();
+$idPartido = end($vectorPartidos)->getIdPartido();
 
 ?>
 

@@ -29,6 +29,12 @@ class controlPartidos{
 		return $vectorData;
 	}
 
+	public function obtenerPartidos(){
+		$vectorData = $this->persistenciaPartido->obtenerPartidos();
+		if (count($vectorData)==0) return null;
+		return $vectorData;
+	}
+
 	public function actualizarPartido($partido){
 		$this->persistenciaPartido->actualizarPartido($partido);
 	}
