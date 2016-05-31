@@ -12,6 +12,7 @@ include_once('../TO/Recinto.php');
 include_once('../Logica/controlRecintos.php');
 require_once('../Logica/JSON.php');
 
+include('headerJugador.php'); 
 $jefeUsuarios = controlUsuarios::obtenerInstancia();
 $jefeContactos = controlContactos::obtenerInstancia();
 
@@ -26,7 +27,6 @@ $_SESSION['fecha'] = $_POST['fecha'];
 $_SESSION['hora'] = $_POST['hora'];
 $_SESSION['cantidad'] = $_POST['cantidad'];
 $_SESSION['color']  = $_POST['color'];
-include('headerJugador.php'); 
 $json = new Services_JSON();
  ?> 
 

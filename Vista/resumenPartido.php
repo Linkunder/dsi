@@ -178,7 +178,7 @@ foreach ($vectorTercerTiempo as $key ) {
       if ($tercertiempo==0){ // SI NO HAY TERCER TIEMPO 
         ?>
     <div class="row">
-      <h2>Resumen del partido <?php echo $idPartido;?></h2>
+      <h2>Resumen del partido</h2>
       <div class="col-md-4">
           <h4>Información del partido</h4>
           <table class="table table-bordered center">
