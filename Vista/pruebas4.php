@@ -16,12 +16,14 @@ $vectorUsuario = $jefeUsuario->leerUsuario($id);
 
 	<h1>Leer jugador que esta en el sistema</h1>
 
-	<form action="leerUsuario.php" method="post">
-		<label>ID Usuario: </label>
-		<input type="number" name = "idUsuario"/>
-		<input type="submit" value="Aceptar"/>
-	</form>	
-
+	<?php
+	foreach ($vectorUsuario as $Usuario) {
+		echo "Nombre: ".$Usuario->getNombre();?>
+		<br/>
+		<?php
+		echo "Mail: ".$Usuario->getEmail();
+	}
+	?>
 
 	<br/>
 	<h1>Ingresar jugador al sistema</h1>

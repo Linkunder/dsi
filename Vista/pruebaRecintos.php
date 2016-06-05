@@ -3,8 +3,7 @@ include_once('../TO/Recinto.php');
 include_once('../Logica/controlRecintos.php');
 
 $jefeRecinto = controlRecintos::obtenerInstancia();
-$id=1;
-$vectorRecintos = $jefeRecinto->leerRecinto($id);
+
 ?>
 
 <html>
@@ -13,17 +12,14 @@ $vectorRecintos = $jefeRecinto->leerRecinto($id);
 </head>
 <body>
 
-
 	<h1>Leer recinto que esta en el sistema</h1>
 
-	<?php
-	foreach ($vectorRecintos as $Recinto) {
-		echo "Nombre: ".$Recinto->getNombre();?>
-		<br/>
-		<?php
-		echo "Direccion: ".$Recinto->getDireccion();
-	}
-	?>
+	<form action="leerRecinto.php" method="post">
+		<label>ID Usuario: </label>
+		<input type="number" name = "idRecinto"/>
+		<input type="submit" value="Aceptar"/>
+	</form>	
+
 
 	<br/>
 	<h1>Ingresar recinto al sistema</h1>
