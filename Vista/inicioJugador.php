@@ -3,7 +3,6 @@
 include('headerJugador.php');
 ?>
 
-
 <!-- Aqui empieza la pagina -->
 
 

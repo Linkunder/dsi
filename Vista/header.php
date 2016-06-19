@@ -53,12 +53,16 @@
               <li class="dropdown" id="menuLogin">
                 <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Ingresar</a>
                 <div class="dropdown-menu" style="padding:2em;">
-                  <form class="form" id="formLogin" action="inicioJugador.php" method="post">
+
+
+                  <form class="form" id="formLogin" action="login.php" method="post">
                     <label class="design-label">¿TIENES CUENTA?</label><br>
                     <input name="username" id="username" type="text" placeholder="Nickname o mail"> 
                     <input name="password" id="password" type="password" placeholder="Password"><br>
                     <button class="boton-login" type="submit" class="design-button">Iniciar sesión</button>
                   </form>
+
+
                    <form class="form" id="formLogin" action="formularioRegistro.php" method="post">
                     <li role="separator" class="divider"></li>
                     <label class="design-label">¿ERES NUEVO EN MATCH DAY?</label><br>
