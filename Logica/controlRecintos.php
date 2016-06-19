@@ -46,6 +46,11 @@ class controlRecintos{
 		return $vectorData;
 	}
 
+	public function contarRecintos(){
+		$vectorData=$this->persistenciaRecinto->obtenerRecintos();
+		return count($vectorData);
+	}
+
 }
 
 

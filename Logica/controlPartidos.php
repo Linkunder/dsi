@@ -55,6 +55,11 @@ class controlPartidos{
 		$this->persistenciaPartido->actualizarInformacion($idPartido, $idUltimoTercer);
 	}
 
+	public function contarPartidos(){
+		$vectorData = $this->persistenciaPartido->obtenerPartidos();
+		return count($vectorData);
+	}
+
 }
 
 

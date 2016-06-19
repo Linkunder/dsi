@@ -52,6 +52,11 @@ class controlUsuarios{
 		return $vectorData;
 	}
 
+	public function contarJugadores(){
+		$vectorData = $this->persistenciaUsuario->leerUsuarios();
+		return count($vectorData);
+	}
+
 }
 
 
