@@ -37,6 +37,11 @@ class controlComentarios{
 		return $vectorData;
 
 	}
+
+	public function contarComentarios(){
+		$vectorData = $this->persistenciaComentario->listarComentarios();
+		return count($vectorData);
+	}
 }
 
 ?>
