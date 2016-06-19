@@ -397,12 +397,12 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-table"></i> <span>Tables</span>
+            <i class="fa fa-table"></i> <span>Recintos</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-            <li><a href="listarRecintos.php"><i class="fa fa-circle-o"></i> Data tables</a></li>
+            <li><a href="listarRecintos.php"><i class="fa fa-circle-o"></i> Lista de recintos</a></li>
           </ul>
         </li>
         <li>
