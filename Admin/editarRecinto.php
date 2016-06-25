@@ -29,7 +29,9 @@ $recinto = $jefeRecinto->leerRecinto($idRecinto);
                     <li>
                         <a href="gestionComentarios.php"><i class="fa fa-fw fa-comments"></i> Comentarios</a>
                     </li>
-                   
+                    <li><hr/>
+                        <a href="cerrarSesion.php"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
+                    </li> 
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
