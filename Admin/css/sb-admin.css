@@ -225,3 +225,30 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+
+.table-form{
+    border: transparent;
+}
+
+.table-form th{
+    color: #337ab7;
+    text-align: left;
+}
+
+
+.table-form td{
+
+}
+
+#color-encabezado{
+    background-color: #337ab7;
+    color: #fff;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#color-nombres{
+    font-weight: bold;
+}

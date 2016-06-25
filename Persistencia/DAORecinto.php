@@ -95,11 +95,8 @@ class DAORecinto{
 		precio = '".$recinto->getPrecio()."',
 		direccion = '".$recinto->getDireccion()."',
 		horario = '".$recinto->getHorario()."',
-		rutaFotografia = '".$recinto->getRutaFotografia()."',
-		cantidadCanchas = '".$recinto->getCantidadCanchas()."',
-		puntuacion = '".$recinto->getPuntuacion()."',
-		telefono = '".$recinto->getTelefono()."',
-		idEstadoRecinto = '".$recinto->getIdEstado()."'
+		cantidadCanchas = '".$recinto->getCantidadCanchas()."',	
+		telefono = '".$recinto->getTelefono()."'
 		WHERE idRecinto = '".$recinto->getIdrecinto()."'";
 		mysql_query($query,$link) or die (mysql_error());
 		mysql_close($link);
