@@ -51,8 +51,10 @@
                 <!-- Flot Charts -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="page-header">Flot Charts</h2>
-                        <p class="lead">Flot is a pure JavaScript plotting library for jQuery, with a focus on simple usage, attractive looks and interactive features. For full usage instructions and documentation for Flot Charts, visit <a href="http://www.flotcharts.org/">http://www.flotcharts.org/</a>.</p>
+                        <h2 class="page-header">Reportes gráficos</h2>
+                        <p class="lead">
+                            En esta sección se encontrarán reportes gráficos de los recintos, jugadores, partidos y comentarios del sistema.
+                        </p>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -74,7 +76,7 @@
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="panel panel-green">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Pie Chart Example with Tooltips</h3>
@@ -89,7 +91,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-lg-6">
                         <div class="panel panel-yellow">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Multiple Axes Line Graph Example with Tooltips and Raw Data</h3>

@@ -52,6 +52,9 @@ $(document).ready(function() {
 });
 
 // Flot Pie Chart with Tooltips
+
+
+
 $(function() {
 
     var data = [{
