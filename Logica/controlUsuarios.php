@@ -57,6 +57,14 @@ class controlUsuarios{
 		return count($vectorData);
 	}
 
+	public function habilitarJugador($idJugador){
+		$this->persistenciaUsuario->habilitarJugador($idJugador);
+	}
+
+	public function inhabilitarJugador($idJugador){
+		$this->persistenciaUsuario->inhabilitarJugador($idJugador);
+	}
+
 }
 
 

@@ -136,12 +136,27 @@ class DAOUsuario{
 		return $vectorData;   
 	}
 
-	   public function guardarImagen($idUsuario, $nombreImagen){
+	public function guardarImagen($idUsuario, $nombreImagen){
         $link=$this->conexionBD->obtenerConexion();
         $query = "UPDATE usuario SET rutaFotografia='".$nombreImagen."' WHERE idUsuario = '".$idUsuario."'";
         $result = mysql_query($query,$link) or die(mysql_error());
         mysql_close($link);
     }
+
+
+    public function habilitarJugador($idJugador){
+		$link=$this->conexionBD->obtenerConexion();
+		$query = "UPDATE usuario SET idEstadoJugador='1' WHERE idUsuario = '".$idJugador."';";
+		$result = mysql_query($query,$link) or die(mysql_error());
+		mysql_close($link);
+	}
+
+	public function inhabilitarJugador($idJugador){
+		$link=$this->conexionBD->obtenerConexion();
+		$query = "UPDATE usuario SET idEstadoJugador='2' WHERE idUsuario = '".$idJugador."';";
+		$result = mysql_query($query,$link) or die(mysql_error());
+		mysql_close($link);
+	}
 
 }
 

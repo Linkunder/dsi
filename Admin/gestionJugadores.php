@@ -52,41 +52,38 @@
                         <h3 class="page-header">
                             Listado de jugadores
                         </h3>
-                        <p class="help-block">Puedes encontrar información detallada de cada jugador del listado pulsando el botón <button type="button" class="btn btn-xs btn-warning" action="">Editar <i class="fa fa-pencil fa-1x"></i></button></p>
+                        <p class="help-block">Puedes encontrar información detallada de cada jugador del listado pulsando el botón 
+                            <button type="button" class="btn btn-xs btn-info" action="">Seleccionar <i class="fa fa-info-circle"></i></button>.
+                        </p>
 
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr id="color-encabezado">
                                         <th>Nombre</th>
-                                        <th>Tipo</th>
-                                        <th>Superficie</th>
-                                        <th>Dirección</th>
-                                        <th>Precio</th>
+                                        <th>Nickname</th>
+                                        <th>Mail</th>
                                         <th>Estado</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                        include_once('../TO/Recinto.php');
-                                        include_once('../Logica/controlRecintos.php');
-                                        $jefeRecinto = controlRecintos::obtenerInstancia();
-                                        $recintos = $jefeRecinto->obtenerRecintos();
-                                        foreach ($recintos as $key) {
+                                        include_once('../TO/Usuario.php');
+                                        include_once('../Logica/controlUsuarios.php');
+                                        $controlUsuario = controlUsuarios::obtenerInstancia();
+                                        $jugadores = $controlUsuario->obtenerUsuarios(); // Trae hasta el admin. Corregir.
+                                        foreach ($jugadores as $key) {
                                         ?>
                                     <tr>
-                                        <td id="color-nombres"><?php echo $key->getNombre();?></td>
-                                        <td><?php echo $key->getTipo();?></td>
-                                        <td><?php echo $key->getSuperficie();?></td>
-                                        <td><?php echo $key->getDireccion();?></td>
-                                        <td><?php echo $key->getPrecio();?></td>
+                                        <td id="color-nombres"><?php echo $key->getNombre()." ".$key->getApellido() ;?></td>
+                                        <td><?php echo $key->getNickname();?></td>
+                                        <td><?php echo $key->getEmail();?></td>
                                         <?php
                                             $estado = $key->getIdEstado();
                                             if ($estado == 2) { // Sujeto a cambios.
                                             ?>
                                         <td>No disponible </td>
-                                        <td> <a href="habilitarRecinto.php?idRecinto=<?php echo $key->getIdRecinto();?>">
+                                        <td> <a href="habilitarJugador.php?idJugador=<?php echo $key->getIdUsuario();?>">
                                             <button type="button" class="btn btn-sm btn-success">Habilitar <i class="fa fa-arrow-circle-up fa-1x"></i></button>
                                             </a>
                                         </td>
@@ -96,14 +93,18 @@
                                             <td>Disponible</td>
                                             <?php
                                             ?>
-                                            <td> <a href="inhabilitarRecinto.php?idRecinto=<?php echo $key->getIdRecinto();?>">
+                                            <td> <a href="inhabilitarJugador.php?idJugador=<?php echo $key->getIdUsuario();?>">
                                                 <button type="button" class="btn btn-sm btn-danger">Deshabilitar <i class="fa fa-arrow-circle-down fa-1x"></i></button>
                                             </a>
                                             </td>
                                             <?php
                                         }
                                         ?>
-                                        <td><a href="editarRecinto.php?idRecinto=<?php echo $key->getIdRecinto();?>"><button type="button" class="btn btn-sm btn-warning" action="">Editar <i class="fa fa-pencil fa-1x"></i></button></a></td>
+                                        <td>
+                                            <a href="detalleJugador.php?idJugador=<?php echo $key->getIdUsuario();?>">
+                                                <button type="button" class="btn btn-sm btn-info" action="">Seleccionar <i class="fa fa-info-circle"></i></button>
+                                            </a>
+                                        </td>
                                     </tr>
                                         <?php
                                         }

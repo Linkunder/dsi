@@ -11,20 +11,3 @@ $controlRecintos->habilitarRecinto($idRecinto);
 header("Location:gestionRecintos.php"); 
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-?>

@@ -42,6 +42,10 @@ class controlComentarios{
 		$vectorData = $this->persistenciaComentario->listarComentarios();
 		return count($vectorData);
 	}
+
+	public function eliminarComentario($idComentario){
+		$this->persistenciaComentario->eliminarComentario($idComentario);
+	}
 }
 
 ?>
