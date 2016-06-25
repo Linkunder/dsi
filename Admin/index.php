@@ -48,7 +48,7 @@
                     <div class="col-lg-12">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-flag"></i>  Tienes <a href="#" class="alert-link"><strong>4</strong> notificaciones! </a> 
+                            <i class="fa fa-flag"></i>  Tienes <a href="#" class="alert-link"><strong>4</strong> notificaciones  </a>  de nuevos recintos!
                         </div>
                     </div>
                 </div>
