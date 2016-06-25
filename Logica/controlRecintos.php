@@ -51,6 +51,15 @@ class controlRecintos{
 		return count($vectorData);
 	}
 
+	public function habilitarRecinto($idRecinto){
+		$this->persistenciaRecinto->habilitarRecinto($idRecinto);
+	}
+
+	public function inhabilitarRecinto($idRecinto){
+		$this->persistenciaRecinto->inhabilitarRecinto($idRecinto);
+	}
+
+
 }
 
 

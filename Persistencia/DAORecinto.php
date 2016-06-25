@@ -11,18 +11,15 @@ class DAORecinto{
 
 	public function crearRecinto($recinto){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO recinto (nombre, tipo, superficie, precio, direccion, horario, rutaFotografia, cantidadCanchas, puntuacion, telefono, idEstadoRecinto) 
+		$query = "INSERT INTO recinto (nombre, tipo, superficie, precio, direccion, horario, cantidadCanchas, telefono, idEstadoRecinto) 
 		VALUES ('".$recinto->getNombre()."',
 			'".$recinto->getTipo()."',
 			'".$recinto->getSuperficie()."',
 			'".$recinto->getPrecio()."',
 			'".$recinto->getDireccion()."',
 			'".$recinto->getHorario()."',
-			'".$recinto->getRutaFotografia()."',
 			'".$recinto->getCantidadCanchas()."',
-			'".$recinto->getPuntuacion()."',
-			'".$recinto->getTelefono()."',
-			'".$recinto->getIdEstado()."')";
+			'".$recinto->getTelefono()."',2)";
 		mysql_query($query,$link) or die(mysql_error());
 		mysql_close($link);
 	}
@@ -137,6 +134,22 @@ class DAORecinto{
 		}
 		return $vectorData;   
 	}
+
+	public function habilitarRecinto($idRecinto){
+		$link=$this->conexionBD->obtenerConexion();
+		$query = "UPDATE recinto SET idEstadoRecinto='1' WHERE idRecinto = '".$idRecinto."';";
+		$result = mysql_query($query,$link) or die(mysql_error());
+		mysql_close($link);
+	}
+
+	public function inhabilitarRecinto($idRecinto){
+		$link=$this->conexionBD->obtenerConexion();
+		$query = "UPDATE recinto SET idEstadoRecinto='2' WHERE idRecinto = '".$idRecinto."';";
+		$result = mysql_query($query,$link) or die(mysql_error());
+		mysql_close($link);
+	}
+
+
 
 }
 

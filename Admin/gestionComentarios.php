@@ -9,13 +9,13 @@
                     <li>
                         <a href="reportes.php"><i class="fa fa-fw fa-bar-chart-o"></i> Reportes</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="gestionRecintos.php"><i class="fa fa-fw fa-futbol-o"></i> Recintos</a>
                     </li>
                     <li>
                         <a href="gestionJugadores.php"><i class="fa fa-fw fa-users"></i> Jugadores</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="gestionComentarios.php"><i class="fa fa-fw fa-comments"></i> Comentarios</a>
                     </li>
                    

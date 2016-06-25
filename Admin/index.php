@@ -1,5 +1,30 @@
 <?php include('header.php') ?>
 
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="index.php"><i class="fa fa-fw fa-home"></i> Inicio</a>
+                    </li>
+                    <li>
+                        <a href="reportes.php"><i class="fa fa-fw fa-bar-chart-o"></i> Reportes</a>
+                    </li>
+                    <li>
+                        <a href="gestionRecintos.php"><i class="fa fa-fw fa-futbol-o"></i> Recintos</a>
+                    </li>
+                    <li>
+                        <a href="gestionJugadores.php"><i class="fa fa-fw fa-users"></i> Jugadores</a>
+                    </li>
+                    <li>
+                        <a href="gestionComentarios.php"><i class="fa fa-fw fa-comments"></i> Comentarios</a>
+                    </li>
+                   
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -12,7 +37,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> Inicio
+                                <i class="fa fa-home"></i> Inicio
                             </li>
                         </ol>
                     </div>
@@ -81,7 +106,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="gestionJugadores.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -111,7 +136,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="reportes.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -141,7 +166,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="gestionComentarios.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -310,8 +335,6 @@
         </div>
         <!-- /#page-wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
 
 
 <?php include('footer.php') ?>

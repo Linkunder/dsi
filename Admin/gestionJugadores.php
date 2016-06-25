@@ -1,5 +1,6 @@
 <?php include('header.php') ?>
 
+
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
@@ -9,10 +10,10 @@
                     <li>
                         <a href="reportes.php"><i class="fa fa-fw fa-bar-chart-o"></i> Reportes</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="gestionRecintos.php"><i class="fa fa-fw fa-futbol-o"></i> Recintos</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="gestionJugadores.php"><i class="fa fa-fw fa-users"></i> Jugadores</a>
                     </li>
                     <li>
@@ -39,21 +40,19 @@
                                 <i class="fa fa-home"></i>  <a href="index.php">Inicio</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-futbol-o"></i> Recintos
+                                <i class="fa fa-users"></i> Jugadores
                             </li>
                         </ol>
                     </div>
                 </div>
-                <!-- /.row -->
-                <a href="agregarRecinto.php"><button class="btn btn-md btn-success">Agregar nuevo recinto <i class="fa fa-plus-circle fa-1x"></i></button></a>
-                
+                <!-- /.row --> 
 
                 <div class="row">
                     <div class="col-lg-12">
                         <h3 class="page-header">
-                            Listado de recintos
+                            Listado de jugadores
                         </h3>
-                        <p class="help-block">Puedes encontrar información detallada de cada recinto del listado pulsando el botón <button type="button" class="btn btn-xs btn-warning" action="">Editar <i class="fa fa-pencil fa-1x"></i></button></p>
+                        <p class="help-block">Puedes encontrar información detallada de cada jugador del listado pulsando el botón <button type="button" class="btn btn-xs btn-warning" action="">Editar <i class="fa fa-pencil fa-1x"></i></button></p>
 
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">

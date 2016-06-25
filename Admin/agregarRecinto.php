@@ -6,11 +6,32 @@ include_once('../Logica/controlRecintos.php');
 
 $jefeRecinto = controlRecintos::obtenerInstancia();
 
-
-
-
-
 ?>
+
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href="index.php"><i class="fa fa-fw fa-home"></i> Inicio</a>
+                    </li>
+                    <li>
+                        <a href="reportes.php"><i class="fa fa-fw fa-bar-chart-o"></i> Reportes</a>
+                    </li>
+                    <li class="active">
+                        <a href="gestionRecintos.php"><i class="fa fa-fw fa-futbol-o"></i> Recintos</a>
+                    </li>
+                    <li>
+                        <a href="gestionJugadores.php"><i class="fa fa-fw fa-users"></i> Jugadores</a>
+                    </li>
+                    <li>
+                        <a href="gestionComentarios.php"><i class="fa fa-fw fa-comments"></i> Comentarios</a>
+                    </li>
+                   
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -23,10 +44,10 @@ $jefeRecinto = controlRecintos::obtenerInstancia();
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.php">Inicio</a>
+                                <i class="fa fa-home"></i>  <a href="index.php">Inicio</a>
                             </li>
                             <li>
-                                <i class="fa fa-edit"></i> <a href="gestionRecintos.php">Recintos</a>
+                                <i class="fa fa-futbol-o"></i> <a href="gestionRecintos.php">Recintos</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-edit"></i> Nuevo recinto
@@ -46,11 +67,25 @@ $jefeRecinto = controlRecintos::obtenerInstancia();
                                     </tr>
                                     <tr>
                                         <th>Tipo: </th>
-                                        <td><input class="form-control" name="tipo" id="tipo" value=""></td>
+                                        <td>
+                                        <select class="form-control" name="tipo" id="tipo" value="">
+                                            <option>Baby-fútbol</option>
+                                            <option>Futbolito</option>
+                                        </select>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Superficie: </th>
-                                        <td><input class="form-control" name="superficie" id="superficie" value=""></td>
+                                        <td>
+                                            <select class="form-control" name="superficie" id="superficie" value="">
+                                            <option>Pasto sintético</option>
+                                            <option>Cerámica</option>
+                                            <option>Tierra</option>
+                                            <option>Cemento</option>
+                                            <option>Piso flotante</option>
+                                            <option>Piso sintético poliuretano</option>
+                                        </select>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Precio: </th>
