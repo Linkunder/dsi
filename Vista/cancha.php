@@ -144,7 +144,11 @@ $(function(){
 
    
    <?php 
-   foreach ($vectorContactos as $Contacto) { ?>
+   foreach ($vectorContactos as $Contacto) {
+      
+      if($Contacto->getIdEstado() == 1 ){
+
+    ?>
     $( "#draggable<?php echo $Contacto->getIdUsuario();?>" ).draggable({ 
       snap: ".ui-widget-header",
       create: function(event, $Contacto){}
@@ -152,7 +156,9 @@ $(function(){
     $("#draggable<?php echo $Contacto->getIdUsuario();?>").data("jugador",false);
     $("#draggable<?php echo $Contacto->getIdUsuario();?>").data("id","<?php echo $Contacto->getIdUsuario();?>");
 
-      <?php } ?> 
+      <?php } //fin if 
+    }//fin foreach
+      ?> 
       });
   
   function setValue(){
@@ -198,10 +204,11 @@ $(function(){
 <?php
 
 foreach ($vectorContactos as $Contacto) {
-      #un IF AQUI para ver el ESTADO de los USUARIOS
+           
+      if($Contacto->getIdEstado() == 1){
 ?>
-<div class="media1">
-<div class="jugador">
+  <div class="media1">
+      <div class="jugador">
     <div id="draggable<?php echo $Contacto->getIdUsuario();?>" class="ui-widget-content arreglo draggable"><p class="hide"><?php echo $Contacto->getNombre();?></p>
     <img  class="img-responsive-resize" src="images/usuarios/<?php echo $Contacto->getRutaFotografia();?>" width="80"/>
     <p class="stroke" ><strong><?php echo $Contacto->getNombre();?></strong></p> 
@@ -209,8 +216,8 @@ foreach ($vectorContactos as $Contacto) {
     </div>
     </div>
 <?php
-
-}
+  }//fin if
+} //fin foreach
 ?>
 
 

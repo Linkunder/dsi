@@ -65,6 +65,7 @@ class controlUsuarios{
 		$this->persistenciaUsuario->inhabilitarJugador($idJugador);
 	}
 
+	
 }
 
 

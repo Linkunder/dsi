@@ -6,6 +6,7 @@ class ListaContactos{
 	private $rutaFotografia;
 	private $email;
 	private $telefono;
+	private $idEstado;
 
 	function __construct(){}
 
@@ -28,6 +29,10 @@ class ListaContactos{
 	function getTelefono(){
 		return $this->telefono;
 	}
+	function getidEstado(){
+		return $this->idEstado;
+	}
+
 
 	function setIdUsuario($idUsuario){
 		$this->idUsuario = $idUsuario;
@@ -47,6 +52,9 @@ class ListaContactos{
 
 	function setTelefono($telefono){
 		$this->telefono = $telefono;
+	}
+	function setIdEstado($idEstado){
+		$this->idEstado = $idEstado;
 	}
 
 }

@@ -90,6 +90,7 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
           <div class="row">
              <?php }
                         foreach ($vectorRecintos as $key) {
+                            if($key->getIdEstado() == 1){
                           $nombre = $key->getNombre();
                           $pos = strripos($nombre, $search);
                           $tipo = $key -> getTipo();
@@ -128,6 +129,7 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
                 $cont++;
                 } 
                }
+             }
             ?>
       
           </div>
