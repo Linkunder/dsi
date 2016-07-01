@@ -1435,3 +1435,36 @@ ul.address {
   width: 100px;
 }
 
+
+#logo-matchday{
+  background-image:url(../images/player.png);
+}
+
+#talkbubble {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  margin: 10px;
+   background: #3598E4;
+   position: relative;
+   -moz-border-radius:    10px;
+   -webkit-border-radius: 10px;
+   border-radius:         10px;
+}
+
+#talkbubble:before {
+  margin-left: 10px;
+  content:"";
+  position: absolute;
+  right: 100%;
+  top: 26px;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-right: 26px solid #3598E4;;
+  border-bottom: 13px solid transparent;
+}
+
+#talkbubble h3,h4{
+  font-weight: bold;
+}
