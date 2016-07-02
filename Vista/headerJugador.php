@@ -25,8 +25,16 @@ $_SESSION['idUsuario']="1";
   <link id="css-preset" href="css/presets/preset1.css" rel="stylesheet">
   <link href="css/responsive.css" rel="stylesheet">
 
-    <!--Para subir la imagen-->
+  <!--link rel="stylesheet" type="text/css" href="css/bootstrap.css" /-->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/pluton.css" />
+  <link rel="stylesheet" type="text/css" href="css/jquery.cslider.css" />
+  <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css" />
+  <link rel="stylesheet" type="text/css" href="css/animate.css" />
 
+
+    <!--Para subir la imagen-->
   <link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
   <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>

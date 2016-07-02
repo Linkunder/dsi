@@ -65,8 +65,8 @@
 
                   <form class="form" id="formLogin" action="../Logica/controlSesion.php" method="post">
                     <label class="design-label">¿TIENES CUENTA?</label><br>
-                    <input name="username" id="username" type="text" placeholder="Mail"> 
-                    <input name="password" id="password" type="password" placeholder="Password"><br>
+                    <input class="entrada-login" name="username" id="username" type="text" placeholder="Mail"> 
+                    <input class="entrada-login" name="password" id="password" type="password" placeholder="Password"><br>
                     <button class="boton-login" type="submit" class="design-button">Iniciar sesión</button>
                   </form>
 

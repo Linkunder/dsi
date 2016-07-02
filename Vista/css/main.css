@@ -1305,6 +1305,16 @@ ul.address {
   font-weight: bold;
 }
 
+.entrada-login{
+  display: inline-block;
+  background-color: #fff;
+  height: 50px;
+  border-radius: 20;
+  box-shadow: none;
+  color: #000000;
+  font-weight: bold;
+}
+
 .contenedor{
   width: 25px;
   height: 150em;

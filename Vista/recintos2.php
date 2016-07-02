@@ -157,13 +157,13 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
                                     <br/>
                                     <?php 
                                     $_SESSION["idRecinto"]=$idRecinto;
-                                    //if($jugar==1){ ?>
+                                    if($jugar==1){ ?>
                                     <center>
                                         <button class="btn-busqueda" href="#" data-toggle="modal" data-target="#modal-1" >
                                             Jugar Aqui
                                         </button> 
                                     </center>
-                                    <?//php } ?>
+                                    <?php  } ?>
                                 </div>
 
                                 <p></p> <!--puede ir algo mas escrito aqui -->
@@ -222,7 +222,8 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
                     <div class="mask"></div>
                 </div>
                 </li>
-                <?php $cont++;
+                <?php 
+                    $cont++;
                     }
                 }
                 ?>
@@ -330,7 +331,7 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
 
 
 
-    
+
         <!-- ScrollUp button end -->
         <!-- Include javascript -->
         <script src="js/jquery.js"></script>
