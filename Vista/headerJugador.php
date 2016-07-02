@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-//Aplicamos session_start() para las variables de sesion
 
+    session_start();
+    if($_SESSION["sesion"]!="jugador") {
+      header("Location:../Vista/inicio.php?inicio=falloJugador"); 
+    }
 
 /////Usuario de prueba//////
 
-$_SESSION['user']="Carrasco";
-$_SESSION['idUsuario']="1";
+    $user= $_SESSION['user'];
+    $idUsuario= $_SESSION['idUsuario'];
 ///////////////////////////////
 
 ?>
@@ -71,7 +74,7 @@ $_SESSION['idUsuario']="1";
             <li class="scroll"><a href="recintos.php?jugar=1">Jugar</a></li> <!--Jugar = 1 para entrar a buscar recintos en el mismo reutilizando-->
             <li class="scroll"><a href="comentar.php">Comentar</a></li>
             <ul class="nav pull-left">
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']?><i class="icon-cog"></i>
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user ?><i class="icon-cog"></i>
                 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="perfil.php">Mi Perfil</a></li>
@@ -80,7 +83,7 @@ $_SESSION['idUsuario']="1";
                   <hr></hr>
                   <li><a href="notificarRecinto.php">Notificar recinto</a></li>
                   <hr></hr>
-                   <li><a href="../../LOGICA/salirJugador.php">Cerrar Sesion</a></li>
+                   <li><a href="../Logica/controlSesion.php?tipo=salir">Cerrar Sesion</a></li>
                    <li></li>
                 </ul>
               </li>

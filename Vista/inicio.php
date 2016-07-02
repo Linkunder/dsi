@@ -3,7 +3,57 @@
 <!-- Aqui empieza la pagina -->
 
 
+
 <div id="contact-us-inicio" class="parallax">
+<?php
+  
+  if(isset($_GET["inicio"])){
+    $inicio=$_GET["inicio"];
+    if($inicio=="fallido"){
+
+
+    ?>
+    <div class="container">
+  <div class="alert alert-danger fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error</strong> No has podido iniciar sesión, vuelve a intentarlo
+  </div>
+</div>
+  <?php 
+    }if($inicio =="falloAdmin"){?>
+
+    <div class="container">
+  <div class="alert alert-danger fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error</strong> Debes loguearte como administrador para ingresar a esta seccion
+  </div>
+</div>
+
+    <?php } ?>
+  <?php 
+    if($inicio =="falloJugador"){?>
+
+    <div class="container">
+  <div class="alert alert-danger fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error</strong> Debes loguearte como Jugador para ingresar a esta seccion
+  </div>
+  </div>
+  <?php
+        }
+
+    if($inicio =="salir"){?>
+
+    <div class="container">
+  <div class="alert alert-success fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Listo!</strong> Te has deconectado del sistema.
+  </div>
+</div>
+<?php
+      }
+    }
+  ?>
   <div class="container">
     <div class="row">
       <div class="heading-a text-center">

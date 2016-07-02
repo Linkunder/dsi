@@ -10,6 +10,15 @@ include('headerJugador.php');
 
 
 <div id="contact-us-inicio" class="parallax">
+<?php if($_SESSION['estado'] == "penalizado"){?>
+         <div class="container">
+         <div class="alert alert-danger fade in">
+         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+         <strong>Importante!</strong> Por comportamiento inadecuado tu cuenta ha sido restringida. No podras comentar o agendar partidos por un plazo de X .
+        </div>
+</div>
+
+<?php } ?>
   <div class="container">
     <div class="row">
       <div class="heading-a text-center">
