@@ -34,6 +34,15 @@
   <link rel="shortcut icon" href="images/soccer.ico">
 </head><!--/head-->
 
+    <?php
+        $full_name = $_SERVER['PHP_SELF'];
+        $name_array = explode('/',$full_name);
+        $count = count($name_array);
+        $page_name = $name_array[$count-1];
+    ?>
+
+
+
 <body>
 
   <!-- Inicio Header -->
@@ -54,9 +63,9 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">                 
-            <li class="scroll active"><a href="inicio.php">Inicio</a></li>
-            <li class="scroll"><a href="quienesSomos.php">¿Quienes somos?</a></li> 
-            <li class="scroll"><a href="recintos.php">Canchas</a></li>
+            <li class="<?php echo ($page_name=='inicio.php')?'active':'';?>"><a href="inicio.php">Inicio</a></li>
+            <li class="<?php echo ($page_name=='quienesSomos.php')?'active':'';?>"><a href="quienesSomos.php">¿Quienes somos?</a></li> 
+            <li class="<?php echo ($page_name=='recintos.php')?'active':'';?>"><a href="recintos.php">Canchas</a></li>
             <ul class="nav pull-left">
               <li class="dropdown" id="menuLogin">
                 <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Ingresar</a>

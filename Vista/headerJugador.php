@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-
+    
+  if(!isset($sesion)){
     session_start();
+  }
+   
     if($_SESSION["sesion"]!="jugador") {
       header("Location:../Vista/inicio.php?inicio=falloJugador"); 
     }
@@ -48,6 +51,13 @@
   <link rel="shortcut icon" href="images/soccer.ico">
 </head><!--/head-->
 
+    <?php
+        $full_name = $_SERVER['PHP_SELF'];
+        $name_array = explode('/',$full_name);
+        $count = count($name_array);
+        $page_name = $name_array[$count-1];
+    ?>
+
 <body>
 
   <!-- Inicio Header -->
@@ -68,11 +78,10 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">                 
-            <li class="scroll active"><a href="inicio.php">Inicio</a></li>
-            <li class="scroll"><a href="quienesSomos.php">¿Quienes somos?</a></li> 
-            <li class="scroll"><a href="recintos.php">Canchas</a></li>
-            <li class="scroll"><a href="recintos.php?jugar=1">Jugar</a></li> <!--Jugar = 1 para entrar a buscar recintos en el mismo reutilizando-->
-            <li class="scroll"><a href="comentar.php">Comentar</a></li>
+            <li class="<?php echo ($page_name=='inicioJugador.php')?'active':'';?>"><a href="inicioJugador.php">Inicio</a></li>
+            <li class="<?php echo ($page_name=='recintos.php')?'active':'';?>"><a href="recintos.php">Canchas</a></li>
+            <li class="<?php echo ($page_name=='recintos.php?jugar=1')?'active':'';?>"><a href="recintos.php?jugar=1">Jugar</a></li> <!--Jugar = 1 para entrar a buscar recintos en el mismo reutilizando-->
+            <li class="<?php echo ($page_name=='comentar.php')?'active':'';?>"><a href="comentar.php">Comentar</a></li>
             <ul class="nav pull-left">
               <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user ?><i class="icon-cog"></i>
                 <b class="caret"></b></a>

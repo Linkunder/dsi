@@ -33,12 +33,12 @@ include_once('../TO/Usuario.php');
 			//Jugador activo y sin penalizacion
 			//Activamos la sesion y redirigimos al jugador
 				$_SESSION['estado']="activo";
-				session_start();
+				//session_start();
 				header("Location:../Vista/inicioJugador.php");
 			}else{	
 				//Jugador con penalizacion
 				$_SESSION['estado']="penalizado";
-				session_start();
+				
 				header("Location:../Vista/inicioJugador.php");
 			}
 		}else{
@@ -48,7 +48,7 @@ include_once('../TO/Usuario.php');
 			$_SESSION['email'] = $nuevoUsuario->getEmail();
 			$_SESSION['sesion'] = "administrador";
 			//Activamos la sesion y la refdirigimos al Administrador
-			session_start();
+			
 			header("Location:../Admin/index.php");
 
 		}

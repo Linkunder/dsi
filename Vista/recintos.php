@@ -1,7 +1,7 @@
 <?php 
-session_start();
-//PARA EFECTOS DE PRUEBA
- //No se ha conectado
+
+
+
 $_SESSION['idRecinto']=NULL;
 
 
@@ -12,6 +12,7 @@ if(isset($_GET["jugar"]) ){
     }
 
 //Comprobamos que el usuario registrado siempre vea el header jugador
+    $sesion= session_start();
     if(isset($_SESSION['user'])){
         include('headerJugador.php');
     }else{
@@ -26,223 +27,283 @@ $jefeRecinto = controlRecintos::obtenerInstancia();
 $vectorRecintos=$jefeRecinto->obtenerRecintos();
 
 ?>
-
-<!-- Aqui empieza la pagina -->
-<div class="row">
-  <div id="contact-us" class="parallax">
-    <div class="container">
-      <div class="row">
-        <div class="heading-a text-center">
-          <?php if($jugar==1){  ?>
-          <h2>Elige la cancha para el partido<h2>
-          <?php    }else {         ?>
-          <h2>Busca tu cancha ideal</h2>
-          <?php           }?>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <!--div class="input-group"-->
-          <form action="recintos.php" method="get">
-              <input type="text" class="form-control" placeholder="Busca tu cancha..." name="search"/>
-            <!--Aqui como se "recarga" debemos seguir manteniendo la "seleccion de cancha"-->
-            <?php if($jugar==1){?>
-              <input  name="jugar" class="hide" value="1"/>
-              <?php } ?>
-              <div class="row">
-                 <div class="col-md-6 col-md-offset-4">
-                <div class="div-btn-a">
-                <button class="btn-busqueda" type="submit">Buscar</button>  
+        <!-- Portfolio section start -->
+        <!--link rel="stylesheet" type="text/css" href="css/bootstrap.css" /-->
+        <div class="section secondary-section" id="contact-us">
+            <div class="container">
+                <div class="title">
+                    <?php 
+                    if($jugar==1){  
+                    ?>
+                    <h2>Elige la cancha para el partido<h2>
+                    <?php    
+                    } else {
+                    ?>
+                    <h2>Busca tu cancha ideal</h2>
+                    <?php           
+                    }?>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <form action="recintos2.php" method="get">
+                            <input type="text" class="form-control" placeholder="Busca tu cancha..." name="search"/>
+                            <!--Aqui como se "recarga" debemos seguir manteniendo la "seleccion de cancha"-->
+                            <?php 
+                            if($jugar==1){
+                            ?>
+                            <input  name="jugar" class="hide" value="1"/>
+                            <?php } ?>
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <div class="div-btn-a">
+                                        <button class="btn-busqueda" type="submit">Buscar</button>  
+                                    </div>
+                                </div>
+                            </div>          
+                        </form>
+                    </div><!-- /.col-lg-6 -->
                 </div>
-              </div>          
-            </form>
-          <!--/div--><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-      </div>
-      <hr/>
 
 
-      <?php
-        $search = '';
-        $cont = 0;
-        if (isset($_GET['search'])) {
-          $search = $_GET['search'];
-        }
-        if ($search!=''){ 
+                <?php
+                    $search = '';
+                    $cont = 0;
+                    if (isset($_GET['search'])) {
+                      $search = $_GET['search'];
+                    }
+                    if ($search!=''){  // if search
 
-          ?>
+                        // AHORA VIENEN LOS RESULTADOS
+                        ?>
+                <h3>Resultados</h3>
 
-<h3>Resultados: </h3>
+                <ul class="nav nav-pills">
+                    <li class="filter" data-filter="photo"></li>
+                    <li class="filter" data-filter="identity"></li>
+                </ul>
+                <div id="single-project">
+                    <?php
+                    } // fin if search
+                    foreach ($vectorRecintos as $key) {   // foreach recintos
+                        if($key->getIdEstado() == 1){
+                        $nombre = $key->getNombre();
+                        $pos = strripos($nombre, $search);
+                        $tipo = $key -> getTipo();
+                        $pos2 = strripos($tipo, $search);
+                        $superficie = $key->getSuperficie();
+                        $pos3 = strripos($superficie, $search);
+                        $idRecinto = $key->getIdRecinto();
+                        if ($pos !== false  ||   $pos2!==false  || $pos3!==false )  {  // if filtro dentro de foreach recintos
+                            
+                    ?>
 
-      
-    </div>
-    <section id="portfolio" >
-        <div class="container">
-          <div class="row">
-          </div> 
-        </div>
-       
-        <div class="container-fluid">
 
-          <div class="row">
-             <?php }
-                        foreach ($vectorRecintos as $key) {
-                            if($key->getIdEstado() == 1){
-                          $nombre = $key->getNombre();
-                          $pos = strripos($nombre, $search);
-                          $tipo = $key -> getTipo();
-                          $pos2 = strripos($tipo, $search);
-                          $superficie = $key->getSuperficie();
-                          $pos3 = strripos($superficie, $search);
-                          $idRecinto = $key->getIdRecinto();
-                          if ($pos !== false  ||   $pos2!==false  || $pos3!==false )  { ?>
-            <div class="col-sm-3">
-              <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
-                <div class="folio-image">
-                  <img class="img-responsive" src="images/recintos/<?php echo  $key->getRutaFotografia(); ?>" alt="">
-                </div>
-                <div class="overlay">
-                  <div class="overlay-content">
-                    <div class="overlay-text">
-                      <div class="folio-info">
-                          <h3><?php echo $nombre?></h3>
-                          <p>Cancha de <?php echo $tipo?></p>
-                      </div>
-                      <div class="folio-overview">
-                        <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="detalleRecinto.php?id_recinto=<?php echo $idRecinto ?>" ><i class="fa fa-info"></i></a></span>
-                        <!--Aqui boton que aparecera solo al haber entrado via "jugar"-->
-                        <?php 
-                        $_SESSION["idRecinto"]=$idRecinto;
-                              if($jugar==1){ ?>
-                       <button class="btn-busqueda" href="#" data-toggle="modal" data-target="#modal-1" >Jugar Aqui</button> 
-                        <?php } ?>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <?php 
-                $cont++;
-                } 
-               }
-             }
+
+                    <div id="slidingDiv<?php echo $cont?>" class="toggleDiv row-fluid single-project">
+                        <div class="span6"> 
+                            <style>
+                                .Flexible-container {
+                                    position: relative;
+                                    padding-bottom: 56.25%;
+                                    padding-top: 80px;
+                                    height: 0;
+                                  /* overflow: hidden; */
+                                }
+                                .Flexible-container iframe,   
+                                .Flexible-container object,  
+                                .Flexible-container embed {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            </style>
+                            <div class="Flexible-container">
+                                <iframe
+                                  width="600"   height="500"  frameborder="5" style="border:0"  maptype="satellite"
+                                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDR2WyVnnd9GsSTKys5OEkowPu41kMpEUs
+                                    &q=Chile + Chillan + <?php echo $key->getDireccion();?>" allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <div class="project-description">
+                                <div class="project-title clearfix">
+                                    <h3> <?php echo $nombre ?></h3>
+                                    <span class="show_hide close">
+                                        <i class="icon-cancel"></i> 
+                                    </span>
+
+                                </div>
+
+                                <?php echo "RECINTO ".$cont?>
+
+                                <div class="project-info">
+                                    <div>
+                                        <span>Precio</span><?php echo $key->getPrecio();?>
+                                    </div>
+                                    <div>
+                                        <span>Telefono</span><?php echo $key->getTelefono();?>
+                                    </div>
+                                    <div>
+                                        <span>Direccion</span><?php echo $key->getDireccion();?>
+                                    </div>
+                                    <div>
+                                        <span>Horario</span><?php echo $key->getHorario();?>
+                                    </div>
+                                    <div>
+                                        <span>Superficie</span><?php echo $key->getSuperficie();?>
+                                    </div>
+                                    
+                                    <br/>
+                                    <?php 
+                                    $_SESSION["idRecinto"]=$idRecinto;
+                                    if($jugar==1){ ?>
+                                    <center>
+                                        <button class="btn-busqueda" href="#" data-toggle="modal" data-target="#modal-1" >
+                                            Jugar Aqui
+                                        </button> 
+                                    </center>
+                                    <?php  } ?>
+                                </div>
+
+                                <p></p> <!--puede ir algo mas escrito aqui -->
+                            </div>
+
+                        </div>
+                    </div> <!-- Fin Sliding Div-->
+
+                    <?php 
+                    $cont++;
+                    }
+                }  // fin if filtro dentro de foreach
+            } // fin foreach recintos
             ?>
-      
-          </div>
-        </div>
-        <div id="portfolio-single-wrap">
-          <div id="portfolio-single">
-          </div>
-        </div><!-- /#portfolio-single-wrap -->
-      </section><!--/#portfolio-->
 
-
-
-
-    
-  </div>
-</div>
+            <!-- COMENTARIOS -->
 
 
 
 
 
-  <div class="container">
-    <div class="modal fade" id="modal-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h3 class="modal-title">Define la hora, fecha y cantidad de jugadores</h3>
-           </div>
-           <div class="modal-body">
 
-            <form  method="post" action="cancha.php" class="design-form" >
-       
-              <div class="container">  
-        <div class="row">
-        <div class='col-sm-8 center'>
-            <div class="form-group">
-              <label for="fecha">Fecha del partido</label>
-                    <input type="date" name="fecha" placeholder="Fecha del partido" class="form-control partido" required="required">
+
+
+
+
+
+
+
+
+
+            <!-- / FIN COMENTARIOS -->
+
+
+            <ul id="portfolio-grid" class="thumbnails row">
+                <?php
+                $cont = 0;
+                foreach ($vectorRecintos as $key) {   // foreach recintos
+                    if($key->getIdEstado() == 1){
+                    $nombre = $key->getNombre();
+                    $pos = strripos($nombre, $search);
+                    $tipo = $key -> getTipo();
+                    $pos2 = strripos($tipo, $search);
+                    $superficie = $key->getSuperficie();
+                    $pos3 = strripos($superficie, $search);
+                    $idRecinto = $key->getIdRecinto();
+                    if ($pos !== false  ||   $pos2!==false  || $pos3!==false )  {  // if filtro dentro de foreach recintos            
+                    ?>
+                <li class="span4 mix web">
+                <div class="thumbnail">
+                    <img src="images/recintos/<?php echo $key->getRutaFotografia();?>" height='640' width='400' alt="project 1">
+                    <a href="#single-project" class="more show_hide" rel="#slidingDiv<?php echo $cont?>">
+                        <i class="icon-plus"></i>
+                    </a>
+                                                    <?php echo "recinto ".$cont?>
+                    <h3> <?php echo "$nombre" ?> </h3>
+                    <p>Cancha de <?php echo $key->getTipo(); ?></p>
+                    <div class="mask"></div>
+                </div>
+                </li>
+                <?php 
+                    $cont++;
+                }
+                    }
+                }
+                ?>
+            </ul>
+
+
 
             </div>
         </div>
     </div>
-  
-
-      <div class="row">
-      <div class="col-sm-8">
-
-      <div class="form-group">
-                <label for="hora">Hora</label>
-                    <input type="time" name="hora" placeholder="Hora" class="form-control partido" required="required" min="09:00:00" max="23:00:00">
-      </div>
-
-      </div>
-      </div>
-            <div class="row">
-      <div class="col-sm-8">
-
-      <div class="form-group">
-                <label for="jugadores">Numero de jugadores</label>
-                    <input type="int" name="cantidad"  class="form-control partido" required="required" title="Solo puede ingresar hasta 22 jugadores" pattern="^[0|1]\d{1}$|[0-9]|2+[0|1|2]">
-
-                     <input  name="idRecinto" class="hide" value="<?php echo $_SESSION['idRecinto'];?>"/>
-
-      </div>
-
-      </div>
-      </div>
-                 <div class="row">
-      <div class="col-sm-8">
-
-      <div class="form-group">
-                <label for="color">Color</label>
-                    <input type="text" name="color"  class="form-control partido" required="required">
-      </div>
-
-      </div>
-      </div>
-              <div class="row">
-                  <div class="col-sm-8">
-
-          
-                      <div class="form-group">
-  
-                        <button type="submit" class="btn-submit" >Siguiente</button>
-
-                      </div>
-                
+</div>
+        <!-- Portfolio section end -->
 
 
+<div class="container">
+    <div class="modal fade" id="modal-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">Define la hora, fecha y cantidad de jugadores</h3>
+                </div>
+                <div class="modal-body">
+                    <form  method="post" action="cancha.php" class="design-form" >
+                        <div class="container">  
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label class="label-partido" for="fecha">Fecha del partido</label>
+                                        <input type="date" name="fecha" placeholder="Fecha del partido" class="form-control partido" required="required">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label class="label-partido" for="hora">Hora</label>
+                                        <input type="time" name="hora" placeholder="Hora" class="form-control partido" required="required" min="09:00:00" max="23:00:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label class="label-partido" for="jugadores">Numero de jugadores</label>
+                                        <input type="int" name="cantidad"  class="form-control partido" required="required" title="Solo puede ingresar hasta 22 jugadores" pattern="^[0|1]\d{1}$|[0-9]|2+[0|1|2]">
+                                        <input  name="idRecinto" class="hide" value="<?php echo $_SESSION['idRecinto'];?>"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label class="label-partido" for="color">Color</label>
+                                        <input type="text" name="color"  class="form-control partido" required="required">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn-submit" >Siguiente</button>
+                                    </div>
+                                </div>
+                            </form>   
+                        </div>
                     </div>
-
-              </form>   
-              </div>
-           </div>
-
-           <div class="modal-footer">
-       
-           </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-
-</div>
- 
-</div>
-
-  
-<!-- /Aqui termina la pagina -->
 
 
-
-  <footer id="footer">
+<footer id="footer">
     <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
       <div class="container text-center">
         <div class="footer-logo">
@@ -272,22 +333,68 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
         </div>
       </div>
     </div>
-  </footer>
+  </footer>  
 
-  <script type="text/javascript" src="js/jquery.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-  <script type="text/javascript" src="js/jquery.inview.min.js"></script>
-  <script type="text/javascript" src="js/wow.min.js"></script>
-  <script type="text/javascript" src="js/mousescroll.js"></script>
-  <script type="text/javascript" src="js/smoothscroll.js"></script>
-  <script type="text/javascript" src="js/jquery.countTo.js"></script>
-  <script type="text/javascript" src="js/lightbox.min.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
 
-  <script src="js/fileinput.min.js" type="text/javascript"></script>
 
-  
 
-</body>
+        <!-- ScrollUp button end -->
+        <!-- Include javascript -->
+        <script src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.mixitup.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/modernizr.custom.js"></script>
+        <script type="text/javascript" src="js/jquery.bxslider.js"></script>
+        <script type="text/javascript" src="js/jquery.cslider.js"></script>
+        <script type="text/javascript" src="js/jquery.placeholder.js"></script>
+        <script type="text/javascript" src="js/jquery.inview.js"></script>
+
+        <!-- css3-mediaqueries.js for IE8 or older -->
+        <!--[if lt IE 9]>
+            <script src="js/respond.min.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="js/app.js"></script>
+
+
+
+        <script src="http://maps.googleapis.com/maps/api/js"></script>
+        <script>
+        function initialize() {
+          var mapProp = {
+            center:new google.maps.LatLng(-36.602459, -72.077014),
+            zoom:14,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+          };
+          var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        }
+
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+        google.maps.event.addDomListener(
+            window,
+            'load',
+            function () {
+                 //1000 milliseconds == 1 second,
+                 //play with this til find a happy minimum delay amount
+                window.setTimeout(initialize, 1000);
+            }
+        );
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $(".demo1").bootstrapNews({
+                    newsPerPage: 1,
+                    autoplay: true,
+                    pauseOnHover:true,
+                    direction: 'up',
+                    newsTickerInterval: 4000,
+                    onToDo: function () {
+                        //console.log(this);
+                    }
+                });
+            });
+        </script>
+
+
+    </body>
 </html>
