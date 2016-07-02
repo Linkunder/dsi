@@ -16,7 +16,7 @@ class DAOLocal{
 			'".$local->getNombre()."',
 			'".$local->getDescripcion()."',
 			'".$local->getDireccion()."',
-			'".$local->getRutaFoto()."',
+			'".$local->getRutaFotografia()."',
 			'".$local->getLinkMapa()."')";
 		mysql_query($query,$link) or die(mysql_error());
 		mysql_close($link);
@@ -33,7 +33,7 @@ class DAOLocal{
 			$local->setNombre($row['nombre']);
 			$local->setDescripcion($row['descripcion']);
 			$local->setDireccion($row['direccion']);
-			$local->setRutaFoto($row['rutaFotografia']);
+			$local->setRutaFotografia($row['rutaFotografia']);
 			$local->setLinkMapa($row['linkMapa']);
 			$vectorData[$i]= $local;
 			$i++;
@@ -56,7 +56,7 @@ class DAOLocal{
 			$local->setNombre($row['nombre']);
 			$local->setDescripcion($row['descripcion']);
 			$local->setDireccion($row['direccion']);
-			$local->setRutaFoto($row['rutaFotografia']);
+			$local->setRutaFotografia($row['rutaFotografia']);
 			$local->setLinkMapa($row['linkMapa']);
 			$vectorData[$i]= $local;
 			$i++;
@@ -74,7 +74,7 @@ class DAOLocal{
 		nombre = '".$local->getNombre()."',
 		descripcion = '".$local->getDescripcion()."'.
 		direccion='".$local->getDireccion()."'
-		rutaFotografia='".$local->getRutaFoto()."'
+		rutaFotografia='".$local->getRutaFotografia()."'
 		linkMapa='".$local->getLinkMapa()."'
 		WHERE idLocal = '".$local->getidLocal()."'";
 		mysql_query($query,$link) or die (mysql_error());

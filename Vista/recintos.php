@@ -27,6 +27,7 @@ $jefeRecinto = controlRecintos::obtenerInstancia();
 $vectorRecintos=$jefeRecinto->obtenerRecintos();
 
 ?>
+
         <!-- Portfolio section start -->
         <!--link rel="stylesheet" type="text/css" href="css/bootstrap.css" /-->
         <div class="section secondary-section" id="contact-us">
@@ -138,7 +139,7 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
 
                                 </div>
 
-                                <?php echo "RECINTO ".$cont?>
+
 
                                 <div class="project-info">
                                     <div>
@@ -256,7 +257,6 @@ Panel content
                     <a href="#single-project" class="more show_hide" rel="#slidingDiv<?php echo $cont?>">
                         <i class="icon-plus"></i>
                     </a>
-                                                    <?php echo "recinto ".$cont?>
                     <h3> <?php echo "$nombre" ?> </h3>
                     <p>Cancha de <?php echo $key->getTipo(); ?></p>
                     <div class="mask"></div>
@@ -329,13 +329,15 @@ Panel content
                                         <button type="submit" class="btn-submit" >Siguiente</button>
                                     </div>
                                 </div>
-                            </form>   
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer"></div>
+                    </form>   
                 </div>
             </div>
+            <div class="modal-footer"></div>
         </div>
+    </div>
+</div>
 
 
 <footer id="footer">

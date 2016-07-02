@@ -51,6 +51,32 @@ class DAOSolicitud{
 		return $vectorData;	
 	}
 
+	public function leerSolicitudes(){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT * FROM solicitud ";
+		$result = mysql_query($query,$link) or die (mysql_error());
+		$i = 0;
+		while ($row = mysql_fetch_array($result)) {
+			$solicitud = new Solicitud();
+			$solicitud->setIdSolicitud($row['idSolicitud']);
+			$solicitud->setNombre($row['nombre']);
+			$solicitud->setPrecio($row['precio']);
+			$solicitud->setDireccion($row['direccion']);
+			$solicitud->setHorario($row['horario']);
+			$solicitud->setRutaFotografia($row['rutaFotografia']);
+			$solicitud->setCantidadCanchas($row['cantidadCanchas']);
+			$solicitud->setTelefono($row['telefono']);
+			$solicitud->setIdUsuario($row['idUsuario']);
+			$vectorData[$i]= $solicitud;
+			$i++;
+		}
+		mysql_close($link);
+		if(empty($vectorData)){
+			return null;
+		}
+		return $vectorData;	
+	}
+
 	public function actualizarSolicitud($solicitud){
 		$link = $this->conexionBD->obtenerConexion();
 		$query = "UPDATE idSolicitud SET 

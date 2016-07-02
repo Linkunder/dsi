@@ -48,9 +48,15 @@
 
                 <div class="row">
                     <div class="col-lg-12">
+                        <?php
+                            include_once('../TO/Solicitud.php');
+                            include_once('../Logica/controlSolicitudes.php');
+                            $controlSolicitud= controlSolicitudes::obtenerInstancia();
+                            $numeroSolicitudes = $controlSolicitud->contarSolicitudes();
+                        ?>
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-flag"></i>  Tienes <a href="#" class="alert-link"><strong>4</strong> notificaciones  </a>  de nuevos recintos!
+                            <i class="fa fa-flag"></i>  Tienes <a href="#" class="alert-link"><strong><?php echo $numeroSolicitudes?></strong> notificaciones  </a>  de nuevos recintos!
                         </div>
                     </div>
                 </div>

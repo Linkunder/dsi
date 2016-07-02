@@ -26,7 +26,7 @@ class Local{
 		return $this->direccion;
 	}
 
-	function getRutaFoto(){
+	function getRutaFotografia(){
 		return $this->rutaFoto;
 	}
 
@@ -50,7 +50,7 @@ class Local{
 		$this->direccion = $direccion;
 	}
 
-	function setRutaFoto($rutaFoto){
+	function setRutaFotografia($rutaFoto){
 		$this->rutaFoto = $rutaFoto;
 	}
 

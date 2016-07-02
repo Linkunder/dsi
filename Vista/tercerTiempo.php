@@ -61,6 +61,7 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
 
 
 $vectorLocales = $jefeLocales->obtenerLocales();
+
 $vectorPartidos = $jefePartidos->obtenerPartidos();
 $idPartido = end($vectorPartidos)->getIdPartido();
 
@@ -73,96 +74,242 @@ $idPartido = end($vectorPartidos)->getIdPartido();
 
 
 <!-- Aqui empieza la pagina -->
-<div class="row">
-<div id="contact-us" class="parallax">
-  <div class="container">
-    <div class="row">
-      <div class="heading-a text-center">
-          <h2>Busca el lugar ideal para tu tercer tiempo<h2>
-        </div>
 
-        <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <!--div class="input-group"-->
-          <form action="tercerTiempo.php" method="get">
-              <input type="text" class="form-control" placeholder="Ingresa lo que buscas para tu tercer tiempo..." name="search"/>
-            <!--Aqui como se "recarga" debemos seguir manteniendo la "seleccion de cancha"-->
-              <div class="row">
-                 <div class="col-md-6 col-md-offset-4">
-                <div class="div-btn-a">
-                <button class="btn-busqueda" type="submit">Buscar</button>  
-                </div>
-                </div>
-              </div>          
-            </form>
-          <!--/div--><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-      </div>
-      <hr/>
-      <?php
-      $search = '';
-      $cont = 0;
-      if (isset($_GET['search'])) {
-        $search = $_GET['search'];
-      }
-      if ($search!=''){ 
-        ?>
-        <h3>Resultados: </h3>
-      </div>
-      <section id="portfolio" >
-        <div class="container-fluid">
+
+
+        <!-- Portfolio section start -->
+        <!--link rel="stylesheet" type="text/css" href="css/bootstrap.css" /-->
+<div class="section secondary-section" id="contact-us">
+  <div class="container">
+    <div class="title">
+      <h2>Busca el lugar ideal para tu tercer tiempo<h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <form action="tercerTiempo.php" method="get">
+          <input type="text" class="form-control" placeholder="Busca tu lugar ideal ..." name="search"/>
           <div class="row">
-            <?php }
-            foreach ($vectorLocales as $key) {
-              $nombre = $key->getNombre();
-              $pos = strripos($nombre, $search);
-              $descripcion = $key->getDescripcion();
-              $pos2 = strripos($descripcion, $search);
-              $idLocal = $key->getIdLocal();
-              if ($pos !== false  && $pos2 !== false)  { 
-                ?>
-              <div class="col-sm-3">
-                <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="100ms">
-                  <div class="folio-image">
-                    <img class="img-responsive" src="images/locales/<?php echo  $key->getRutaFoto(); ?>" alt="">
-                  </div>
-                  <div class="overlay">
-                    <div class="overlay-content">
-                      <div class="overlay-text">
-                        <div class="folio-info">
-                          <h3><?php echo $nombre?></h3>
-                          <p>En <?php echo $key->getDireccion();?></p>
-                      </div>
-                      <div class="folio-overview">
-                        <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="detalleLocal.php?id_local=<?php echo $idLocal ?>"><i class="fa fa-info"></i></a></span>
+            <div class="col-md-6 col-md-offset-4">
+              <div class="div-btn-a">
+                <button class="btn-busqueda" type="submit">Buscar</button>  
+              </div>
+            </div>
+          </div>
+        </form>
+      </div><!-- /.col-lg-6 -->
+    </div>
+
+
+                <?php
+                    $search = '';
+                    $cont = 0;
+                    if (isset($_GET['search'])) {
+                      $search = $_GET['search'];
+                    }
+                    if ($search!=''){  // if search
+
+                        // AHORA VIENEN LOS RESULTADOS
+                        ?>
+                <h3>Resultados</h3>
+
+                <ul class="nav nav-pills">
+                    <li class="filter" data-filter="photo"></li>
+                    <li class="filter" data-filter="identity"></li>
+                </ul>
+                <div id="single-project">
+                    <?php
+                    } // fin if search
+                    foreach ($vectorLocales as $key) {   // foreach recintos
+                        $nombre = $key->getNombre();
+                        $pos = strripos($nombre, $search);
+                        $descripcion = $key -> getDescripcion();
+                        $pos2 = strripos($descripcion, $search);
+                        $idLocal = $key->getIdLocal();
+                        if ($pos !== false  ||   $pos2!==false  )  {  // if filtro dentro de foreach recintos
+                            
+                    ?>
+
+
+
+                    <div id="slidingDiv<?php echo $cont?>" class="toggleDiv row-fluid single-project">
+                        <div class="span6"> 
+                            <style>
+                                .Flexible-container {
+                                    position: relative;
+                                    padding-bottom: 56.25%;
+                                    padding-top: 80px;
+                                    height: 0;
+                                  /* overflow: hidden; */
+                                }
+                                .Flexible-container iframe,   
+                                .Flexible-container object,  
+                                .Flexible-container embed {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            </style>
+                            <div class="Flexible-container">
+                                <iframe
+                                  width="600"   height="500"  frameborder="5" style="border:0"  maptype="satellite"
+                                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDR2WyVnnd9GsSTKys5OEkowPu41kMpEUs
+                                    &q=Chile + Chillan + <?php echo $key->getDireccion();?>" allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <div class="project-description">
+                                <div class="project-title clearfix">
+                                    <h3> <?php echo $nombre ?></h3>
+                                    <span class="show_hide close">
+                                        <i class="icon-cancel"></i> 
+                                    </span>
+
+                                </div>
+
+
+
+                                <div class="project-info">
+                                    <div>
+                                        <span>Nombre   </span><?php echo $key->getNombre();?>
+                                    </div>
+                                    <div>
+                                        <span>Descripción   </span><?php echo $key->getDescripcion();?>
+                                    </div>
+                                    <div>
+                                        <span>Dirección   </span><?php echo $key->getDireccion();?>
+                                    </div>
+
+                                    
+                                    <br/>
+                                    <?php 
+                                    $_SESSION["idLocal"]=$idLocal;?>
+                                    <center>
+                                        <button class="btn-busqueda" href="#" data-toggle="modal" data-target="#modal-1" >
+                                            Ir Aqui
+                                        </button> 
+                                    </center>
                        
-                      </div>
-                    </div>
+                                </div>
+
+                                <p></p> <!--puede ir algo mas escrito aqui -->
+                            </div>
+
+                        </div>
+
+                    </div> <!-- Fin Sliding Div-->
+
+                    <?php 
+                    $cont++;
+                    
+                }  // fin if filtro dentro de foreach
+            } // fin foreach recintos
+            ?>
+            
+
+
+
+            <ul id="portfolio-grid" class="thumbnails row">
+                <?php
+                $cont = 0;
+                foreach ($vectorLocales as $key) {   
+                        $nombre = $key->getNombre();
+                        $pos = strripos($nombre, $search);
+                        $descripcion = $key -> getDescripcion();
+                        $pos2 = strripos($descripcion, $search);
+                        $idLocal = $key->getIdLocal();
+                        if ($pos !== false  ||   $pos2!==false  )  {  
+                    ?>
+                <li class="span4 mix web">
+                <div class="thumbnail">
+                    <img src="images/locales/<?php echo $key->getRutaFotografia();?>" height='640' width='400' alt="project 1">
+                    <a href="#single-project" class="more show_hide" rel="#slidingDiv<?php echo $cont?>">
+                        <i class="icon-plus"></i>
+                    </a>
+                    <h3> <?php echo "$nombre" ?> </h3>
+                    <p><?php echo $key->getDescripcion(); ?></p>
+                    <div class="mask"></div>
+                </div>
+                </li>
+                <?php 
+
+                    $cont++;
+
+                  
+                  }    
+                }
+                ?>
+            </ul>
+
+
+      </div>
+         
+    </div>
+</div>
+        <!-- Portfolio section end -->
+
+
+<div class="container">
+  <div class="modal fade" id="modal-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Define la información del encuentro</h3>
+        </div>
+        <div class="modal-body">
+          <form  method="post" action="cancha.php" class="design-form" >
+            <div class="container">  
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="form-group">
+                    <label class="label-partido" for="hora">Hora <i class="fa fa-clock-o" aria-hidden="true"></i></label>
+                    <input type="time" name="hora" placeholder="Hora del encuentro" class="form-control partido" required="required">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="form-group">
+                    <label class="label-partido" for="descripcion">Comentarios adicionales <i class="fa fa-comments-o" aria-hidden="true"></i></label>
+                    <input type="textarea" name="descripcion" placeholder="Aqui escribe comentarios acerca del encuentro (Ejemplo: Cuota personal)" 
+                    class="form-control partido" required="required">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="form-group">
+                    <button type="submit" class="btn-submit" >Siguiente</button>
                   </div>
                 </div>
               </div>
             </div>
-            <?php 
-                $cont++;
-                } 
-               }
-            ?>
-      
-          </div>
+          </form>   
         </div>
-        <div id="portfolio-single-wrap">
-          <div id="portfolio-single">
-          </div>
-        </div><!-- /#portfolio-single-wrap -->
-      </section><!--/#portfolio-->
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
 
 
 
 
-    </div><!-- /row -->
-  </div> 
-</div> 
-</div> 
+
+
+
+
+
+
+
+
+
+
+
 
   
 
@@ -215,19 +362,62 @@ $idPartido = end($vectorPartidos)->getIdPartido();
     </div>
   </footer>
 
-  <script type="text/javascript" src="js/jquery.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-  <script type="text/javascript" src="js/jquery.inview.min.js"></script>
-  <script type="text/javascript" src="js/wow.min.js"></script>
-  <script type="text/javascript" src="js/mousescroll.js"></script>
-  <script type="text/javascript" src="js/smoothscroll.js"></script>
-  <script type="text/javascript" src="js/jquery.countTo.js"></script>
-  <script type="text/javascript" src="js/lightbox.min.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
+ <script src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.mixitup.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/modernizr.custom.js"></script>
+        <script type="text/javascript" src="js/jquery.bxslider.js"></script>
+        <script type="text/javascript" src="js/jquery.cslider.js"></script>
+        <script type="text/javascript" src="js/jquery.placeholder.js"></script>
+        <script type="text/javascript" src="js/jquery.inview.js"></script>
 
-  <script src="js/fileinput.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/jquerypp.custom.js"></script>
-    <script type="text/javascript" src="js/jquery.elastislide.js"></script>
+        <!-- css3-mediaqueries.js for IE8 or older -->
+        <!--[if lt IE 9]>
+            <script src="js/respond.min.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="js/app.js"></script>
+
+
+
+        <script src="http://maps.googleapis.com/maps/api/js"></script>
+        <script>
+        function initialize() {
+          var mapProp = {
+            center:new google.maps.LatLng(-36.602459, -72.077014),
+            zoom:14,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+          };
+          var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        }
+
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+        google.maps.event.addDomListener(
+            window,
+            'load',
+            function () {
+                 //1000 milliseconds == 1 second,
+                 //play with this til find a happy minimum delay amount
+                window.setTimeout(initialize, 1000);
+            }
+        );
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $(".demo1").bootstrapNews({
+                    newsPerPage: 1,
+                    autoplay: true,
+                    pauseOnHover:true,
+                    direction: 'up',
+                    newsTickerInterval: 4000,
+                    onToDo: function () {
+                        //console.log(this);
+                    }
+                });
+            });
+        </script>
+
+
+
 </body>
 </html>

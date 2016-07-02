@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-//Aplicamos session_start() para las variables de sesion
-
+    
+  if(!isset($sesion)){
+    session_start();
+  }
+   
+    if($_SESSION["sesion"]!="jugador") {
+      header("Location:../Vista/inicio.php?inicio=falloJugador"); 
+    }
 
 /////Usuario de prueba//////
-session_start();
 
+    $user= $_SESSION['user'];
+    $idUsuario= $_SESSION['idUsuario'];
 ///////////////////////////////
 
 ?>
@@ -44,7 +51,7 @@ session_start();
 
 <body>
 
-  <!-- Inicio Header -->
+   <!-- Inicio Header -->
 
   <header id="home">
     <div class="main-nav">
@@ -62,22 +69,21 @@ session_start();
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">                 
-            <li class="scroll active"><a href="inicio.php">Inicio</a></li>
-            <li class="scroll"><a href="quienesSomos.php">¿Quienes somos?</a></li> 
-            <li class="scroll"><a href="recintos.php">Canchas</a></li>
-            <li class="scroll"><a href="recintos.php?jugar=1">Jugar</a></li> <!--Jugar = 1 para entrar a buscar recintos en el mismo reutilizando-->
-            <li class="scroll"><a href="comentar.php">Comentar</a></li>
+            <li class="<?php echo ($page_name=='inicioJugador.php')?'active':'';?>"><a href="inicioJugador.php">Inicio</a></li>
+            <li class="<?php echo ($page_name=='recintos.php')?'active':'';?>"><a href="recintos.php">Canchas</a></li>
+            <li class="<?php echo ($page_name=='recintos.php?jugar=1')?'active':'';?>"><a href="recintos.php?jugar=1">Jugar</a></li> <!--Jugar = 1 para entrar a buscar recintos en el mismo reutilizando-->
+            <li class="<?php echo ($page_name=='comentar.php')?'active':'';?>"><a href="comentar.php">Comentar</a></li>
             <ul class="nav pull-left">
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']?><i class="icon-cog"></i>
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user ?><i class="icon-cog"></i>
                 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="perfil.php">Mi Perfil</a></li>
                   <hr></hr>
-                  <li><a href="contactos.php">Contactos</a></li>
+                  <li><a href="contactos2.php">Contactos</a></li>
                   <hr></hr>
                   <li><a href="notificarRecinto.php">Notificar recinto</a></li>
                   <hr></hr>
-                   <li><a href="../../LOGICA/salirJugador.php">Cerrar Sesion</a></li>
+                   <li><a href="../Logica/controlSesion.php?tipo=salir">Cerrar Sesion</a></li>
                    <li></li>
                 </ul>
               </li>

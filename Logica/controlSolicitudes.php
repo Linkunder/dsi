@@ -39,6 +39,11 @@ class controlSolicitudes{
 		return $vectorData;
 	}
 
+	public function contarSolicitudes(){
+		$vectorData = $this->persistenciaSolicitud->leerSolicitudes();
+		return count($vectorData);
+	}
+
 }
 
 
