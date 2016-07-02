@@ -46,7 +46,7 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
 
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
-                        <form action="recintos2.php" method="get">
+                        <form action="recintos.php" method="get">
                             <input type="text" class="form-control" placeholder="Busca tu cancha..." name="search"/>
                             <!--Aqui como se "recarga" debemos seguir manteniendo la "seleccion de cancha"-->
                             <?php 
@@ -167,12 +167,63 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
                                         </button> 
                                     </center>
                                     <?php  } ?>
+                       
                                 </div>
 
                                 <p></p> <!--puede ir algo mas escrito aqui -->
                             </div>
 
                         </div>
+                         <!--COMENTARIOS-->      
+                <div class="container">
+<div class="row">
+<div class="col-sm-12 ">
+<h3>User Comment Example</h3>
+</div><!-- /col-sm-12 -->
+</div><!-- /row -->
+<div class="row">
+<div class="col-sm-1">
+<div class="thumbnail">
+<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+</div><!-- /thumbnail -->
+</div><!-- /col-sm-1 -->
+
+<div class="col-sm-7 right">
+<div class="panel panel-default">
+<div class="panel-heading">
+<strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+</div>
+<div class="panel-body">
+Panel content
+</div><!-- /panel-body -->
+</div><!-- /panel panel-default -->
+</div><!-- /col-sm-5 -->
+
+
+</div><!-- /row -->
+<div class="row">
+<div class="col-sm-1">
+<div class="thumbnail">
+<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+</div><!-- /thumbnail -->
+</div><!-- /col-sm-1 -->
+
+<div class="col-sm-7 right">
+<div class="panel panel-default">
+<div class="panel-heading">
+<strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+</div>
+<div class="panel-body">
+Panel content
+</div><!-- /panel-body -->
+</div><!-- /panel panel-default -->
+</div><!-- /col-sm-5 -->
+
+
+</div><!-- /row -->
+
+</div><!-- /container -->
+                    <!--COMENTARIOS-->   
                     </div> <!-- Fin Sliding Div-->
 
                     <?php 
@@ -182,23 +233,7 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
             } // fin foreach recintos
             ?>
 
-            <!-- COMENTARIOS -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!-- / FIN COMENTARIOS -->
 
 
             <ul id="portfolio-grid" class="thumbnails row">
