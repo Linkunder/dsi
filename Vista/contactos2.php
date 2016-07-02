@@ -6,8 +6,7 @@
 
 /////Usuario de prueba//////
 session_start();
-$_SESSION['user']="Carrasco";
-$_SESSION['idUsuario']="1";
+
 ///////////////////////////////
 
 ?>

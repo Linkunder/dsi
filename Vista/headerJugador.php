@@ -38,7 +38,12 @@
   <link rel="stylesheet" type="text/css" href="css/jquery.cslider.css" />
   <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css" />
   <link rel="stylesheet" type="text/css" href="css/animate.css" />
-
+  <!--CARUSEL
+  <link rel="stylesheet" type="text/css" href="css/demo.css" />
+  <link rel="stylesheet" type="text/css" href="css/elastislide.css" />
+  <link rel="stylesheet" type="text/css" href="css/custom.css" />
+  <script src="js/modernizr.custom.17475.js"></script>
+  -->
 
     <!--Para subir la imagen-->
   <link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
@@ -49,6 +54,7 @@
   
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="images/soccer.ico">
+  
 </head><!--/head-->
 
     <?php
