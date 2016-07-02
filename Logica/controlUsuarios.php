@@ -69,6 +69,10 @@ class controlUsuarios{
 		if (count($vectorData)==0) return null;
 		    return $vectorData;
 	}
+
+	public function actualizarPerfil($usuario){
+		$this->persistenciaUsuario->actualizarPerfil($usuario);
+	}
 	
 }
 

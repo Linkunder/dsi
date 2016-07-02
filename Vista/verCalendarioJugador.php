@@ -49,7 +49,7 @@ $user = $controlUsuario->leerUsuario($idUsuario);
                   <i class="fa fa-pencil"></i>
                 </button>
               </a>
-              <a href="subirImagen.php?idUsuario=<?php echo $key->getIdUsuario();?>">
+              <a href="cambiarImagen.php?idUsuario=<?php echo $key->getIdUsuario();?>">
                 <button type="button" class="btn btn-sm btn-warning btn-sm">Cambiar imagen
                   <i class="fa fa-camera"></i>
                 </button>
@@ -60,7 +60,7 @@ $user = $controlUsuario->leerUsuario($idUsuario);
             <!-- SIDEBAR MENU -->
             <div class="profile-usermenu">
               <ul class="nav">
-                <li >
+                <li class="active">
                   <a href="verCalendarioJugador.php?idUsuario=<?php echo $key->getIdUsuario();?>">
                   <i class="fa fa-calendar"></i>
                   Ver calendario de partidos</a>

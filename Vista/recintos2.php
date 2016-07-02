@@ -137,6 +137,8 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
 
                                 </div>
 
+                                <?php echo "RECINTO ".$cont?>
+
                                 <div class="project-info">
                                     <div>
                                         <span>Precio</span><?php echo $key->getPrecio();?>
@@ -202,6 +204,7 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
                 <?php
                 $cont = 0;
                 foreach ($vectorRecintos as $key) {   // foreach recintos
+                    if($key->getIdEstado() == 1){
                     $nombre = $key->getNombre();
                     $pos = strripos($nombre, $search);
                     $tipo = $key -> getTipo();
@@ -217,6 +220,7 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
                     <a href="#single-project" class="more show_hide" rel="#slidingDiv<?php echo $cont?>">
                         <i class="icon-plus"></i>
                     </a>
+                                                    <?php echo "recinto ".$cont?>
                     <h3> <?php echo "$nombre" ?> </h3>
                     <p>Cancha de <?php echo $key->getTipo(); ?></p>
                     <div class="mask"></div>
@@ -224,6 +228,7 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
                 </li>
                 <?php 
                     $cont++;
+                }
                     }
                 }
                 ?>

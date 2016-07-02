@@ -188,6 +188,17 @@ class DAOUsuario{
 		return $vectorData;  
 	}
 
+	public function actualizarPerfil($usuario){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "UPDATE Usuario SET 
+		nickname = '".$usuario->getNickname()."',
+		email = '".$usuario->getEmail()."',
+		telefono = '".$usuario->getTelefono()."'
+		WHERE idUsuario = '".$usuario->getIdUsuario()."'";
+		mysql_query($query,$link) or die (mysql_error());
+		mysql_close($link);
+	}
+
 
 }
 

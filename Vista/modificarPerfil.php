@@ -1,11 +1,14 @@
-<?php include('headerJugador.php'); 
+<?php 
+session_start();
+
+include('headerJugador.php'); 
 
 include_once('../TO/Usuario.php');
 include_once('../Logica/controlUsuarios.php');
 $controlUsuario = controlUsuarios::obtenerInstancia();
 
 // Prueba
-$idUsuario = 1;
+$idUsuario = $_GET['idUsuario'];
 $user = $controlUsuario->leerUsuario($idUsuario);
 
 ?>
@@ -20,64 +23,80 @@ $user = $controlUsuario->leerUsuario($idUsuario);
 
     <div class="container">
       <div class="row profile">
-        <div class="col-md-4 col-offset-6 centered">
+        <div class="col-md-4 ">
           <div class="profile-sidebar">
             <?php
             foreach ($user as $key) {?>
-            <!-- SIDEBAR USERPIC -->
+          <!-- SIDEBAR USERPIC -->
             <div class="profile-userpic">
               <img src="images/usuarios/<?php echo $key->getRutaFotografia();?>" class="img-responsive" alt="">
             </div>
-            <!-- END SIDEBAR USERPIC -->
-
             <!-- SIDEBAR USER TITLE -->
             <div class="profile-usertitle">
               <div class="profile-usertitle-name">
                 <?php
                   echo $key->getNombre()." ".$key->getApellido();
-                }
+                
                 ?>
               </div>
 
             </div>
             <!-- END SIDEBAR USER TITLE -->
-            
-            <!-- SIDEBAR BUTTONS -->
-            <div class="profile-userbuttons">
-              <a href="modificarPerfil.php?idUsuario=<?php echo $key->getIdUsuario();?>">
-                <button type="button" class="btn btn-success btn-sm">Ver información
-                  <i class="fa fa-pencil"></i>
-                </button>
-              </a>
-              <a href="subirImagen.php?idUsuario=<?php echo $key->getIdUsuario();?>">
-                <button type="button" class="btn btn-sm btn-warning btn-sm">Cambiar imagen
-                  <i class="fa fa-camera"></i>
-                </button>
-              </a>
-            </div>
-            <!-- END SIDEBAR BUTTONS -->
-            
-            <!-- SIDEBAR MENU -->
-            <div class="profile-usermenu">
-              <ul class="nav">
-                <li >
-                  <a href="verCalendarioJugador.php?idUsuario=<?php echo $key->getIdUsuario();?>">
-                  <i class="fa fa-calendar"></i>
-                  Ver calendario de partidos</a>
-                </li>
-                <li>
-                  <a href="salirJugador.php">
-                  <i class="fa fa-sign-out"></i>
-                  Cerrar sesión </a>
-                </li>
-              </ul>
-            </div>
-            <!-- END MENU -->
-
-
           </div>
+          <!-- END SIDEBAR USERPIC -->
         </div>
 
+        <div class="col-md-8 ">
+          <div class="profile-sidebar col-offset-6 centered">
+                  <form role="form" action="procesarPerfil.php" method="post">
+                      <table class="table table-form">
+                        <tr>
+                          <th>Usuario: </th>
+                          <th><input class="profile-form-control" readonly="readonly" name="idUsuario" id="idUsuario" value="<?php echo $key->getidUsuario();?>"></th>
+                        </tr>
+                        <tr>
+                        <tr>
+                          <th>Nickname: </th>
+                          <th><input class="profile-form-control" name="nickname" id="nickname" value="<?php echo $key->getNickname();?>"></th>
+                        </tr>
+                        <tr>
+                          <tr>
+                          <th>Mail: </th>
+                          <th><input class="profile-form-control" name="mail" id="mail" value="<?php echo $key->getEmail();?>"></th>
+                        </tr>
+                        <tr>
+                          <tr>
+                          <th>Telefono: </th>
+                          <th><input class="profile-form-control" name="fono" id="fono" value="<?php echo $key->getTelefono();?>"></th>
+                        </tr>
+                        <tr>
+                          <tr>
+                          <th>Fecha de nacimiento: </th>
+                          <th><input class="profile-form-control" readonly="readonly" value="<?php echo $key->getFechaNacimiento();?>"></th>
+                        </tr>
+                        <tr>
+                          <tr>
+                          <th>Sexo: </th>
+                          <th><input class="profile-form-control"  readonly="readonly" value="<?php echo $key->getSexo();?>"></th>
+                        </tr>
+                        <tr>
+                      </table>
+                        <div class="col-md-4">
+                        <button type="submit" class="btn btn-lg btn-primary">Actualizar <i class="fa fa-check fa-1x"></i></button>
+                        </div>
+                        <div class="col-md-4">
+                        <button type="reset" class="btn btn-lg btn-warning">Reiniciar <i class="fa fa-eraser fa-1x"></i></button>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                  </form>
+                  <div class="col-md-4">
+                    <a href="perfil.php"><button class="btn btn-lg btn-danger">Volver <i class="fa fa-arrow-left fa-1x"></i></button></a>
+                  </div>
+                  <br/><br/>
+          </div>
+        </div>
       </div>
     </div>
 
