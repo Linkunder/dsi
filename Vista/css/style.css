@@ -25,6 +25,18 @@
 **********************************************************************/
 
 /*
+0. Extras ************************************************************/
+.title2{
+    text-align: center;
+    padding:10px;
+    margin-bottom: 30px;
+    color: #fff;
+    font-weight: bold; 
+}
+
+
+
+/*
 1. General
 **********************************************************************/
  body {
@@ -283,7 +295,7 @@ p {
     z-index:4;
 }
 .thumbnail h3 {
-    color: #FECE1A;
+    color: #3598E4;
     margin-top:10px;
     font-size:20px;
 }
@@ -438,7 +450,7 @@ p {
 .project-title {
     margin-top:15px;
     margin-bottom:15px;
-    border-bottom:1px solid #FECE1A;
+    border-bottom:1px solid #3598E4;
 }
 .project-title h3 {
     float:left;
@@ -447,11 +459,11 @@ p {
     width:80%;
 }
 .project-title .close {
-    color: #FECE1A;
+    color: #3598E4;
     margin-top:10px;
 }
 .project-info span, .project-title h3 {
-    color:#FECE1A;
+    color:#3598E4;
 }
 .project-info {
     font-weight:100;
