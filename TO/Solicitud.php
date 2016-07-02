@@ -12,6 +12,8 @@ class Solicitud{
 	private $superficie;
 	private $telefono;
 	private $idUsuario;
+	private $tipo;
+
 
 	function __construct(){}
 
@@ -49,6 +51,10 @@ class Solicitud{
 
 	function getSuperficie(){
 		return $this->superficie;
+	}
+
+	function getTipo(){
+		return $this->tipo;
 	}
 
 	function getTelefono(){
@@ -98,6 +104,11 @@ class Solicitud{
 	function setTelefono($telefono){
 		$this->telefono = $telefono;
 	}
+
+	function setTipo($tipo){
+		$this->tipo= $tipo;
+	}
+
 
 	function setIdUsuario($idUsuario){
 		$this->idUsuario = $idUsuario;

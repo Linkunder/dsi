@@ -3,6 +3,7 @@ include('header.php');
 ?>
 
 
+
 <!-- Aqui empieza la pagina -->
 
   
@@ -12,79 +13,93 @@ include('header.php');
       <div class="container">
         <div class="row">
           <div class="heading text-center">
-            <h2>Únete a MatchDay</h2>
-            <p>En MatchDay, podrás agendar tus partidos, comentar tus canchas favoritas y agendar un tercer tiempo con tus amigos.</p>
+            <h2>Notifica un recinto</h2>
+            <p>¿Tu recinto favorito no está en MatchDay? ¿Qué esperas? Notificanos tu cancha favorita para que todos los jugadores de MatchDay deseen hacer goles en ella.</p>
             <h4>Paso 1: Completa el siguiente formulario</h4>
           </div>
         </div>
           <div class="row">
             <div class="col-sm-12 col-sm-offset-3 centered">
-              <form  method="post" action="nuevoUsuario.php" class="design-form col-sm-offset-3 centered" >
+              <form  method="post" action="procesarNotificacion.php" class="design-form col-sm-offset-3 centered" >
 
                 <div class="row">
-                  <div class="col-sm-6 centered">
-                  <div class="col-sm-6">
+                  <div class="col-sm-6 col-sm-offset-3 centered">
                     <div class="form-group">
-                      <input type="text" name="nombre" class="form-control" placeholder="Nombre" required="required">
+                      <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required="required">
                     </div>
                   </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3 centered">
+                    <div class="form-group">
+                     <select class="form-control" name="tipo" id="tipo" value="">
+                        <option>Baby-fútbol</option>
+                        <option>Futbolito</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3 centered">
+                    <div class="form-group">
+                      <select class="form-control" name="superficie" id="superficie" value="">
+                        <option>Pasto sintético</option>
+                        <option>Cerámica</option>
+                        <option>Tierra</option>
+                        <option>Cemento</option>
+                        <option>Piso flotante</option>
+                        <option>Piso sintético poliuretano</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3 centered">
+                    <div class="form-group">
+                      <input type="text" name="precio" id="precio" class="form-control" placeholder="Precio" required="required">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3 centered">
+                    <div class="form-group">
+                      <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Telefono" >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3 centered">
+                    <div class="form-group">
+                      <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Dirección" >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3 centered">
+                    <div class="form-group">
+                      <input type="text" name="horario" id="horario" class="form-control" placeholder="Horario" >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3 centered">
+                    <div class="form-group">
+                      <input type="text" name="canchas" id="canchas" class="form-control" placeholder="Canchas" >
+                    </div>
+                  </div>
+                </div>
+
                 
 
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <input type="text" name="apellido" class="form-control" placeholder="Apellido" required="required">
-                    </div>
-                  </div>
-                </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-6 col-sm-offset-3 centered">
-                    <div class="form-group">
-                      <input type="text" name="nickname" class="form-control" placeholder="Nickname" required="required">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-6 col-sm-offset-3 centered">
-                    <div class="form-group">
-                      <input type="date" name="fecha" class="form-control" placeholder="Fecha de nacimiento" required="required">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-6 col-sm-offset-3 centered">
-                    <div class="form-group">
-                      <input type="mail" name="mail" class="form-control" placeholder="Email" required="required">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-6 col-sm-offset-3 centered">
-                    <div class="form-group">
-                      <input type="text" name="telefono" class="form-control" placeholder="Telefono" >
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label>Selecciona género:&nbsp;</label>
-                        <div class="btn-group" data-toggle="buttons">
-                          <label class="btn btn-default">
-                            <input type="radio" name="sexo" value="Masculino" /> Masculino
-                          </label>
-                          <label class="btn btn-default">
-                              <input type="radio" name="sexo" value="Femenino" /> Femenino
-                          </label>
-                        </div>
-                    </div>
-                  </div>
-                </div>
                 <div class="row">
                   <div class="col-sm-6 col-sm-offset-3 centered">
                   <button type="submit" class="btn-submit">Siguiente</button>

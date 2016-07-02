@@ -11,12 +11,13 @@ class DAOSolicitud{
 
 	public function crearSolicitud($solicitud){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO solicitud (nombre, precio, direccion, horario, rutaFotografia, cantidadCanchas, telefono, idUsuario) 
-		VALUES (".$solicitud->getNombre()."',
+		$query = "INSERT INTO solicitud (nombre, tipo, superficie, precio, direccion, horario, cantidadCanchas, telefono, idUsuario) 
+		VALUES ('".$solicitud->getNombre()."',
+			'".$solicitud->getTipo()."',
+			'".$solicitud->getSuperficie()."',
 			'".$solicitud->getPrecio()."',
 			'".$solicitud->getDireccion()."',
 			'".$solicitud->getHorario()."',
-			'".$solicitud->getRutaFotografia()."',
 			'".$solicitud->getCantidadCanchas()."',
 			'".$solicitud->getTelefono()."',
 			'".$solicitud->getIdUsuario()."')";
