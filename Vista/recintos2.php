@@ -27,6 +27,7 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
 
 ?>
         <!-- Portfolio section start -->
+        <!--link rel="stylesheet" type="text/css" href="css/bootstrap.css" /-->
         <div class="section secondary-section" id="contact-us">
             <div class="container">
                 <div class="title">
@@ -152,7 +153,17 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
                                     <div>
                                         <span>Superficie</span><?php echo $key->getSuperficie();?>
                                     </div>
-
+                                    
+                                    <br/>
+                                    <?php 
+                                    $_SESSION["idRecinto"]=$idRecinto;
+                                    //if($jugar==1){ ?>
+                                    <center>
+                                        <button class="btn-busqueda" href="#" data-toggle="modal" data-target="#modal-1" >
+                                            Jugar Aqui
+                                        </button> 
+                                    </center>
+                                    <?//php } ?>
                                 </div>
 
                                 <p></p> <!--puede ir algo mas escrito aqui -->
@@ -169,6 +180,20 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
             ?>
 
             <!-- COMENTARIOS -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <!-- / FIN COMENTARIOS -->
 
@@ -203,6 +228,8 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
                 ?>
             </ul>
 
+
+
             </div>
         </div>
     </div>
@@ -210,14 +237,100 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
         <!-- Portfolio section end -->
 
 
-
-
-        <!-- ScrollUp button start -->
-        <div class="scrollup">
-            <a href="#">
-                <i class="icon-up-open"></i>
-            </a>
+<div class="container">
+    <div class="modal fade" id="modal-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">Define la hora, fecha y cantidad de jugadores</h3>
+                </div>
+                <div class="modal-body">
+                    <form  method="post" action="cancha.php" class="design-form" >
+                        <div class="container">  
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label class="label-partido" for="fecha">Fecha del partido</label>
+                                        <input type="date" name="fecha" placeholder="Fecha del partido" class="form-control partido" required="required">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label class="label-partido" for="hora">Hora</label>
+                                        <input type="time" name="hora" placeholder="Hora" class="form-control partido" required="required" min="09:00:00" max="23:00:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label class="label-partido" for="jugadores">Numero de jugadores</label>
+                                        <input type="int" name="cantidad"  class="form-control partido" required="required" title="Solo puede ingresar hasta 22 jugadores" pattern="^[0|1]\d{1}$|[0-9]|2+[0|1|2]">
+                                        <input  name="idRecinto" class="hide" value="<?php echo $_SESSION['idRecinto'];?>"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label class="label-partido" for="color">Color</label>
+                                        <input type="text" name="color"  class="form-control partido" required="required">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn-submit" >Siguiente</button>
+                                    </div>
+                                </div>
+                            </form>   
+                        </div>
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
         </div>
+
+
+<footer id="footer">
+    <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+      <div class="container text-center">
+        <div class="footer-logo">
+          <a href="index.html"><img class="img-responsive" src="images/logo.png" alt=""></a>
+        </div>
+        <div class="social-icons">
+          <ul>
+            <li><a class="envelope" href="#"><i class="fa fa-envelope"></i></a></li>
+            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li> 
+            <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a class="tumblr" href="#"><i class="fa fa-tumblr-square"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <p>&copy; 2016 Oxygen Theme.</p>
+          </div>
+          <div class="col-sm-6">
+            <p class="pull-right">Crafted by <a href="http://designscrazed.org/">Allie</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>  
+
+
+
+    
         <!-- ScrollUp button end -->
         <!-- Include javascript -->
         <script src="js/jquery.js"></script>
@@ -275,36 +388,6 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
             });
         </script>
 
-    <footer id="footer">
-    <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-      <div class="container text-center">
-        <div class="footer-logo">
-          <a href="index.html"><img class="img-responsive" src="images/logo.png" alt=""></a>
-        </div>
-        <div class="social-icons">
-          <ul>
-            <li><a class="envelope" href="#"><i class="fa fa-envelope"></i></a></li>
-            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li> 
-            <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-            <li><a class="tumblr" href="#"><i class="fa fa-tumblr-square"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6">
-            <p>&copy; 2016 Oxygen Theme.</p>
-          </div>
-          <div class="col-sm-6">
-            <p class="pull-right">Crafted by <a href="http://designscrazed.org/">Allie</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+
     </body>
 </html>

@@ -1036,6 +1036,8 @@ ul.address {
   padding-left: 1em;
   padding-right: 1em;
   text-align: center;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
 }
 
 .btn-invitar{
@@ -1466,4 +1468,8 @@ ul.address {
 
 #talkbubble h3,h4{
   font-weight: bold;
+}
+
+.label-partido{
+  color: #000;
 }
