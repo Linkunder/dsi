@@ -5,7 +5,7 @@ include_once('../Logica/controlUsuarios.php');
 $controlUsuario = controlUsuarios::obtenerInstancia();
 
 // Prueba
-$idUsuario = 1;
+$idUsuario = $_SESSION["idUsuario"];
 $user = $controlUsuario->leerUsuario($idUsuario);
 
 ?>

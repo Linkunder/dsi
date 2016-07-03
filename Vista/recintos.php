@@ -249,7 +249,7 @@ $jefeComentario = controlComentarios::obtenerInstancia();
         
               <div class="comment">
                 <a href="#" class="pull-left">
-                <img src="images/usuarios/<?php echo $usuario->getRutaFotografia() ?>" alt="" class="img-circle">
+                <img src="images/usuarios/<?php echo $usuario->getRutaFotografia() ?>" alt="" class="img-circle img-responsive" >
                 </a>
                 <div class="media-body">
 
