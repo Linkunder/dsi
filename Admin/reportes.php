@@ -3,6 +3,89 @@
         <style type="text/css">
 ${demo.css}
         </style>
+        <script type="text/javascript">
+    $(function () {
+        $('#container1').highcharts({
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+        },
+        title: {
+            text: 'Jugadores del sistema por genero'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                ['Firefox', 45.0],
+                ['IE', 26.8],
+                ['CHROME',12.8],
+                ['Safari', 8.5],
+                ['Opera', 6.2],
+                ['Others', 0.7]
+            ]
+        }]
+    });//Fin grafico hombre/mujer
+          $('#container2').highcharts({
+               chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+        },
+        title: {
+            text: 'Jugadores del sistema por genero'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                ['Firefox', 45.0],
+                ['IE', 26.8],
+                ['CHROME',12.8],
+                ['Safari', 8.5],
+                ['Opera', 6.2],
+                ['Others', 0.7]
+            ]
+        }]
+    });
+
+  });
+    </script>
 
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -51,21 +134,97 @@ ${demo.css}
                         </ol>
                     </div>
                 </div>
+                                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="page-header">Reportes gráficos</h2>
+                        <p class="lead">
+                            En esta sección se encontrarán reportes gráficos de los recintos, jugadores, partidos y comentarios del sistema.
+                        </p>
+                    </div>
+                </div>
                 <!-- /.row -->
                 <!--Pagina-->
+                <!--Jugadores-->
                 <div class="panel-group">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse1">Jugadores</a>
+                                <a data-toggle="collapse" href="#collapse">Jugadores</a>
+                            </h4>
+                        </div>
+                    <div id="collapse" class="panel-collapse collapse">
+                        <!--Primer grafico-->
+                        <div id="container1" style="min-width: 400px; height: 500px; max-width: 600px; margin: 0 auto"></div>
+                        
+                        <!--Primer grafico-->
+                    <div class="panel-footer">Footer</div>
+                    </div>
+                    </div>
+                </div>
+            <!--Jugadores-->
+
+            <!--Recintos-->
+                            <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse1">Recintos</a>
                             </h4>
                         </div>
                     <div id="collapse1" class="panel-collapse collapse">
                         <!--Primer grafico-->
-                        <div class="container">
-                        <p>Hola hola hola</p>
-                            <div id="container1" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                        <div id="container2" style="min-width: 400px; height: 500px; max-width: 600px; margin: 0 auto"></div>
+                        
+                        <!--Primer grafico-->
+                    <div class="panel-footer">Footer</div>
+                    </div>
+                    </div>
+                </div>
+            <!--Recintos-->
+
+                            <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse2">Jugadores</a>
+                            </h4>
                         </div>
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <!--Primer grafico-->
+                        <div id="container1" style="min-width: 400px; height: 500px; max-width: 600px; margin: 0 auto"></div>
+                        
+                        <!--Primer grafico-->
+                    <div class="panel-footer">Footer</div>
+                    </div>
+                    </div>
+                </div>
+                    <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse3">Partidos</a>
+                            </h4>
+                        </div>
+                    <div id="collapse3" class="panel-collapse collapse">
+                        <!--Primer grafico-->
+                        <div id="container1" style="min-width: 400px; height: 500px; max-width: 600px; margin: 0 auto"></div>
+                        
+                        <!--Primer grafico-->
+                    <div class="panel-footer">Footer</div>
+                    </div>
+                    </div>
+                </div>
+                                    <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse4">Comentarios</a>
+                            </h4>
+                        </div>
+                    <div id="collapse4" class="panel-collapse collapse">
+                        <!--Primer grafico-->
+                        <div id="container1" style="min-width: 400px; height: 500px; max-width: 600px; margin: 0 auto"></div>
+                        
                         <!--Primer grafico-->
                     <div class="panel-footer">Footer</div>
                     </div>
@@ -85,52 +244,5 @@ ${demo.css}
     <script src="Highcharts/js/highcharts.js"></script>
     <script src="Highcharts/js/modules/exporting.js"></script>
 
-    <script type="text/javascript">
-$(function () {
-    $('#container1').highcharts({
-        chart: {
-            type: 'pie',
-            options3d: {
-                enabled: true,
-                alpha: 45,
-                beta: 0
-            }
-        },
-        title: {
-            text: 'Browser market shares at a specific website, 2014'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                depth: 35,
-                dataLabels: {
-                    enabled: true,
-                    format: '{point.name}'
-                }
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Browser share',
-            data: [
-                ['Firefox', 45.0],
-                ['IE', 26.8],
-                {
-                    name: 'Chrome',
-                    y: 12.8,
-                    sliced: true,
-                    selected: true
-                },
-                ['Safari', 8.5],
-                ['Opera', 6.2],
-                ['Others', 0.7]
-            ]
-        }]
-    });
-});
-    </script>
+    
 
