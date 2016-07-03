@@ -19,7 +19,7 @@
                         <a href="gestionComentarios.php"><i class="fa fa-fw fa-comments"></i> Comentarios</a>
                     </li>
                     <li><hr/>
-                        <a href="cerrarSesion.php"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
+                        <a href="../Logica/controlSesion.php?tipo=salir"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
                     </li>          
                 </ul>
             </div>
@@ -53,11 +53,25 @@
                             include_once('../Logica/controlSolicitudes.php');
                             $controlSolicitud= controlSolicitudes::obtenerInstancia();
                             $numeroSolicitudes = $controlSolicitud->contarSolicitudes();
+                            if ($numeroSolicitudes > 1){
+
                         ?>
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-flag"></i>  Tienes <a href="#" class="alert-link"><strong><?php echo $numeroSolicitudes?></strong> notificaciones  </a>  de nuevos recintos!
+                            <i class="fa fa-flag"></i>  Tienes <a href="gestionSolicitudes.php" class="alert-link"><strong><?php echo $numeroSolicitudes?></strong> notificaciones  </a>  de nuevos recintos!
                         </div>
+                        <?php
+                            } else {
+                                if ($numeroSolicitudes = 1){
+                                    ?>
+                                    <div class="alert alert-info alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                        <i class="fa fa-flag"></i>  Tienes <a href="gestionSolicitudes.php" class="alert-link"><strong><?php echo $numeroSolicitudes?></strong> notificación  </a>  de un nuevo recinto!
+                                    </div>
+                                    <?php
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
                 <!-- /.row -->

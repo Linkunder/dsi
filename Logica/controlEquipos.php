@@ -37,7 +37,11 @@ class controlEquipos{
 		if (count($vectorData)==0) return null;
 		return $vectorData;
 	}
-	
+
+	public function contarPartidos($idUsuario){
+		$vectorData = $this->persistenciaEquipo->contarPartidos($idUsuario);
+		return count($vectorData);
+	}
 
 }
 ?>

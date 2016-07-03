@@ -19,6 +19,6 @@ $controlJugador->inhabilitarJugador($idJugador);
 
 $controlComentario->eliminarComentario($idComentario);
 
-header("Location:gestionComentarios.php"); 
+header("Location:gestionComentarios.php?accion=eliminar"); 
 
 ?>

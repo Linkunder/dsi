@@ -23,8 +23,19 @@ class controlSolicitudes{
 		$this->persistenciaSolicitud->crearSolicitud($solicitud);
 	}
 
+	public function eliminarSolicitud($idSolicitud){
+		$this->persistenciaSolicitud->eliminarSolicitud($idSolicitud);
+	}
+
 	public function leerSolicitud($idSolicitud){
 		$vectorData = $this->persistenciaSolicitud->leerSolicitud($idSolicitud);
+		if (count($vectorData)==0) return null;
+		return $vectorData;
+	}
+
+
+	public function obtenerSolicitudes(){
+		$vectorData = $this->persistenciaSolicitud->leerSolicitudes();
 		if (count($vectorData)==0) return null;
 		return $vectorData;
 	}

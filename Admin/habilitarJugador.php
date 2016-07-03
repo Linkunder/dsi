@@ -8,7 +8,7 @@ $controlJugador = controlUsuarios::obtenerInstancia();
 
 $controlJugador->habilitarJugador($idJugador);
 
-header("Location:gestionJugadores.php"); 
+header("Location:gestionJugadores.php?accion=habilitar"); 
 
 ?>
 

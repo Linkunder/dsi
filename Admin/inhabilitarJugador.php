@@ -8,6 +8,6 @@ $controlJugador = controlUsuarios::obtenerInstancia();
 
 $controlJugador->inhabilitarJugador($idJugador);
 
-header("Location:gestionJugadores.php"); 
+header("Location:gestionJugadores.php?accion=inhabilitar"); 
 
 ?>

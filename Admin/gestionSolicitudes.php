@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Control de recintos
+                            Control de recintos alertados por jugadores
                         </h1>
 
                         <?php
@@ -48,24 +48,10 @@
 
 
                                     <?php
-                                    if ($accion == "editar"){ ?>
-                                    El recinto <strong>"x"</strong> ha sido editado exitosamente.
+                                    if ($accion == "rechazar"){ ?>
+                                    La solicitud <strong>"x"</strong> ha sido eliminada exitosamente.
                                     <?php } ?>
 
-                                    <?php
-                                    if ($accion == "habilitar"){ ?>
-                                    El recinto <strong>"x"</strong> ha sido habilitado exitosamente.
-                                    <?php } ?>
-
-                                    <?php
-                                    if ($accion == "inhabilitar"){ ?>
-                                    El recinto <strong>"x"</strong> ha sido inhabilitado exitosamente.
-                                    <?php } ?>
-
-                                    <?php
-                                    if ($accion == "agregar"){ ?>
-                                    El recinto <strong>"x"</strong> ha sido agregado exitosamente. Puedes habilitarlo inmediatamente en el listado de recintos
-                                    <?php } ?>
 
 
                                 </div>
@@ -74,27 +60,37 @@
 
                         }
                         ?>
-
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-home"></i>  <a href="index.php">Inicio</a>
                             </li>
+                            <li>
+                                <i class="fa fa-futbol-o"></i> <a href="gestionRecintos.php">Recintos</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-edit"></i> <a href="agregarRecinto.php">Nuevo recinto</a>
+                            </li>
                             <li class="active">
-                                <i class="fa fa-futbol-o"></i> Recintos
+                                <i class="fa fa-exclamation-circle"></i> Solicitudes
                             </li>
                         </ol>
                     </div>
                 </div>
                 <!-- /.row -->
-                <a href="agregarRecinto.php"><button class="btn btn-md btn-success">Agregar nuevo recinto <i class="fa fa-plus-circle fa-1x"></i></button></a>
                 
 
                 <div class="row">
                     <div class="col-lg-12">
                         <h3 class="page-header">
-                            Listado de recintos
+                            Listado de solicitudes
                         </h3>
-                        <p class="help-block">Puedes encontrar información detallada de cada recinto del listado pulsando el botón <button type="button" class="btn btn-xs btn-warning" action="">Editar <i class="fa fa-pencil fa-1x"></i></button></p>
+                        <p class="help-block">En el siguiente listado se muestran los recintos que han sido notificados por los usuarios de MatchDay. 
+                            Puedes aprobar una solicitud pulsando el botón 
+                            <button type="button" class="btn btn-xs btn-success" action="">Aprobar <i class="fa fa-check fa-1x"></i></button>
+                            o de lo contrario, puedes rechazar una solicitud pulsando el botón 
+                            <button type="button" class="btn btn-xs btn-danger" action="">Rechazar <i class="fa fa-times"></i></button>.
+
+                        </p>
 
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
@@ -105,17 +101,21 @@
                                         <th>Superficie</th>
                                         <th>Dirección</th>
                                         <th>Precio</th>
-                                        <th>Estado</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                        include_once('../TO/Recinto.php');
-                                        include_once('../Logica/controlRecintos.php');
-                                        $jefeRecinto = controlRecintos::obtenerInstancia();
-                                        $recintos = $jefeRecinto->obtenerRecintos();
-                                        foreach ($recintos as $key) {
+                                        include_once('../TO/Solicitud.php');
+                                        include_once('../Logica/controlSolicitudes.php');
+                                        $controlSolicitud = controlSolicitudes::obtenerInstancia();
+                                        $solicitudes = $controlSolicitud->obtenerSolicitudes();
+                                        if ($solicitudes == null){
+                                            ?>
+                                             <td colspan="5">No hay solicitudes<td>
+                                            <?php
+                                        } else {
+                                        foreach ($solicitudes as $key) {
                                         ?>
                                     <tr>
                                         <td id="color-nombres"><?php echo $key->getNombre();?></td>
@@ -123,31 +123,15 @@
                                         <td><?php echo $key->getSuperficie();?></td>
                                         <td><?php echo $key->getDireccion();?></td>
                                         <td><?php echo $key->getPrecio();?></td>
-                                        <?php
-                                            $estado = $key->getIdEstado();
-                                            if ($estado == 2) { // Sujeto a cambios.
-                                            ?>
-                                        <td>No disponible </td>
-                                        <td align="center"> <a href="habilitarRecinto.php?idRecinto=<?php echo $key->getIdRecinto();?>">
-                                            <button type="button" class="btn btn-sm btn-success">&nbsp;&nbsp;&nbsp;Habilitar &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-up fa-1x"></i></button>
-                                            </a>
+                                        <td align="center"><a href="procesarNuevoRecinto.php?idSolicitud=<?php echo $key->getIdSolicitud();?>">
+                                            <button type="button" class="btn btn-sm btn-success" action="">Aprobar <i class="fa fa-check fa-1x"></i></button></a>
                                         </td>
-                                        <?php
-                                        } else {
-                                            ?>
-                                            <td>Disponible</td>
-                                            <?php
-                                            ?>
-                                            <td align="center"> <a href="inhabilitarRecinto.php?idRecinto=<?php echo $key->getIdRecinto();?>">
-                                                <button type="button" class="btn btn-sm btn-danger">Deshabilitar <i class="fa fa-arrow-circle-down fa-1x"></i></button>
-                                            </a>
-                                            </td>
-                                            <?php
-                                        }
-                                        ?>
-                                        <td align="center"><a href="editarRecinto.php?idRecinto=<?php echo $key->getIdRecinto();?>"><button type="button" class="btn btn-sm btn-warning" action="">Editar <i class="fa fa-pencil fa-1x"></i></button></a></td>
+                                        <td align="center"><a href="procesarSolicitud.php?idSolicitud=<?php echo $key->getIdSolicitud();?>">
+                                            <button type="button" class="btn btn-sm btn-danger" action="">Rechazar <i class="fa fa-times fa-1x"></i></button></a>
+                                        </td>
                                     </tr>
                                         <?php
+                                        }
                                         }
                                         ?>
                                 </tbody>

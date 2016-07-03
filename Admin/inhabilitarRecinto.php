@@ -8,6 +8,6 @@ $controlRecintos = controlRecintos::obtenerInstancia();
 
 $controlRecintos->inhabilitarRecinto($idRecinto);
 
-header("Location:gestionRecintos.php"); 
+header("Location:gestionRecintos.php?accion=inhabilitar"); 
 
 ?>

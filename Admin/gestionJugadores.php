@@ -20,7 +20,7 @@
                         <a href="gestionComentarios.php"><i class="fa fa-fw fa-comments"></i> Comentarios</a>
                     </li>
                     <li><hr/>
-                        <a href="cerrarSesion.php"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
+                        <a href="../Logica/controlSesion.php?tipo=salir"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
                     </li>    
                 </ul>
             </div>
@@ -35,8 +35,36 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Control de recintos
+                            Control de jugadores
                         </h1>
+
+                        <?php
+                        if(isset($_GET["accion"])){
+                            $accion = $_GET["accion"];  
+                            ?>
+                                <div class="alert alert-success alert-dismissible fade in" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+
+                                    <?php
+                                    if ($accion == "habilitar"){ ?>
+                                    El jugador <strong>"x"</strong> ha sido habilitado exitosamente.
+                                    <?php } ?>
+
+                                    <?php
+                                    if ($accion == "inhabilitar"){ ?>
+                                    El jugador <strong>"x"</strong> ha sido inhabilitado exitosamente.
+                                    <?php } ?>
+
+
+
+                                </div>
+                            <?php
+                            
+
+                        }
+                        ?>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-home"></i>  <a href="index.php">Inicio</a>
@@ -59,7 +87,7 @@
                         </p>
 
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
+                            <table class="table table-striped table-hover">
                                 <thead>
                                     <tr id="color-encabezado">
                                         <th>Nombre</th>
@@ -85,8 +113,8 @@
                                             if ($estado == 2) { // Sujeto a cambios.
                                             ?>
                                         <td>No disponible </td>
-                                        <td> <a href="habilitarJugador.php?idJugador=<?php echo $key->getIdUsuario();?>">
-                                            <button type="button" class="btn btn-sm btn-success">Habilitar <i class="fa fa-arrow-circle-up fa-1x"></i></button>
+                                        <td align="center"> <a href="habilitarJugador.php?idJugador=<?php echo $key->getIdUsuario();?>">
+                                            <button type="button" class="btn btn-sm btn-success">&nbsp;&nbsp;&nbsp;Habilitar &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-up fa-1x"></i></button>
                                             </a>
                                         </td>
                                         <?php
@@ -95,14 +123,14 @@
                                             <td>Disponible</td>
                                             <?php
                                             ?>
-                                            <td> <a href="inhabilitarJugador.php?idJugador=<?php echo $key->getIdUsuario();?>">
+                                            <td align="center"> <a href="inhabilitarJugador.php?idJugador=<?php echo $key->getIdUsuario();?>">
                                                 <button type="button" class="btn btn-sm btn-danger">Deshabilitar <i class="fa fa-arrow-circle-down fa-1x"></i></button>
                                             </a>
                                             </td>
                                             <?php
                                         }
                                         ?>
-                                        <td>
+                                        <td align="center">
                                             <a href="detalleJugador.php?idJugador=<?php echo $key->getIdUsuario();?>">
                                                 <button type="button" class="btn btn-sm btn-info" action="">Seleccionar <i class="fa fa-info-circle"></i></button>
                                             </a>

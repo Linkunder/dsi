@@ -52,6 +52,11 @@ class controlComentarios{
 			if (count($vectorData)==0) return null;
 				return $vectorData;
 	}
+
+	public function contarComentariosUsuario($idUsuario){
+		$vectorData = $this->persistenciaComentario->contarComentariosUsuario($idUsuario);
+		return count($vectorData);
+	}
 }
 
 

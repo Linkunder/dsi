@@ -103,6 +103,24 @@ class DAOEquipo{
 		return $vectorData;
 	}
 
+	public function contarPartidos($idUsuario){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT * FROM equipo WHERE idUsuario = '".$idUsuario."';";
+		$result = mysql_query($query,$link) or die (mysql_error());
+		$i = 0;
+		while ($row = mysql_fetch_array($result)) {
+			$equipo = new Equipo();
+			$equipo->setIdUsuario($row['idUsuario']);
+			$vectorData[$i]= $equipo;
+			$i++;
+		}
+		mysql_close($link);
+		if(empty($vectorData)){
+			return null;
+		}
+		return $vectorData;	
+	}
+
 }
 
 ?>

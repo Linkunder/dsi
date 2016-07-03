@@ -30,7 +30,7 @@ $recinto = $jefeRecinto->leerRecinto($idRecinto);
                         <a href="gestionComentarios.php"><i class="fa fa-fw fa-comments"></i> Comentarios</a>
                     </li>
                     <li><hr/>
-                        <a href="cerrarSesion.php"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
+                        <a href="../Logica/controlSesion.php?tipo=salir"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
                     </li> 
                 </ul>
             </div>

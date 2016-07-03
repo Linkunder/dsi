@@ -19,7 +19,7 @@
                         <a href="gestionComentarios.php"><i class="fa fa-fw fa-comments"></i> Comentarios</a>
                     </li>
                     <li><hr/>
-                        <a href="cerrarSesion.php"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
+                        <a href="../Logica/controlSesion.php?tipo=salir"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
                     </li> 
                 </ul>
             </div>
@@ -36,6 +36,31 @@
                         <h1 class="page-header">
                             Control de comentarios
                         </h1>
+
+                        <?php
+                        if(isset($_GET["accion"])){
+                            $accion = $_GET["accion"];  
+                            ?>
+                                <div class="alert alert-success alert-dismissible fade in" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+
+
+                                    <?php
+                                    if ($accion == "eliminar"){ ?>
+                                    El comentario <strong>"x"</strong> ha sido eliminado exitosamente.
+                                    <?php } ?>
+
+
+
+
+                                </div>
+                            <?php
+                            
+
+                        }
+                        ?>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-home"></i>  <a href="index.php">Inicio</a>
@@ -54,15 +79,14 @@
                         <h3 class="page-header">
                             Listado de comentarios
                         </h3>
-                        <p class="help-block">Puedes encontrar información detallada de cada comentario del listado pulsando el botón 
-                            <button type="button" class="btn btn-xs btn-info" action="">Seleccionar <i class="fa fa-info-circle"></i></button>.
+                        <p class="help-block">
                             Si deseas eliminar un comentario inadecuado, pulsa el botón
                             <button type="button" class="btn btn-xs btn-danger">Eliminar <i class="fa fa-trash"></i></button>, y 
                             será eliminado de inmediato, con una sanción automática para el autor del comentario.
                         </p>
 
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
+                            <table class="table table-striped table-hover">
                                 <thead>
                                     <tr id="color-encabezado">
                                         <th>Recinto</th>
@@ -113,17 +137,12 @@
                                             ?>
                                         </td>
                                         <td><?php echo $key->getFecha();?></td>
-                                        <td>
+                                        <td align="center">
                                             <a href="eliminarComentario.php?idComentario=<?php echo $key->getIdComentario();?>">
                                                 <button type="button" class="btn btn-sm btn-danger">Eliminar 
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                                 </a>
-                                        </td>
-                                        <td>
-                                            <a href="detellaComentario.php?idComentario=<?php echo $key->getIdComentario();?>">
-                                                <button type="button" class="btn btn-sm btn-info" action="">Seleccionar <i class="fa fa-info-circle"></i></button>
-                                            </a>
                                         </td>
                                     </tr>
                                         <?php

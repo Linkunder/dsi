@@ -27,7 +27,7 @@ $jefeRecinto = controlRecintos::obtenerInstancia();
                         <a href="gestionComentarios.php"><i class="fa fa-fw fa-comments"></i> Comentarios</a>
                     </li>
                     <li><hr/>
-                        <a href="cerrarSesion.php"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
+                        <a href="../Logica/controlSesion.php?tipo=salir"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
                     </li> 
                 </ul>
             </div>
@@ -44,6 +44,11 @@ $jefeRecinto = controlRecintos::obtenerInstancia();
                         <h1 class="page-header">
                             Gestión de recintos
                         </h1>
+                        <p class="help-block">Para agregar un recinto al sistema completa el formulario. También puedes agregar un recinto
+                            que haya sido reportado por los usuarios de MatchDay.
+                            <a href="gestionSolicitudes.php"><button class="btn btn-md btn-success">Ir a <i class="fa fa-external-link"></i></button></a>
+
+                        </p>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-home"></i>  <a href="index.php">Inicio</a>

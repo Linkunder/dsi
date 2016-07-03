@@ -67,12 +67,14 @@ class controlUsuarios{
 	public function comprobarJugador($correo, $password){
 		$vectorData= $this->persistenciaUsuario->comprobarJugador($correo, $password);
 		if (count($vectorData)==0) return null;
-		    return $vectorData;
+		return $vectorData;
 	}
 
 	public function actualizarPerfil($usuario){
 		$this->persistenciaUsuario->actualizarPerfil($usuario);
 	}
+
+
 	
 }
 

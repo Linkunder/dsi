@@ -30,7 +30,8 @@ $controlRecinto = controlRecintos::obtenerInstancia();
 $controlRecinto->actualizarRecinto($recinto);
 
 
-header("Location:gestionRecintos.php");
+
+header("Location:gestionRecintos.php?accion=editar");
 
 
 

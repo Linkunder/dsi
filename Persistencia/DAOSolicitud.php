@@ -40,6 +40,8 @@ class DAOSolicitud{
 			$solicitud->setRutaFotografia($row['rutaFotografia']);
 			$solicitud->setCantidadCanchas($row['cantidadCanchas']);
 			$solicitud->setTelefono($row['telefono']);
+			$solicitud->setTipo($row['tipo']);
+			$solicitud->setSuperficie($row['superficie']);
 			$solicitud->setIdUsuario($row['idUsuario']);
 			$vectorData[$i]= $solicitud;
 			$i++;
@@ -66,6 +68,8 @@ class DAOSolicitud{
 			$solicitud->setRutaFotografia($row['rutaFotografia']);
 			$solicitud->setCantidadCanchas($row['cantidadCanchas']);
 			$solicitud->setTelefono($row['telefono']);
+			$solicitud->setTipo($row['tipo']);
+			$solicitud->setSuperficie($row['superficie']);
 			$solicitud->setIdUsuario($row['idUsuario']);
 			$vectorData[$i]= $solicitud;
 			$i++;
