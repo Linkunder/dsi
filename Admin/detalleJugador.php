@@ -110,7 +110,7 @@
                                         <h3 class="panel-title" align="center"><strong>Datos de cuenta</strong></h3>
                                     </div>
                                     <div class="panel-body">
-                                        <table>
+                                        <table class="table table-striped table-hover">
                                             <tr>
                                                 <th>Nickname: </th>
                                                 <td><?php echo $key->getNickname();?></td>
@@ -153,16 +153,25 @@
                                         <h3 class="panel-title" align="center"><strong>Informe del jugador</strong></h3>                                    
                                     </div>
                                      <div class="panel-body">
-                                        <p>Aqui quiero poner un grafico con los comentarios y partidos asociados al jugador</p>
+                                        <div class="sample-chart-wrapper">
+                                            <canvas id="pie-chart-sample4" ></canvas>
+                                        </div>
                                         <?php
                                         $partidosJugador = $controlEquipo->contarPartidos($idUsuario);
-                                        echo "Partidos: ".$partidosJugador;
-                                        ?>
-                                        <hr/>
-                                        <?php
                                         $comentariosJugador = $controlComentario->contarComentariosUsuario($idUsuario);
-                                        echo "Comentarios: ".$comentariosJugador;
                                         ?>
+                                        </hr>
+                                        <table class="table table-striped table-hover">
+                                            <tr>
+                                                <th>Partidos: </th>
+                                                <td><?php echo $partidosJugador?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Comentarios: </th>
+                                                <td><?php echo $comentariosJugador?></td>
+                                            </tr>
+                                        </table>
+
                                      </div>                                   
                                 </div>
                             </div>
@@ -185,7 +194,31 @@
 
         </div>
         <!-- /#page-wrapper -->
+        <script type="text/javascript" src="js/chartjs/chart.min.js"></script>
+        <script type="text/javascript">
+        var PieDoughnutChartSampleData4 = [
+        {
+            value: <?php echo $partidosJugador?>,
+            color:"#f44336",
+            highlight: "#ff8a80",
+            label: "Partidos"
+        },
+        {
+            value: <?php echo $comentariosJugador?>,
+            color:"#2196f3",
+            highlight: "#82b1ff",
+            label: "Comentarios"
+        }
+        ]
 
+        window.onload = function() {
+
+            window.PieChartSample = new Chart(document.getElementById("pie-chart-sample4").getContext("2d")).Pie(PieDoughnutChartSampleData4,{
+                responsive:true
+            });
+
+        };
+    </script>
 
 
 <?php include('footer.php') ?>

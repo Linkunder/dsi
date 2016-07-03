@@ -24,6 +24,9 @@ include('headerJugador.php');
       <div class="heading-a text-center">
         <h1>MatchDay</h1>
         <h2>Sitio en construcción</h2>
+
+
+        
       </div>
       <br/> <br/> <br/> <br/> <br/>
     </div>

@@ -143,6 +143,7 @@ p {
     float: none !important;
     margin: 0 auto !important;
     text-align: center;
+    color: #000;
 }
 .highlighted-box {
     background:#F4F8F9;

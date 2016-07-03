@@ -27,6 +27,16 @@ $_SESSION['fecha'] = $_POST['fecha'];
 $_SESSION['hora'] = $_POST['hora'];
 $_SESSION['cantidad'] = $_POST['cantidad'];
 $_SESSION['color']  = $_POST['color'];
+
+// Si quiero 10 jugadores, pero tengo solo 4 contactos, deberia notificar un partido a los demás jugadores.
+
+$numeroContactos = count($vectorContactos);
+$jugadoresPartido = $_SESSION['cantidad'];
+
+
+
+
+
 $json = new Services_JSON();
  ?> 
 
@@ -145,7 +155,7 @@ $(function(){
    
    <?php 
    foreach ($vectorContactos as $Contacto) {
-      
+
       if($Contacto->getIdEstado() == 1 ){
 
     ?>
@@ -188,9 +198,9 @@ $(function(){
 	<div class="row">
 	      <div class="heading-a text-center">
         <h2>Elige a los jugadores</h2>
-        <p>Mueve tus jugadores al terreno de juego.</p>
+        <h3>Mueve tus jugadores al terreno de juego.</h3>
 <?php  foreach ($vectorRecintos as $key ) {?>
-        <p>Recinto: <?php echo $key->getNombre()?></p>
+        <h4>Recinto: <?php echo $key->getNombre()?></h4>
         <?php }?>
       </div>
        
@@ -199,6 +209,20 @@ $(function(){
     <div class="com-md-6">
     <input type="text" class="form-control" id="filter" name="filter" placeholder="Buscar Jugador...">
     </div>
+    <br/>
+
+
+    <?php
+    if ($numeroContactos < $jugadoresPartido) {
+      ?>
+      <div class="alert alert-warning">
+        <strong>Atención!</strong> Tu lista de contactos no llega a los <?php echo $jugadoresPartido?> jugadores.
+        Para invitar a otros jugadores haz click <strong><a href="">aqui</a></strong>.(aqui quiero que me lleve al modal pero no puedo encontrar la consulta jaja lo hablamos por skype.)
+        
+      </div>
+      <?php
+    }
+    ?>
 		<!--<img id="draggable1" class="img-responsive center ui-widget-content arreglo draggable" src="images/usuarios/cris.jpg" width="60" alt="hola" > -->
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 <?php
@@ -245,9 +269,7 @@ foreach ($vectorContactos as $Contacto) {
   </div>
 
 </div>
-  
-		
-		
+
   
 <!-- /Aqui termina la pagina -->
 
