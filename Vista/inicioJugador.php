@@ -1,41 +1,86 @@
 <?php
 
 include('headerJugador.php');
+
+include_once('../TO/Usuario.php');
+include_once('../Logica/controlUsuarios.php');
+
+$control = controlUsuarios::obtenerInstancia();
+$usuario = $control->leerUsuario($idUsuario);
+
+foreach ($usuario as $key) {
+  $nombre = $key->getNombre();
+}
+
+
+
 ?>
 
 <!-- Aqui empieza la pagina -->
 
 
-<!-- Aqui empieza la pagina -->
 
 
-<div id="contact-us-inicio" class="parallax">
-<?php if($_SESSION['estado'] == "penalizado"){?>
-         <div class="container">
-         <div class="alert alert-danger fade in">
-         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-         <strong>Importante!</strong> Por comportamiento inadecuado tu cuenta ha sido restringida. No podras comentar o agendar partidos por un plazo de X .
-        </div>
-</div>
-
-<?php } ?>
+  <?php if($_SESSION['estado'] == "penalizado"){?>
   <div class="container">
-    <div class="row">
-      <div class="heading-a text-center">
-        <h1>MatchDay</h1>
-        <h2>Sitio en construcción</h2>
-
-
-        
-      </div>
-      <br/> <br/> <br/> <br/> <br/>
+    <div class="alert alert-danger fade in">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Importante!</strong> Por comportamiento inadecuado tu cuenta ha sido restringida. 
+      No podras comentar o agendar partidos por un plazo de X .
     </div>
   </div>
-</div>
+  <?php } ?>
 
-<!-- /Aqui termina la pagina -->
+                <?php
+if(isset($_GET["accion"])){
+  $accion = $_GET["accion"];  
+  ?>
+  <div class="alert alert-success alert-dismissible fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <?php
+    if ($accion == "notificar"){ ?>
+   <strong>Listo! </strong>Se ha notificado a los usuarios de MatchDay tu partido.
+   <?php } ?>
+ </div>
+<?php
+}
+?>
 
-<!-- /Aqui empieza la pagina -->
+    <header id="home">
+
+    <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="item active" style="background-image: url(images/slider/1.png)">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">Bienvenido <span><?php echo $nombre." ".$user?></span></h1>
+            <p class="animated fadeInRightBig">Ahora puedes organizar tu partido, comentar recintos, y administrar tu perfil</p>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(images/slider/2.png)">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">¿No encuentras tu <span>cancha</span> favorita?</h1>
+            <p class="animated fadeInRightBig">En MatchDay tenemos información de todas</p>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(images/slider/3.png)">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">Organiza un <span>Tercer Tiempo</span></h1>
+            <p class="animated fadeInRightBig">¿Celebrar el triunfo? ¿Olvidar la derrota? 
+              <br/>Da igual el motivo! En MatchDay te recomendamos los mejores lugares</p>
+          </div>
+        </div>
+      </div>
+      <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+      <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+    </div><!--/#home-slider-->
+
+  </header><!--/#home-->
+
+
+
+  <!-- /Aqui empieza la pagina -->
 
 
 

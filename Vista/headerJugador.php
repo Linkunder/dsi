@@ -90,17 +90,38 @@
             <li class="<?php echo ($page_name=='recintos.php?jugar=1')?'active':'';?>"><a href="recintos.php?jugar=1">Jugar</a></li> <!--Jugar = 1 para entrar a buscar recintos en el mismo reutilizando-->
             <li class="<?php echo ($page_name=='comentar.php')?'active':'';?>"><a href="comentar.php">Comentar</a></li>
             <ul class="nav pull-left">
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user ?><i class="icon-cog"></i>
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user ?> <i class="fa fa-user"></i>
                 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="perfil.php">Mi Perfil</a></li>
-                  <hr></hr>
+                  <hr>
                   <li><a href="contactos2.php">Contactos</a></li>
-                  <hr></hr>
+                  <hr>
                   <li><a href="notificarRecinto.php">Notificar recinto</a></li>
-                  <hr></hr>
+                  <hr>
                    <li><a href="../Logica/controlSesion.php?tipo=salir">Cerrar Sesion</a></li>
                    <li></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav pull-left">
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-flag" aria-hidden="true"></i>
+                <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  
+                  
+                  <?php
+                  include_once('../TO/Partido.php');
+                  include_once('../Logica/controlPartidos.php');
+
+                  $controlPartido = controlPartidos::obtenerInstancia();
+                  $partidosDisponibles = $controlPartido->contarPartidosDisponibles();
+
+
+
+                  ?>
+                  <li><a href="partidosDisponibles.php">Partidos MatchDay: <?php echo $partidosDisponibles?></a></li>
+                  
                 </ul>
               </li>
             </ul>

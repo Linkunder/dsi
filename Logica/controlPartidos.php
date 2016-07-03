@@ -60,6 +60,12 @@ class controlPartidos{
 		return count($vectorData);
 	}
 
+
+	public function contarPartidosDisponibles(){
+		$vectorData = $this->persistenciaPartido->obtenerPartidosDisponibles();
+		return count($vectorData);
+	}
+
 }
 
 

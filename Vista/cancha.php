@@ -214,10 +214,12 @@ $(function(){
 
     <?php
     if ($numeroContactos < $jugadoresPartido) {
+      $faltanJugadores = true;
+      $jugadoresFaltantes = $jugadoresPartido-$numeroContactos; // Este es el minimo de jugadores que pueden faltar. 
       ?>
       <div class="alert alert-warning">
         <strong>Atención!</strong> Tu lista de contactos no llega a los <?php echo $jugadoresPartido?> jugadores.
-        Para invitar a otros jugadores haz click <strong><a href="">aqui</a></strong>.(aqui quiero que me lleve al modal pero no puedo encontrar la consulta jaja lo hablamos por skype.)
+        Para invitar a otros jugadores haz click <strong><a href="#" data-toggle="modal" data-target="#modal-1">aqui</a></strong>.
         
       </div>
       <?php
@@ -327,6 +329,44 @@ foreach ($vectorContactos as $Contacto) {
     
     <div class="modal fade" id="modal-1">
       <div class="modal-dialog modal-lg">
+        <?php
+        if ($faltanJugadores){
+          ?>
+          <div class="modal-content">
+           <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3 class="modal-title">Tranquilo, puedes completar el partido aún!</h3>
+           </div>
+           <div class="modal-body">
+
+            <form  method="post" action="recintos.php?jugar=1.php" class="design-form" > <!-- Falta definir  la accion -->
+       
+              <div class="container">  
+  
+    
+              <div class="row">
+                  <div class="col-sm-8">
+
+          
+                      <div class="form-group">
+                        <h2 class="center">¿Deseas invitar a otros jugadores de MatchDay?<h2>
+                       
+                        <button class="btn-submit" type="submit" onClick="setValue()" formaction="enviarNotificacionesPartido.php">Si</button>
+                       
+                        <button type="submit" class="btn-submit" onClick="setValue()" >No</button>
+                        
+                      </div>
+                
+
+
+                    </div>
+
+              </form>   
+              </div>
+           </div>
+          <?php
+        } else {
+        ?>
         <div class="modal-content">
            <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -359,13 +399,20 @@ foreach ($vectorContactos as $Contacto) {
               </form>   
               </div>
            </div>
-
+           <?php }?>
            <div class="modal-footer">
        
            </div>
         </div>
       </div>
+
     </div>
+
+
+
+
+
+    
 </body>
 
 </html>
