@@ -154,6 +154,7 @@ $jefeComentario = controlComentarios::obtenerInstancia();
                                   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDR2WyVnnd9GsSTKys5OEkowPu41kMpEUs
                                     &q=Chile + Chillan + <?php echo $key->getDireccion();?>" allowfullscreen>
                                 </iframe>
+                                <br>
                             </div>
                         </div>
                         <div class="span6">
@@ -202,57 +203,56 @@ $jefeComentario = controlComentarios::obtenerInstancia();
                             </div>
 
                         </div>
+                        <br/>
 
+                        <!--        COMENTARIOS  -->
+                        <div class="col-md-12">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    ¿Qué dicen los demás acerca de <?php echo $nombre?>?
+                                </div>
+                            </div>
+                            <!--Comprobar si se puede comentar o no -->
+                            <?php if($_SESSION['estado']=="activo"){?>
+                            <div class="panel-body comments">
+                                <form method="post" action="../Logica/ingresarComentario.php">
+                                    <input class="form-control" name="contenido" placeholder="Escribe tu comentario" rows="2" required></input>
+                                    <input type="hidden" name="idUsuario" value="<?php echo $_SESSION['idUsuario'] ?>">
+                                    <input type="hidden" name="idRecinto" value="<?php echo $key->getIdRecinto() ?>">
+                                    <input type="hidden" name="nombre" value="<?php echo $key->getNombre() ?>">
+                                    <br>
+                                    <!--<a class="small pull-left" href="#">Entra y comenta</a>-->
+                                    <button type="button submit" class="btn btn-info pull-right" name="action" >Comentar</button>
+                                </form>
+                            </div>
+                            <?php 
+                            }else{ //fin if estado 
+                                if($_SESSION['estado']=="penalizado"){ ?>
 
-<hr/>
-<!--COMENTARIOS-->      
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    ¿Qué dicen los demás acerca de <?php echo $nombre?>?
-                </div>
-                <!--Comprobar si se puede comentar o no -->
-                <?php if($_SESSION['estado']=="activo"){?>
-                <div class="panel-body comments">
-                    <!--Aqui se comenta-->
-                    <form method="post" action="../Logica/ingresarComentario.php">
-                        <input class="form-control black" name="contenido" placeholder="Escribe tu comentario" rows="2" required></input>
-                        <input type="hidden" name="idUsuario" value="<?php echo $_SESSION['idUsuario'] ?>">
-                        <input type="hidden" name="idRecinto" value="<?php echo $key->getIdRecinto() ?>">
-                        <input type="hidden" name="nombre" value="<?php echo $key->getNombre() ?>">
-                        <br>
-                        <!--<a class="small pull-left" href="#">Entra y comenta</a>-->
-                        <button type="button submit" class="btn btn-info pull-right" name="action" >Comentar</button>
-                    </form>
-                    <div class="clearfix"></div>
-                    <!--Aqui se comenta-->
-                    <?php }else{ //fin if estado 
-                        if($_SESSION['estado']=="penalizado"){ ?>
+                                <div class="alert alert-error alert-dismissible fade in" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                   <strong>Aviso</strong> No puedes comentar, tu perfil se encuentra con restricciones.
+                                </div>
+                                <br>
 
-                        <div class="alert alert-error alert-dismissible fade in" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                           <strong>Aviso</strong> No puedes comentar, tu perfil se encuentra con restricciones.
-                        </div>
-
-                        <?php }
-                        if($jugar==0){ ?>
-                        
-                        <div class="alert alert-danger alert-dismissible fade in" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <strong>Aviso</strong> Inicia sesión y juega un partido en este recinto para comentar
-                        </div>
-                        <?php }
-                    }
-                    ?>
-                    <!--Comprobar si se puede comentar o no -->
-                    <hr>
-                    <ul class="media-list">
+                                <?php }
+                                if($jugar==0){ ?>
+                                
+                                <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <strong>Aviso</strong> Inicia sesión y juega un partido en este recinto para comentar
+                                </div>
+                                <br>
+                                <?php 
+                                }
+                            }
+                            ?>
+                            <br/>
+                            <ul class="media-list">
                         <li class="media">
                             <?php 
                             $vectorComentarios= $jefeComentario->leerComentariosRecinto($key->getIdRecinto()); 
@@ -282,18 +282,8 @@ $jefeComentario = controlComentarios::obtenerInstancia();
                             <?php } //FIN FOREACH COMENTARIOS?> 
                         </li>
                     </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--  / COMENTARIOS-->   
-
-
-
-
-
+                        </div>
+                        
 
 
 
@@ -344,7 +334,7 @@ $jefeComentario = controlComentarios::obtenerInstancia();
 
 
 
-            </div>
+            
         </div>
     </div>
 </div>
