@@ -22,15 +22,40 @@ if(isset($_GET["jugar"]) ){
 
 include_once('../TO/Recinto.php');
 include_once('../Logica/controlRecintos.php');
+include_once('../TO/Usuario.php');
+include_once('../Logica/controlUsuarios.php');
+include_once('../TO/Comentario.php');
+include_once('../Logica/controlComentarios.php');
+
 
 $jefeRecinto = controlRecintos::obtenerInstancia();
 $vectorRecintos=$jefeRecinto->obtenerRecintos();
+
+$jefeUsuario = controlUsuarios::obtenerInstancia();
+
+$jefeComentario = controlComentarios::obtenerInstancia();
+
 
 ?>
 
         <!-- Portfolio section start -->
         <!--link rel="stylesheet" type="text/css" href="css/bootstrap.css" /-->
         <div class="section secondary-section" id="contact-us">
+             <?php if(isset($_GET["nuevo"])){ 
+                        if($_GET["nuevo"]==1){   ?>
+
+                             <div class="container">
+                             <div class="alert alert-success fade in">
+                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                             <strong>Listo!</strong> Comentario agregado!
+                            </div>
+                             </div>
+
+
+            <?php          }
+                        }
+                ?>
+
             <div class="container">
                 <div class="title">
                     <?php 
@@ -177,38 +202,68 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
                         </div>
                          <!--COMENTARIOS-->      
                     <div class="container">
+
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-info">
         <div class="panel-heading">
             Comentarios
         </div>
+        <!--Comprobar si se puede comentar o no -->
+        <?php if($_SESSION['estado']=="activo"){?>
         <div class="panel-body comments">
-          <textarea class="form-control" placeholder="Escribe tu comentario" rows="2"></textarea>
+        <!--Aqui se comenta-->
+        <form method="post" action="../Logica/ingresarComentario.php">
+          <input class="form-control black" name="contenido" placeholder="Escribe tu comentario" rows="2" required></input>
+          <input type="hidden" name="idUsuario" value="<?php echo $_SESSION['idUsuario'] ?>">
+          <input type="hidden" name="idRecinto" value="<?php echo $key->getIdRecinto() ?>">
+          <input type="hidden" name="nombre" value="<?php echo $key->getNombre() ?>">
           <br>
-          <a class="small pull-left" href="#">Login to you existing account</a>
-          <button type="button" class="btn btn-info pull-right">Submit comment</button>
+          <!--<a class="small pull-left" href="#">Entra y comenta</a>-->
+          <button type="button submit" class="btn btn-info pull-right" name="action" >Comentar</button>
+          </form>
           <div class="clearfix"></div>
+             <!--Aqui se comenta-->
+        <?php }else{ //fin if estado 
+
+                if($_SESSION['estado']=="penalizado"){ ?>
+                  <p class="black">  <strong class="black">Aviso</strong> No puedes comentar, tu perfil se encuentra con restricciones</p>
+                <?php }
+                if($jugar==0){ ?>
+                <p class="black">  <strong class="black">Aviso</strong> Inicia Sesión y juega un partido en este recinto para comentar</p>
+                 
+                <?php }
+                        }
+                         ?>
+        <!--Comprobar si se puede comentar o no -->
           <hr>
           <ul class="media-list">
             <li class="media">
+             <?php $vectorComentarios= $jefeComentario->leerComentariosRecinto($key->getIdRecinto()); 
+
+                foreach($vectorComentarios as $comentario){
+                    $vectorUsuarios= $jefeUsuario->leerUsuario($comentario->getIdUsuario());
+                    $usuario = end($vectorUsuarios);
+             ?>
+              
+        
               <div class="comment">
                 <a href="#" class="pull-left">
-                <img src="http://lorempixel.com/60/60/animals/?sf5saf" alt="" class="img-circle">
+                <img src="images/usuarios/<?php echo $usuario->getRutaFotografia() ?>" alt="" class="img-circle">
                 </a>
                 <div class="media-body">
-                  <strong class="text-success">Jane Doe</strong>
+
+                  <strong class="text-success"><?php echo $usuario->getNombre()?></strong>
                   <span class="text-muted">
-                  <small class="text-muted">6 days ago</small>
+                  <small class="text-muted"><?php echo $comentario->getFecha() ?></small>
                   </span>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Lorem ipsum dolor sit amet, <a href="#">#some link </a>.
+                  <p class="black">
+                    <?php echo $comentario->getContenido() ?>
                   </p>
                 </div>
                 <div class="clearfix"></div>
               </div>
-             
+             <?php } //FIN FOREACH COMENTARIOS?> 
           </ul>
         </div>
       </div>

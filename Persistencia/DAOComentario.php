@@ -96,6 +96,29 @@ class DAOComentario{
 
 
 	}
+	public function leerComentariosRecinto($idRecinto){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT * FROM comentario JOIN usuario ON comentario.idUsuario = usuario.idUsuario WHERE idRecinto = $idRecinto";
+		$result = mysql_query($query,$link) or die (mysql_error());
+		$i= 0;
+		while ($row = mysql_fetch_array($result)){
+			$comentario = new Comentario();
+			$comentario->setIdComentario($row['idComentario']);
+			$comentario->setIdRecinto($row['idRecinto']);
+			$comentario->setIdUsuario($row['idUsuario']);
+			$comentario->setAsunto($row['asunto']);
+			$comentario->setContenido($row['contenido']);
+			$comentario->setFecha($row['fecha']);
+			$comentario->setHora($row['hora']);
+			$vectorData[$i]= $comentario;
+			$i++;
+		}
+		mysql_close($link);
+		if(empty($vectorData)){
+			return null;
+		}
+		return $vectorData;
+	}
 
 	}
 

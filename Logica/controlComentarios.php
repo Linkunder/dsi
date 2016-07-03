@@ -46,6 +46,13 @@ class controlComentarios{
 	public function eliminarComentario($idComentario){
 		$this->persistenciaComentario->eliminarComentario($idComentario);
 	}
+
+	public function leerComentariosRecinto($idRecinto){
+		$vectorData = $this->persistenciaComentario->leerComentariosRecinto($idRecinto);
+			if (count($vectorData)==0) return null;
+				return $vectorData;
+	}
 }
+
 
 ?>
