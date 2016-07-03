@@ -269,7 +269,7 @@ $jefeComentario = controlComentarios::obtenerInstancia();
       </div>
     </div>
   </div>
-</div>
+
                     <!--COMENTARIOS-->   
                     </div> <!-- Fin Sliding Div-->
 
