@@ -176,54 +176,45 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
 
                         </div>
                          <!--COMENTARIOS-->      
-                <div class="container">
-<div class="row">
-<div class="col-sm-12 ">
-<h3>User Comment Example</h3>
-</div><!-- /col-sm-12 -->
-</div><!-- /row -->
-<div class="row">
-<div class="col-sm-1">
-<div class="thumbnail">
-<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-</div><!-- /thumbnail -->
-</div><!-- /col-sm-1 -->
-
-<div class="col-sm-7 right">
-<div class="panel panel-default">
-<div class="panel-heading">
-<strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+                    <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+            Comentarios
+        </div>
+        <div class="panel-body comments">
+          <textarea class="form-control" placeholder="Escribe tu comentario" rows="2"></textarea>
+          <br>
+          <a class="small pull-left" href="#">Login to you existing account</a>
+          <button type="button" class="btn btn-info pull-right">Submit comment</button>
+          <div class="clearfix"></div>
+          <hr>
+          <ul class="media-list">
+            <li class="media">
+              <div class="comment">
+                <a href="#" class="pull-left">
+                <img src="http://lorempixel.com/60/60/animals/?sf5saf" alt="" class="img-circle">
+                </a>
+                <div class="media-body">
+                  <strong class="text-success">Jane Doe</strong>
+                  <span class="text-muted">
+                  <small class="text-muted">6 days ago</small>
+                  </span>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Lorem ipsum dolor sit amet, <a href="#">#some link </a>.
+                  </p>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+             
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="panel-body">
-Panel content
-</div><!-- /panel-body -->
-</div><!-- /panel panel-default -->
-</div><!-- /col-sm-5 -->
-
-
-</div><!-- /row -->
-<div class="row">
-<div class="col-sm-1">
-<div class="thumbnail">
-<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-</div><!-- /thumbnail -->
-</div><!-- /col-sm-1 -->
-
-<div class="col-sm-7 right">
-<div class="panel panel-default">
-<div class="panel-heading">
-<strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
-</div>
-<div class="panel-body">
-Panel content
-</div><!-- /panel-body -->
-</div><!-- /panel panel-default -->
-</div><!-- /col-sm-5 -->
-
-
-</div><!-- /row -->
-
-</div><!-- /container -->
                     <!--COMENTARIOS-->   
                     </div> <!-- Fin Sliding Div-->
 
