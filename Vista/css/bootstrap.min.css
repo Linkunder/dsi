@@ -1219,7 +1219,7 @@ a.text-primary:hover {
 	color: #286090
 }
 .text-success {
-	color: #3c763d
+	color: #3598E4
 }
 a.text-success:hover {
 	color: #2b542c
@@ -4421,6 +4421,8 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 }
 .media-list {
 	padding-left: 0;
+	color: #fff;
+	background-color: #181A1C;
 	list-style: none
 }
 .list-group {
@@ -4564,7 +4566,7 @@ a.list-group-item-danger.active, a.list-group-item-danger.active:focus, a.list-g
 }
 .panel {
 	margin-bottom: 20px;
-	background-color: #fff;
+	background-color: #181A1C;
 	border: 1px solid transparent;
 	border-radius: 4px;
 	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
