@@ -59,6 +59,11 @@ class controlRecintos{
 		$this->persistenciaRecinto->inhabilitarRecinto($idRecinto);
 	}
 
+	public function obtenerNombre($idRecinto){
+		$nombreRecinto = $this->persistenciaRecinto->obtenerNombre($idRecinto);
+		return $nombreRecinto;
+	}
+
 
 }
 

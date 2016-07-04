@@ -74,6 +74,11 @@ class controlUsuarios{
 		$this->persistenciaUsuario->actualizarPerfil($usuario);
 	}
 
+	public function obtenerNombre($idUsuario){
+		$nombreUsuario = $this->persistenciaUsuario->obtenerNombre($idUsuario);
+		return $nombreUsuario;
+	}
+
 
 	
 }

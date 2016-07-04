@@ -57,9 +57,15 @@ foreach ($capitan as $cap) {
 	$correoCapitan = $cap->getEmail();
 }
 
+// Encontes hay que enviar la solicitud a la base de datos.
+include_once('../TO/ListaSolicitudes.php');
+include_once('../Logica/controlListaSolicitudes.php');
 
-
-
+$controlSolicitudes = controlListaSolicitudes::obtenerInstancia();
+$solicitud = new ListaSolicitudes();
+$solicitud->setIdPartido($idPartido);
+$solicitud->setIdUsuario($idUsuario);
+$controlSolicitudes->crearSolicitud($solicitud);
 
 
 
@@ -102,7 +108,9 @@ $message .= "<td>Monto a Pagar por persona:</td>";
 $message .= "<td>".$cuota."</td>";
 $message .= "</tr>";
 $message .= "</table>";
-$message .= "<p>Para aceptar la solicitud de " .$nombreJugador.  " haz click aqui.</p>";
+$message .= "<p>Para aceptar la solicitud de " .$nombreJugador.  " haz click 
+<a href='localhost/dsi/Vista/partidosPendientes.php'>
+	aqui</a>.</p>";
 
 
 $message .= "<center><b><p>© 2016 DSI., MatchDay.</p></b></center>";
@@ -125,3 +133,5 @@ mail($to,$subject,$message,$headers);
   
 ?>
 
+
+<META http-equiv="refresh" content="0;URL=inicioJugador.php?accion=solicitud">

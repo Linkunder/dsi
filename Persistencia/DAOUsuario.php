@@ -202,6 +202,25 @@ class DAOUsuario{
 		mysql_close($link);
 	}
 
+	public function obtenerNombre($idUsuario){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT * FROM usuario WHERE idUsuario = '$idUsuario'";
+		$result = mysql_query($query,$link) or die (mysql_error());
+		$i= 0;
+		while ($row = mysql_fetch_array($result)){
+			$usuario= new Usuario();
+			$usuario->setIdusuario($row['idUsuario']);
+			$usuario->setNombre($row['nombre']);
+			$usuario->setApellido($row['apellido']);
+			$vectorData[$i]= $usuario;
+			$i++;
+			$nombre = $row['nombre'];
+			$apellido = $row['apellido'];
+		}
+		mysql_close($link);
+		return $nombre." ".$apellido;   
+	}
+
 
 
 }

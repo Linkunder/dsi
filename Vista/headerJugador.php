@@ -105,9 +105,20 @@
               </li>
             </ul>
             <ul class="nav pull-left">
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-flag" aria-hidden="true"></i>
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Partidos <i class="fa fa-flag" aria-hidden="true"></i>
                 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
+                  <?php
+                  include_once('../TO/Partido.php');
+                  include_once('../Logica/controlPartidos.php');
+
+                  $controlPartido = controlPartidos::obtenerInstancia();
+                  $partidosCapitan = $controlPartido->contarPartidosCapitan($idUsuario);
+
+
+                  ?>
+                  <li><a href="partidosPendientes.php">Partidos pendientes: <?php echo $partidosCapitan?></a></li>
+                  <hr/>
                   
                   
                   <?php

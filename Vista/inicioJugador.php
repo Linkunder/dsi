@@ -31,7 +31,7 @@ foreach ($usuario as $key) {
   </div>
   <?php } ?>
 
-                <?php
+<?php
 if(isset($_GET["accion"])){
   $accion = $_GET["accion"];  
   ?>
@@ -42,7 +42,22 @@ if(isset($_GET["accion"])){
     <?php
     if ($accion == "notificar"){ ?>
    <strong>Listo! </strong>Se ha notificado a los usuarios de MatchDay tu partido.
+   <?php } 
+    if ($accion == "solicitud"){ ?>
+   <strong>Listo! </strong>Se ha enviado un correo al capitán del partido para notificar tu solicitud.
    <?php } ?>
+
+    
+   <?php
+   // SOLICITUD DE PARTIDO
+    include_once('../TO/ListaSolicitudes.php');
+    include_once('../Logica/controlListaSolicitudes.php');
+
+    
+   ?>
+
+
+
  </div>
 <?php
 }

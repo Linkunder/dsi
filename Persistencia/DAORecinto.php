@@ -149,6 +149,23 @@ class DAORecinto{
 		mysql_close($link);
 	}
 
+	public function obtenerNombre($idRecinto){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT * FROM recinto WHERE idRecinto = '$idRecinto'";
+		$result = mysql_query($query,$link) or die (mysql_error());
+		$i= 0;
+		while ($row = mysql_fetch_array($result)){
+			$recinto= new Recinto();
+			$recinto->setIdRecinto($row['idRecinto']);
+			$recinto->setNombre($row['nombre']);
+			$vectorData[$i]= $recinto;
+			$i++;
+			$nombre = $row['nombre'];
+		}
+		mysql_close($link);
+		return $nombre;   
+	}
+
 
 
 }

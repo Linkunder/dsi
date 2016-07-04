@@ -41,7 +41,10 @@ $controlUsuario = controlUsuarios::obtenerInstancia();
 $partidosDisponibles = $controlPartido->obtenerPartidosDisponibles();
 
 
+include_once('../TO/ListaSolicitudes.php');
+include_once('../Logica/controlListaSolicitudes.php');
 
+$controlSolicitudes = controlListaSolicitudes::obtenerInstancia();
 
 
 
@@ -123,7 +126,7 @@ $partidosDisponibles = $controlPartido->obtenerPartidosDisponibles();
                             $idPartido = $key->getIdPartido();
                             $_SESSION["idPartido"] = $idPartido;
                             $jugadoresPartido = $controlEquipo->obtenerJugadoresPartido($idPartido);
-                            //echo "Partido: ".$idPartido;
+                            echo "Partido: ".$idPartido;
                             ?>
                             <div>
                                 <span>Jugadores</span>

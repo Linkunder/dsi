@@ -915,3 +915,36 @@ p {
         margin-top:30px;
     }
 }
+
+#color-encabezado{
+    background-color: #028fcc;
+    color: #fff;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.estilo-bloques{
+    background-color: transparent;
+    color: #000;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#color-nombres{
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
