@@ -121,6 +121,7 @@ $partidosDisponibles = $controlPartido->obtenerPartidosDisponibles();
                             <?php
                             // Jugadores
                             $idPartido = $key->getIdPartido();
+                            $_SESSION["idPartido"] = $idPartido;
                             $jugadoresPartido = $controlEquipo->obtenerJugadoresPartido($idPartido);
                             //echo "Partido: ".$idPartido;
                             ?>
@@ -145,10 +146,11 @@ $partidosDisponibles = $controlPartido->obtenerPartidosDisponibles();
                             ?>
                             </ul>
                             <br/>
-                            <center>
-                                <button class="btn-busqueda" href="#" data-toggle="modal" data-target="#modal-1" >
+                            <center><a href="enviarSolicitud.php">
+                                <button class="btn-busqueda">
                                     Solicitar unirse
                                 </button> 
+                            </a>
                             </center>
                             <?php
                             }  // fin for Recinto  

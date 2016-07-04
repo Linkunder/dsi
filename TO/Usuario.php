@@ -6,6 +6,7 @@ class Usuario{
 	private $apellido;
 	private $nickname;
 	private $email;
+	private $password;
 	private $fechaNacimiento;
 	private $sexo;
 	private $rutaFotografia;
@@ -25,6 +26,10 @@ class Usuario{
 
 	function getApellido(){
 		return $this->apellido;
+	}
+
+	function getPassword(){
+		return $this->password;
 	}
 
 	function getNickname(){
@@ -85,6 +90,10 @@ class Usuario{
 
 	function setSexo($sexo){
 		$this->sexo = $sexo;
+	}
+
+	function setPassword($password){
+		$this->password = $password;
 	}
 
 	function setRutaFotografia($rutaFotografia){

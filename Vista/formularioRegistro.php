@@ -71,6 +71,14 @@ include('header.php');
                 </div>
 
                 <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3 centered">
+                    <div class="form-group">
+                      <input type="password" name="pass" class="form-control" placeholder="Password" >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label>Selecciona género:&nbsp;</label>

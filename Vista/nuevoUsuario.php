@@ -12,6 +12,10 @@ $email= $_POST['mail'];
 $fechaNacimiento= $_POST['fecha'];
 $sexo= $_POST['sexo'];
 $telefono= $_POST['telefono'];
+$password = $_POST['pass'];
+$idPerfil = 1;
+$idEstado = 1;
+
 
 
 $nuevoUsuario = new Usuario();
@@ -22,6 +26,9 @@ $nuevoUsuario->setEmail($email);
 $nuevoUsuario->setFechaNacimiento($fechaNacimiento);
 $nuevoUsuario->setSexo($sexo);
 $nuevoUsuario->setTelefono($telefono);
+$nuevoUsuario->setPassword($password);
+$nuevoUsuario->setIdPerfil($idPerfil);
+$nuevoUsuario->setIdEstado($idEstado);
 
 $jefeUsuario = controlUsuarios::obtenerInstancia();
 $jefeUsuario->crearUsuario($nuevoUsuario);
