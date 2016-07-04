@@ -36,6 +36,17 @@ if($_SESSION["sesion"]!="administrador") {
     <![endif]-->
       <link rel="shortcut icon" href="../Vista/images/soccer.ico">
 
+      <!--Calendario-->
+
+    <link href='css/fullcalendar.css' rel='stylesheet' />
+<link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='js/moment.min.js'></script>
+<script src="js/jquery.js"></script>
+<script src="js/es.js"></script>
+<script src='js/fullcalendar.min.js'></script>
+      <!--calendario-->
+
+
 </head>
 
 <body>

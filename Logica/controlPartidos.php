@@ -78,6 +78,10 @@ class controlPartidos{
 		return $vectorData;
 	}
 
+		public function obtenerPartidosJS(){
+		$vectorData = $this->persistenciaPartido->obtenerPartidosJS();
+		return $vectorData;
+	}
 }
 
 

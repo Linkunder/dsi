@@ -85,6 +85,8 @@ $user = $controlUsuario->leerUsuario($idUsuario);
 </div>
 
 
+
+
   
 <!-- /Aqui termina la pagina -->
 
