@@ -26,6 +26,7 @@ include_once('../TO/Usuario.php');
 include_once('../Logica/controlUsuarios.php');
 include_once('../TO/Comentario.php');
 include_once('../Logica/controlComentarios.php');
+include_once('../Logica/controlPuntuacion.php');
 
 
 $jefeRecinto = controlRecintos::obtenerInstancia();
@@ -34,6 +35,9 @@ $vectorRecintos=$jefeRecinto->obtenerRecintos();
 $jefeUsuario = controlUsuarios::obtenerInstancia();
 
 $jefeComentario = controlComentarios::obtenerInstancia();
+
+$jefePuntuacion = controlPuntuacion::obtenerInstancia();
+
 
 
 ?>
@@ -54,7 +58,16 @@ $jefeComentario = controlComentarios::obtenerInstancia();
                              </div>
 
 
-            <?php          }
+            <?php          }else{ ?>
+                           <div class="container">
+                             <div class="alert alert-success fade in">
+                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                             <strong>Listo!</strong> Puntuacion agregada!
+                            </div>
+                             </div>
+
+                               <?php     }
+
                         }
                 ?>
 
@@ -185,6 +198,66 @@ $jefeComentario = controlComentarios::obtenerInstancia();
                                     <div>
                                         <span>Superficie</span><?php echo $key->getSuperficie();?>
                                     </div>
+                                    <div>
+                                        <span>Puntuación</span><?php 
+                                        if($jefePuntuacion->calcularPuntuacionRecinto($key->getIdRecinto())==NULL){
+                                            echo "Este recinto no tiene puntuaciones";
+                                        }else{
+
+                                        echo " ".round($jefePuntuacion->calcularPuntuacionRecinto($key->getIdRecinto()),1);
+
+
+                                
+                                    }?>
+                           
+
+                                        <br/>
+                                        <?php
+                                          if(isset($_SESSION['estado'])){
+                                                if($_SESSION['estado']=="activo" && $jefePuntuacion->comprobarPuntuacion($_SESSION['idUsuario'] ,$key->getIdRecinto())== 0 ){?>
+
+                            <form method="post" action="../Logica/ingresarPuntuacion.php" >
+                                    <input  class ="with-gap" name="puntuacion" type="radio" id="estrella1" value="1" />
+                                    <label for="estrella1">1</label>
+                                    <input class ="with-gap" name="puntuacion" type="radio" id="estrella2" value="2"/>
+                                    <label for="estrella2">2</label>
+                                    <input class ="with-gap" name="puntuacion" type="radio" id="estrella3" value="3" />
+                                    <label for="estrella3">3</label>
+                                    <input class ="with-gap" name="puntuacion" type="radio" id="estrella4"  value="4"/>
+                                    <label for="estrella4">4</label>
+                                    <input class ="with-gap" name="puntuacion" type="radio" id="estrella5" value="5" />
+                                    <label for="estrella5">5</label>
+                                    <input type="hidden" name="idUsuario" value="<?php  echo $_SESSION['idUsuario'] ?>" />
+                                    <input type="hidden" name="idRecinto" value="<?php echo $key->getIdRecinto() ?>" />
+                                    <input type="hidden" name="nombreRecinto" value="<?php echo $nombre; ?>" />
+                                    
+                                    <button class= "btn-simple" type="submit" name="action">Puntuar</button>   
+                                </form>
+
+                                        <?php }else{
+                    $puntuacionUsuario= $jefePuntuacion->valoracionUsuario($_SESSION['idUsuario'],$key->getIdRecinto() );
+                                            ?>
+
+                            <form method="post" action="" >
+                                    <input  class ="with-gap" name="puntuacion" type="radio" id="estrella1" value="1" <?php if($puntuacionUsuario==1) echo "checked"?>/>
+                                    <label for="estrella1">1</label>
+                                    <input class ="with-gap" name="puntuacion" type="radio" id="estrella2" value="2" <?php if($puntuacionUsuario==2) echo "checked"?>/>
+                                    <label for="estrella2">2</label>
+                                    <input class ="with-gap" name="puntuacion" type="radio" id="estrella3" value="3" <?php if($puntuacionUsuario==3) echo "checked"?>/>
+                                    <label for="estrella3">3</label>
+                                    <input class ="with-gap" name="puntuacion" type="radio" id="estrella4"  value="4" <?php if($puntuacionUsuario==4) echo "checked"?>/>
+                                    <label for="estrella4">4</label>
+                                    <input class ="with-gap" name="puntuacion" type="radio" id="estrella5" value="5" <?php if($puntuacionUsuario==5) echo "checked"?>/>
+                                    <label for="estrella5">5</label>
+
+                                    
+                                    : Ya puntuaste este recinto. 
+                                </form>
+                                     <?php  }
+
+
+                                    } ?>
+                                    </div>
                                     
                                     <br/>
                                     <?php 
@@ -213,7 +286,9 @@ $jefeComentario = controlComentarios::obtenerInstancia();
                                 </div>
                             </div>
                             <!--Comprobar si se puede comentar o no -->
-                            <?php if($_SESSION['estado']=="activo"){?>
+                            <?php 
+                            if(isset($_SESSION['estado'])){
+                            if($_SESSION['estado']=="activo"){?>
                             <div class="panel-body comments">
                                 <form method="post" action="../Logica/ingresarComentario.php">
                                     <input class="form-control" name="contenido" placeholder="Escribe tu comentario" rows="2" required></input>
@@ -238,6 +313,7 @@ $jefeComentario = controlComentarios::obtenerInstancia();
                                 <br>
 
                                 <?php }
+                               }
                                 if($jugar==0){ ?>
                                 
                                 <div class="alert alert-danger alert-dismissible fade in" role="alert">
@@ -256,6 +332,7 @@ $jefeComentario = controlComentarios::obtenerInstancia();
                         <li class="media">
                             <?php 
                             $vectorComentarios= $jefeComentario->leerComentariosRecinto($key->getIdRecinto()); 
+                            if($vectorComentarios != NULL){
                             foreach($vectorComentarios as $comentario){
                             $vectorUsuarios= $jefeUsuario->leerUsuario($comentario->getIdUsuario());
                             $usuario = end($vectorUsuarios);
@@ -279,7 +356,12 @@ $jefeComentario = controlComentarios::obtenerInstancia();
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
-                            <?php } //FIN FOREACH COMENTARIOS?> 
+                            <?php }//FIN FOREACH COMENTARIOS
+
+                          } else{
+                            echo "Este recinto no tiene comentarios";
+                        }
+                            ?> 
                         </li>
                     </ul>
                         </div>
@@ -454,6 +536,9 @@ $jefeComentario = controlComentarios::obtenerInstancia();
         <![endif]-->
         <script type="text/javascript" src="js/app.js"></script>
 
+        <!--Puntuacion -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="js/star-rating.js" type="text/javascript"></script>
 
 
         <script src="http://maps.googleapis.com/maps/api/js"></script>

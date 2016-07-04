@@ -206,11 +206,11 @@
   <!--Calendario-->
 <?php $vectorPartidos=$jefePartido->obtenerPartidosJS(); 
 $json_array = json_encode($vectorPartidos);
-echo $vectorPartidos;
+echo $json_array;
 ?>
 <script>
 var jsona = <?php echo $json_array ?>;
-alert(jsona.toString());
+
 
     $(document).ready(function() {
         var hoy = new Date();
