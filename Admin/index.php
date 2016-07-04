@@ -206,10 +206,12 @@
   <!--Calendario-->
 <?php $vectorPartidos=$jefePartido->obtenerPartidosJS(); 
 $json_array = json_encode($vectorPartidos);
-echo $json_array;
+echo $vectorPartidos;
 ?>
 <script>
- 
+var jsona = <?php echo $json_array ?>;
+alert(jsona.toString());
+
     $(document).ready(function() {
         var hoy = new Date();
         var dd = hoy.getDate();
@@ -240,57 +242,10 @@ echo $json_array;
             editable: true,
             eventLimit: true, // allow "more" link when too many events
             events: [
+                
+                jsona.toString(),
             
-                {
-                    title:'HOL',
-                    start: hoy
-                },
-            
-                {
-                    title: 'Long Event',
-                    start: '2016-06-07',
-                    end: '2016-06-10'
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: '2016-06-09T16:00:00'
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: '2016-06-16T16:00:00'
-                },
-                {
-                    title: 'Partido',
-                    start: '2016-07-04T10:00',
-                    end: '2016-07-04T11:00'
-                },
-                {
-                    title: 'Meeting',
-                    start: '2016-06-12T10:30:00',
-                    end: '2016-06-12T12:30:00'
-                },
-                {
-                    title: 'Lunch',
-                    start: '2016-06-12T12:00:00'
-                },
-                {
-                    title: 'Meeting',
-                    start: '2016-06-12T14:30:00'
-                },
-                {
-                    title: 'Happy Hour',
-                    start: '2016-06-12T17:30:00'
-                },
-                {
-                    title: 'Dinner',
-                    start: '2016-06-12T20:00:00'
-                },
-                {
-                    title: 'Birthday Party',
-                    start: '2016-06-13T07:00:00'
-                },
+               
                 {
                     title: 'Click for Google',
                     url: 'http://google.com/',
