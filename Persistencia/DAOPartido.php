@@ -147,7 +147,24 @@ class DAOPartido{
 		return $vectorData;	
 	}
 
+		public function obtenerPartidosJS(){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT * FROM partido ";
+		$result = mysql_query($query,$link) or die (mysql_error());
+		$i = 0;
+		$arr = array();
+		while ($obj = mysql_fetch_object($result)) {
+			    $arr[] = array(
+			       'idPartido' => $obj->idPartido,
+                   'fecha' => utf8_encode($obj->fecha),
+                   'hora' =>$obj->hora,
+        );
+	  	
+		}
 
+		mysql_close($link);
+		return $arr;	
+	}
 
 
 }
