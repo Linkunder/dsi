@@ -182,12 +182,12 @@ class DAOPartido{
 		$arr = array();
 		while ($obj = mysql_fetch_object($result)) {
 			    $arr[] = array(
-			       'idPartido' => $obj->idPartido,
-                   'fecha' => utf8_encode($obj->fecha),
-                   'hora' =>$obj->hora,
+			       'title' => ''+$obj->idPartido,
+                   'start' => $obj->fecha.'T'.$obj->hora,
         );
 	  	
 		}
+
 		mysql_close($link);
 		return $arr;	
 	}
