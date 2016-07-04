@@ -1,5 +1,5 @@
 <?php
-
+/*
 session_start();
 include_once('../TO/Partido.php');
 include_once('../Logica/controlPartidos.php');
@@ -18,7 +18,7 @@ $idRecinto= $_SESSION['idRecinto']; //Recinto seleccionado
 $cantidad = $_SESSION['cantidad']; //Cantidad de jugadores seleccionados
 $fecha = $_SESSION['fecha'];
 $hora = $_SESSION['hora'];
-$idEstado = "3"; //debido a que el partido estara marcado como "agendado pendiente"
+$idEstado = "4"; //debido a que el partido estara marcado como "agendado pendiente"
 $idTercerTiempo = "0"; // Por ahora 0 para representar que no tiene un tercer tiempo asociado
 
 $cuota= 0;
@@ -70,20 +70,10 @@ $nuevoEquipo->setIdPartido($idPartido);
 $jefeEquipo->crearEquipo($nuevoEquipo);
 
 }
-//AQUI SE AGREGA EL JUGADOR QUE AGENDA
-$jefeEquipo= controlEquipos::obtenerInstancia();
-$nuevoEquipo= new Equipo();
-$nuevoEquipo->setColor($color);
-$nuevoEquipo->setIdUsuario($idUsuario);
-$idPartido = end($vectorPartidos)->getIdPartido();
-$nuevoEquipo->setIdPartido($idPartido);
-
-//Creamos el nuevo equipo y lo pasamos al control.
-$jefeEquipo->crearEquipo($nuevoEquipo);
 
 
 header("Location:inicioJugador.php?accion=notificar");
 
-
+*/
 
 ?>

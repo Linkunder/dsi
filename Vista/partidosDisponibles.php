@@ -18,364 +18,181 @@ if(isset($_GET["jugar"]) ){
     }else{
         include('header.php'); 
     }
-        
+
+// 1. Listar partidos estado = agendado pendiente.
+include_once('../TO/Partido.php');
+include_once('../Logica/controlPartidos.php');
+
+include_once('../TO/Equipo.php');
+include_once('../Logica/controlEquipos.php');
 
 include_once('../TO/Recinto.php');
 include_once('../Logica/controlRecintos.php');
+
 include_once('../TO/Usuario.php');
 include_once('../Logica/controlUsuarios.php');
-include_once('../TO/Comentario.php');
-include_once('../Logica/controlComentarios.php');
+
+$controlPartido = controlPartidos::obtenerInstancia();
+$controlEquipo = controlEquipos::obtenerInstancia();
+$controlRecinto = controlRecintos::obtenerInstancia();
+$controlUsuario = controlUsuarios::obtenerInstancia();
 
 
-$jefeRecinto = controlRecintos::obtenerInstancia();
-$vectorRecintos=$jefeRecinto->obtenerRecintos();
+$partidosDisponibles = $controlPartido->obtenerPartidosDisponibles();
 
-$jefeUsuario = controlUsuarios::obtenerInstancia();
 
-$jefeComentario = controlComentarios::obtenerInstancia();
+
+
 
 
 ?>
 
-        <!-- Portfolio section start -->
-        <!--link rel="stylesheet" type="text/css" href="css/bootstrap.css" /-->
-        <link href="css/profile.css" rel="stylesheet">
+<!-- Portfolio section start -->
+<!--link rel="stylesheet" type="text/css" href="css/bootstrap.css" /-->
+<link href="css/profile.css" rel="stylesheet">
 
-        <div class="section secondary-section" id="contact-us">
-            <div class="container">
-                <div class="title">
-                    <h2>Elige la cancha para el partido<h2>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
-                        <form action="recintos.php" method="get">
-                            <input type="text" class="form-control" placeholder="Busca tu cancha..." name="search"/>
-                            <!--Aqui como se "recarga" debemos seguir manteniendo la "seleccion de cancha"-->
-                            <?php 
-                            if($jugar==1){
-                            ?>
-                            <input  name="jugar" class="hide" value="1"/>
-                            <?php } ?>
-                            <div class="row">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="div-btn-a">
-                                        <button class="btn-busqueda" type="submit">Buscar</button>  
-                                    </div>
-                                </div>
-                            </div>          
-                        </form>
-                    </div><!-- /.col-lg-6 -->
-                </div>
-
-
-                <?php
-                    $search = '';
-                    $cont = 0;
-                    if (isset($_GET['search'])) {
-                      $search = $_GET['search'];
-                    }
-                    if ($search!=''){  // if search
-
-                        // AHORA VIENEN LOS RESULTADOS
-                        ?>
-                <h3>Resultados</h3>
-
-                <ul class="nav nav-pills">
-                    <li class="filter" data-filter="photo"></li>
-                    <li class="filter" data-filter="identity"></li>
-                </ul>
-                <div id="single-project">
-                    <?php
-                    } // fin if search
-                    foreach ($vectorRecintos as $key) {   // foreach recintos
-                        if($key->getIdEstado() == 1){
-                        $nombre = $key->getNombre();
-                        $pos = strripos($nombre, $search);
-                        $tipo = $key -> getTipo();
-                        $pos2 = strripos($tipo, $search);
-                        $superficie = $key->getSuperficie();
-                        $pos3 = strripos($superficie, $search);
-                        $idRecinto = $key->getIdRecinto();
-                        if ($pos !== false  ||   $pos2!==false  || $pos3!==false )  {  // if filtro dentro de foreach recintos
-                            
-                    ?>
-
-
-
-                    <div id="slidingDiv<?php echo $cont?>" class="toggleDiv row-fluid single-project">
-                        <div class="span6"> 
-                            <style>
-                                .Flexible-container {
-                                    position: relative;
-                                    padding-bottom: 56.25%;
-                                    padding-top: 80px;
-                                    height: 0;
+<div class="section secondary-section" id="contact-us">
+    <div class="container">
+        <div class="title">
+            <h2>Partidos de MatchDay</h2>
+            <h4>¿Quieres jugar un partido? En MatchDay, hay <?php echo count($partidosDisponibles)?> partidos disponibles para ti.</h4>
+        </div>
+        <div id="single-project">
+            <?php
+            $cont = 0;
+            foreach ($partidosDisponibles as $key) {
+            ?>
+            <div id="slidingDiv<?php echo $cont?>" class="toggleDiv row-fluid single-project">
+                <div class="span6"> 
+                    <style>
+                        .Flexible-container {
+                            position: relative;
+                            padding-bottom: 56.25%;
+                            padding-top: 80px;
+                            height: 0;
                                   /* overflow: hidden; */
-                                }
-                                .Flexible-container iframe,   
-                                .Flexible-container object,  
-                                .Flexible-container embed {
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                    width: 100%;
-                                    height: 100%;
-                                }
-                            </style>
-                            <div class="Flexible-container">
-                                <iframe
+                        }
+                                
+                        .Flexible-container iframe,   
+                        .Flexible-container object,  
+                        .Flexible-container embed {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    </style>
+                        <div class="Flexible-container">
+                            <?php
+                            // Nombre recinto
+                            $idRecinto = $key->getIdRecinto();
+                            $recinto = $controlRecinto->leerRecinto($idRecinto);
+                            foreach ($recinto as $keyRecinto) {
+                            ?>
+                            <iframe
                                   width="600"   height="500"  frameborder="5" style="border:0"  maptype="satellite"
                                   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDR2WyVnnd9GsSTKys5OEkowPu41kMpEUs
-                                    &q=Chile + Chillan + <?php echo $key->getDireccion();?>" allowfullscreen>
-                                </iframe>
-                                <br>
-                            </div>
+                                    &q=Chile + Chillan + <?php echo $keyRecinto->getDireccion();?>" allowfullscreen>
+                            </iframe>
+                            <br>
                         </div>
-                        <div class="span6">
-                            <div class="project-description">
-                                <div class="project-title clearfix">
-                                    <h3> <?php echo $nombre ?></h3>
-                                    <span class="show_hide close">
-                                        <i class="icon-cancel"></i> 
-                                    </span>
-
-                                </div>
-
-
-
-                                <div class="project-info">
-                                    <div>
-                                        <span>Precio</span><?php echo $key->getPrecio();?>
-                                    </div>
-                                    <div>
-                                        <span>Telefono</span><?php echo $key->getTelefono();?>
-                                    </div>
-                                    <div>
-                                        <span>Direccion</span><?php echo $key->getDireccion();?>
-                                    </div>
-                                    <div>
-                                        <span>Horario</span><?php echo $key->getHorario();?>
-                                    </div>
-                                    <div>
-                                        <span>Superficie</span><?php echo $key->getSuperficie();?>
-                                    </div>
-                                    
-                                    <br/>
-                                    <?php 
-                                    $_SESSION["idRecinto"]=$idRecinto;
-                                    if($jugar==1){ ?>
-                                    <center>
-                                        <button class="btn-busqueda" href="#" data-toggle="modal" data-target="#modal-1" >
-                                            Jugar Aqui
-                                        </button> 
-                                    </center>
-                                    <?php  } ?>
-                       
-                                </div>
-
-                                <p></p> <!--puede ir algo mas escrito aqui -->
-                            </div>
-
+                </div>
+                <div class="span6">
+                    <div class="project-description">
+                        <div class="project-title clearfix">
+                            <h3>
+                                Datos del partido
+                            </h3>
+                            <span class="show_hide close">
+                                <i class="icon-cancel"></i> 
+                            </span>
                         </div>
-                        <br/>
-
-                        <!--        COMENTARIOS  -->
-                        <div class="col-md-12">
-                            <div class="panel panel-info">
-                                <div class="panel-heading">
-                                    ¿Qué dicen los demás acerca de <?php echo $nombre?>?
-                                </div>
+                        <div class="project-info">
+                            <div>
+                                <span>Cancha</span><?php echo $keyRecinto->getNombre();?>
                             </div>
-                            <!--Comprobar si se puede comentar o no -->
-                            <?php if($_SESSION['estado']=="activo"){?>
-                            <div class="panel-body comments">
-                                <form method="post" action="../Logica/ingresarComentario.php">
-                                    <input class="form-control" name="contenido" placeholder="Escribe tu comentario" rows="2" required></input>
-                                    <input type="hidden" name="idUsuario" value="<?php echo $_SESSION['idUsuario'] ?>">
-                                    <input type="hidden" name="idRecinto" value="<?php echo $key->getIdRecinto() ?>">
-                                    <input type="hidden" name="nombre" value="<?php echo $key->getNombre() ?>">
-                                    <br>
-                                    <!--<a class="small pull-left" href="#">Entra y comenta</a>-->
-                                    <button type="button submit" class="btn btn-info pull-right" name="action" >Comentar</button>
-                                </form>
+                            <div>
+                                <span>Fecha</span><?php echo $key->getFecha();?>
                             </div>
-                            <?php 
-                            }else{ //fin if estado 
-                                if($_SESSION['estado']=="penalizado"){ ?>
-
-                                <div class="alert alert-error alert-dismissible fade in" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                   <strong>Aviso</strong> No puedes comentar, tu perfil se encuentra con restricciones.
-                                </div>
-                                <br>
-
-                                <?php }
-                                if($jugar==0){ ?>
-                                
-                                <div class="alert alert-danger alert-dismissible fade in" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <strong>Aviso</strong> Inicia sesión y juega un partido en este recinto para comentar
-                                </div>
-                                <br>
-                                <?php 
+                            <div>
+                                <span>Hora</span><?php echo $key->getHora();?>
+                            </div>
+                            <?php
+                            // Jugadores
+                            $idPartido = $key->getIdPartido();
+                            $jugadoresPartido = $controlEquipo->obtenerJugadoresPartido($idPartido);
+                            //echo "Partido: ".$idPartido;
+                            ?>
+                            <div>
+                                <span>Jugadores</span>
+                            </div>
+                            <ul>
+                            <?php
+                            foreach ($jugadoresPartido as $keyEquipo) {
+                                $idJugador = $keyEquipo->getIdUsuario();
+                                $jugador = $controlUsuario->leerUsuario($idJugador);
+                                foreach ($jugador as $keyJugador) {
+                                    ?>
+                                    <li>
+                                    <?php
+                                    echo $keyJugador->getNickname();
+                                    ?>
+                                    </li>
+                                    <?php
                                 }
                             }
                             ?>
+                            </ul>
                             <br/>
-                            <ul class="media-list">
-                        <li class="media">
-                            <?php 
-                            $vectorComentarios= $jefeComentario->leerComentariosRecinto($key->getIdRecinto()); 
-                            foreach($vectorComentarios as $comentario){
-                            $vectorUsuarios= $jefeUsuario->leerUsuario($comentario->getIdUsuario());
-                            $usuario = end($vectorUsuarios);
+                            <center>
+                                <button class="btn-busqueda" href="#" data-toggle="modal" data-target="#modal-1" >
+                                    Solicitar unirse
+                                </button> 
+                            </center>
+                            <?php
+                            }  // fin for Recinto  
                             ?>
-                            <div class="comment">
-                                <div class="col-sm-2">
-                                    <div class="profile-userpic">
-                                    <img src="images/usuarios/<?php echo $usuario->getRutaFotografia() ?>" alt="" class="img-circle img-responsive" >
-                                    </div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <div class="media-body">
-                                        <strong class="text-success"><?php echo $usuario->getNombre()." ".$usuario->getApellido();?></strong>
-                                        <span class="text-muted">
-                                            <small class="text-muted"><?php echo $comentario->getFecha() ?></small>
-                                        </span>
-                                        <p >
-                                            <?php echo $comentario->getContenido() ?>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <?php } //FIN FOREACH COMENTARIOS?> 
-                        </li>
-                    </ul>
                         </div>
-                        
-
-
-
-                    </div> <!-- Fin Sliding Div-->
-
-                    <?php 
-                    $cont++;
-                    }
-                }  // fin if filtro dentro de foreach
-            } // fin foreach recintos
+                    </div>    
+                </div>
+            </div> <!-- Fin slidingDiv -->
+            <?php
+            $cont++;
+            }
             ?>
-
-
 
 
             <ul id="portfolio-grid" class="thumbnails row">
                 <?php
                 $cont = 0;
-                foreach ($vectorRecintos as $key) {   // foreach recintos
-                    if($key->getIdEstado() == 1){
-                    $nombre = $key->getNombre();
-                    $pos = strripos($nombre, $search);
-                    $tipo = $key -> getTipo();
-                    $pos2 = strripos($tipo, $search);
-                    $superficie = $key->getSuperficie();
-                    $pos3 = strripos($superficie, $search);
+                foreach ($partidosDisponibles as $key) {   // foreach recintos
                     $idRecinto = $key->getIdRecinto();
-                    if ($pos !== false  ||   $pos2!==false  || $pos3!==false )  {  // if filtro dentro de foreach recintos            
+                    $recinto = $controlRecinto->leerRecinto($idRecinto);
+                    foreach ($recinto as $keyRecinto) {
                     ?>
                 <li class="span4 mix web">
                 <div class="thumbnail">
-                    <img src="images/recintos/<?php echo $key->getRutaFotografia();?>" height='640' width='400' alt="project 1">
+                    <img src="images/recintos/<?php echo $keyRecinto->getRutaFotografia();?>" height='640' width='400' alt="project 1">
                     <a href="#single-project" class="more show_hide" rel="#slidingDiv<?php echo $cont?>">
                         <i class="icon-plus"></i>
                     </a>
-                    <h3> <?php echo "$nombre" ?> </h3>
-                    <p>Cancha de <?php echo $key->getTipo(); ?></p>
+                    <h3> <?php echo $keyRecinto->getNombre(); ?> </h3>
+                    <p>Dia del partido: <?php echo $key->getFecha()?></p>
                     <div class="mask"></div>
                 </div>
                 </li>
                 <?php 
                     $cont++;
                 }
-                    }
                 }
                 ?>
             </ul>
-
-
-
-            
         </div>
     </div>
 </div>
-        <!-- Portfolio section end -->
+<!-- Portfolio section end -->
 
-
-<div class="container">
-    <div class="modal fade" id="modal-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h3 class="modal-title">Define la hora, fecha y cantidad de jugadores</h3>
-                </div>
-                <div class="modal-body">
-                    <form  method="post" action="cancha.php" class="design-form" >
-                        <div class="container">  
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <div class="form-group">
-                                        <label class="label-partido" for="fecha">Fecha del partido</label>
-                                        <input type="date" name="fecha" placeholder="Fecha del partido" class="form-control partido" required="required">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <div class="form-group">
-                                        <label class="label-partido" for="hora">Hora</label>
-                                        <input type="time" name="hora" placeholder="Hora" class="form-control partido" required="required" min="09:00:00" max="23:00:00">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <div class="form-group">
-                                        <label class="label-partido" for="jugadores">Numero de jugadores</label>
-                                        <input type="int" name="cantidad"  class="form-control partido" required="required" title="Solo puede ingresar hasta 22 jugadores" pattern="^[0|1]\d{1}$|[0-9]|2+[0|1|2]">
-                                        <input  name="idRecinto" class="hide" value="<?php echo $_SESSION['idRecinto'];?>"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <div class="form-group">
-                                        <label class="label-partido" for="color">Color</label>
-                                        <input type="text" name="color"  class="form-control partido" required="required">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <div class="form-group">
-                                        <button type="submit" class="btn-submit" >Siguiente</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>   
-                </div>
-            </div>
-            <div class="modal-footer"></div>
-        </div>
-    </div>
-</div>
 
 
 <footer id="footer">

@@ -103,6 +103,29 @@ class DAOEquipo{
 		return $vectorData;
 	}
 
+
+	public function obtenerJugadoresEquipo($idPartido){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT * FROM equipo WHERE idPartido = '".$idPartido."';";
+		$result = mysql_query($query,$link) or die (mysql_error());
+		$i= 0;
+
+		while($row = mysql_fetch_array($result)){
+			$equipo = new Equipo();
+			$equipo->setIdEquipo($row['idEquipo']);
+			$equipo->setColor($row['color']);
+			$equipo->setIdUsuario($row['idUsuario']);
+			$equipo->setIdPartido($row['idPartido']);
+			$vectorData[$i]= $equipo;
+			$i++;
+		}
+		mysql_close($link);
+		if(empty($vectorData)){
+			return null;
+		}
+		return $vectorData;
+	}
+
 	public function contarPartidos($idUsuario){
 		$link = $this->conexionBD->obtenerConexion();
 		$query = "SELECT * FROM equipo WHERE idUsuario = '".$idUsuario."';";

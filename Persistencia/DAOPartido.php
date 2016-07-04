@@ -124,11 +124,12 @@ class DAOPartido{
 
 	public function obtenerPartidosDisponibles(){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "SELECT * FROM partido WHERE idEstado = 3 ";
+		$query = "SELECT * FROM partido WHERE idEstado = 4 ";
 		$result = mysql_query($query,$link) or die (mysql_error());
 		$i = 0;
 		while ($row = mysql_fetch_array($result)) {
 			$partido = new Partido();
+			$partido->setIdPartido($row['idPartido']);
 			$partido->setFecha($row['fecha']);
 			$partido->setHora($row['hora']);
 			$partido->setCuota($row['cuota']);

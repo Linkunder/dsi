@@ -33,6 +33,14 @@ $_SESSION['color']  = $_POST['color'];
 $numeroContactos = count($vectorContactos);
 $jugadoresPartido = $_SESSION['cantidad'];
 
+    
+$faltanJugadores=false;
+if ($numeroContactos < $jugadoresPartido) {
+  $faltanJugadores = true;
+  $jugadoresFaltantes = $jugadoresPartido-$numeroContactos; // Este es el minimo de jugadores que pueden faltar. 
+}
+    
+
 
 
 
@@ -196,7 +204,10 @@ $(function(){
     <div class="container">
 
 	<div class="row">
+
+
 	      <div class="heading-a text-center">
+
         <h2>Elige a los jugadores</h2>
         <h3>Mueve tus jugadores al terreno de juego.</h3>
 <?php  foreach ($vectorRecintos as $key ) {?>
@@ -206,25 +217,20 @@ $(function(){
        
 		<div class="col-md-6"><!-- Jugadores y buscador-->
 		<p>Contactos:</p>
+
     <div class="com-md-6">
     <input type="text" class="form-control" id="filter" name="filter" placeholder="Buscar Jugador...">
+
     </div>
+
     <br/>
 
+    <div class="alert alert-danger fade in">
+        <strong>Importante!</strong> Tu lista de contactos no posee el número de jugadores que seleccionaste para el partido. 
+        Para invitar a los jugadores de MatchDay haz click <a href="#" data-toggle="modal" data-target="#modal-1">aqui</a>.
+    </div>
 
-    <?php
-    if ($numeroContactos < $jugadoresPartido) {
-      $faltanJugadores = true;
-      $jugadoresFaltantes = $jugadoresPartido-$numeroContactos; // Este es el minimo de jugadores que pueden faltar. 
-      ?>
-      <div class="alert alert-warning">
-        <strong>Atención!</strong> Tu lista de contactos no llega a los <?php echo $jugadoresPartido?> jugadores.
-        Para invitar a otros jugadores haz click <strong><a href="#" data-toggle="modal" data-target="#modal-1">aqui</a></strong>.
-        
-      </div>
-      <?php
-    }
-    ?>
+
 		<!--<img id="draggable1" class="img-responsive center ui-widget-content arreglo draggable" src="images/usuarios/cris.jpg" width="60" alt="hola" > -->
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 <?php
@@ -339,7 +345,7 @@ foreach ($vectorContactos as $Contacto) {
            </div>
            <div class="modal-body">
 
-            <form  method="post" action="recintos.php?jugar=1.php" class="design-form" > <!-- Falta definir  la accion -->
+            <form  method="post" action="inicioJugador.php?estado=pendiente" class="design-form" > <!-- Falta definir  la accion -->
        
               <div class="container">  
   
@@ -351,7 +357,7 @@ foreach ($vectorContactos as $Contacto) {
                       <div class="form-group">
                         <h2 class="center">¿Deseas invitar a otros jugadores de MatchDay?<h2>
                        
-                        <button class="btn-submit" type="submit" onClick="setValue()" formaction="enviarNotificacionesPartido.php">Si</button>
+                        <button class="btn-submit" type="submit" onClick="setValue()">Si</button>
                        
                         <button type="submit" class="btn-submit" onClick="setValue()" >No</button>
                         

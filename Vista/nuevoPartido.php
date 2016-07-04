@@ -17,7 +17,13 @@ $idRecinto= $_SESSION['idRecinto']; //Recinto seleccionado
 $cantidad = $_SESSION['cantidad']; //Cantidad de jugadores seleccionados
 $fecha = $_SESSION['fecha'];
 $hora = $_SESSION['hora'];
-$idEstado = "1"; //debido a que el partido estara marcado como "activo"
+
+$estadoPartido = $_GET['estado'];
+if ( $estadoPartido = "pendiente"){
+	$idEstado = "4";
+} else {
+	$idEstado = "1"; //debido a que el partido estara marcado como "activo"
+}
 $idTercerTiempo = "0"; // Por ahora 0 para representar que no tiene un tercer tiempo asociado
 $cuota= 0;
 $color = $_SESSION['color'];

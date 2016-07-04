@@ -38,6 +38,12 @@ class controlEquipos{
 		return $vectorData;
 	}
 
+	public function obtenerJugadoresPartido($idPartido){
+		$vectorData = $this->persistenciaEquipo->obtenerJugadoresEquipo($idPartido);
+		if (count($vectorData)==0) return null;
+		return $vectorData;
+	}
+
 	public function contarPartidos($idUsuario){
 		$vectorData = $this->persistenciaEquipo->contarPartidos($idUsuario);
 		return count($vectorData);
