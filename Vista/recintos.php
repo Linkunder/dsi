@@ -232,7 +232,7 @@ $jefePuntuacion = controlPuntuacion::obtenerInstancia();
                                     <input type="hidden" name="idUsuario" value="<?php  echo $_SESSION['idUsuario'] ?>" />
                                     <input type="hidden" name="idRecinto" value="<?php echo $key->getIdRecinto() ?>" />
                                     <input type="hidden" name="nombreRecinto" value="<?php echo $nombre; ?>" />
-                                    <button class= "btn-simple" type="submit" name="action">Puntuar</button>
+                                    <button class= "btn submit" type="submit" name="action">Puntuar</button>
                                     <?php } else {?>   
 
                                
@@ -392,6 +392,7 @@ $jefePuntuacion = controlPuntuacion::obtenerInstancia();
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
+                            <hr/>
                             <?php }//FIN FOREACH COMENTARIOS
 
                           } else{
