@@ -4,7 +4,7 @@
 
 $_SESSION['idRecinto']=NULL;
 
-
+$jugar=0;
 if(isset($_GET["jugar"]) ){
     $jugar=$_GET["jugar"];
     }else{
@@ -314,13 +314,13 @@ $jefePuntuacion = controlPuntuacion::obtenerInstancia();
 
                                 <?php }
                                }
-                                if($jugar==0){ ?>
+                                if($jugar==0 && !(isset($_SESSION['user']))){ ?>
                                 
                                 <div class="alert alert-danger alert-dismissible fade in" role="alert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <strong>Aviso</strong> Inicia sesión y juega un partido en este recinto para comentar
+                                    <strong>Aviso</strong> Inicia sesión para comentar
                                 </div>
                                 <br>
                                 <?php 
