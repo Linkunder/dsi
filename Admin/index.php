@@ -210,9 +210,10 @@ echo $json_array;
 ?>
 <script>
 var jsona = <?php echo $json_array ?>;
-
+  
 
     $(document).ready(function() {
+
         var hoy = new Date();
         var dd = hoy.getDate();
         var mm = hoy.getMonth()+1; //hoy es 0!
@@ -243,13 +244,12 @@ var jsona = <?php echo $json_array ?>;
             eventLimit: true, // allow "more" link when too many events
             events: [
                 
-                jsona.toString(),
-            
+               
                
                 {
-                    title: 'Click for Google',
+                    title: jsona[0]['title'],
                     url: 'http://google.com/',
-                    start: '2016-06-28'
+                    start: '2016-07-10',
                 }
             ]
         });
