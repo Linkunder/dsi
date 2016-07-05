@@ -11,13 +11,12 @@ class DAOLocal{
 
 	public function crearLocal($local){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "INSERT INTO local (nombre, descripcion, direccion, rutaFotografia,linkMapa)
+		$query = "INSERT INTO local (nombre, descripcion, direccion, rutaFotografia)
 		VALUES (
 			'".$local->getNombre()."',
 			'".$local->getDescripcion()."',
 			'".$local->getDireccion()."',
-			'".$local->getRutaFotografia()."',
-			'".$local->getLinkMapa()."')";
+			'".$local->getRutaFotografia()."')";
 		mysql_query($query,$link) or die(mysql_error());
 		mysql_close($link);
 	}
@@ -34,7 +33,6 @@ class DAOLocal{
 			$local->setDescripcion($row['descripcion']);
 			$local->setDireccion($row['direccion']);
 			$local->setRutaFotografia($row['rutaFotografia']);
-			$local->setLinkMapa($row['linkMapa']);
 			$vectorData[$i]= $local;
 			$i++;
 		}
@@ -57,7 +55,6 @@ class DAOLocal{
 			$local->setDescripcion($row['descripcion']);
 			$local->setDireccion($row['direccion']);
 			$local->setRutaFotografia($row['rutaFotografia']);
-			$local->setLinkMapa($row['linkMapa']);
 			$vectorData[$i]= $local;
 			$i++;
 		}
@@ -75,7 +72,6 @@ class DAOLocal{
 		descripcion = '".$local->getDescripcion()."'.
 		direccion='".$local->getDireccion()."'
 		rutaFotografia='".$local->getRutaFotografia()."'
-		linkMapa='".$local->getLinkMapa()."'
 		WHERE idLocal = '".$local->getidLocal()."'";
 		mysql_query($query,$link) or die (mysql_error());
 		mysql_close($link);

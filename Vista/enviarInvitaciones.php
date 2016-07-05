@@ -70,7 +70,7 @@ if ($existenciaTercerTiempo != 0) { // Si es 0, no hay tercer tiempo
 foreach ($localTercerTiempo as $Local) {
 	$nombreLugar = $Local->getNombre();
 	$direcciontercertiempo = $Local->getDireccion();
-	$imagenLugar = $Local->getRutaFoto();
+	$imagenLugar = $Local->getRutaFotografia();
 }
 }
 

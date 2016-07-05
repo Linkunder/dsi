@@ -224,12 +224,14 @@ $(function(){
     </div>
 
     <br/>
-
+    <?php if ($faltanJugadores) { ?>
     <div class="alert alert-danger fade in">
         <strong>Importante!</strong> Tu lista de contactos no posee el número de jugadores que seleccionaste para el partido. 
         Para invitar a los jugadores de MatchDay haz click <a href="#" data-toggle="modal" data-target="#modal-1">aqui</a>.
     </div>
-
+    <?php } else {
+      
+    }?>
 
 		<!--<img id="draggable1" class="img-responsive center ui-widget-content arreglo draggable" src="images/usuarios/cris.jpg" width="60" alt="hola" > -->
 <script src="js/jquery.ui.touch-punch.min.js"></script>

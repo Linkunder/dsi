@@ -81,10 +81,10 @@ if(isset($_GET["accion"])){
   <div class="container">
     <div class="row">
       <div class="heading-a text-center">
-        <h1>MatchDay</h1>
-        <h2>Sitio en construcción</h2>
+        <br/><br/><br/><br/><br/>
+        <h1>Bienvenido a MatchDay</h1>
       </div>
-      <br/> <br/> <br/> <br/> <br/>
+      <br/> <br/> <br/> 
     </div>
   </div>
 </div>

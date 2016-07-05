@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start();
-
+    
+include('headerJugador.php'); 
+  if(!isset($sesion)){
+    session_start();
+  }
+   
+    if($_SESSION["sesion"]!="jugador") {
+      header("Location:../Vista/inicio.php?inicio=falloJugador"); 
+    }
 
 /////Usuario de prueba//////
 
-$_SESSION['user']="Carrasco";
-$_SESSION['idUsuario']="1";
+    $user= $_SESSION['user'];
+    $idUsuario= $_SESSION['idUsuario'];
 ///////////////////////////////
 
-//Comprobamos que el usuario registrado siempre vea el header jugador
-    if(isset($_SESSION['user'])){
-        include('headerJugador.php');
-    }else{
-        include('header.php'); 
-    }
-        
 ?>
 
 <!--Variables -->
@@ -261,7 +261,7 @@ $idPartido = end($vectorPartidos)->getIdPartido();
           <h3 class="modal-title">Define la información del encuentro</h3>
         </div>
         <div class="modal-body">
-          <form  method="post" action="cancha.php" class="design-form" >
+          <form  method="post" action="nuevoTercerTiempo.php" class="design-form" >
             <div class="container">  
               <div class="row">
                 <div class="col-sm-8">

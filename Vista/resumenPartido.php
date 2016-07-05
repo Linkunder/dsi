@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start();
-
+ 
+    
+  if(!isset($sesion)){
+    session_start();
+  }
+   
+    if($_SESSION["sesion"]!="jugador") {
+      header("Location:../Vista/inicio.php?inicio=falloJugador"); 
+    }
 
 /////Usuario de prueba//////
 
-$_SESSION['user']="Carrasco";
-$_SESSION['idUsuario']="1";
+    $user= $_SESSION['user'];
+    $idUsuario= $_SESSION['idUsuario'];
 ///////////////////////////////
+
+
 
 if(isset($_GET["tercertiempo"]) ){
   $tercertiempo=$_GET["tercertiempo"];
@@ -113,6 +122,8 @@ $idRecinto= $_SESSION['idRecinto']; //Recinto seleccionado
 $cantidad = $_SESSION['cantidad']; //Cantidad de jugadores seleccionados
 $fecha =    $_SESSION['fecha'];
 $hora =     $_SESSION['hora'];
+
+
 
 
 include_once('../TO/Usuario.php');
@@ -391,7 +402,7 @@ foreach ($vectorTercerTiempo as $key ) {
             ?>
             <h4>Local: <?php echo $key->getNombre();?></h4>
             <div class="folio-image">
-                  <img class="img-responsive" src="images/locales/<?php echo  $key->getRutaFoto(); ?>" alt="">
+                  <img class="img-responsive" src="images/locales/<?php echo  $key->getRutaFotografia(); ?>" alt="">
                 </div>
            
       </div>
@@ -405,8 +416,8 @@ foreach ($vectorTercerTiempo as $key ) {
           &q=Chile  + Chillan + <?php echo $key->getDireccion();?>" allowfullscreen>
           </iframe>
            <?php
-                    }
-                    ?>
+            }
+        ?>
       </div>
     </div>
 <a href="enviarInvitaciones.php">
