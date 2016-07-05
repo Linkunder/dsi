@@ -202,7 +202,7 @@
             ?>
                 {
                     title: '<?php echo $key->getIdPartido()?>',
-                    url: '<?php echo "algun.php?idPartido=".$key->getIdPartido()?>',
+                    url: '<?php echo "verPartido.php?idPartido=".$key->getIdPartido()?>',
                     start: '<?php echo $key->getFecha()."T".$key->getHora();?>',
                 },
                 <?php }?>
