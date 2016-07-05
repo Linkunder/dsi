@@ -1,5 +1,10 @@
 <?php 
-include('header.php');
+if(isset($_GET['idUsuario'])){
+  include('headerJugador.php');
+}else{
+  include('header.php');
+}
+
 ?>
 
 

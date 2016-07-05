@@ -84,56 +84,23 @@ if(isset($_GET["tercertiempo"]) ){
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">                 
-            <li class="<?php echo ($page_name=='inicioJugador.php')?'active':'';?>"><a href="inicioJugador.php">Inicio</a></li>
-            <li class="<?php echo ($page_name=='recintos.php')?'active':'';?>"><a href="recintos.php">Canchas</a></li>
-            <li class="<?php echo ($page_name=='recintos.php?jugar=1')?'active':'';?>"><a href="recintos.php?jugar=1">Jugar</a></li> <!--Jugar = 1 para entrar a buscar recintos en el mismo reutilizando-->
+            <li class="scroll active"><a href="inicioJugador.php">Inicio</a></li>
+            <li class="scroll"><a href="quienesSomos.php">¿Quienes somos?</a></li> 
+            <li class="scroll"><a href="recintos.php">Canchas</a></li>
+            <li class="scroll"><a href="recintos.php?jugar=1">Jugar</a></li> <!--Jugar = 1 para entrar a buscar recintos en el mismo reutilizando-->
+            <li class="scroll"><a href="comentar.php">Comentar</a></li>
             <ul class="nav pull-left">
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user ?> <i class="fa fa-user"></i>
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']?><i class="icon-cog"></i>
                 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="perfil.php">Mi Perfil</a></li>
-                  <hr>
+                  <hr></hr>
                   <li><a href="contactos2.php">Contactos</a></li>
-                  <hr>
+                  <hr></hr>
                   <li><a href="notificarRecinto.php">Notificar recinto</a></li>
-                  <hr>
-                   <li><a href="../Logica/controlSesion.php?tipo=salir">Cerrar Sesion</a></li>
+                  <hr></hr>
+                   <li><a href="../../LOGICA/salirJugador.php">Cerrar Sesion</a></li>
                    <li></li>
-                </ul>
-              </li>
-            </ul>
-            <ul class="nav pull-left">
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Partidos <i class="fa fa-flag" aria-hidden="true"></i>
-                <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <?php
-                  include_once('../TO/Partido.php');
-                  include_once('../Logica/controlPartidos.php');
-
-                  $controlPartido = controlPartidos::obtenerInstancia();
-                  $partidosCapitan = $controlPartido->contarPartidosCapitan($idUsuario);
-
-
-                  ?>
-                  <li><a href="partidosPendientes.php">Partidos pendientes: <?php echo $partidosCapitan?></a></li>
-                  <hr/>
-                  
-                  
-                  <?php
-                  include_once('../TO/Partido.php');
-                  include_once('../Logica/controlPartidos.php');
-
-                  $controlPartido = controlPartidos::obtenerInstancia();
-                  $partidosDisponibles = $controlPartido->contarPartidosDisponibles();
-
-
-
-                  ?>
-                  <li><a href="partidosDisponibles.php">Partidos MatchDay: <?php echo $partidosDisponibles?></a></li>
-                  <hr/>
-                  <li><a href="partidosGestionados.php">Partidos Agendados</a></li>
-
-                  
                 </ul>
               </li>
             </ul>
@@ -230,8 +197,8 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
       <h2>Resumen del partido</h2> 
             <div>
         <center>
-          <a href="verCalendarioJugador.php?idUsuario=<?php echo $idUsuario?>">
-            <button class="btn btn-lg btn-primary"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver al calendario </button>
+          <a href="partidosGestionados.php">
+            <button class="btn btn-lg btn-primary"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver  </button>
           </a>
         </center>
         <br/>
@@ -329,8 +296,8 @@ $vectorRecintos = $jefeRecintos->leerRecinto($idRecinto);
       <h2>Resumen del partido </h2> 
       <div>
         <center>
-          <a href="verCalendarioJugador.php?idUsuario=<?php echo $idUsuario?>">
-            <button class="btn btn-lg btn-primary"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver al calendario </button>
+          <a href="partidosGestionados.php">
+            <button class="btn btn-lg btn-primary"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver </button>
           </a>
         </center>
         <br/>

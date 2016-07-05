@@ -1,7 +1,7 @@
 
 
 <?php 
-session_start();
+
 include_once('../TO/Usuario.php');
 include_once('../Logica/controlUsuarios.php');
 include_once('../TO/Partido.php');

@@ -70,6 +70,12 @@ class controlPartidos{
 		$vectorData = $this->persistenciaPartido->obtenerPartidosCapitan($idUsuario);
 		return count($vectorData);
 	}
+	public function obtenerPartidosCapitan2($idUsuario){
+			$vectorData = $this->persistenciaPartido->obtenerPartidosCapitan2($idUsuario);
+				if (count($vectorData)==0) return null;
+		return $vectorData;
+
+	}
 
 
 	public function obtenerPartidosDisponibles(){
@@ -89,6 +95,12 @@ class controlPartidos{
 		return $vectorData;
 
 	} 
+	public function eliminarPartido($idPartido){
+		$vectorData = $this->persistenciaPartido->eliminarPartido($idPartido);
+		return $vectorData;
+	}
+
+
 }
 
 

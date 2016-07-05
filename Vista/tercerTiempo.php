@@ -3,9 +3,7 @@
 <?php
     
 include('headerJugador.php'); 
-  if(!isset($sesion)){
-    session_start();
-  }
+
    
     if($_SESSION["sesion"]!="jugador") {
       header("Location:../Vista/inicio.php?inicio=falloJugador"); 

@@ -474,7 +474,7 @@ $jefePuntuacion = controlPuntuacion::obtenerInstancia();
                                 <div class="col-sm-8">
                                     <div class="form-group">
                                         <label class="label-partido" for="fecha">Fecha del partido</label>
-                                        <input type="date" name="fecha" placeholder="Fecha del partido" class="form-control partido" required="required">
+                                        <input type="date" name="fecha" placeholder="Fecha del partido" class="form-control partido" required="required" >
                                     </div>
                                 </div>
                             </div>

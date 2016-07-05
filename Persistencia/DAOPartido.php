@@ -173,6 +173,31 @@ class DAOPartido{
 		return $vectorData;	
 	}
 
+	public function obtenerPartidosCapitan2($idUsuario){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT * FROM partido WHERE idEstado = 1 AND idUsuario = '$idUsuario' ";
+		$result = mysql_query($query,$link) or die (mysql_error());
+		$i = 0;
+		while ($row = mysql_fetch_array($result)) {
+			$partido = new Partido();
+			$partido->setIdPartido($row['idPartido']);
+			$partido->setFecha($row['fecha']);
+			$partido->setHora($row['hora']);
+			$partido->setCuota($row['cuota']);
+			$partido->setIdEstado($row['idEstado']);
+			$partido->setIdRecinto($row['idRecinto']);
+			$partido->setIdTercerTiempo($row['idTercerTiempo']);
+			$partido->setIdUsuario($row['idUsuario']);
+			$vectorData[$i]= $partido;
+			$i++;
+		}
+		mysql_close($link);
+		if(empty($vectorData)){
+			return null;
+		}
+		return $vectorData;	
+	}
+
 
 		public function obtenerPartidosJS(){
 		$link = $this->conexionBD->obtenerConexion();
@@ -214,6 +239,18 @@ class DAOPartido{
 		return $vectorData;	
 	}
 
+
+
+	public function eliminarPartido($idPartido){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "UPDATE partido SET 
+		idEstado= 3
+		WHERE idPartido = $idPartido;";
+		$result = mysql_query($query,$link) or die (mysql_error());
+
+		return $result;
+
+	}
 
 }
 
