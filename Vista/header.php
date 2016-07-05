@@ -64,7 +64,6 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">                 
             <li class="<?php echo ($page_name=='inicio.php')?'active':'';?>"><a href="inicio.php">Inicio</a></li>
-            <li class="<?php echo ($page_name=='quienesSomos.php')?'active':'';?>"><a href="quienesSomos.php">¿Quienes somos?</a></li> 
             <li class="<?php echo ($page_name=='recintos.php')?'active':'';?>"><a href="recintos.php">Canchas</a></li>
             <ul class="nav pull-left">
               <li class="dropdown" id="menuLogin">
