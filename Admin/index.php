@@ -204,13 +204,12 @@
                 </div>
                 <!-- /.row -->
   <!--Calendario-->
-<?php $vectorPartidos=$jefePartido->obtenerPartidosJS(); 
-$json_array = json_encode($vectorPartidos);
-echo $json_array;
+<?php 
+$vectorPartidos=$jefePartido->obtenerPartidos(); 
+//$json_array = json_encode($vectorPartidos);
+//echo $json_array;
 ?>
 <script>
-var jsona = <?php echo $json_array ?>;
-  
 
     $(document).ready(function() {
 
@@ -230,30 +229,43 @@ var jsona = <?php echo $json_array ?>;
 
             hoy = mm+'-'+dd+'-'+yyyy;
 
-      
+
+
+
         $('#calendar1').fullCalendar({
 
+           
             header: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,basicWeek,basicDay'
             },
-
             defaultDate: hoy,
             editable: true,
             eventLimit: true, // allow "more" link when too many events
+            // Partidos
+             
+
+
             events: [
-                
-               
-               
+            <?php foreach ($vectorPartidos as $key ) {
+            ?>
                 {
-                    title: jsona[0]['title'],
+                    title: '<?php echo $key->getIdPartido()?>',
                     url: 'http://google.com/',
-                    start: '2016-07-10',
-                }
+                    start: '<?php echo $key->getFecha();?>',
+                },
+                <?php }?>
             ]
+
+
+
+
+
         });
-        
+
+
+    
     });
 
 </script>
