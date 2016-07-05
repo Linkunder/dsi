@@ -211,7 +211,9 @@ $vectorPartidos=$jefePartido->obtenerPartidos();
 ?>
 <script>
 
+
     $(document).ready(function() {
+
 
         var hoy = new Date();
         var dd = hoy.getDate();
@@ -241,7 +243,7 @@ $vectorPartidos=$jefePartido->obtenerPartidos();
                 right: 'month,basicWeek,basicDay'
             },
             defaultDate: hoy,
-            editable: true,
+            editable: false,
             eventLimit: true, // allow "more" link when too many events
             // Partidos
              
@@ -253,7 +255,7 @@ $vectorPartidos=$jefePartido->obtenerPartidos();
                 {
                     title: '<?php echo $key->getIdPartido()?>',
                     url: 'http://google.com/',
-                    start: '<?php echo $key->getFecha();?>',
+                    start: '<?php echo $key->getFecha()."T".$key->getHora();?>',
                 },
                 <?php }?>
             ]

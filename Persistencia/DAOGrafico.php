@@ -10,7 +10,7 @@
 
 	public function cantidadHombres(){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "SELECT COUNT(sexo) as total FROM usuario WHERE sexo = 'hombre';";
+		$query = "SELECT COUNT(sexo) as total FROM usuario WHERE sexo = 'Masculino';";
 		$result = mysql_query($query,$link) or die(mysql_error());
 		$numh=0;
 		while($row = mysql_fetch_array($result)){
@@ -21,7 +21,7 @@
 	}
 	public function cantidadMujeres(){
 		$link = $this->conexionBD->obtenerConexion();
-		$query = "SELECT COUNT(sexo) as total FROM usuario WHERE sexo = 'mujer';";
+		$query = "SELECT COUNT(sexo) as total FROM usuario WHERE sexo = 'Femenino';";
 		$result = mysql_query($query,$link) or die(mysql_error());
 		$numm=0;
 		while($row = mysql_fetch_array($result)){

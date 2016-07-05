@@ -82,6 +82,13 @@ class controlPartidos{
 		$vectorData = $this->persistenciaPartido->obtenerPartidosJS();
 		return $vectorData;
 	}
+
+	public function obtenerPartidosJugadorJS($idUsuario){
+		$vectorData = $this->persistenciaPartido->obtenerPartidosJugadorJS($idUsuario);
+		if (count($vectorData)==0) return null;
+		return $vectorData;
+
+	} 
 }
 
 

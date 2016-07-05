@@ -193,6 +193,28 @@ class DAOPartido{
 	}
 
 
+	public function obtenerPartidosJugadorJS($idUsuario){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT partido.idPartido, partido.fecha, partido.hora FROM partido JOIN equipo on partido.idPartido = equipo.idPartido WHERE equipo.idUsuario='$idUsuario' AND partido.idEstado=1;";
+	
+		$result = mysql_query($query,$link) or die (mysql_error());
+		$i = 0;
+		while ($row = mysql_fetch_array($result)) {
+			$partido = new Partido();
+			$partido->setIdPartido($row['idPartido']);
+			$partido->setFecha($row['fecha']);
+			$partido->setHora($row['hora']);
+			$vectorData[$i]= $partido;
+			$i++;
+		}
+		mysql_close($link);
+		if(empty($vectorData)){
+			return null;
+		}
+		return $vectorData;	
+	}
+
+
 }
 
 ?>

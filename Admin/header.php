@@ -43,6 +43,7 @@ if($_SESSION["sesion"]!="administrador") {
 <script src='js/moment.min.js'></script>
 <script src="js/jquery.js"></script>
 <script src="js/es.js"></script>
+<script src='lang-all.js'></script>
 <script src='js/fullcalendar.min.js'></script>
       <!--calendario-->
 

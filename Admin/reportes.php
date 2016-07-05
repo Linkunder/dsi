@@ -742,7 +742,7 @@ $('#container4').highcharts({
                          <div id="container112" style="min-width: 400px; height: 500px; max-width: 600px; margin: 0 auto"></div>
                         <div id="container9" style="min-width: 400px; height: 500px; max-width: 600px; margin: 0 auto"></div>
                         <!--Primer grafico-->
-                    <div class="panel-footer">Footer</div>
+                    <div class="panel-footer"></div>
                     </div>
                     </div>
                 </div>
@@ -765,7 +765,7 @@ $('#container4').highcharts({
                         <div id="container6" style="min-width: 400px; height: 500px; max-width: 600px; margin: 0 auto"></div>
 
                         <!--Primer grafico-->
-                    <div class="panel-footer">Footer</div>
+                    <div class="panel-footer"></div>
                     </div>
                     </div>
                 </div>
@@ -783,7 +783,7 @@ $('#container4').highcharts({
                         <div id="container7" style="min-width: 400px; height: 500px; max-width: 600px; margin: 0 auto"></div>
                         <div id="container8" style="min-width: 400px; height: 500px; max-width: 600px; margin: 0 auto"></div>
                         <!--Primer grafico-->
-                    <div class="panel-footer">Footer</div>
+                    <div class="panel-footer"></div>
                     </div>
                     </div>
                 </div>
