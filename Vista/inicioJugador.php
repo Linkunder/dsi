@@ -45,17 +45,11 @@ if(isset($_GET["accion"])){
    <?php } 
     if ($accion == "solicitud"){ ?>
    <strong>Listo! </strong>Se ha enviado un correo al capitán del partido para notificar tu solicitud.
-   <?php } ?>
-
-    
-   <?php
-   // SOLICITUD DE PARTIDO
-    include_once('../TO/ListaSolicitudes.php');
-    include_once('../Logica/controlListaSolicitudes.php');
-
-    
+   <?php } 
    ?>
 
+
+    
 
 
  </div>

@@ -25,16 +25,16 @@ $jefeLocal = controlLocales::obtenerInstancia();
 
 session_start();
 
-$idPartido= $_SESSION["idPartido"];
+$idPartido= $_GET["idPartido"];
 $idUsuario = $_SESSION['idUsuario'];
 
-
+// Nombre del usuario que saldrá en el correo.
 $vectorUsuario=$jefeUsuario->leerUsuario($idUsuario);
 foreach($vectorUsuario as $Jugador){    
 	$nombreJugador= $Jugador->getNombre()." ".$Jugador->getApellido();
 }
 
-//partido
+// Partido seleccionado para enviar una solicitud
 $partidoSeleccionado = $jefePartido->leerPartido($idPartido);
 foreach ($partidoSeleccionado as $key) {
 	$idRecinto = $key->getIdRecinto();
@@ -65,11 +65,26 @@ $controlSolicitudes = controlListaSolicitudes::obtenerInstancia();
 $solicitud = new ListaSolicitudes();
 $solicitud->setIdPartido($idPartido);
 $solicitud->setIdUsuario($idUsuario);
+
+
+// Si el usuario ya envió una solicitud para jugar en este partido, no se envia el correo y se redirige al inicio.
+
+// si el idusuario y el idpartido estan juntos en la tabla, derireccionamos, si no , creamos la solicitud.
+$respuesta = $controlSolicitudes->verificarSolicitud($idPartido, $idUsuario);
+
+/* La respuesta es :
+	1: La solicitud no ha sido enviada, por lo tanto, puede enviarla.
+	0: La solicitud ya fue enviada antes, entonces hay que redireccionar.
+*/
+if ($respuesta == 1) {
+
 $controlSolicitudes->crearSolicitud($solicitud);
 
 
 
-$to = "partidomatchday@gmail.com,".$correoCapitan;
+$to = $correoCapitan;
+
+//$to = "partidomatchday@gmail.com,".$correoCapitan;
 
 
 //foreach para rellenar el campo con los correos de los jugadores
@@ -130,8 +145,17 @@ $headers .= 'Cc: partidomatchday@gmail.com' . "\r\n"; //
 mail($to,$subject,$message,$headers);
  //Email response
  
-  
+  echo "enviar solicitud";
 ?>
 
 
 <META http-equiv="refresh" content="0;URL=inicioJugador.php?accion=solicitud">
+
+
+<?php
+
+} else {
+	echo "redirigir";
+	header("Location:partidosDisponibles.php?accion=vestibulo");
+}
+?>

@@ -56,6 +56,36 @@ $controlSolicitudes = controlListaSolicitudes::obtenerInstancia();
 <link href="css/profile.css" rel="stylesheet">
 
 <div class="section secondary-section" id="contact-us">
+
+<?php
+if(isset($_GET["accion"])){
+  $accion = $_GET["accion"];
+  if ($accion == "eliminar"){ 
+    ?>
+    <div class="alert alert-success alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Listo! </strong>Has rechazado la solicitud.
+    </div>
+    <?php
+    } 
+    if ($accion == "aceptar") {
+        ?>
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Listo! </strong>Has aceptado la solicitud.
+    </div>
+        <?php
+    }
+}
+?>
+
+
+
+
     <div class="container">
         <div class="title">
             <h2>Tus Partidos</h2>
@@ -97,6 +127,7 @@ $controlSolicitudes = controlListaSolicitudes::obtenerInstancia();
                         <?php
                         // Buscare el nombre del jugador que envió la solicitud
                         foreach ($solicitudesPartido as $keySolicitud) {
+                            $idSolicitud = $keySolicitud->getIdSolicitud();
                             $idSolicitante= $keySolicitud->getIdUsuario();
                             $nombreUsuario = $controlUsuario->obtenerNombre($idSolicitante);
                         ?>
@@ -104,10 +135,14 @@ $controlSolicitudes = controlListaSolicitudes::obtenerInstancia();
                         <?php
                         }?>
                         <td align="center">
-                            <button class="btn btn-sm btn-success">Aceptar <i class="fa fa-check"></i></button>
+                            <a href="aceptarSolicitud.php?idSolicitud=<?php echo $idSolicitud?>">
+                                <button class="btn btn-sm btn-success">Aceptar <i class="fa fa-check"></i></button>
+                            </a>
                         </td>
                         <td align="center">
-                            <button class="btn btn-sm btn-danger">Rechazar <i class="fa fa-times"></i></button>
+                            <a href="rechazarSolicitud.php?idSolicitud=<?php echo $idSolicitud?>">
+                                <button class="btn btn-sm btn-danger">Rechazar <i class="fa fa-times"></i></button>
+                            </a>
                         </td>
                 </tr>
                     <?php

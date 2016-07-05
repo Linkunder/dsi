@@ -49,5 +49,9 @@ class controlEquipos{
 		return count($vectorData);
 	}
 
+	public function agregarJugador($color, $idUsuario,$idPartido){
+		$this->persistenciaEquipo->agregarJugador($color, $idUsuario,$idPartido);
+	}
+
 }
 ?>

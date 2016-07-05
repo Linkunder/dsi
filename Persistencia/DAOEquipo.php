@@ -144,6 +144,18 @@ class DAOEquipo{
 		return $vectorData;	
 	}
 
+	public function agregarJugador($color, $idUsuario,$idPartido){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "INSERT INTO equipo(color, idUsuario, idPartido) 
+		VALUES(
+		'".$color."',
+		'".$idUsuario."',
+		'".$idPartido."')";
+
+		mysql_query($query,$link) or die (mysql_error());
+		mysql_close($link);	
+	}
+
 }
 
 ?>

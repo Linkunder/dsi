@@ -54,7 +54,32 @@ $controlSolicitudes = controlListaSolicitudes::obtenerInstancia();
 <!--link rel="stylesheet" type="text/css" href="css/bootstrap.css" /-->
 <link href="css/profile.css" rel="stylesheet">
 
+
+
 <div class="section secondary-section" id="contact-us">
+
+    <?php
+if(isset($_GET["accion"])){
+  $accion = $_GET["accion"];  
+  ?>
+  <div class="alert alert-danger alert-dismissible fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <?php
+    if ($accion == "vestibulo"){ ?>
+   <strong>Error! </strong>No puedes enviar más de una solicitud para este partido.
+   <?php } 
+   ?>
+
+
+    
+
+
+ </div>
+<?php
+}
+?>
     <div class="container">
         <div class="title">
             <h2>Partidos de MatchDay</h2>
@@ -124,7 +149,7 @@ $controlSolicitudes = controlListaSolicitudes::obtenerInstancia();
                             <?php
                             // Jugadores
                             $idPartido = $key->getIdPartido();
-                            $_SESSION["idPartido"] = $idPartido;
+                            //$_SESSION["idPartido"] = $idPartido;
                             $jugadoresPartido = $controlEquipo->obtenerJugadoresPartido($idPartido);
                             echo "Partido: ".$idPartido;
                             ?>
@@ -149,7 +174,7 @@ $controlSolicitudes = controlListaSolicitudes::obtenerInstancia();
                             ?>
                             </ul>
                             <br/>
-                            <center><a href="enviarSolicitud.php">
+                            <center><a href="enviarSolicitud.php?idPartido=<?php echo $idPartido?> ">
                                 <button class="btn-busqueda">
                                     Solicitar unirse
                                 </button> 
