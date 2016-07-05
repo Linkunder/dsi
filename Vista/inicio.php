@@ -54,6 +54,30 @@
       }
     }
   ?>
+
+<?php
+if(isset($_GET["accion"])){
+  $accion = $_GET["accion"];  
+  ?>
+  <div class="container">
+  <div class="alert alert-success alert-dismissible fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <?php
+    if ($accion == "empezar"){ ?>
+   <strong>Listo! </strong>Ya puedes iniciar sesión en MatchDay.
+   <?php } 
+   ?>
+ </div>
+ </div>
+<?php
+}
+?>
+
+
+
+
   <div class="container">
     <div class="row">
       <div class="heading-a text-center">
@@ -64,6 +88,9 @@
     </div>
   </div>
 </div>
+
+
+
 
 <!-- /Aqui termina la pagina -->
 

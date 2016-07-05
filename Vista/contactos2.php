@@ -49,6 +49,14 @@
   <script src="js/modernizr.custom.17475.js"></script>
 </head><!--/head-->
 
+    <?php
+        $full_name = $_SERVER['PHP_SELF'];
+        $name_array = explode('/',$full_name);
+        $count = count($name_array);
+        $page_name = $name_array[$count-1];
+    ?>
+
+
 <body>
 
    <!-- Inicio Header -->
@@ -67,24 +75,55 @@
             <h1><img class="img-responsive" src="images/logo.png" alt="logo"></h1>
           </a>                    
         </div>
-        <div class="collapse navbar-collapse">
+ <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">                 
             <li class="<?php echo ($page_name=='inicioJugador.php')?'active':'';?>"><a href="inicioJugador.php">Inicio</a></li>
             <li class="<?php echo ($page_name=='recintos.php')?'active':'';?>"><a href="recintos.php">Canchas</a></li>
             <li class="<?php echo ($page_name=='recintos.php?jugar=1')?'active':'';?>"><a href="recintos.php?jugar=1">Jugar</a></li> <!--Jugar = 1 para entrar a buscar recintos en el mismo reutilizando-->
-            <li class="<?php echo ($page_name=='comentar.php')?'active':'';?>"><a href="comentar.php">Comentar</a></li>
             <ul class="nav pull-left">
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user ?><i class="icon-cog"></i>
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user ?> <i class="fa fa-user"></i>
                 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="perfil.php">Mi Perfil</a></li>
-                  <hr></hr>
+                  <hr>
                   <li><a href="contactos2.php">Contactos</a></li>
-                  <hr></hr>
+                  <hr>
                   <li><a href="notificarRecinto.php">Notificar recinto</a></li>
-                  <hr></hr>
+                  <hr>
                    <li><a href="../Logica/controlSesion.php?tipo=salir">Cerrar Sesion</a></li>
                    <li></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav pull-left">
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Partidos <i class="fa fa-flag" aria-hidden="true"></i>
+                <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <?php
+                  include_once('../TO/Partido.php');
+                  include_once('../Logica/controlPartidos.php');
+
+                  $controlPartido = controlPartidos::obtenerInstancia();
+                  $partidosCapitan = $controlPartido->contarPartidosCapitan($idUsuario);
+
+
+                  ?>
+                  <li><a href="partidosPendientes.php">Partidos pendientes: <?php echo $partidosCapitan?></a></li>
+                  <hr/>
+                  
+                  
+                  <?php
+                  include_once('../TO/Partido.php');
+                  include_once('../Logica/controlPartidos.php');
+
+                  $controlPartido = controlPartidos::obtenerInstancia();
+                  $partidosDisponibles = $controlPartido->contarPartidosDisponibles();
+
+
+
+                  ?>
+                  <li><a href="partidosDisponibles.php">Partidos MatchDay: <?php echo $partidosDisponibles?></a></li>
+                  
                 </ul>
               </li>
             </ul>
@@ -114,14 +153,37 @@ $jefeContacto = controlContactos::obtenerInstancia();
 <!-- Aqui empieza la pagina -->
 <div class="row">
   <div id="contact-us" class="parallax">
+
+
 <div class="container demo-1">
+  <?php
+if(isset($_GET["accion"])){
+  $accion = $_GET["accion"];  
+  ?>
+  <div class="container">
+  <div class="alert alert-success alert-dismissible fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <?php
+    if ($accion == "contacto"){ ?>
+   <strong>Listo! </strong>Contacto agregado exitosamente.
+   <?php } 
+   ?>
+ </div>
+ </div>
+<?php
+}
+?>
+
+
   <div class="heading-a text-center">
     <h2>Mis contactos</h2>
   </div>
 
   <?php
   /* Aqui debo capturar el id del jugador que este en la sesion. */
-  $idUsuario = 1;
+ //  $idUsuario = 1;
   $vectorContactos = $jefeContacto->leerContactosUsuario($idUsuario);
  ?>
   <div class="main">

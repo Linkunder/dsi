@@ -64,9 +64,8 @@ if ($uploadOk == 0) {
 
 		$jefeUsuario = controlUsuarios::obtenerInstancia();
 		$jefeUsuario->guardarImagen($idUltimoUsuario,$_FILES["fileToUpload"]["name"]);
-		$message = "Tu foto de perfil fue ingresada correctamente.";
-	echo "<script type='text/javascript'>alert('$message');</script>";
-	$yourURL="inicio.php";
+
+	$yourURL="inicio.php?accion=empezar";
 	echo ("<script>location.href='$yourURL'</script>");
 		
     } else {

@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-//Aplicamos session_start() para las variables de sesion
+    
+  if(!isset($sesion)){
+    session_start();
+  }
+   
+    if($_SESSION["sesion"]!="jugador") {
+      header("Location:../Vista/inicio.php?inicio=falloJugador"); 
+    }
 
-session_start();
 /////Usuario de prueba//////
-$_SESSION['user']="Carrasco";
-$_SESSION['idUsuario']="1";
+
+    $user= $_SESSION['user'];
+    $idUsuario= $_SESSION['idUsuario'];
 ///////////////////////////////
 
 ?>
@@ -41,6 +48,12 @@ $_SESSION['idUsuario']="1";
 
   <script src="js/modernizr.custom.17475.js"></script>
 </head><!--/head-->
+    <?php
+        $full_name = $_SERVER['PHP_SELF'];
+        $name_array = explode('/',$full_name);
+        $count = count($name_array);
+        $page_name = $name_array[$count-1];
+    ?>
 
 <body>
 
@@ -62,23 +75,53 @@ $_SESSION['idUsuario']="1";
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">                 
-            <li class="scroll active"><a href="inicio.php">Inicio</a></li>
-            <li class="scroll"><a href="quienesSomos.php">¿Quienes somos?</a></li> 
-            <li class="scroll"><a href="recintos.php">Canchas</a></li>
-            <li class="scroll"><a href="recintos.php?jugar=1">Jugar</a></li> <!--Jugar = 1 para entrar a buscar recintos en el mismo reutilizando-->
-            <li class="scroll"><a href="comentar.php">Comentar</a></li>
+            <li class="<?php echo ($page_name=='inicioJugador.php')?'active':'';?>"><a href="inicioJugador.php">Inicio</a></li>
+            <li class="<?php echo ($page_name=='recintos.php')?'active':'';?>"><a href="recintos.php">Canchas</a></li>
+            <li class="<?php echo ($page_name=='recintos.php?jugar=1')?'active':'';?>"><a href="recintos.php?jugar=1">Jugar</a></li> <!--Jugar = 1 para entrar a buscar recintos en el mismo reutilizando-->
             <ul class="nav pull-left">
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']?><i class="icon-cog"></i>
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user ?> <i class="fa fa-user"></i>
                 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="perfil.php">Mi Perfil</a></li>
-                  <hr></hr>
-                  <li><a href="contactos.php">Contactos</a></li>
-                  <hr></hr>
+                  <hr>
+                  <li><a href="contactos2.php">Contactos</a></li>
+                  <hr>
                   <li><a href="notificarRecinto.php">Notificar recinto</a></li>
-                  <hr></hr>
-                   <li><a href="../../LOGICA/salirJugador.php">Cerrar Sesion</a></li>
+                  <hr>
+                   <li><a href="../Logica/controlSesion.php?tipo=salir">Cerrar Sesion</a></li>
                    <li></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav pull-left">
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Partidos <i class="fa fa-flag" aria-hidden="true"></i>
+                <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <?php
+                  include_once('../TO/Partido.php');
+                  include_once('../Logica/controlPartidos.php');
+
+                  $controlPartido = controlPartidos::obtenerInstancia();
+                  $partidosCapitan = $controlPartido->contarPartidosCapitan($idUsuario);
+
+
+                  ?>
+                  <li><a href="partidosPendientes.php">Partidos pendientes: <?php echo $partidosCapitan?></a></li>
+                  <hr/>
+                  
+                  
+                  <?php
+                  include_once('../TO/Partido.php');
+                  include_once('../Logica/controlPartidos.php');
+
+                  $controlPartido = controlPartidos::obtenerInstancia();
+                  $partidosDisponibles = $controlPartido->contarPartidosDisponibles();
+
+
+
+                  ?>
+                  <li><a href="partidosDisponibles.php">Partidos MatchDay: <?php echo $partidosDisponibles?></a></li>
+                  
                 </ul>
               </li>
             </ul>

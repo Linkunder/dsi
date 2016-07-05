@@ -47,11 +47,6 @@ if(isset($_GET["accion"])){
    <strong>Listo! </strong>Se ha enviado un correo al capitán del partido para notificar tu solicitud.
    <?php } 
    ?>
-
-
-    
-
-
  </div>
 <?php
 }
