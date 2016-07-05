@@ -18,8 +18,8 @@ $cantidad = $_SESSION['cantidad']; //Cantidad de jugadores seleccionados
 $fecha = $_SESSION['fecha'];
 $hora = $_SESSION['hora'];
 
-$estadoPartido = $_GET['estado'];
-if ( $estadoPartido = "pendiente"){
+$estadoPartido = $_SESSION['estadoPartido'];
+if ( $estadoPartido ){  // faltan
 	$idEstado = "4";
 } else {
 	$idEstado = "1"; //debido a que el partido estara marcado como "activo"

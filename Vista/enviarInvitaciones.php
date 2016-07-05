@@ -181,4 +181,4 @@ mail($to,$subject,$message,$headers);
  
   
 ?>
-<META http-equiv="refresh" content="0;URL=index.php">
+<META http-equiv="refresh" content="0;URL=inicioJugador.php">
