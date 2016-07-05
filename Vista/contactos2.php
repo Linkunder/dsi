@@ -61,7 +61,7 @@
 
    <!-- Inicio Header -->
 
-  <header id="home">
+ <header id="home">
     <div class="main-nav">
       <div class="container">
         <div class="navbar-header">
@@ -75,7 +75,7 @@
             <h1><img class="img-responsive" src="images/logo.png" alt="logo"></h1>
           </a>                    
         </div>
- <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">                 
             <li class="<?php echo ($page_name=='inicioJugador.php')?'active':'';?>"><a href="inicioJugador.php">Inicio</a></li>
             <li class="<?php echo ($page_name=='recintos.php')?'active':'';?>"><a href="recintos.php">Canchas</a></li>
@@ -123,6 +123,9 @@
 
                   ?>
                   <li><a href="partidosDisponibles.php">Partidos MatchDay: <?php echo $partidosDisponibles?></a></li>
+                  <hr/>
+                  <li><a href="partidosGestionados.php">Partidos Agendados</a></li>
+
                   
                 </ul>
               </li>

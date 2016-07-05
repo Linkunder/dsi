@@ -66,7 +66,7 @@ $user = $controlUsuario->leerUsuario($idUsuario);
                   Ver calendario de partidos</a>
                 </li>
                 <li>
-                  <a href="salirJugador.php">
+                  <a href="../Logica/controlSesion.php?tipo=salir">
                   <i class="fa fa-sign-out"></i>
                   Cerrar sesión </a>
                 </li>

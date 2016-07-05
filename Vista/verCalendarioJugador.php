@@ -131,7 +131,10 @@
 
                   ?>
                   <li><a href="partidosDisponibles.php">Partidos MatchDay: <?php echo $partidosDisponibles?></a></li>
-                  
+                                 
+                  <hr/>
+                  <li><a href="partidosGestionados.php">Partidos Agendados</a></li>
+
                 </ul>
               </li>
             </ul>
