@@ -35,7 +35,11 @@ class controlPuntuacion{
 		$puntuacion = $this->persistenciaPuntuacion->valoracionUsuario($idUsuario,$idRecinto);
 		return $puntuacion;
 	}
+	public function partidoJugado($idUsuario, $idRecinto){
+		$partido = $this->persistenciaPuntuacion->partidoJugado($idUsuario, $idRecinto);
+		return $partido;
 
+	}
 
 
 }

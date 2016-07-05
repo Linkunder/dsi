@@ -214,9 +214,11 @@ $jefePuntuacion = controlPuntuacion::obtenerInstancia();
                                         <br/>
                                         <?php
                                           if(isset($_SESSION['estado'])){
-                                                if($_SESSION['estado']=="activo" && $jefePuntuacion->comprobarPuntuacion($_SESSION['idUsuario'] ,$key->getIdRecinto())== 0 ){?>
+                                                if($_SESSION['estado']=="activo" && $jefePuntuacion->comprobarPuntuacion($_SESSION['idUsuario'] ,$key->getIdRecinto())== 0){?>
 
-                            <form method="post" action="../Logica/ingresarPuntuacion.php" >
+                                    
+                                  <?php if($jefePuntuacion->partidoJugado($_SESSION['idUsuario'],$key->getIdRecinto() == $_SESSION['idUsuario'] )){ ?>
+                                     <form method="post" action="../Logica/ingresarPuntuacion.php" >
                                     <input  class ="with-gap" name="puntuacion" type="radio" id="estrella1" value="1" />
                                     <label for="estrella1">1</label>
                                     <input class ="with-gap" name="puntuacion" type="radio" id="estrella2" value="2"/>
@@ -230,8 +232,11 @@ $jefePuntuacion = controlPuntuacion::obtenerInstancia();
                                     <input type="hidden" name="idUsuario" value="<?php  echo $_SESSION['idUsuario'] ?>" />
                                     <input type="hidden" name="idRecinto" value="<?php echo $key->getIdRecinto() ?>" />
                                     <input type="hidden" name="nombreRecinto" value="<?php echo $nombre; ?>" />
-                                    
-                                    <button class= "btn-simple" type="submit" name="action">Puntuar</button>   
+                                    <button class= "btn-simple" type="submit" name="action">Puntuar</button>
+                                    <?php } else {?>   
+
+                               
+                                        <?php }?>
                                 </form>
 
                                         <?php }else{
@@ -288,7 +293,12 @@ $jefePuntuacion = controlPuntuacion::obtenerInstancia();
                             <!--Comprobar si se puede comentar o no -->
                             <?php 
                             if(isset($_SESSION['estado'])){
-                            if($_SESSION['estado']=="activo"){?>
+                            if($_SESSION['estado']=="activo" ){
+
+
+                            if($jefePuntuacion->partidoJugado($_SESSION['idUsuario'],$key->getIdRecinto()) == $_SESSION['idUsuario']){ 
+                                ?>
+
                             <div class="panel-body comments">
                                 <form method="post" action="../Logica/ingresarComentario.php">
                                     <input class="form-control" name="contenido" placeholder="Escribe tu comentario" rows="2" required></input>
@@ -301,6 +311,18 @@ $jefePuntuacion = controlPuntuacion::obtenerInstancia();
                                 </form>
                             </div>
                             <?php 
+                            }else{?>
+                         
+                                
+                                <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <strong>Aviso</strong> Juega en este recinto para comentar y puntuar
+                                </div>
+                                <br>
+
+                           <?php }
                             }else{ //fin if estado 
                                 if($_SESSION['estado']=="penalizado"){ ?>
 
@@ -313,7 +335,8 @@ $jefePuntuacion = controlPuntuacion::obtenerInstancia();
                                 <br>
 
                                 <?php }
-                               }
+                               
+
                                 if($jugar==0 && !(isset($_SESSION['user']))){ ?>
                                 
                                 <div class="alert alert-danger alert-dismissible fade in" role="alert">
@@ -325,6 +348,19 @@ $jefePuntuacion = controlPuntuacion::obtenerInstancia();
                                 <br>
                                 <?php 
                                 }
+                               if( $jefePuntuacion->partidoJugado($_SESSION['idUsuario'],$key->getIdRecinto()) != $_SESSION['idUsuario']){ ?>
+                                
+                                <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <strong>Aviso</strong> Juega en este recinto para comentar y puntuar
+                                </div>
+                                <br>
+                                <?php 
+                                }
+                            }
+                             
                             }
                             ?>
                             <br/>

@@ -55,6 +55,19 @@
 
 	}
 
+	public function partidoJugado($idUsuario, $idRecinto){
+		$link = $this->conexionBD->obtenerConexion();
+		$query = "SELECT DISTINCT equipo.idUsuario FROM partido join equipo JOIN recinto where recinto.idRecinto = '$idRecinto' AND equipo.idUsuario = '$idUsuario' AND partido.idEstado = 2";
+		$result = mysql_query($query,$link) or die(mysql_error());
+		$i=0;
+		while($row = mysql_fetch_array($result)){
+			$i= $row['idUsuario'];
+		}
+		return $i;
+
+		
+	}
+
 
 	}
 
